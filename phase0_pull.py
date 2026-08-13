@@ -22,7 +22,7 @@ import pandas as pd
 
 PBP_URL = "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_{yr}.parquet"
 
-SEASONS = [2022, 2023, 2024, 2025]
+SEASONS = [2022, 2023, 2024, 2025, 2026]  # 2026 skipped gracefully until posted
 OUT = "data"
 os.makedirs(OUT, exist_ok=True)
 
@@ -45,10 +45,13 @@ for yr in SEASONS:
     url = PBP_URL.format(yr=yr)
     try:
         df = pd.read_parquet(url, columns=COLS)
-    except Exception as e:
-        print(f"  column-filtered read failed ({e}); reading all columns")
-        df = pd.read_parquet(url)
-        df = df[[c for c in COLS if c in df.columns]]
+    except Exception:
+        try:
+            df = pd.read_parquet(url)
+            df = df[[c for c in COLS if c in df.columns]]
+        except Exception as e:
+            print(f"  {yr} unavailable ({type(e).__name__}) -- skipping")
+            continue
     frames.append(df)
 
 pbp = pd.concat(frames, ignore_index=True)

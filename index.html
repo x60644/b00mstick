@@ -182,14 +182,15 @@ const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&g
 async function boot(){
   try{
     const r=await fetch(`output/week${wk}_slate.json`);
-    if(!r.ok)throw new Error(r.status);
-    SLATE=await r.json();
+    if(!r.ok)throw new Error("HTTP "+r.status);
+    const txt=await r.text();
+    SLATE=JSON.parse(txt.replace(/\bNaN\b/g,"null"));
     document.getElementById("wkChip").textContent=`${SLATE.season} · week ${SLATE.week}`;
     document.getElementById("genChip").textContent="scored "+SLATE.generated.slice(0,16).replace("T"," ");
     renderDrive();renderPunts();renderKicks();
   }catch(e){
     document.getElementById("view-drive").innerHTML=
-      `<div class="err">Couldn't load output/week${wk}_slate.json — run score_week.py and commit the output folder.</div>`;
+      `<div class="err">Couldn't load output/week${wk}_slate.json — ${esc(e.message)}. Run score_week.py and commit the output folder.</div>`;
   }
   loadBets();loadOverrides();
 }

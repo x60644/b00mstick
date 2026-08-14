@@ -2,7 +2,7 @@
  "season": 2026,
  "week": 1,
  "asof_week": 1,
- "generated": "2026-08-13T18:28:25.744307",
+ "generated": "2026-08-13T22:44:39.509695",
  "games": [
   {
    "game_id": "2026_01_CHI_CAR",
@@ -336,7 +336,7 @@
     "away": {
      "name": "M.Shipley",
      "full_name": "Mason Shipley",
-     "headshot": NaN,
+     "headshot": null,
      "mean": 7.621,
      "tt_base": 20.75,
      "tt_slope": 0.1404,
@@ -631,7 +631,7 @@
     "away": {
      "name": "L.Elzinga",
      "full_name": "Luke Elzinga",
-     "headshot": NaN
+     "headshot": null
     }
    },
    "coaches": {

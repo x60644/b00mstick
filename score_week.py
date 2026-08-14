@@ -180,9 +180,18 @@ def main():
     os.makedirs("output", exist_ok=True)
     out = {"season": SEASON, "week": week, "asof_week": asof_week,
            "generated": pd.Timestamp.now().isoformat(), "games": games_out}
+    def _clean(o):
+        if isinstance(o, dict):
+            return {k: _clean(v) for k, v in o.items()}
+        if isinstance(o, list):
+            return [_clean(v) for v in o]
+        if isinstance(o, float) and (o != o or o in (float("inf"), float("-inf"))):
+            return None
+        return o
+
     path = f"output/week{week}_slate.json"
     with open(path, "w") as f:
-        json.dump(out, f, indent=1)
+        json.dump(_clean(out), f, indent=1)
     print(f"Wrote {path} ({len(games_out)} games)")
 
 if __name__ == "__main__":

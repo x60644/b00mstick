@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0e1f">
+<title>b00mstick</title>
+<meta name="description" content="NFL props model: first drive, punts, kicker points. Priced against DK, judged by CLV.">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="manifest" href="manifest.json">
+<meta property="og:title" content="b00mstick">
+<meta property="og:description" content="NFL props: first drive, punts, kicks.">
+<meta property="og:image" content="assets/og-1200x630.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0a0e1f; --turf:#0e3b20; --turf2:#124a28; --chalk:#f2f0e4;
+  --boom:#f88014; --cyan:#39d5ff; --gold:#ffd23f; --dim:#8b93a7;
+  --card:#101830; --line:#243050; --red:#ff5a5a; --green:#5ad17a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--chalk);font:14px/1.5 ui-monospace,'Cascadia Mono',Consolas,monospace;padding-bottom:76px}
+.px{font-family:'Press Start 2P',monospace}
+/* scoreboard header */
+header{background:linear-gradient(180deg,var(--turf) 0%,var(--turf2) 100%);border-bottom:4px solid var(--boom);padding:14px 12px 10px;position:relative;overflow:hidden}
+header::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,.12) 3px 4px);pointer-events:none}
+.brand{display:flex;align-items:center;gap:10px}
+.brand svg{flex:0 0 auto}
+.wordmark{font-size:17px;letter-spacing:1px}
+.wordmark .oo{color:var(--boom)}
+.sub{color:var(--gold);font-size:8px;margin-top:6px;letter-spacing:1px}
+.meta{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;align-items:center}
+.meta .chip{font-size:10px;background:rgba(0,0,0,.35);border:1px solid var(--line);padding:3px 8px;border-radius:3px;color:var(--dim)}
+#ovrBtn{margin-left:auto;background:var(--card);border:2px solid var(--gold);color:var(--gold);font-family:'Press Start 2P';font-size:8px;padding:6px 8px;border-radius:4px;cursor:pointer}
+/* tabs */
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#060a16;border-top:3px solid var(--boom);z-index:40}
+nav button{flex:1;background:none;border:none;color:var(--dim);font-family:'Press Start 2P';font-size:9px;padding:14px 2px calc(12px + env(safe-area-inset-bottom));cursor:pointer}
+nav button.on{color:var(--boom);text-shadow:0 0 8px rgba(248,128,20,.6)}
+main{max-width:760px;margin:0 auto;padding:12px}
+.hidden{display:none!important}
+/* cards */
+.game{background:var(--card);border:2px solid var(--line);border-radius:8px;margin-bottom:14px;overflow:hidden;position:relative}
+.game::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,255,255,.02) 3px 4px);pointer-events:none}
+.ghead{display:flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--turf) 0%,var(--card) 100%);padding:8px 10px;border-bottom:2px solid var(--line);flex-wrap:wrap}
+.ghead .vs{font-size:11px}
+.ghead .kick{color:var(--dim);font-size:11px;margin-left:auto}
+.badge{font-size:9px;padding:2px 6px;border-radius:3px;border:1px solid}
+.badge.wind{color:var(--cyan);border-color:var(--cyan)}
+.badge.dome{color:var(--dim);border-color:var(--dim)}
+.badge.newpc{color:var(--gold);border-color:var(--gold)}
+.gbody{padding:10px;position:relative}
+.coach{color:var(--dim);font-size:11px;margin-bottom:8px}
+/* drive rows */
+.teamblock{margin-bottom:12px}
+.tname{font-family:'Press Start 2P';font-size:10px;color:var(--gold);margin-bottom:6px}
+.orow{display:grid;grid-template-columns:52px 1fr 64px 74px 84px;gap:6px;align-items:center;margin-bottom:4px}
+.olab{font-size:11px;color:var(--dim)}
+.bar{height:14px;background:#0a1226;border:1px solid var(--line);border-radius:2px;position:relative}
+.bar i{position:absolute;inset:0;width:0;background:linear-gradient(90deg,var(--turf2),var(--green));border-radius:1px}
+.pct{font-size:11px;text-align:right}
+input.odds,input.num{width:100%;background:#0a1226;border:1px solid var(--line);color:var(--chalk);padding:5px 6px;border-radius:3px;font:inherit;font-size:12px}
+input:focus{outline:2px solid var(--cyan)}
+.tier{font-family:'Press Start 2P';font-size:8px;padding:5px 0;text-align:center;border-radius:3px;border:2px solid var(--line);color:var(--dim)}
+.tier.BET{border-color:var(--boom);color:var(--boom);animation:blink 1.1s steps(2) infinite}
+.tier.VALUE{border-color:var(--cyan);color:var(--cyan)}
+@keyframes blink{50%{opacity:.45}}
+@media (prefers-reduced-motion: reduce){.tier.BET{animation:none}}
+.mrow{display:grid;grid-template-columns:1fr 74px 74px 74px 84px 60px;gap:6px;align-items:center;margin:6px 0}
+.mrow .lab{font-size:11px;color:var(--dim)}
+.logb{background:none;border:2px solid var(--green);color:var(--green);font-family:'Press Start 2P';font-size:8px;padding:6px 2px;border-radius:3px;cursor:pointer}
+.small{font-size:11px;color:var(--dim)}
+/* kicker / punter cards */
+.mug{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
+.mug img{width:64px;height:64px;object-fit:cover;border:3px solid var(--gold);border-radius:6px;background:#0a1226;image-rendering:auto}
+.mug .info{flex:1}
+.mug .pname{font-family:'Press Start 2P';font-size:10px}
+.mug .proj{color:var(--gold);font-size:12px;margin:4px 0}
+/* log */
+.sumbar{display:flex;gap:10px;background:var(--card);border:2px solid var(--line);border-radius:8px;padding:10px;margin-bottom:12px;flex-wrap:wrap}
+.sumbar div{font-size:11px;color:var(--dim)}
+.sumbar b{display:block;font-family:'Press Start 2P';font-size:12px;color:var(--chalk);margin-top:4px}
+.bet{background:var(--card);border:2px solid var(--line);border-radius:8px;padding:10px;margin-bottom:10px}
+.bet .top{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12px}
+.bet .clv{margin-left:auto;font-family:'Press Start 2P';font-size:10px}
+.clv.pos{color:var(--green)} .clv.neg{color:var(--red)}
+.bet .closerow{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:6px;margin-top:8px}
+select{background:#0a1226;border:1px solid var(--line);color:var(--chalk);padding:5px;border-radius:3px;font:inherit;font-size:12px}
+/* overlay */
+#ovr{position:fixed;inset:0;background:rgba(4,6,14,.9);z-index:50;overflow:auto;padding:16px}
+#ovr .panel{max-width:560px;margin:0 auto;background:var(--card);border:3px solid var(--gold);border-radius:8px;padding:14px}
+.orow2{display:grid;grid-template-columns:80px 1fr auto;gap:6px;margin:6px 0;align-items:center}
+h2.px{font-size:12px;margin-bottom:10px;color:var(--gold)}
+.note{font-size:11px;color:var(--dim);margin:8px 0}
+.err{color:var(--red);font-size:12px;padding:10px;text-align:center}
+.loading{font-family:'Press Start 2P';font-size:10px;color:var(--dim);text-align:center;padding:40px 10px}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <img src="assets/logo-transparent.png" alt="b00mstick logo" style="width:46px;height:46px">
+    <div>
+      <img src="assets/wordmark-white.png" alt="b00mstick" style="height:18px;display:block">
+      <div class="px sub">NFL PROPS &middot; FIRST DRIVE / PUNTS / KICKS</div>
+    </div>
+  </div>
+  <div class="meta">
+    <span class="chip" id="wkChip">week —</span>
+    <span class="chip" id="genChip">loading slate…</span>
+    <button id="ovrBtn" class="px">OVR</button>
+  </div>
+</header>
+
+<main>
+  <div id="view-drive"></div>
+  <div id="view-punts" class="hidden"></div>
+  <div id="view-kicks" class="hidden"></div>
+  <div id="view-log" class="hidden"></div>
+</main>
+
+<div id="ovr" class="hidden">
+  <div class="panel">
+    <h2 class="px">OVERRIDES</h2>
+    <div class="note">Conservative flags: they mark uncertainty and pull a team toward league average in the weekly scoring run (player swaps re-prior the player). They do not inject coach tendencies — that factor failed the backtest.</div>
+    <div class="orow2">
+      <input class="num" id="ovTeam" placeholder="TEAM" maxlength="3">
+      <select id="ovFlag">
+        <option>NEW_QB</option><option>ROOKIE_QB</option><option>NEW_KICKER</option>
+        <option>NEW_PUNTER</option><option>NEW_HC</option><option>NEW_OC</option><option>OTHER</option>
+      </select>
+      <button class="logb" onclick="addOverride()">ADD</button>
+    </div>
+    <input class="num" id="ovNote" placeholder="note (optional)" style="width:100%;margin:4px 0">
+    <div id="ovList" class="note">loading…</div>
+    <button class="logb" style="width:100%;margin-top:8px" onclick="document.getElementById('ovr').classList.add('hidden')">CLOSE</button>
+  </div>
+</div>
+
+<nav>
+  <button id="tab-drive" class="on" onclick="show('drive')">DRIVE</button>
+  <button id="tab-punts" onclick="show('punts')">PUNTS</button>
+  <button id="tab-kicks" onclick="show('kicks')">KICKS</button>
+  <button id="tab-log" onclick="show('log')">LOG</button>
+</nav>
+
+<script>
+const SUPA_URL="https://sknvngcufmjypioyxdjt.supabase.co";
+const SUPA_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNrbnZuZ2N1Zm1qeXBpb3l4ZGp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY1NzcyMjQsImV4cCI6MjEwMjE1MzIyNH0._mRhuAwDSGHQJHq8H50JHyJrVlBg5aXxbljc09MhCBg";
+const SB_HDRS={apikey:SUPA_KEY,Authorization:"Bearer "+SUPA_KEY,"Content-Type":"application/json"};
+const TH={drive:{BET:.050,VALUE:.025},punts:{BET:.045,VALUE:.022},kicker:{BET:.045,VALUE:.022}};
+const OUTS=["TD","FG","PUNT","OTHER"];
+let SLATE=null,BETS=[];
+const wk=new URLSearchParams(location.search).get("week")||1;
+
+/* ---------- math ---------- */
+const a2p=o=>o>0?100/(o+100):-o/(-o+100);
+function devig2(a,b){const pa=a2p(a),pb=a2p(b);return[pa/(pa+pb),pb/(pa+pb)]}
+function devigN(arr){const ps=arr.map(a2p),t=ps.reduce((x,y)=>x+y,0);return ps.map(p=>p/t)}
+function tier(mp,fp,mkt){const e=mp-fp,t=TH[mkt];return[e>=t.BET?"BET":e>=t.VALUE?"VALUE":"PASS",e]}
+function pois(mu,kmax){const p=[Math.exp(-mu)];for(let k=1;k<=kmax;k++)p.push(p[k-1]*mu/k);return p}
+function priceCount(mu,line){
+  const pmf=pois(mu,Math.max(30,Math.ceil(line)+12));
+  let over=0,under=0,push=0;
+  pmf.forEach((p,k)=>{if(k>line)over+=p;else if(k<line)under+=p;else push=p});
+  return{over,under,push};
+}
+function priceDist(dist,shift,line){
+  let over=0,under=0,push=0;
+  for(const[k,p]of Object.entries(dist)){
+    const v=Math.max(0,+k+shift);
+    if(v>line)over+=p;else if(v<line)under+=p;else push+=p;
+  }
+  return{over,under,push};
+}
+const fmtP=p=>(100*p).toFixed(1)+"%";
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ---------- load ---------- */
+async function boot(){
+  try{
+    const r=await fetch(`output/week${wk}_slate.json`);
+    if(!r.ok)throw new Error(r.status);
+    SLATE=await r.json();
+    document.getElementById("wkChip").textContent=`${SLATE.season} · week ${SLATE.week}`;
+    document.getElementById("genChip").textContent="scored "+SLATE.generated.slice(0,16).replace("T"," ");
+    renderDrive();renderPunts();renderKicks();
+  }catch(e){
+    document.getElementById("view-drive").innerHTML=
+      `<div class="err">Couldn't load output/week${wk}_slate.json — run score_week.py and commit the output folder.</div>`;
+  }
+  loadBets();loadOverrides();
+}
+function show(t){
+  for(const v of["drive","punts","kicks","log"]){
+    document.getElementById("view-"+v).classList.toggle("hidden",v!==t);
+    document.getElementById("tab-"+v).classList.toggle("on",v===t);
+  }
+}
+function gh(g){
+  const badges=[];
+  if(g.roof!=="outdoors")badges.push(`<span class="badge dome">DOME</span>`);
+  else if(g.wind_flag)badges.push(`<span class="badge wind">WIND ${g.wind_mph}</span>`);
+  if(g.coaches.home_new_pc)badges.push(`<span class="badge newpc">${g.home}: NEW PLAYCALLER</span>`);
+  if(g.coaches.away_new_pc)badges.push(`<span class="badge newpc">${g.away}: NEW PLAYCALLER</span>`);
+  return`<div class="ghead"><span class="px vs">${g.away} @ ${g.home}</span>${badges.join("")}
+    <span class="kick">${g.gameday.slice(5)} ${g.gametime}</span></div>`;
+}
+
+/* ---------- DRIVE ---------- */
+function renderDrive(){
+  const el=document.getElementById("view-drive");
+  el.innerHTML=SLATE.games.map((g,gi)=>`
+  <div class="game">${gh(g)}<div class="gbody">
+    <div class="coach">${esc(g.coaches.away_hc)} (${g.away}) vs ${esc(g.coaches.home_hc)} (${g.home}) · playcallers: ${esc(g.coaches.away_pc)} / ${esc(g.coaches.home_pc)}</div>
+    ${["away","home"].map(s=>{
+      const t=s==="home"?g.home:g.away;
+      return`<div class="teamblock"><div class="tname">${t} FIRST DRIVE</div>
+      ${OUTS.map(o=>`
+        <div class="orow"><span class="olab">${o}</span>
+          <div class="bar"><i style="width:${(100*g.drive[s][o]).toFixed(1)}%"></i></div>
+          <span class="pct">${fmtP(g.drive[s][o])}</span>
+          <input class="odds" placeholder="DK ${o}" id="d-${gi}-${s}-${o}" inputmode="numeric" onchange="calcDrive(${gi},'${s}')">
+          <div class="tier" id="dt-${gi}-${s}-${o}">—</div>
+        </div>`).join("")}
+      <div style="text-align:right;margin-top:4px"><button class="logb" onclick="logDrive(${gi},'${s}')">LOG BEST</button></div>
+      </div>`}).join("")}
+  </div></div>`).join("");
+}
+function calcDrive(gi,s){
+  const g=SLATE.games[gi];
+  const odds=OUTS.map(o=>parseFloat(document.getElementById(`d-${gi}-${s}-${o}`).value));
+  if(odds.some(isNaN))return;
+  const fair=devigN(odds);
+  OUTS.forEach((o,i)=>{
+    const[t,e]=tier(g.drive[s][o],fair[i],"drive");
+    const d=document.getElementById(`dt-${gi}-${s}-${o}`);
+    d.textContent=`${t} ${(100*e).toFixed(1)}`;d.className="tier "+t;
+    d.dataset.edge=e;d.dataset.fair=fair[i];
+  });
+}
+function logDrive(gi,s){
+  const g=SLATE.games[gi];let best=null;
+  OUTS.forEach(o=>{
+    const d=document.getElementById(`dt-${gi}-${s}-${o}`);
+    if(d.dataset.edge!==undefined&&(best===null||+d.dataset.edge>+best.edge))
+      best={o,edge:d.dataset.edge,fair:d.dataset.fair,
+            odds:document.getElementById(`d-${gi}-${s}-${o}`).value};
+  });
+  if(!best)return alert("Enter all four DK odds first.");
+  const team=s==="home"?g.home:g.away;
+  saveBet({game_id:g.game_id,market:"DRIVE",selection:`${team} 1st drive ${best.o}`,line:null,
+    your_odds:+best.odds,model_prob:g.drive[s][best.o],fair_prob_at_bet:+best.fair,
+    tier:document.getElementById(`dt-${gi}-${s}-${best.o}`).textContent.split(" ")[0]});
+}
+
+/* ---------- PUNTS ---------- */
+function renderPunts(){
+  const el=document.getElementById("view-punts");
+  el.innerHTML=SLATE.games.map((g,gi)=>`
+  <div class="game">${gh(g)}<div class="gbody">
+    <div class="small">model: ${g.away} ${g.punts.away.mean} · ${g.home} ${g.punts.home.mean} · game ${g.punts.game_mean} (sched total ${g.lines.total_line})</div>
+    <div class="mrow"><span class="lab">DK game total</span>
+      <input class="num" id="pt-${gi}" value="${g.lines.total_line}" inputmode="decimal" onchange="calcPunts(${gi})">
+      <input class="num" id="pl-${gi}" placeholder="line" value="${(Math.round(g.punts.game_mean)+0.5).toFixed(1)}" inputmode="decimal" onchange="calcPunts(${gi})">
+      <input class="odds" id="po-${gi}" placeholder="over" inputmode="numeric" onchange="calcPunts(${gi})">
+      <input class="odds" id="pu-${gi}" placeholder="under" inputmode="numeric" onchange="calcPunts(${gi})">
+      <span class="small" id="pp-${gi}"></span></div>
+    <div class="mrow"><span class="lab" id="pinfo-${gi}">P(over) —</span>
+      <div class="tier" id="ptov-${gi}">OVER</div><div class="tier" id="ptun-${gi}">UNDER</div>
+      <span></span><span></span><button class="logb" onclick="logPunts(${gi})">LOG</button></div>
+  </div></div>`).join("");
+}
+function puntsMu(gi){
+  const g=SLATE.games[gi];
+  const dkT=parseFloat(document.getElementById(`pt-${gi}`).value)||g.lines.total_line;
+  const adj=(dkT-g.lines.total_line);
+  return g.punts.game_mean+adj*(g.punts.home.tt_slope+g.punts.away.tt_slope);
+}
+function calcPunts(gi){
+  const line=parseFloat(document.getElementById(`pl-${gi}`).value);if(isNaN(line))return;
+  const mu=puntsMu(gi);
+  const pr=priceCount(mu,line);
+  document.getElementById(`pinfo-${gi}`).textContent=`μ ${mu.toFixed(2)} · P(o) ${fmtP(pr.over)}${pr.push?" · push "+fmtP(pr.push):""}`;
+  const oo=parseFloat(document.getElementById(`po-${gi}`).value),uo=parseFloat(document.getElementById(`pu-${gi}`).value);
+  if(isNaN(oo)||isNaN(uo))return;
+  const[fo,fu]=devig2(oo,uo);
+  const sc=1-pr.push;   // compare on action-only basis
+  const[t1,e1]=tier(pr.over/sc,fo,"punts"),[t2,e2]=tier(pr.under/sc,fu,"punts");
+  const A=document.getElementById(`ptov-${gi}`),B=document.getElementById(`ptun-${gi}`);
+  A.textContent=`OVER ${(100*e1).toFixed(1)}`;A.className="tier "+t1;A.dataset.d=JSON.stringify({t:t1,e:e1,f:fo,p:pr.over/sc});
+  B.textContent=`UNDER ${(100*e2).toFixed(1)}`;B.className="tier "+t2;B.dataset.d=JSON.stringify({t:t2,e:e2,f:fu,p:pr.under/sc});
+}
+function logPunts(gi){
+  const g=SLATE.games[gi];
+  const A=document.getElementById(`ptov-${gi}`),B=document.getElementById(`ptun-${gi}`);
+  if(!A.dataset.d)return alert("Enter line and both odds first.");
+  const a=JSON.parse(A.dataset.d),b=JSON.parse(B.dataset.d);
+  const pick=a.e>=b.e?{side:"over",...a,odds:document.getElementById(`po-${gi}`).value}
+                     :{side:"under",...b,odds:document.getElementById(`pu-${gi}`).value};
+  saveBet({game_id:g.game_id,market:"PUNTS",selection:`game punts ${pick.side}`,
+    line:parseFloat(document.getElementById(`pl-${gi}`).value),your_odds:+pick.odds,
+    model_prob:pick.p,fair_prob_at_bet:pick.f,tier:pick.t});
+}
+
+/* ---------- KICKS ---------- */
+function renderKicks(){
+  const el=document.getElementById("view-kicks");
+  el.innerHTML=SLATE.games.map((g,gi)=>{
+    const sides=Object.keys(g.kickers);
+    if(!sides.length)return`<div class="game">${gh(g)}<div class="gbody small">kicker TBD (roster unsettled)</div></div>`;
+    return`<div class="game">${gh(g)}<div class="gbody">
+    ${sides.map(s=>{
+      const k=g.kickers[s],team=s==="home"?g.home:g.away,pn=g.punters[s];
+      return`<div class="mug">
+        <img src="${esc(k.headshot)}" alt="${esc(k.full_name)}" onerror="this.style.visibility='hidden'">
+        <div class="info">
+          <div class="pname">${esc(k.name)} · ${team}</div>
+          <div class="proj">proj ${k.mean} pts (tt ${k.tt_base})</div>
+          <div class="mrow"><span class="lab">DK tt</span>
+            <input class="num" id="ktt-${gi}-${s}" value="${k.tt_base}" inputmode="decimal" onchange="calcKick(${gi},'${s}')">
+            <input class="num" id="kl-${gi}-${s}" placeholder="line" value="${(Math.round(k.mean)+0.5).toFixed(1)}" inputmode="decimal" onchange="calcKick(${gi},'${s}')">
+            <input class="odds" id="ko-${gi}-${s}" placeholder="over" inputmode="numeric" onchange="calcKick(${gi},'${s}')">
+            <input class="odds" id="ku-${gi}-${s}" placeholder="under" inputmode="numeric" onchange="calcKick(${gi},'${s}')">
+            <span></span></div>
+          <div class="mrow"><span class="lab" id="ki-${gi}-${s}">—</span>
+            <div class="tier" id="kto-${gi}-${s}">OVER</div><div class="tier" id="ktu-${gi}-${s}">UNDER</div>
+            <span></span><span></span><button class="logb" onclick="logKick(${gi},'${s}')">LOG</button></div>
+          ${pn?`<div class="small">punter: ${esc(pn.name)}</div>`:""}
+        </div></div>`;}).join("")}
+    </div></div>`;}).join("");
+}
+function calcKick(gi,s){
+  const g=SLATE.games[gi],k=g.kickers[s];
+  const line=parseFloat(document.getElementById(`kl-${gi}-${s}`).value);if(isNaN(line))return;
+  const dktt=parseFloat(document.getElementById(`ktt-${gi}-${s}`).value)||k.tt_base;
+  const shift=Math.round(k.tt_slope*(dktt-k.tt_base));
+  const pr=priceDist(k.dist,shift,line);
+  document.getElementById(`ki-${gi}-${s}`).textContent=`μ ${(k.mean+k.tt_slope*(dktt-k.tt_base)).toFixed(2)} · P(o) ${fmtP(pr.over)}`;
+  const oo=parseFloat(document.getElementById(`ko-${gi}-${s}`).value),uo=parseFloat(document.getElementById(`ku-${gi}-${s}`).value);
+  if(isNaN(oo)||isNaN(uo))return;
+  const[fo,fu]=devig2(oo,uo);const sc=1-pr.push;
+  const[t1,e1]=tier(pr.over/sc,fo,"kicker"),[t2,e2]=tier(pr.under/sc,fu,"kicker");
+  const A=document.getElementById(`kto-${gi}-${s}`),B=document.getElementById(`ktu-${gi}-${s}`);
+  A.textContent=`OVER ${(100*e1).toFixed(1)}`;A.className="tier "+t1;A.dataset.d=JSON.stringify({t:t1,e:e1,f:fo,p:pr.over/sc});
+  B.textContent=`UNDER ${(100*e2).toFixed(1)}`;B.className="tier "+t2;B.dataset.d=JSON.stringify({t:t2,e:e2,f:fu,p:pr.under/sc});
+}
+function logKick(gi,s){
+  const g=SLATE.games[gi],k=g.kickers[s];
+  const A=document.getElementById(`kto-${gi}-${s}`),B=document.getElementById(`ktu-${gi}-${s}`);
+  if(!A.dataset.d)return alert("Enter line and both odds first.");
+  const a=JSON.parse(A.dataset.d),b=JSON.parse(B.dataset.d);
+  const pick=a.e>=b.e?{side:"over",...a,odds:document.getElementById(`ko-${gi}-${s}`).value}
+                     :{side:"under",...b,odds:document.getElementById(`ku-${gi}-${s}`).value};
+  saveBet({game_id:g.game_id,market:"KICKS",selection:`${k.name} pts ${pick.side}`,
+    line:parseFloat(document.getElementById(`kl-${gi}-${s}`).value),your_odds:+pick.odds,
+    model_prob:pick.p,fair_prob_at_bet:pick.f,tier:pick.t});
+}
+
+/* ---------- LOG / Supabase ---------- */
+async function saveBet(b){
+  b.season=SLATE.season;b.week=SLATE.week;
+  const r=await fetch(`${SUPA_URL}/rest/v1/b00mstick_bets`,{method:"POST",
+    headers:{...SB_HDRS,Prefer:"return=representation"},body:JSON.stringify(b)});
+  if(!r.ok){alert("Save failed — are the Supabase tables created?");return}
+  await loadBets();show("log");
+}
+async function loadBets(){
+  const el=document.getElementById("view-log");
+  try{
+    const r=await fetch(`${SUPA_URL}/rest/v1/b00mstick_bets?select=*&order=created_at.desc`,{headers:SB_HDRS});
+    if(!r.ok)throw 0;
+    BETS=await r.json();
+  }catch(e){el.innerHTML=`<div class="err">Bet log unavailable — run the b00mstick SQL in the skyh00k Supabase project.</div>`;return}
+  const settled=BETS.filter(b=>b.result!=="PENDING");
+  const wl=`${settled.filter(b=>b.result==="WIN").length}-${settled.filter(b=>b.result==="LOSS").length}-${settled.filter(b=>b.result==="PUSH").length}`;
+  const clvs=BETS.filter(b=>b.clv_pct!=null).map(b=>+b.clv_pct);
+  const avg=clvs.length?(clvs.reduce((a,b)=>a+b,0)/clvs.length).toFixed(2):"—";
+  el.innerHTML=`<div class="sumbar">
+      <div>BETS<b>${BETS.length}</b></div><div>RECORD<b>${wl}</b></div>
+      <div>AVG CLV<b class="${+avg>0?'clv pos':''}">${avg}${clvs.length?" pts":""}</b></div>
+      <div>CLV SAMPLE<b>${clvs.length}</b></div></div>
+    <div class="note">Enter DK closing odds (your side + opposite side) at kickoff — CLV = devigged close minus devigged bet price, in probability points.</div>
+    ${BETS.map(b=>`
+    <div class="bet"><div class="top">
+      <span class="px" style="font-size:9px">${b.market}</span>
+      <span>${esc(b.selection)}${b.line!=null?" "+b.line:""}</span>
+      <span class="small">@ ${b.your_odds>0?"+":""}${b.your_odds} · ${b.tier}</span>
+      <span class="clv ${b.clv_pct>0?"pos":b.clv_pct<0?"neg":""}">${b.clv_pct!=null?(b.clv_pct>0?"+":"")+(+b.clv_pct).toFixed(2):""}</span>
+    </div>
+    <div class="closerow">
+      <input class="odds" placeholder="close (your side)" value="${b.close_odds??""}" onchange="setClose('${b.id}',this.value,null)">
+      <input class="odds" placeholder="close (opp side)" value="${b.opp_close_odds??""}" onchange="setClose('${b.id}',null,this.value)">
+      <select onchange="setResult('${b.id}',this.value)">
+        ${["PENDING","WIN","LOSS","PUSH"].map(x=>`<option ${x===b.result?"selected":""}>${x}</option>`).join("")}
+      </select>
+      <span class="small">wk${b.week}</span>
+    </div></div>`).join("")||'<div class="note">No bets logged yet — price a market and hit LOG.</div>'}`;
+}
+async function setClose(id,mine,opp){
+  const b=BETS.find(x=>x.id===id);
+  const close=mine!=null?+mine:b.close_odds, oc=opp!=null?+opp:b.opp_close_odds;
+  const patch={close_odds:close||null,opp_close_odds:oc||null};
+  if(close&&oc){const[fc]=devig2(close,oc);patch.clv_pct=100*(fc-b.fair_prob_at_bet)}
+  await fetch(`${SUPA_URL}/rest/v1/b00mstick_bets?id=eq.${id}`,{method:"PATCH",headers:SB_HDRS,body:JSON.stringify(patch)});
+  loadBets();
+}
+async function setResult(id,val){
+  await fetch(`${SUPA_URL}/rest/v1/b00mstick_bets?id=eq.${id}`,{method:"PATCH",headers:SB_HDRS,body:JSON.stringify({result:val})});
+  loadBets();
+}
+
+/* ---------- overrides ---------- */
+async function loadOverrides(){
+  const el=document.getElementById("ovList");
+  try{
+    const r=await fetch(`${SUPA_URL}/rest/v1/b00mstick_overrides?select=*&active=eq.true&order=created_at.desc`,{headers:SB_HDRS});
+    const rows=await r.json();
+    el.innerHTML=rows.length?rows.map(o=>
+      `<div class="orow2"><b>${esc(o.team)}</b><span>${esc(o.flag)}${o.note?" — "+esc(o.note):""}</span>
+       <button class="logb" onclick="dropOverride('${o.id}')">X</button></div>`).join("")
+      :"No active overrides.";
+  }catch(e){el.textContent="Overrides unavailable — create the Supabase tables."}
+}
+async function addOverride(){
+  const team=document.getElementById("ovTeam").value.toUpperCase().trim();
+  if(!team)return;
+  await fetch(`${SUPA_URL}/rest/v1/b00mstick_overrides`,{method:"POST",headers:SB_HDRS,
+    body:JSON.stringify({season:SLATE?.season??2026,team,flag:document.getElementById("ovFlag").value,
+                         note:document.getElementById("ovNote").value})});
+  document.getElementById("ovTeam").value="";document.getElementById("ovNote").value="";
+  loadOverrides();
+}
+async function dropOverride(id){
+  await fetch(`${SUPA_URL}/rest/v1/b00mstick_overrides?id=eq.${id}`,{method:"PATCH",headers:SB_HDRS,
+    body:JSON.stringify({active:false})});
+  loadOverrides();
+}
+document.getElementById("ovrBtn").onclick=()=>document.getElementById("ovr").classList.remove("hidden");
+boot();
+</script>
+</body>
+</html>

@@ -24,14 +24,11 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--night);color:var(--chalk);font:14px/1.5 ui-monospace,'Cascadia Mono',Consolas,monospace;padding-bottom:76px}
 .px{font-family:'Press Start 2P',monospace}
-/* scoreboard header */
-header{background:linear-gradient(180deg,var(--turf) 0%,var(--turf2) 100%);border-bottom:4px solid var(--boom);padding:14px 12px 10px}
-.brand{display:flex;align-items:center;gap:10px}
-.brand svg{flex:0 0 auto}
-.wordmark{font-size:17px;letter-spacing:1px}
-.wordmark .oo{color:var(--boom)}
-.sub{color:var(--gold);font-size:8px;margin-top:6px;letter-spacing:1px}
-.meta{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;align-items:center}
+/* scoreboard header — fixed like the footer nav; body padding set by fitTop() */
+#topbar{position:fixed;top:0;left:0;right:0;z-index:45}
+header{background:linear-gradient(180deg,var(--turf) 0%,var(--turf2) 100%);border-bottom:4px solid var(--boom);padding:calc(10px + env(safe-area-inset-top)) 12px 10px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.meta{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap;align-items:center}
 .meta .chip{font-size:10px;background:rgba(0,0,0,.35);border:1px solid var(--line);padding:3px 8px;border-radius:3px;color:var(--dim)}
 #ovrBtn{margin-left:auto;background:var(--card);border:2px solid var(--gold);color:var(--gold);font-family:'Press Start 2P';font-size:8px;padding:6px 8px;border-radius:4px;cursor:pointer}
 /* tabs */
@@ -112,13 +109,11 @@ h2.px{font-size:12px;margin-bottom:10px;color:var(--gold)}
 </style>
 </head>
 <body>
+<div id="topbar">
 <header>
   <div class="brand">
-    <img src="assets/logo-transparent.png" alt="b00mstick logo" style="width:46px;height:46px">
-    <div>
-      <img src="assets/wordmark-white.png" alt="b00mstick" style="height:18px;display:block">
-      <div class="px sub">NFL PROPS &middot; FIRST DRIVE / PUNTS / KICKS</div>
-    </div>
+    <img src="assets/logo-transparent.png" alt="b00mstick logo" style="width:56px;height:56px">
+    <img src="assets/wordmark-white.png" alt="b00mstick" style="height:30px;display:block">
   </div>
   <div class="meta">
     <span class="chip" id="wkChip">week —</span>
@@ -126,6 +121,7 @@ h2.px{font-size:12px;margin-bottom:10px;color:var(--gold)}
     <button id="ovrBtn" class="px">OVR</button>
   </div>
 </header>
+</div>
 
 <main>
   <div id="view-drive"></div>
@@ -217,8 +213,12 @@ async function loadSlate(){
 function preBanner(){
   const d=document.createElement("div");d.id="preban";
   d.innerHTML=`<b>&#9888; PRESEASON SMOKE TEST &#9888;</b>ESPN schedule · placeholder lines (enter real DK numbers) · model priors are regular-season, football is backup-heavy — paper bets only, tagged [PRE] and excluded from the season record. Preseason mode shuts off automatically Sep&nbsp;1.`;
-  document.querySelector("header").after(d);
+  document.getElementById("topbar").appendChild(d);   // scrolls with the fixed header
 }
+/* fixed topbar: keep content clear of it whatever its current height */
+function fitTop(){document.body.style.paddingTop=document.getElementById("topbar").offsetHeight+"px"}
+window.addEventListener("resize",fitTop);
+window.addEventListener("load",fitTop);
 function modeChip(){
   const chip=document.createElement("span");chip.className="chip pre";
   if(PRESEASON){chip.textContent="→ REG WK"+wk;chip.onclick=()=>{params.set("pre","0");location.search=params}}
@@ -240,6 +240,7 @@ async function boot(){
     document.getElementById("view-drive").innerHTML=
       `<div class="err">Couldn't load output/week${wk}_slate.json — ${esc(e.message)}. Run score_week.py and commit the output folder.</div>`;
   }
+  fitTop();
   loadBets();loadOverrides();
 }
 function show(t){

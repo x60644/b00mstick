@@ -4,7 +4,7 @@
  "asof_week": 1,
  "mode": "preseason",
  "expires": "2026-09-01",
- "generated": "2026-08-22T22:29:39.965692",
+ "generated": "2026-08-22T22:42:38.460546",
  "games": [
   {
    "game_id": "PRE3_KC_TB",
@@ -132,7 +132,11 @@
     "home_pc": "Zac Robinson",
     "away_pc": "Andy Reid",
     "home_new_pc": true,
-    "away_new_pc": false
+    "away_new_pc": false,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/private/t_headshot_desktop/f_auto/buccaneers/jpogwxmoztyg1pusjnum.jpg",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/private/t_headshot_desktop/f_auto/v1623959459/chiefs/khzpdwroubzinsqt38fx.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/buccaneers/zutxtvcex1kejjw6uqq7.jpg",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/private/t_headshot_desktop/f_auto/v1623959459/chiefs/khzpdwroubzinsqt38fx.jpg"
    }
   },
   {
@@ -225,7 +229,11 @@
     "home_pc": "Mike LaFleur",
     "away_pc": "Brian Schottenheimer",
     "home_new_pc": true,
-    "away_new_pc": false
+    "away_new_pc": false,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/cardinals/oslbhmncmtr07ff5mnwu.jpg",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/cowboys/x6xkpcqontxqwt8mdyr9.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/cardinals/oslbhmncmtr07ff5mnwu.jpg",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/cowboys/x6xkpcqontxqwt8mdyr9.jpg"
    }
   },
   {
@@ -351,7 +359,11 @@
     "home_pc": "Drew Petzing",
     "away_pc": "David Blough",
     "home_new_pc": true,
-    "away_new_pc": true
+    "away_new_pc": true,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/lions/wnlvnnw7pr8bcdf8yt7f.jpg",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/commanders/gsrnytky7zjsvlxyk5gq.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/lions/wgkudg3q55jwroxbagfq.jpg",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/commanders/p7huagfywwgrwcwsyfp5.jpg"
    }
   },
   {
@@ -477,7 +489,11 @@
     "home_pc": "Todd Monken",
     "away_pc": "Joe Brady",
     "home_new_pc": true,
-    "away_new_pc": false
+    "away_new_pc": false,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/browns/dapfplbazypojjh9s9qc.jpg",
+    "away_hc_photo": "",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/browns/dapfplbazypojjh9s9qc.jpg",
+    "away_pc_photo": ""
    }
   },
   {
@@ -607,7 +623,11 @@
     "home_pc": "Shane Steichen",
     "away_pc": "Tommy Rees",
     "home_new_pc": false,
-    "away_new_pc": true
+    "away_new_pc": true,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/colts/ryl3kamnc06bddbsbk6e.jpg",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/falcons/hive6yboznqujosi0t6a.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/colts/ryl3kamnc06bddbsbk6e.jpg",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/falcons/basdki1ygra8efjkn2dl.jpg"
    }
   },
   {
@@ -736,7 +756,11 @@
     "home_pc": "Kevin O'Connell",
     "away_pc": "Declan Doyle",
     "home_new_pc": false,
-    "away_new_pc": true
+    "away_new_pc": true,
+    "home_hc_photo": "",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/ravens/gw6jtyywierbagxzidnp.jpg",
+    "home_pc_photo": "",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/ravens/kfl3lvkzgczyqlwohgci.jpg"
    }
   },
   {
@@ -865,7 +889,11 @@
     "home_pc": "Sean McVay",
     "away_pc": "Kellen Moore",
     "home_new_pc": false,
-    "away_new_pc": false
+    "away_new_pc": false,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/rams/nbgiqfbcuss2z5gfdkt0.jpg",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/saints/ahvamdhwedu0nqkumb9h.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/rams/nbgiqfbcuss2z5gfdkt0.jpg",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/saints/ahvamdhwedu0nqkumb9h.jpg"
    }
   },
   {
@@ -993,7 +1021,11 @@
     "home_pc": "Bobby Slowik",
     "away_pc": "Matt Nagy",
     "home_new_pc": true,
-    "away_new_pc": true
+    "away_new_pc": true,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/dolphins/cgnnqs8d7ngwnmssmhfa.jpg",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/giants/e5xqbb3eaaevzutrzyei.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/dolphins/ww5qxutszxderq24t0wo.jpg",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/giants/nmkq4gyrtd0tbkhtourt.jpg"
    }
   },
   {
@@ -1121,7 +1153,11 @@
     "home_pc": "Zac Taylor",
     "away_pc": "Ben Johnson",
     "home_new_pc": false,
-    "away_new_pc": false
+    "away_new_pc": false,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/bengals/auyolyq5eqipvfgpeq5h.jpg",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/v1737572263/bears/bexkjvilhtogegqjqfjx.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/bengals/auyolyq5eqipvfgpeq5h.jpg",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/v1737572263/bears/bexkjvilhtogegqjqfjx.jpg"
    }
   },
   {
@@ -1248,7 +1284,11 @@
     "home_pc": "Josh McDaniels",
     "away_pc": "Sean Mannion",
     "home_new_pc": false,
-    "away_new_pc": true
+    "away_new_pc": true,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_png/patriots/vyawltlzxdygn1ubmr7c.png",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/private/t_headshot_desktop/f_auto/v1613077310/eagles/bqj3sr1r5pbs3w6epgrx.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_png/patriots/bidlnwaxv8yq9fmel75c.png",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_png/eagles/bpixaidvibwkawmetq0m.png"
    }
   },
   {
@@ -1377,7 +1417,11 @@
     "home_pc": "Nick Caley",
     "away_pc": "Klint Kubiak",
     "home_new_pc": false,
-    "away_new_pc": true
+    "away_new_pc": true,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_png/texans/gzddlomivbtyuftuzrdi.png",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/raiders/cemhaxoqp1pajpx8yjp7.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_png/texans/mfe89ryblg2qawelwnfa.png",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/raiders/cemhaxoqp1pajpx8yjp7.jpg"
    }
   },
   {
@@ -1507,7 +1551,11 @@
     "home_pc": "Mike McDaniel",
     "away_pc": "Kyle Shanahan",
     "home_new_pc": true,
-    "away_new_pc": false
+    "away_new_pc": false,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/chargers/mkoyd76svgrapwhpujxp.jpg",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_png/49ers/zeksyg5a7ztaigmqtqxx.png",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/chargers/xj1ifsjajstwchqhgcfl.jpg",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_png/49ers/zeksyg5a7ztaigmqtqxx.png"
    }
   },
   {
@@ -1635,7 +1683,11 @@
     "home_pc": "Mike McCarthy",
     "away_pc": "Frank Reich",
     "home_new_pc": true,
-    "away_new_pc": true
+    "away_new_pc": true,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/steelers/zpjgzcniseurh5r1yr7o.jpg",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_png/jets/o9oqdjxllj9fiqdgd1sx.png",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/steelers/zpjgzcniseurh5r1yr7o.jpg",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_png/jets/aco3lepunfgtdyv6i2ks.png"
    }
   },
   {
@@ -1762,7 +1814,11 @@
     "home_pc": "Liam Coen",
     "away_pc": "Dave Canales",
     "home_new_pc": false,
-    "away_new_pc": false
+    "away_new_pc": false,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/jaguars/flrzd3amfwdd3ga71dag.jpg",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/panthers/gnjgelxbhaldo4iskf45.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/jaguars/flrzd3amfwdd3ga71dag.jpg",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/panthers/gnjgelxbhaldo4iskf45.jpg"
    }
   },
   {
@@ -1891,7 +1947,11 @@
     "home_pc": "Sean Payton",
     "away_pc": "Matt LaFleur",
     "home_new_pc": false,
-    "away_new_pc": false
+    "away_new_pc": false,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/private/t_headshot_desktop/f_auto/broncos/b1br0juh1rp9krapsae8.jpg",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/private/t_headshot_desktop/f_auto/packers/xyxyorftpjauf43ogpmv.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/private/t_headshot_desktop/f_auto/broncos/b1br0juh1rp9krapsae8.jpg",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/private/t_headshot_desktop/f_auto/packers/xyxyorftpjauf43ogpmv.jpg"
    }
   },
   {
@@ -1902,7 +1962,7 @@
    "home": "TEN",
    "away": "SEA",
    "roof": "outdoors",
-   "wind_mph": 8.0,
+   "wind_mph": 8.6,
    "wind_flag": 0,
    "lines": {
     "spread_line": 0.0,
@@ -2020,7 +2080,11 @@
     "home_pc": "Brian Daboll",
     "away_pc": "Brian Fleury",
     "home_new_pc": true,
-    "away_new_pc": true
+    "away_new_pc": true,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/titans/fflteh2nl88z9oocmsnj.jpg",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/seahawks/c9c4uivyfdcurorpmprs.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/titans/a9bztzhfpemeemalfxkn.jpg",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/seahawks/ai7cmquf01lmkcvxjjco.jpg"
    }
   }
  ]

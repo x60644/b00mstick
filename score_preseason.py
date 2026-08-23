@@ -86,6 +86,7 @@ def main():
     oc = pd.read_csv("data/oc_map.csv")
     pc = {(r["season"], r["team"]): r["playcaller"] for _, r in oc.iterrows()}
     hc26 = {r["team"]: r["hc_2026"] for _, r in oc[oc["season"] == SEASON].iterrows()}
+    photos = sw.load_coach_photos()
 
     s_pt = state["pt"]
     total, spread = PLACEHOLDER_TOTAL, 0.0
@@ -129,7 +130,11 @@ def main():
             "coaches": {"home_hc": hc26.get(home, ""), "away_hc": hc26.get(away, ""),
                         "home_pc": pc.get((SEASON, home), ""), "away_pc": pc.get((SEASON, away), ""),
                         "home_new_pc": pc.get((SEASON, home)) != pc.get((SEASON - 1, home)),
-                        "away_new_pc": pc.get((SEASON, away)) != pc.get((SEASON - 1, away))},
+                        "away_new_pc": pc.get((SEASON, away)) != pc.get((SEASON - 1, away)),
+                        "home_hc_photo": sw.coach_photo(photos, home, hc26.get(home, "")),
+                        "away_hc_photo": sw.coach_photo(photos, away, hc26.get(away, "")),
+                        "home_pc_photo": sw.coach_photo(photos, home, pc.get((SEASON, home), "")),
+                        "away_pc_photo": sw.coach_photo(photos, away, pc.get((SEASON, away), ""))},
         })
 
     def _clean(o):

@@ -19,6 +19,7 @@ any over/under client-side.
 
 import json
 import os
+import re
 import subprocess
 import sys
 import urllib.request
@@ -90,6 +91,37 @@ def load_specialists():
         out[team] = entry
     return out
 
+def load_coach_photos():
+    """data/coach_photos.json from coach_photos.py; {} if not scraped yet."""
+    try:
+        with open("data/coach_photos.json") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+
+def _cnorm(s):
+    return re.sub(r"[^a-z]", "", str(s).lower())
+
+def coach_photo(photos, team, name):
+    """Best headshot URL for a coach, '' if none (app falls back to initials).
+    Scraped keys are alt-text captions/filename slugs, not clean names, so
+    match by normalized first+last containment; then last-name only. Shortest
+    key wins — keeps 'Todd Bowles' from resolving to 'Todd Bowles Jr.'."""
+    parts = str(name or "").split()
+    if len(parts) < 2:
+        return ""
+    t = photos.get(team, {})
+    first, last = _cnorm(parts[0]), _cnorm(parts[-1])
+    hits = [(len(k), v["photo"]) for k, v in t.items()
+            if first in _cnorm(k) and last in _cnorm(k)]
+    if not hits and len(last) >= 5:
+        hits = [(len(k), v["photo"]) for k, v in t.items() if last in _cnorm(k)]
+    if not hits:
+        return ""
+    # pages embed landscape/lazy transforms; swap for the real square headshot
+    url = re.sub(r"t_editorial_[a-z_]+", "t_headshot_desktop", min(hits)[1])
+    return url.replace("/t_lazy", "")
+
 def wind_forecast(team, gameday):
     """Max afternoon wind (mph) at the stadium; 0 on any failure or out of range."""
     lat, lon = STADIUMS.get(team, (None, None))
@@ -131,6 +163,7 @@ def main():
     oc = pd.read_csv("data/oc_map.csv")
     pc = {(r["season"], r["team"]): r["playcaller"] for _, r in oc.iterrows()}
     hc26 = {r["team"]: r["hc_2026"] for _, r in oc[oc["season"] == SEASON].iterrows()}
+    photos = load_coach_photos()
 
     s_pt = state["pt"]
     games_out = []
@@ -174,7 +207,11 @@ def main():
             "coaches": {"home_hc": hc26.get(home, ""), "away_hc": hc26.get(away, ""),
                         "home_pc": pc.get((SEASON, home), ""), "away_pc": pc.get((SEASON, away), ""),
                         "home_new_pc": pc.get((SEASON, home)) != pc.get((SEASON - 1, home)),
-                        "away_new_pc": pc.get((SEASON, away)) != pc.get((SEASON - 1, away))},
+                        "away_new_pc": pc.get((SEASON, away)) != pc.get((SEASON - 1, away)),
+                        "home_hc_photo": coach_photo(photos, home, hc26.get(home, "")),
+                        "away_hc_photo": coach_photo(photos, away, hc26.get(away, "")),
+                        "home_pc_photo": coach_photo(photos, home, pc.get((SEASON, home), "")),
+                        "away_pc_photo": coach_photo(photos, away, pc.get((SEASON, away), ""))},
         })
 
     os.makedirs("output", exist_ok=True)

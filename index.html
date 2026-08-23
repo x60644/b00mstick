@@ -25,8 +25,7 @@
 body{background:var(--night);color:var(--chalk);font:14px/1.5 ui-monospace,'Cascadia Mono',Consolas,monospace;padding-bottom:76px}
 .px{font-family:'Press Start 2P',monospace}
 /* scoreboard header */
-header{background:linear-gradient(180deg,var(--turf) 0%,var(--turf2) 100%);border-bottom:4px solid var(--boom);padding:14px 12px 10px;position:relative;overflow:hidden}
-header::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,.12) 3px 4px);pointer-events:none}
+header{background:linear-gradient(180deg,var(--turf) 0%,var(--turf2) 100%);border-bottom:4px solid var(--boom);padding:14px 12px 10px}
 .brand{display:flex;align-items:center;gap:10px}
 .brand svg{flex:0 0 auto}
 .wordmark{font-size:17px;letter-spacing:1px}
@@ -42,8 +41,7 @@ nav button.on{color:var(--boom);text-shadow:0 0 8px rgba(248,128,20,.6)}
 main{max-width:760px;margin:0 auto;padding:12px}
 .hidden{display:none!important}
 /* cards */
-.game{background:var(--card);border:2px solid var(--line);border-radius:8px;margin-bottom:14px;overflow:hidden;position:relative}
-.game::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,255,255,.02) 3px 4px);pointer-events:none}
+.game{background:var(--card);border:2px solid var(--line);border-radius:8px;margin-bottom:14px;overflow:hidden}
 .ghead{display:flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--turf) 0%,var(--card) 100%);padding:8px 10px;border-bottom:2px solid var(--line);flex-wrap:wrap}
 .ghead .vs{font-size:11px}
 .ghead .kick{color:var(--dim);font-size:11px;margin-left:auto}
@@ -52,7 +50,15 @@ main{max-width:760px;margin:0 auto;padding:12px}
 .badge.dome{color:var(--dim);border-color:var(--dim)}
 .badge.newpc{color:var(--gold);border-color:var(--gold)}
 .gbody{padding:10px;position:relative}
-.coach{color:var(--dim);font-size:11px;margin-bottom:8px}
+/* coach strip (DRIVE tab): away | home, chips match kicker mugshot framing */
+.cstrip{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.cchip{display:flex;gap:8px;align-items:center;margin-bottom:6px;min-width:0}
+.cchip img,.cph{width:44px;height:44px;object-fit:cover;border:3px solid var(--gold);border-radius:6px;background:#0a1226;flex:0 0 auto}
+.cph{display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P';font-size:12px;color:var(--gold)}
+.cinfo{min-width:0}
+.cname{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crole{font-size:9px;color:var(--dim);letter-spacing:.5px}
+.ctag{font-family:'Press Start 2P';font-size:7px;color:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:2px 4px;display:inline-block;margin-top:3px}
 /* drive rows */
 .teamblock{margin-bottom:12px}
 .tname{font-family:'Press Start 2P';font-size:10px;color:var(--gold);margin-bottom:6px}
@@ -243,21 +249,36 @@ function show(t){
   }
 }
 function gh(g){
-  const badges=[];
+  const badges=[];   // NEW PLAYCALLER moved to the coach chips on the DRIVE tab
   if(g.roof!=="outdoors")badges.push(`<span class="badge dome">DOME</span>`);
   else if(g.wind_flag)badges.push(`<span class="badge wind">WIND ${g.wind_mph}</span>`);
-  if(g.coaches.home_new_pc)badges.push(`<span class="badge newpc">${g.home}: NEW PLAYCALLER</span>`);
-  if(g.coaches.away_new_pc)badges.push(`<span class="badge newpc">${g.away}: NEW PLAYCALLER</span>`);
   return`<div class="ghead"><span class="px vs">${g.away} @ ${g.home}</span>${badges.join("")}
     <span class="kick">${g.gameday.slice(5)} ${g.gametime}</span></div>`;
 }
+/* ---------- coach strip ---------- */
+const initials=n=>String(n||"").split(/\s+/).map(w=>w[0]||"").join("").slice(0,2).toUpperCase();
+function coachChip(name,role,newpc,photo){
+  if(!name)return"";
+  const ph=`<div class="cph"${photo?' style="display:none"':''}>${esc(initials(name))}</div>`;
+  const img=photo?`<img src="${esc(photo)}" alt="${esc(name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`:"";
+  return`<div class="cchip">${img}${ph}<div class="cinfo">
+    <div class="cname">${esc(name)}</div><div class="crole">${role}</div>
+    ${newpc?`<div class="ctag">NEW PLAYCALLER</div>`:""}</div></div>`;
+}
+function coachSide(c,side){
+  const hc=c[side+"_hc"],pcn=c[side+"_pc"],np=c[side+"_new_pc"];
+  const hcp=c[side+"_hc_photo"]||"",pcp=c[side+"_pc_photo"]||"";
+  if(!pcn||hc===pcn)return coachChip(hc,"HEAD COACH · CALLS PLAYS",np,hcp);
+  return coachChip(hc,"HEAD COACH",false,hcp)+coachChip(pcn,"OC · CALLS PLAYS",np,pcp);
+}
+const coachStrip=g=>`<div class="cstrip"><div>${coachSide(g.coaches,"away")}</div><div>${coachSide(g.coaches,"home")}</div></div>`;
 
 /* ---------- DRIVE ---------- */
 function renderDrive(){
   const el=document.getElementById("view-drive");
   el.innerHTML=SLATE.games.map((g,gi)=>`
   <div class="game">${gh(g)}<div class="gbody">
-    <div class="coach">${esc(g.coaches.away_hc)} (${g.away}) vs ${esc(g.coaches.home_hc)} (${g.home}) · playcallers: ${esc(g.coaches.away_pc)} / ${esc(g.coaches.home_pc)}</div>
+    ${coachStrip(g)}
     ${["away","home"].map(s=>{
       const t=s==="home"?g.home:g.away;
       return`<div class="teamblock"><div class="tname">${t} FIRST DRIVE</div>

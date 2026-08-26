@@ -8,14 +8,22 @@ never drift.
 
 Public API:
   frames = load_data("data")
-  state  = build_state(frames, asof_season=2026, asof_week=1)
+  state  = build_state(frames, asof_season=2026, asof_week=1, overrides=None)
   predict_first_drive(state, team, opp, is_home) -> {TD,FG,PUNT,OTHER: p}
   predict_punts(state, team, opp, total_line, wind_flag) -> mean
   poisson_probs(mean, line) -> (p_over, p_under, p_push)
   predict_kicker(state, team, kicker, team_total, wind_flag) -> mean
+  kicker_rates(state, team, kicker) -> (fg_pct, xp_pct)  honors NEW_KICKER
   kicker_probs(state, mean, line) -> (p_over, p_under, p_push)
   american_to_prob(odds), devig_two_way(a, b), devig_multiway({...})
   classify_edge(model_p, fair_p, market) -> BET / VALUE / PASS
+
+Overrides (from Supabase b00mstick_overrides, resolved by the caller):
+  overrides = {"k_mult": {team: mult>=1}, "new_kicker": [teams]}
+  k_mult multiplies the team's shrinkage pseudo-count K in all three
+  markets (pulls that team toward league average); new_kicker forces
+  league-average make rates for that team's kicker. Applied AFTER the
+  regressions fit, so an override moves ONLY the flagged team's numbers.
 
 Self-test:  python b00mstick_model.py
 """
@@ -73,7 +81,7 @@ def _shrunk(vals, w, league, K):
     return (np.sum(vals * w) + K * league) / (np.sum(w) + K)
 
 # ----------------------------------------------------------------- state
-def build_state(frames, asof_season, asof_week):
+def build_state(frames, asof_season, asof_week, overrides=None):
     st = {"asof": (asof_season, asof_week)}
 
     # ---- first drive
@@ -138,6 +146,33 @@ def build_state(frames, asof_season, asof_week):
         preds.append(predict_kicker({"kk": st["kk"]}, g["posteam"], g["kicker_player_name"],
                                     g["team_total"], g["wind_flag"]))
     st["kk"]["residuals"] = np.sort(k["points"].values - np.array(preds))
+
+    # ---- overrides: re-shrink ONLY the flagged teams (post-fit, so the
+    # regressions/residuals above are identical with or without overrides)
+    if overrides:
+        for tm, mult in overrides.get("k_mult", {}).items():
+            for tbl, col in (("off", "posteam"), ("def", "defteam")):
+                g = t[t[col] == tm]
+                if len(g):
+                    st["fd"][tbl][tm] = {
+                        o: _shrunk((g["outcome"] == o).values, g["w"].values,
+                                   league[o], FD_K * mult) / league[o]
+                        for o in OUTCOMES}
+            gp = p[p["posteam"] == tm]
+            if len(gp):
+                st["pt"]["team"][tm] = _shrunk(gp["punts"].values, gp["w"].values,
+                                               lg, PUNT_K * mult) / lg
+            go = p[p["defteam"] == tm]
+            if len(go):
+                st["pt"]["opp"][tm] = _shrunk(go["punts"].values, go["w"].values,
+                                              lg, PUNT_K * mult) / lg
+            gk = k[k["posteam"] == tm]
+            if len(gk):
+                w2 = gk["w"].values
+                st["kk"]["t_fga"][tm] = _shrunk(gk["fg_att"].values, w2, lg_fga, KICK_K * mult)
+                st["kk"]["t_xpa"][tm] = _shrunk(gk["xp_att"].values, w2, lg_xpa, KICK_K * mult)
+                st["kk"]["t_stall"][tm] = _shrunk(gk["stalls"].values, w2, lg_stall, KICK_K * mult)
+        st["kk"]["force_lg"] = set(overrides.get("new_kicker", []))
     return st
 
 # ------------------------------------------------------------- predictors
@@ -169,13 +204,20 @@ def poisson_probs(mean, line):
         return float(pmf[L + 1:].sum()), float(pmf[:L].sum()), float(pmf[L])
     return float(pmf[int(np.ceil(line)):].sum()), float(pmf[:int(np.ceil(line))].sum()), 0.0
 
+def kicker_rates(state, team, kicker):
+    """(fg_pct, xp_pct) for pricing. NEW_KICKER override -> league average
+    regardless of the name's history."""
+    s = state["kk"]
+    if team in s.get("force_lg", set()):
+        return s["lg_fgpct"], s["lg_xppct"]
+    return s["k_fgpct"].get(kicker, s["lg_fgpct"]), s["k_xppct"].get(kicker, s["lg_xppct"])
+
 def predict_kicker(state, team, kicker, team_total, wind_flag):
     s = state["kk"]
     fga = max(float(np.array([1, s["t_fga"].get(team, s["lg_fga"]),
                               s["t_stall"].get(team, s["lg_stall"]), team_total, wind_flag]) @ s["c1"]), 0)
     xpa = max(float(np.array([1, s["t_xpa"].get(team, s["lg_xpa"]), team_total]) @ s["c2"]), 0)
-    fgp = s["k_fgpct"].get(kicker, s["lg_fgpct"])
-    xpp = s["k_xppct"].get(kicker, s["lg_xppct"])
+    fgp, xpp = kicker_rates(state, team, kicker)
     wind_pct = 0.95 if wind_flag else 1.0
     return 3 * fga * fgp * wind_pct + xpa * xpp
 

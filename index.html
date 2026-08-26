@@ -46,6 +46,16 @@ main{max-width:760px;margin:0 auto;padding:12px}
 .badge.wind{color:var(--cyan);border-color:var(--cyan)}
 .badge.dome{color:var(--dim);border-color:var(--dim)}
 .badge.newpc{color:var(--gold);border-color:var(--gold)}
+.badge.ovr{color:var(--gold);border-color:var(--gold)}
+/* plan tab */
+.plan-h{font-family:'Press Start 2P';font-size:10px;color:var(--gold);margin-bottom:6px}
+.plan-row{display:grid;grid-template-columns:22px 1fr auto;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:12px;align-items:baseline}
+.plan-row:last-child{border-bottom:none}
+.plan-glyph{font-family:'Press Start 2P';font-size:10px}
+.plan-glyph.done{color:var(--green)}
+.plan-glyph.pend{color:var(--dim)}
+.plan-date{color:var(--dim);font-size:10px;white-space:nowrap}
+.plan-note{grid-column:2/4;color:var(--dim);font-size:11px}
 .gbody{padding:10px;position:relative}
 /* coach strip (DRIVE tab): away | home, chips match kicker mugshot framing */
 .cstrip{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
@@ -128,6 +138,7 @@ h2.px{font-size:12px;margin-bottom:10px;color:var(--gold)}
   <div id="view-punts" class="hidden"></div>
   <div id="view-kicks" class="hidden"></div>
   <div id="view-log" class="hidden"></div>
+  <div id="view-plan" class="hidden"></div>
 </main>
 
 <div id="ovr" class="hidden">
@@ -153,6 +164,7 @@ h2.px{font-size:12px;margin-bottom:10px;color:var(--gold)}
   <button id="tab-punts" onclick="show('punts')">PUNTS</button>
   <button id="tab-kicks" onclick="show('kicks')">KICKS</button>
   <button id="tab-log" onclick="show('log')">LOG</button>
+  <button id="tab-plan" onclick="show('plan')">PLAN</button>
 </nav>
 
 <script>
@@ -241,10 +253,10 @@ async function boot(){
       `<div class="err">Couldn't load output/week${wk}_slate.json — ${esc(e.message)}. Run score_week.py and commit the output folder.</div>`;
   }
   fitTop();
-  loadBets();loadOverrides();
+  renderPlan();loadBets();loadOverrides();
 }
 function show(t){
-  for(const v of["drive","punts","kicks","log"]){
+  for(const v of["drive","punts","kicks","log","plan"]){
     document.getElementById("view-"+v).classList.toggle("hidden",v!==t);
     document.getElementById("tab-"+v).classList.toggle("on",v===t);
   }
@@ -253,6 +265,8 @@ function gh(g){
   const badges=[];   // NEW PLAYCALLER moved to the coach chips on the DRIVE tab
   if(g.roof!=="outdoors")badges.push(`<span class="badge dome">DOME</span>`);
   else if(g.wind_flag)badges.push(`<span class="badge wind">WIND ${g.wind_mph}</span>`);
+  if((g.overrides_applied||[]).length)
+    badges.push(`<span class="badge ovr" title="${esc(g.overrides_applied.map(o=>o.team+": "+o.flag).join(", "))}">OVR</span>`);
   return`<div class="ghead"><span class="px vs">${g.away} @ ${g.home}</span>${badges.join("")}
     <span class="kick">${g.gameday.slice(5)} ${g.gametime}</span></div>`;
 }
@@ -422,6 +436,35 @@ function logKick(gi,s){
   saveBet({game_id:g.game_id,market:"KICKS",selection:`${k.name} pts ${pick.side}`,
     line:parseFloat(document.getElementById(`kl-${gi}-${s}`).value),your_odds:+pick.odds,
     model_prob:pick.p,fair_prob_at_bet:pick.f,tier:pick.t});
+}
+
+/* ---------- PLAN ---------- */
+const PLAN=[
+  {sec:"done",item:"Model locked — 2025 walk-forward backtest, beat-naive gates passed",phase:"done",date:"Aug 13",note:"phase 1 first drive + punts, kicker v2; coach-tendency factors tested and rejected"},
+  {sec:"done",item:"App live on Vercel — DRIVE / PUNTS / KICKS / LOG, DK entry + CLV tracking",phase:"done",date:"mid-Aug"},
+  {sec:"done",item:"Coach photo cards (32-club scrape, initials fallback)",phase:"done",date:"Aug 22"},
+  {sec:"done",item:"Preseason smoke-test mode — ESPN slate, [PRE] paper bets, Sep 1 self-destruct",phase:"done",date:"Aug 22"},
+  {sec:"done",item:"Supabase overrides wired into scorer (shrink flags + NEW_KICKER)",phase:"done",date:"Aug 25",note:"OVR badge on affected games; locality verified per-team"},
+  {sec:"done",item:"Three crons live: Fri scoring · Sun 11:30 refresh · Tue settlement",phase:"done",date:"Aug 25",note:"first scheduled run Fri Aug 28 — verify it committed a fresh slate"},
+  {sec:"wk1",item:"Settlement synthetic test (2025 wk18: WIN / LOSS / PUSH)",phase:"done",date:"Aug 25",note:"passed — fakes inserted, graded correctly, deleted"},
+  {sec:"wk1",item:"Preseason cutover re-run — regenerate week 1 slate after Sep 1 guardrail closes",phase:"pending",date:"Sep 1–2"},
+  {sec:"wk1",item:"DK market verification — confirm selections/lines match posted week 1 props",phase:"pending",date:"when props post"},
+  {sec:"wk1",item:"Feature freeze",phase:"pending",date:"Sep 9"},
+];
+const RUNBOOK=[
+  "FRI PM — verify slate auto-updated (cron committed, app shows new scored time)",
+  "SAT — enter DK lines, log qualifying bets",
+  "SUN 11:30 — check refresh ran; scratch inactives (kicker swaps → OVR flag)",
+  "SUN 12:45 — enter closing odds on logged bets (CLV)",
+  "TUE — verify settlement graded results; review CLV + record",
+];
+function renderPlan(){
+  const gl=p=>`<span class="plan-glyph ${p==="done"?"done":"pend"}">${p==="done"?"&#10003;":"&#9633;"}</span>`;
+  const row=e=>`<div class="plan-row">${gl(e.phase)}<span>${e.item}</span><span class="plan-date">${e.date||""}</span>${e.note?`<div class="plan-note">${e.note}</div>`:""}</div>`;
+  const sec=(title,key)=>`<div class="game"><div class="gbody"><div class="plan-h">${title}</div>${PLAN.filter(e=>e.sec===key).map(row).join("")}</div></div>`;
+  document.getElementById("view-plan").innerHTML=sec("DONE","done")+sec("BEFORE WEEK 1","wk1")+
+    `<div class="game"><div class="gbody"><div class="plan-h">SUNDAY RUNBOOK</div>
+     ${RUNBOOK.map(r=>`<div class="plan-row"><span class="plan-glyph pend">&#8250;</span><span>${r}</span><span></span></div>`).join("")}</div></div>`;
 }
 
 /* ---------- LOG / Supabase ---------- */

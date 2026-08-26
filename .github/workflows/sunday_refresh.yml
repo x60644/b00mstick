@@ -1,0 +1,32 @@
+name: sunday-refresh
+# Sunday 11:30 ET pre-kickoff refresh (rosters + weather re-pulled by the
+# scorer). Cron is UTC: 15:30 = 11:30 EDT; 10:30 ET during EST.
+on:
+  schedule:
+    - cron: "30 15 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas pyarrow requests
+      - name: Re-score with fresh rosters and weather
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: python score_week.py
+      - name: Commit refreshed data + slate
+        run: |
+          git config user.name "b00mstick-cron"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data output
+          git diff --cached --quiet || git commit -m "cron: sunday refresh [skip ci]"
+          git push

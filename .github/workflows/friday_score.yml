@@ -1,0 +1,32 @@
+name: friday-score
+# Friday 23:00 ET slate scoring. Cron is UTC (03:00 Sat = 23:00 Fri EDT);
+# during EST this fires 22:00 ET — acceptable drift for a Friday-night run.
+on:
+  schedule:
+    - cron: "0 3 * * 6"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas pyarrow requests
+      - name: Score the week
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: python score_week.py
+      - name: Commit refreshed data + slate
+        run: |
+          git config user.name "b00mstick-cron"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data output
+          git diff --cached --quiet || git commit -m "cron: friday scoring [skip ci]"
+          git push

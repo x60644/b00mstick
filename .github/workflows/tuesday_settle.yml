@@ -1,0 +1,32 @@
+name: tuesday-settle
+# Tuesday 08:00 ET settlement: grade PENDING bets from final nflverse pbp.
+# Cron is UTC: 12:00 = 08:00 EDT; 07:00 ET during EST.
+on:
+  schedule:
+    - cron: "0 12 * * 2"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  settle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas pyarrow requests
+      - name: Grade pending bets
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: python settle_week.py
+      - name: Commit any changed files
+        run: |
+          git config user.name "b00mstick-cron"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data output
+          git diff --cached --quiet || git commit -m "cron: tuesday settlement [skip ci]"
+          git push

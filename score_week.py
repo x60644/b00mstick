@@ -34,6 +34,15 @@ SCHED_URL = "https://github.com/nflverse/nfldata/raw/master/data/games.csv"
 ROSTER_URL = "https://github.com/nflverse/nflverse-data/releases/download/rosters/roster_2026.parquet"
 SEASON = 2026
 
+# Supabase (env in CI, hardcoded fallback for local runs; anon key is public)
+SUPA_URL = os.environ.get("SUPABASE_URL", "https://sknvngcufmjypioyxdjt.supabase.co")
+SUPA_KEY = os.environ.get("SUPABASE_ANON_KEY",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNrbnZuZ2N1Zm1qeXBpb3l4ZGp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY1NzcyMjQsImV4cCI6MjEwMjE1MzIyNH0._mRhuAwDSGHQJHq8H50JHyJrVlBg5aXxbljc09MhCBg")
+SB_HDRS = {"apikey": SUPA_KEY, "Authorization": f"Bearer {SUPA_KEY}"}
+
+# conservative-flag shrinkage: K multiplier = 1 + 0.75 * weight * factor
+SHRINK_FLAGS = {"NEW_QB": 1.0, "ROOKIE_QB": 1.5, "NEW_HC": 1.0, "NEW_OC": 1.0, "OTHER": 1.0}
+
 # approximate stadium coordinates for weather (outdoor accuracy needs only ~city level)
 STADIUMS = {
     "ARI": (33.53, -112.26), "ATL": (33.76, -84.40), "BAL": (39.28, -76.62),
@@ -91,6 +100,44 @@ def load_specialists():
         out[team] = entry
     return out
 
+def fetch_overrides():
+    """Active rows from b00mstick_overrides; [] (with a warning) on any failure."""
+    url = f"{SUPA_URL}/rest/v1/b00mstick_overrides?select=*&active=eq.true"
+    try:
+        req = urllib.request.Request(url, headers=SB_HDRS)
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return json.loads(r.read())
+    except Exception as e:
+        print(f"  WARNING: overrides unreachable ({type(e).__name__}) — scoring with none")
+        return []
+
+def build_override_config(rows):
+    """rows -> (model overrides dict, applied list for the slate JSON).
+    Malformed team/flag rows are skipped with a warning, never fatal.
+    NEW_PUNTER is accepted silently (punts model is team-level, no effect yet)."""
+    k_mult, new_kicker, applied = {}, set(), []
+    for r in rows:
+        team = str(r.get("team", "")).strip().upper()
+        flag = str(r.get("flag", "")).strip().upper()
+        if team not in STADIUMS:
+            print(f"  WARNING: override row skipped, unknown team {team!r}")
+            continue
+        try:
+            weight = float(r.get("weight") or 1.0)
+        except (TypeError, ValueError):
+            weight = 1.0
+        if flag == "NEW_KICKER":
+            new_kicker.add(team)
+        elif flag == "NEW_PUNTER":
+            continue
+        elif flag in SHRINK_FLAGS:
+            k_mult[team] = k_mult.get(team, 1.0) * (1 + 0.75 * weight * SHRINK_FLAGS[flag])
+        else:
+            print(f"  WARNING: override row skipped, unknown flag {flag!r} ({team})")
+            continue
+        applied.append({"team": team, "flag": flag})
+    return {"k_mult": k_mult, "new_kicker": sorted(new_kicker)}, applied
+
 def load_coach_photos():
     """data/coach_photos.json from coach_photos.py; {} if not scraped yet."""
     try:
@@ -119,7 +166,7 @@ def coach_photo(photos, team, name):
     if not hits:
         return ""
     # pages embed landscape/lazy transforms; swap for the real square headshot
-    url = re.sub(r"t_editorial_[a-z_]+", "t_headshot_desktop", min(hits)[1])
+    url = re.sub(r"t_editorial_[a-z0-9_]+", "t_headshot_desktop", min(hits)[1])
     return url.replace("/t_lazy", "")
 
 def wind_forecast(team, gameday):
@@ -152,7 +199,10 @@ def main():
     frames = bm.load_data("data")
     played = frames["fd"][frames["fd"]["season"] == SEASON]
     asof_week = int(played["week"].max()) + 1 if len(played) else 1
-    state = bm.build_state(frames, SEASON, asof_week)
+    ov_cfg, ov_applied = build_override_config(fetch_overrides())
+    if ov_applied:
+        print(f"  overrides active: {ov_applied}")
+    state = bm.build_state(frames, SEASON, asof_week, overrides=ov_cfg)
     sched = load_schedule()
     week = pick_week(sched)
     slate = sched[(sched["week"] == week) & (sched["weekday"] == "Sunday")].copy()
@@ -186,9 +236,9 @@ def main():
             if "kicker" in spec:
                 km = bm.predict_kicker(state, team, spec["kicker"]["name"], tts[team], wflag)
                 kk = state["kk"]
-                slope = 3 * kk["k_fgpct"].get(spec["kicker"]["name"], kk["lg_fgpct"]) \
-                    * (0.95 if wflag else 1.0) * float(kk["c1"][3]) + \
-                    kk["k_xppct"].get(spec["kicker"]["name"], kk["lg_xppct"]) * float(kk["c2"][2])
+                fgp, xpp = bm.kicker_rates(state, team, spec["kicker"]["name"])
+                slope = 3 * fgp * (0.95 if wflag else 1.0) * float(kk["c1"][3]) + \
+                    xpp * float(kk["c2"][2])
                 kickers[side] = {**spec["kicker"], "mean": round(km, 3),
                                  "tt_base": round(tts[team], 2), "tt_slope": round(slope, 4),
                                  "dist": kicker_dist(state, km)}
@@ -204,6 +254,7 @@ def main():
             "drive": drive,
             "punts": {**punts, "game_mean": round(punts["home"]["mean"] + punts["away"]["mean"], 3)},
             "kickers": kickers, "punters": punters,
+            "overrides_applied": [o for o in ov_applied if o["team"] in (home, away)],
             "coaches": {"home_hc": hc26.get(home, ""), "away_hc": hc26.get(away, ""),
                         "home_pc": pc.get((SEASON, home), ""), "away_pc": pc.get((SEASON, away), ""),
                         "home_new_pc": pc.get((SEASON, home)) != pc.get((SEASON - 1, home)),

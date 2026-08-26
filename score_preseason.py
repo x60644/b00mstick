@@ -80,7 +80,10 @@ def main():
           f"(model state = regular-season history as of {SEASON} wk1)")
 
     frames = bm.load_data("data")
-    state = bm.build_state(frames, SEASON, 1)
+    ov_cfg, ov_applied = sw.build_override_config(sw.fetch_overrides())
+    if ov_applied:
+        print(f"  overrides active: {ov_applied}")
+    state = bm.build_state(frames, SEASON, 1, overrides=ov_cfg)
     specialists = sw.load_specialists()
 
     oc = pd.read_csv("data/oc_map.csv")
@@ -107,9 +110,9 @@ def main():
             if "kicker" in spec:
                 km = bm.predict_kicker(state, team, spec["kicker"]["name"], tts[team], wflag)
                 kk = state["kk"]   # same tt sensitivity formula as score_week.py
-                slope = 3 * kk["k_fgpct"].get(spec["kicker"]["name"], kk["lg_fgpct"]) \
-                    * (0.95 if wflag else 1.0) * float(kk["c1"][3]) + \
-                    kk["k_xppct"].get(spec["kicker"]["name"], kk["lg_xppct"]) * float(kk["c2"][2])
+                fgp, xpp = bm.kicker_rates(state, team, spec["kicker"]["name"])
+                slope = 3 * fgp * (0.95 if wflag else 1.0) * float(kk["c1"][3]) + \
+                    xpp * float(kk["c2"][2])
                 kickers[side] = {**spec["kicker"], "mean": round(km, 3),
                                  "tt_base": round(tts[team], 2), "tt_slope": round(slope, 4),
                                  "dist": sw.kicker_dist(state, km)}
@@ -127,6 +130,7 @@ def main():
             "drive": drive,
             "punts": {**punts, "game_mean": round(punts["home"]["mean"] + punts["away"]["mean"], 3)},
             "kickers": kickers, "punters": punters,
+            "overrides_applied": [o for o in ov_applied if o["team"] in (home, away)],
             "coaches": {"home_hc": hc26.get(home, ""), "away_hc": hc26.get(away, ""),
                         "home_pc": pc.get((SEASON, home), ""), "away_pc": pc.get((SEASON, away), ""),
                         "home_new_pc": pc.get((SEASON, home)) != pc.get((SEASON - 1, home)),

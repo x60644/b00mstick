@@ -24,16 +24,22 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--night);color:var(--chalk);font:14px/1.5 ui-monospace,'Cascadia Mono',Consolas,monospace;padding-bottom:76px}
 .px{font-family:'Press Start 2P',monospace}
-/* scoreboard header — fixed like the footer nav; body padding set by fitTop() */
+/* scoreboard header — fixed like the footer nav; body padding set by fitTop().
+   Mobile: two rows (brand+buttons / chips). Desktop: one row. */
 #topbar{position:fixed;top:0;left:0;right:0;z-index:45}
-header{background:linear-gradient(180deg,var(--turf) 0%,var(--turf2) 100%);border-bottom:4px solid var(--boom);padding:calc(10px + env(safe-area-inset-top)) 12px 10px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:12px}
-.meta{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap;align-items:center}
-.meta .chip{font-size:10px;background:rgba(0,0,0,.35);border:1px solid var(--line);padding:3px 8px;border-radius:3px;color:var(--dim)}
-#ovrBtn{margin-left:auto;background:var(--card);border:2px solid var(--gold);color:var(--gold);font-family:'Press Start 2P';font-size:8px;padding:6px 8px;border-radius:4px;cursor:pointer}
+header{background:linear-gradient(180deg,var(--turf) 0%,var(--turf2) 100%);border-bottom:4px solid var(--boom);padding:calc(8px + env(safe-area-inset-top)) 12px 8px}
+.hrow1{display:flex;align-items:center;gap:10px}
+.brand{display:flex;align-items:center;gap:10px}
+.hlogo{width:34px;height:34px}
+.hword{height:20px;display:block}
+.hbtns{display:flex;align-items:center;gap:8px;margin-left:auto}
+.hbtns .chip{min-height:40px;display:inline-flex;align-items:center;padding:6px 10px}
+.meta{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;align-items:center}
+.chip{font-size:10px;background:rgba(0,0,0,.35);border:1px solid var(--line);padding:3px 8px;border-radius:3px;color:var(--dim)}
+#ovrBtn{background:var(--card);border:2px solid var(--gold);color:var(--gold);font-weight:700;letter-spacing:.5px;font-size:11px;padding:8px 12px;border-radius:4px;cursor:pointer;min-height:40px}
 /* tabs */
 nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#060a16;border-top:3px solid var(--boom);z-index:40}
-nav button{flex:1;background:none;border:none;color:var(--dim);font-family:'Press Start 2P';font-size:9px;padding:14px 2px calc(12px + env(safe-area-inset-bottom));cursor:pointer}
+nav button{flex:1;background:none;border:none;color:var(--dim);font-family:'Press Start 2P';font-size:9px;padding:16px 2px calc(16px + env(safe-area-inset-bottom));min-height:44px;cursor:pointer}
 nav button.on{color:var(--boom);text-shadow:0 0 8px rgba(248,128,20,.6)}
 main{max-width:760px;margin:0 auto;padding:12px}
 .hidden{display:none!important}
@@ -42,7 +48,8 @@ main{max-width:760px;margin:0 auto;padding:12px}
 .ghead{display:flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--turf) 0%,var(--card) 100%);padding:8px 10px;border-bottom:2px solid var(--line);flex-wrap:wrap}
 .ghead .vs{font-size:11px}
 .ghead .kick{color:var(--dim);font-size:11px;margin-left:auto}
-.badge{font-size:9px;padding:2px 6px;border-radius:3px;border:1px solid}
+.badge{font-size:9px;font-weight:700;letter-spacing:.5px;padding:2px 6px;border-radius:3px;border:1px solid}
+.tlogo{vertical-align:middle;margin-right:2px}
 .badge.wind{color:var(--cyan);border-color:var(--cyan)}
 .badge.dome{color:var(--dim);border-color:var(--dim)}
 .badge.newpc{color:var(--gold);border-color:var(--gold)}
@@ -51,7 +58,7 @@ main{max-width:760px;margin:0 auto;padding:12px}
 .plan-h{font-family:'Press Start 2P';font-size:10px;color:var(--gold);margin-bottom:6px}
 .plan-row{display:grid;grid-template-columns:22px 1fr auto;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:12px;align-items:baseline}
 .plan-row:last-child{border-bottom:none}
-.plan-glyph{font-family:'Press Start 2P';font-size:10px}
+.plan-glyph{font-weight:700;font-size:12px}
 .plan-glyph.done{color:var(--green)}
 .plan-glyph.pend{color:var(--dim)}
 .plan-date{color:var(--dim);font-size:10px;white-space:nowrap}
@@ -61,14 +68,14 @@ main{max-width:760px;margin:0 auto;padding:12px}
 .cstrip{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
 .cchip{display:flex;gap:8px;align-items:center;margin-bottom:6px;min-width:0}
 .cchip img,.cph{width:44px;height:44px;object-fit:cover;border:3px solid var(--gold);border-radius:6px;background:#0a1226;flex:0 0 auto}
-.cph{display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P';font-size:12px;color:var(--gold)}
+.cph{display:flex;align-items:center;justify-content:center;font-weight:700;letter-spacing:.5px;font-size:15px;color:var(--gold)}
 .cinfo{min-width:0}
 .cname{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .crole{font-size:9px;color:var(--dim);letter-spacing:.5px}
-.ctag{font-family:'Press Start 2P';font-size:7px;color:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:2px 4px;display:inline-block;margin-top:3px}
+.ctag{font-weight:700;letter-spacing:.5px;font-size:9px;color:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:2px 4px;display:inline-block;margin-top:3px}
 /* drive rows */
 .teamblock{margin-bottom:12px}
-.tname{font-family:'Press Start 2P';font-size:10px;color:var(--gold);margin-bottom:6px}
+.tname{font-weight:700;letter-spacing:.5px;font-size:12px;color:var(--gold);margin-bottom:6px}
 .orow{display:grid;grid-template-columns:52px 1fr 64px 74px 84px;gap:6px;align-items:center;margin-bottom:4px}
 .olab{font-size:11px;color:var(--dim)}
 .bar{height:14px;background:#0a1226;border:1px solid var(--line);border-radius:2px;position:relative}
@@ -76,28 +83,28 @@ main{max-width:760px;margin:0 auto;padding:12px}
 .pct{font-size:11px;text-align:right}
 input.odds,input.num{width:100%;background:#0a1226;border:1px solid var(--line);color:var(--chalk);padding:5px 6px;border-radius:3px;font:inherit;font-size:12px}
 input:focus{outline:2px solid var(--cyan)}
-.tier{font-family:'Press Start 2P';font-size:8px;padding:5px 0;text-align:center;border-radius:3px;border:2px solid var(--line);color:var(--dim)}
+.tier{font-weight:700;letter-spacing:.5px;font-size:11px;padding:5px 0;text-align:center;border-radius:3px;border:2px solid var(--line);color:var(--dim)}
 .tier.BET{border-color:var(--boom);color:var(--boom);animation:blink 1.1s steps(2) infinite}
 .tier.VALUE{border-color:var(--cyan);color:var(--cyan)}
 @keyframes blink{50%{opacity:.45}}
 @media (prefers-reduced-motion: reduce){.tier.BET{animation:none}}
 .mrow{display:grid;grid-template-columns:1fr 74px 74px 74px 84px 60px;gap:6px;align-items:center;margin:6px 0}
 .mrow .lab{font-size:11px;color:var(--dim)}
-.logb{background:none;border:2px solid var(--green);color:var(--green);font-family:'Press Start 2P';font-size:8px;padding:6px 2px;border-radius:3px;cursor:pointer}
+.logb{background:none;border:2px solid var(--green);color:var(--green);font-weight:700;letter-spacing:.5px;font-size:11px;padding:8px 6px;border-radius:3px;cursor:pointer;min-height:40px}
 .small{font-size:11px;color:var(--dim)}
 /* kicker / punter cards */
 .mug{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
 .mug img{width:64px;height:64px;object-fit:cover;border:3px solid var(--gold);border-radius:6px;background:#0a1226;image-rendering:auto}
 .mug .info{flex:1}
-.mug .pname{font-family:'Press Start 2P';font-size:10px}
+.mug .pname{font-weight:700;letter-spacing:.5px;font-size:13px}
 .mug .proj{color:var(--gold);font-size:12px;margin:4px 0}
 /* log */
 .sumbar{display:flex;gap:10px;background:var(--card);border:2px solid var(--line);border-radius:8px;padding:10px;margin-bottom:12px;flex-wrap:wrap}
 .sumbar div{font-size:11px;color:var(--dim)}
-.sumbar b{display:block;font-family:'Press Start 2P';font-size:12px;color:var(--chalk);margin-top:4px}
+.sumbar b{display:block;font-weight:700;letter-spacing:.5px;font-size:14px;color:var(--chalk);margin-top:4px}
 .bet{background:var(--card);border:2px solid var(--line);border-radius:8px;padding:10px;margin-bottom:10px}
 .bet .top{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12px}
-.bet .clv{margin-left:auto;font-family:'Press Start 2P';font-size:10px}
+.bet .clv{margin-left:auto;font-weight:700;letter-spacing:.5px;font-size:12px}
 .clv.pos{color:var(--green)} .clv.neg{color:var(--red)}
 .bet .closerow{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:6px;margin-top:8px}
 select{background:#0a1226;border:1px solid var(--line);color:var(--chalk);padding:5px;border-radius:3px;font:inherit;font-size:12px}
@@ -116,19 +123,51 @@ h2.px{font-size:12px;margin-bottom:10px;color:var(--gold)}
 .presec{border:2px solid var(--gold);border-radius:8px;padding:10px;margin-bottom:12px}
 .presec .ptitle{font-family:'Press Start 2P';font-size:9px;color:var(--gold);margin-bottom:6px}
 .presec .note{margin-top:0}
+/* collapsible how-to strips */
+.howto{background:var(--card);border:2px solid var(--line);border-radius:8px;margin-bottom:12px;overflow:hidden}
+.howto>button{width:100%;background:none;border:none;color:var(--gold);font-family:'Press Start 2P';font-size:9px;text-align:left;padding:13px 12px;cursor:pointer;min-height:40px}
+.howto .body{display:none;padding:0 12px 12px;font-size:12px;line-height:1.6;color:var(--chalk)}
+.howto.open .body{display:block}
+/* ---------- desktop (mobile untouched below 1024px) ---------- */
+@media (min-width:1024px){
+  body{font-size:15px}
+  main{max-width:1150px}
+  header{display:flex;align-items:center;gap:14px}
+  .hrow1{display:contents}
+  .brand{order:1}
+  .meta{order:2;margin:0 0 0 auto}
+  .hbtns{order:3;margin-left:0}
+  .hlogo{width:40px;height:40px}
+  .hword{height:24px}
+  #view-drive,#view-punts,#view-kicks{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+  #view-drive:not(.hidden),#view-punts:not(.hidden),#view-kicks:not(.hidden){display:grid}
+  #view-drive .game,#view-punts .game,#view-kicks .game{margin-bottom:0}
+  #view-drive>.howto,#view-punts>.howto,#view-kicks>.howto,#view-drive>.err{grid-column:1/-1}
+  #view-log,#view-plan{max-width:900px;margin:0 auto}
+  .tbwrap{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .tbwrap .teamblock{margin-bottom:0}
+  .orow{grid-template-columns:38px 1fr 42px 64px 64px;gap:4px}
+  .mrow{grid-template-columns:1fr 64px 64px 64px 72px 56px;gap:5px}
+}
 </style>
 </head>
 <body>
 <div id="topbar">
 <header>
-  <div class="brand">
-    <img src="assets/logo-transparent.png" alt="b00mstick logo" style="width:56px;height:56px">
-    <img src="assets/wordmark-white.png" alt="b00mstick" style="height:30px;display:block">
+  <div class="hrow1">
+    <div class="brand">
+      <!-- icon-192 is the clean roundel; logo-transparent.png has a baked-in
+           wordmark that rendered as a ghost "b00mstick" behind the logo -->
+      <img class="hlogo" src="assets/icon-192.png" alt="b00mstick logo">
+      <img class="hword" src="assets/wordmark-white.png" alt="b00mstick">
+    </div>
+    <div class="hbtns" id="hbtns">
+      <button id="ovrBtn">OVR</button>
+    </div>
   </div>
   <div class="meta">
     <span class="chip" id="wkChip">week —</span>
     <span class="chip" id="genChip">loading slate…</span>
-    <button id="ovrBtn" class="px">OVR</button>
   </div>
 </header>
 </div>
@@ -236,7 +275,35 @@ function modeChip(){
   if(PRESEASON){chip.textContent="→ REG WK"+wk;chip.onclick=()=>{params.set("pre","0");location.search=params}}
   else if(preWindowOpen()){chip.textContent="→ PRESEASON";chip.onclick=()=>{params.delete("pre");location.search=params}}
   else return;
-  document.getElementById("genChip").after(chip);
+  document.getElementById("hbtns").prepend(chip);
+}
+/* team logos (ESPN CDN); explicit 32-team map — no blind lowercasing */
+const ESPN_LOGO={ARI:"ari",ATL:"atl",BAL:"bal",BUF:"buf",CAR:"car",CHI:"chi",
+  CIN:"cin",CLE:"cle",DAL:"dal",DEN:"den",DET:"det",GB:"gb",HOU:"hou",IND:"ind",
+  JAX:"jax",KC:"kc",LA:"lar",LAC:"lac",LV:"lv",MIA:"mia",MIN:"min",NE:"ne",
+  NO:"no",NYG:"nyg",NYJ:"nyj",PHI:"phi",PIT:"pit",SEA:"sea",SF:"sf",TB:"tb",
+  TEN:"ten",WAS:"wsh"};
+const tlogo=(t,px=22)=>ESPN_LOGO[t]?`<img class="tlogo" width="${px}" height="${px}" src="https://a.espncdn.com/i/teamlogos/nfl/500/${ESPN_LOGO[t]}.png" alt="" aria-hidden="true" loading="lazy" onerror="this.style.display='none'">`:"";
+/* collapsible how-to strips (state persists per-tab; localStorage may be
+   unavailable in private browsing — degrade to session-only) */
+const HOWTO={
+  drive:"Bars = model probability for each first-drive outcome, both teams (coin-toss blended). Enter all 4 DK odds for a team → we remove the vig and compare. Chips: BET ≥5.0 pts edge, VALUE ≥2.5, PASS otherwise. LOG BEST saves the highest-edge outcome to your bet log.",
+  punts:"μ = model expected punts. Enter DK game total to re-price the model live (totals move punt expectations). Enter DK line + over/under odds → devigged edge chips. Whole-number lines can PUSH — push probability is priced in.",
+  kicks:"TT = team total: that team's implied points from spread + game total — the model's scoring context for the kicker. Enter DK team total to shift the projection, then line + odds for edge chips. Photos = projected starting kicker; punter listed below.",
+  log:"Every logged bet freezes the model and fair (devigged) probability at bet time. Before kickoff, enter DK closing odds (your side + opposite) → CLV = devigged close minus your devigged price, in probability points. Positive average CLV is the real scoreboard — it converges in ~30 bets; win-loss record takes seasons. Results auto-grade Tuesday.",
+};
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function howTo(tab){
+  if(!HOWTO[tab])return"";
+  return`<div class="howto${lsGet("howto-"+tab)==="open"?" open":""}" id="howto-${tab}">
+    <button onclick="toggleHow('${tab}')">? HOW TO USE</button>
+    <div class="body">${HOWTO[tab]}</div></div>`;
+}
+function toggleHow(tab){
+  const el=document.getElementById("howto-"+tab);
+  el.classList.toggle("open");
+  lsSet("howto-"+tab,el.classList.contains("open")?"open":"closed");
 }
 async function boot(){
   try{
@@ -269,7 +336,7 @@ function gh(g){
   else if(g.wind_flag)badges.push(`<span class="badge wind">WIND ${g.wind_mph}</span>`);
   if((g.overrides_applied||[]).length)
     badges.push(`<span class="badge ovr" title="${esc(g.overrides_applied.map(o=>o.team+": "+o.flag).join(", "))}">OVR</span>`);
-  return`<div class="ghead"><span class="px vs">${g.away} @ ${g.home}</span>${badges.join("")}
+  return`<div class="ghead"><span class="px vs">${tlogo(g.away)}${g.away} @ ${tlogo(g.home)}${g.home}</span>${badges.join("")}
     <span class="kick">${g.gameday.slice(5)} ${g.gametime}</span></div>`;
 }
 /* ---------- coach strip ---------- */
@@ -280,25 +347,26 @@ function coachChip(name,role,newpc,photo){
   const img=photo?`<img src="${esc(photo)}" alt="${esc(name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`:"";
   return`<div class="cchip">${img}${ph}<div class="cinfo">
     <div class="cname">${esc(name)}</div><div class="crole">${role}</div>
-    ${newpc?`<div class="ctag">NEW PLAYCALLER</div>`:""}</div></div>`;
+    ${newpc?`<div class="ctag">NEW P/C</div>`:""}</div></div>`;
 }
 function coachSide(c,side){
   const hc=c[side+"_hc"],pcn=c[side+"_pc"],np=c[side+"_new_pc"];
   const hcp=c[side+"_hc_photo"]||"",pcp=c[side+"_pc_photo"]||"";
-  if(!pcn||hc===pcn)return coachChip(hc,"HEAD COACH · CALLS PLAYS",np,hcp);
-  return coachChip(hc,"HEAD COACH",false,hcp)+coachChip(pcn,"OC · CALLS PLAYS",np,pcp);
+  if(!pcn||hc===pcn)return coachChip(hc,"HC · CALLS PLAYS",np,hcp);
+  return coachChip(hc,"HC",false,hcp)+coachChip(pcn,"OC · CALLS PLAYS",np,pcp);
 }
 const coachStrip=g=>`<div class="cstrip"><div>${coachSide(g.coaches,"away")}</div><div>${coachSide(g.coaches,"home")}</div></div>`;
 
 /* ---------- DRIVE ---------- */
 function renderDrive(){
   const el=document.getElementById("view-drive");
-  el.innerHTML=SLATE.games.map((g,gi)=>`
+  el.innerHTML=howTo("drive")+SLATE.games.map((g,gi)=>`
   <div class="game">${gh(g)}<div class="gbody">
     ${coachStrip(g)}
+    <div class="tbwrap">
     ${["away","home"].map(s=>{
       const t=s==="home"?g.home:g.away;
-      return`<div class="teamblock"><div class="tname">${t} FIRST DRIVE</div>
+      return`<div class="teamblock"><div class="tname">${tlogo(t,18)}${t} FIRST DRIVE</div>
       ${OUTS.map(o=>`
         <div class="orow"><span class="olab">${o}</span>
           <div class="bar"><i style="width:${(100*g.drive[s][o]).toFixed(1)}%"></i></div>
@@ -308,6 +376,7 @@ function renderDrive(){
         </div>`).join("")}
       <div style="text-align:right;margin-top:4px"><button class="logb" onclick="logDrive(${gi},'${s}')">LOG BEST</button></div>
       </div>`}).join("")}
+    </div>
   </div></div>`).join("");
 }
 function calcDrive(gi,s){
@@ -340,7 +409,7 @@ function logDrive(gi,s){
 /* ---------- PUNTS ---------- */
 function renderPunts(){
   const el=document.getElementById("view-punts");
-  el.innerHTML=SLATE.games.map((g,gi)=>`
+  el.innerHTML=howTo("punts")+SLATE.games.map((g,gi)=>`
   <div class="game">${gh(g)}<div class="gbody">
     <div class="small">model: ${g.away} ${g.punts.away.mean} · ${g.home} ${g.punts.home.mean} · game ${g.punts.game_mean} (${g.lines.placeholder?`<span style="color:var(--gold)">PLACEHOLDER total ${g.lines.total_line} — enter DK</span>`:`sched total ${g.lines.total_line}`})</div>
     <div class="mrow"><span class="lab">DK game total</span>
@@ -389,7 +458,7 @@ function logPunts(gi){
 /* ---------- KICKS ---------- */
 function renderKicks(){
   const el=document.getElementById("view-kicks");
-  el.innerHTML=SLATE.games.map((g,gi)=>{
+  el.innerHTML=howTo("kicks")+SLATE.games.map((g,gi)=>{
     const sides=Object.keys(g.kickers);
     if(!sides.length)return`<div class="game">${gh(g)}<div class="gbody small">kicker TBD (roster unsettled)</div></div>`;
     return`<div class="game">${gh(g)}<div class="gbody">
@@ -494,7 +563,7 @@ async function loadBets(){
   const avg=clvs.length?(clvs.reduce((a,b)=>a+b,0)/clvs.length).toFixed(2):"—";
   const betCard=b=>`
     <div class="bet"><div class="top">
-      <span class="px" style="font-size:9px">${b.market}</span>
+      <b style="letter-spacing:.5px;font-size:11px">${b.market}</b>
       <span>${esc(b.selection)}${b.line!=null?" "+b.line:""}</span>
       <span class="small">@ ${b.your_odds>0?"+":""}${b.your_odds} · ${b.tier}</span>
       <span class="clv ${b.clv_pct>0?"pos":b.clv_pct<0?"neg":""}">${b.clv_pct!=null?(b.clv_pct>0?"+":"")+(+b.clv_pct).toFixed(2):""}</span>
@@ -513,7 +582,7 @@ async function loadBets(){
       <div class="note">Pipeline dress rehearsal on preseason games — paper bets, manually graded, NOT counted in the season record or CLV above. Real bookkeeping starts Week 1.</div>
       ${pre.map(betCard).join("")||'<div class="note">No preseason paper bets yet.</div>'}
     </div>`:"";
-  el.innerHTML=`<div class="sumbar">
+  el.innerHTML=howTo("log")+`<div class="sumbar">
       <div>BETS<b>${reg.length}</b></div><div>RECORD<b>${wl}</b></div>
       <div>AVG CLV<b class="${+avg>0?'clv pos':''}">${avg}${clvs.length?" pts":""}</b></div>
       <div>CLV SAMPLE<b>${clvs.length}</b></div>

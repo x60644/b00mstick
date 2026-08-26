@@ -89,6 +89,14 @@ input:focus{outline:2px solid var(--cyan)}
 @keyframes blink{50%{opacity:.45}}
 @media (prefers-reduced-motion: reduce){.tier.BET{animation:none}}
 .mrow{display:grid;grid-template-columns:1fr 74px 74px 74px 84px 60px;gap:6px;align-items:center;margin:6px 0}
+/* phones: the fixed mrow columns exceed a narrow card (PUNTS row, and the
+   KICKS row inside .mug loses 64px more to the mugshot) — shrink them */
+@media (max-width:767px){
+  .mrow{grid-template-columns:minmax(0,1fr) 44px 44px 44px 52px 42px;gap:4px}
+  .mug{gap:8px}
+  .mug img{width:56px;height:56px}
+  .mug .info{min-width:0}
+}
 .mrow .lab{font-size:11px;color:var(--dim)}
 .logb{background:none;border:2px solid var(--green);color:var(--green);font-weight:700;letter-spacing:.5px;font-size:11px;padding:8px 6px;border-radius:3px;cursor:pointer;min-height:40px}
 .small{font-size:11px;color:var(--dim)}

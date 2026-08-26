@@ -254,6 +254,8 @@ async function boot(){
   }
   fitTop();
   renderPlan();loadBets();loadOverrides();
+  const t=params.get("tab");   // deep-link: ?tab=plan etc.
+  if(["drive","punts","kicks","log","plan"].includes(t))show(t);
 }
 function show(t){
   for(const v of["drive","punts","kicks","log","plan"]){

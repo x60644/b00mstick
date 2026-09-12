@@ -2173,3 +2173,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2025_18_TEN_JAX,2025,18,TEN,JAX,2.0,Touchdown,TD,0
 2025_18_WAS_PHI,2025,18,PHI,WAS,1.0,Punt,PUNT,1
 2025_18_WAS_PHI,2025,18,WAS,PHI,2.0,Missed field goal,OTHER,0
+2026_01_NE_SEA,2026,1,NE,SEA,2.0,Punt,PUNT,0
+2026_01_NE_SEA,2026,1,SEA,NE,1.0,Punt,PUNT,1
+2026_01_SF_LA,2026,1,LA,SF,1.0,Punt,PUNT,1
+2026_01_SF_LA,2026,1,SF,LA,2.0,Field goal,FG,0

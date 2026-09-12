@@ -2154,3 +2154,7 @@ game_id,season,week,posteam,kicker_player_name,fg_made,fg_att,xp_made,xp_att,poi
 2025_18_TEN_JAX,2025,18,TEN,J.Slye,0,1,1,1,1,
 2025_18_WAS_PHI,2025,18,PHI,J.Elliott,1,1,2,2,5,39.0
 2025_18_WAS_PHI,2025,18,WAS,J.Moody,1,2,3,3,6,56.0
+2026_01_NE_SEA,2026,1,NE,A.Borregales,1,1,1,1,4,50.0
+2026_01_NE_SEA,2026,1,SEA,J.Myers,2,2,1,1,7,30.0
+2026_01_SF_LA,2026,1,LA,H.Mevis,0,0,1,1,1,
+2026_01_SF_LA,2026,1,SF,E.Pineiro,2,3,3,3,9,56.0

@@ -1086,5 +1086,5 @@ game_id,season,week,game_date,home_team,away_team,home_coach,away_coach,roof,sur
 2025_18_SEA_SF,2025,18,2026-01-03,SF,SEA,Kyle Shanahan,Mike Macdonald,outdoors,grass,57.0,8.0,-2.5,47.5
 2025_18_TEN_JAX,2025,18,2026-01-04,JAX,TEN,Liam Coen,Brian Callahan,outdoors,grass,55.0,8.0,12.5,46.5
 2025_18_WAS_PHI,2025,18,2026-01-04,PHI,WAS,Nick Sirianni,Dan Quinn,outdoors,grass,35.0,9.0,3.0,38.5
-2026_01_NE_SEA,2026,1,2026-09-09,SEA,NE,Mike Macdonald,Mike Vrabel,outdoors,fieldturf,,,3.0,44.5
-2026_01_SF_LA,2026,1,2026-09-10,LA,SF,Sean McVay,Kyle Shanahan,dome,matrixturf,,,3.5,47.5
+2026_01_NE_SEA,2026,1,2026-09-09,SEA,NE,Mike Macdonald,Mike Vrabel,outdoors,fieldturf,74.0,6.0,3.0,44.5
+2026_01_SF_LA,2026,1,2026-09-10,LA,SF,Sean McVay,Kyle Shanahan,dome,grass,57.0,4.0,3.5,47.5

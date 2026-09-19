@@ -41,7 +41,11 @@ COLS = [
     "spread_line", "total_line", "yardline_100",
 ]
 
-RESULT_MAP = {"Touchdown": "TD", "Field goal": "FG", "Punt": "PUNT"}
+# Buckets match DK's first-drive market: FG = ATTEMPT (made, missed, or
+# blocked — nflverse folds blocks into "Missed field goal"); OTHER =
+# turnover / turnover on downs / safety / opp touchdown, DK's fourth bucket.
+RESULT_MAP = {"Touchdown": "TD", "Field goal": "FG",
+              "Missed field goal": "FG", "Punt": "PUNT"}
 
 # ---------------------------------------------------------------- pull
 def load_pbp_season(yr, columns=COLS):

@@ -2,7 +2,7 @@
  "season": 2026,
  "week": 2,
  "asof_week": 3,
- "generated": "2026-09-19T07:41:04.894806",
+ "generated": "2026-09-19T09:59:56.893815",
  "games": [
   {
    "game_id": "2026_02_CAR_ATL",
@@ -21,16 +21,16 @@
    },
    "drive": {
     "home": {
-     "TD": 0.2331,
-     "FG": 0.1628,
-     "PUNT": 0.4326,
-     "OTHER": 0.1714
+     "TD": 0.2332,
+     "FG": 0.1951,
+     "PUNT": 0.4327,
+     "OTHER": 0.1391
     },
     "away": {
      "TD": 0.2554,
-     "FG": 0.167,
-     "PUNT": 0.4035,
-     "OTHER": 0.1741
+     "FG": 0.179,
+     "PUNT": 0.4036,
+     "OTHER": 0.162
     }
    },
    "punts": {
@@ -143,7 +143,7 @@
    "home": "BAL",
    "away": "NO",
    "roof": "outdoors",
-   "wind_mph": 10.8,
+   "wind_mph": 10.6,
    "wind_flag": 0,
    "lines": {
     "spread_line": 8.5,
@@ -153,16 +153,16 @@
    },
    "drive": {
     "home": {
-     "TD": 0.3028,
-     "FG": 0.1728,
-     "PUNT": 0.4027,
-     "OTHER": 0.1217
+     "TD": 0.3029,
+     "FG": 0.1828,
+     "PUNT": 0.4028,
+     "OTHER": 0.1115
     },
     "away": {
-     "TD": 0.2338,
-     "FG": 0.1718,
-     "PUNT": 0.411,
-     "OTHER": 0.1834
+     "TD": 0.2336,
+     "FG": 0.2008,
+     "PUNT": 0.4107,
+     "OTHER": 0.1549
     }
    },
    "punts": {
@@ -276,7 +276,7 @@
    "home": "CHI",
    "away": "MIN",
    "roof": "outdoors",
-   "wind_mph": 16.0,
+   "wind_mph": 16.8,
    "wind_flag": 1,
    "lines": {
     "spread_line": 4.5,
@@ -286,16 +286,16 @@
    },
    "drive": {
     "home": {
-     "TD": 0.2276,
-     "FG": 0.1589,
-     "PUNT": 0.4381,
-     "OTHER": 0.1754
+     "TD": 0.2275,
+     "FG": 0.1782,
+     "PUNT": 0.4379,
+     "OTHER": 0.1563
     },
     "away": {
      "TD": 0.2384,
-     "FG": 0.1852,
+     "FG": 0.2035,
      "PUNT": 0.3617,
-     "OTHER": 0.2147
+     "OTHER": 0.1965
     }
    },
    "punts": {
@@ -419,15 +419,15 @@
    "drive": {
     "home": {
      "TD": 0.2698,
-     "FG": 0.182,
-     "PUNT": 0.3769,
-     "OTHER": 0.1713
+     "FG": 0.1997,
+     "PUNT": 0.3768,
+     "OTHER": 0.1537
     },
     "away": {
-     "TD": 0.2563,
-     "FG": 0.1781,
-     "PUNT": 0.4172,
-     "OTHER": 0.1484
+     "TD": 0.2561,
+     "FG": 0.2033,
+     "PUNT": 0.4168,
+     "OTHER": 0.1237
     }
    },
    "punts": {
@@ -541,7 +541,7 @@
    "home": "NE",
    "away": "PIT",
    "roof": "outdoors",
-   "wind_mph": 6.8,
+   "wind_mph": 10.0,
    "wind_flag": 0,
    "lines": {
     "spread_line": 5.5,
@@ -552,15 +552,15 @@
    "drive": {
     "home": {
      "TD": 0.2525,
-     "FG": 0.1729,
-     "PUNT": 0.4365,
-     "OTHER": 0.1382
+     "FG": 0.191,
+     "PUNT": 0.4364,
+     "OTHER": 0.1202
     },
     "away": {
      "TD": 0.2355,
-     "FG": 0.1893,
-     "PUNT": 0.428,
-     "OTHER": 0.1472
+     "FG": 0.2074,
+     "PUNT": 0.4281,
+     "OTHER": 0.129
     }
    },
    "punts": {
@@ -673,7 +673,7 @@
    "home": "NYJ",
    "away": "GB",
    "roof": "outdoors",
-   "wind_mph": 9.1,
+   "wind_mph": 9.6,
    "wind_flag": 0,
    "lines": {
     "spread_line": -3.5,
@@ -683,16 +683,16 @@
    },
    "drive": {
     "home": {
-     "TD": 0.2099,
-     "FG": 0.1894,
-     "PUNT": 0.4276,
-     "OTHER": 0.1731
+     "TD": 0.21,
+     "FG": 0.2005,
+     "PUNT": 0.4277,
+     "OTHER": 0.1618
     },
     "away": {
-     "TD": 0.2577,
-     "FG": 0.192,
-     "PUNT": 0.373,
-     "OTHER": 0.1773
+     "TD": 0.2573,
+     "FG": 0.2104,
+     "PUNT": 0.3724,
+     "OTHER": 0.1598
     }
    },
    "punts": {
@@ -804,7 +804,7 @@
    "home": "TB",
    "away": "CLE",
    "roof": "outdoors",
-   "wind_mph": 8.5,
+   "wind_mph": 6.2,
    "wind_flag": 0,
    "lines": {
     "spread_line": 8.5,
@@ -814,16 +814,16 @@
    },
    "drive": {
     "home": {
-     "TD": 0.2699,
-     "FG": 0.1756,
-     "PUNT": 0.4215,
-     "OTHER": 0.133
+     "TD": 0.2698,
+     "FG": 0.1891,
+     "PUNT": 0.4214,
+     "OTHER": 0.1196
     },
     "away": {
-     "TD": 0.2459,
-     "FG": 0.1421,
+     "TD": 0.2458,
+     "FG": 0.1631,
      "PUNT": 0.4243,
-     "OTHER": 0.1877
+     "OTHER": 0.1668
     }
    },
    "punts": {
@@ -935,7 +935,7 @@
    "home": "TEN",
    "away": "PHI",
    "roof": "outdoors",
-   "wind_mph": 11.9,
+   "wind_mph": 9.5,
    "wind_flag": 0,
    "lines": {
     "spread_line": -7.0,
@@ -945,16 +945,16 @@
    },
    "drive": {
     "home": {
-     "TD": 0.2203,
-     "FG": 0.202,
-     "PUNT": 0.4062,
-     "OTHER": 0.1715
+     "TD": 0.2204,
+     "FG": 0.2243,
+     "PUNT": 0.4064,
+     "OTHER": 0.149
     },
     "away": {
      "TD": 0.2566,
-     "FG": 0.1799,
+     "FG": 0.1979,
      "PUNT": 0.4004,
-     "OTHER": 0.163
+     "OTHER": 0.1451
     }
    },
    "punts": {
@@ -1064,7 +1064,7 @@
    "home": "DEN",
    "away": "JAX",
    "roof": "outdoors",
-   "wind_mph": 11.7,
+   "wind_mph": 8.1,
    "wind_flag": 0,
    "lines": {
     "spread_line": 2.5,
@@ -1074,16 +1074,16 @@
    },
    "drive": {
     "home": {
-     "TD": 0.2311,
-     "FG": 0.1863,
-     "PUNT": 0.3952,
-     "OTHER": 0.1875
+     "TD": 0.231,
+     "FG": 0.2038,
+     "PUNT": 0.3951,
+     "OTHER": 0.1701
     },
     "away": {
-     "TD": 0.2257,
-     "FG": 0.1773,
-     "PUNT": 0.4454,
-     "OTHER": 0.1516
+     "TD": 0.2261,
+     "FG": 0.1986,
+     "PUNT": 0.4462,
+     "OTHER": 0.1292
     }
    },
    "punts": {
@@ -1206,16 +1206,16 @@
    },
    "drive": {
     "home": {
-     "TD": 0.2824,
-     "FG": 0.167,
-     "PUNT": 0.4325,
-     "OTHER": 0.1181
+     "TD": 0.2825,
+     "FG": 0.1779,
+     "PUNT": 0.4326,
+     "OTHER": 0.1071
     },
     "away": {
-     "TD": 0.2479,
-     "FG": 0.1528,
-     "PUNT": 0.4297,
-     "OTHER": 0.1696
+     "TD": 0.2478,
+     "FG": 0.169,
+     "PUNT": 0.4296,
+     "OTHER": 0.1536
     }
    },
    "punts": {
@@ -1339,15 +1339,15 @@
    "drive": {
     "home": {
      "TD": 0.2406,
-     "FG": 0.1758,
-     "PUNT": 0.4181,
-     "OTHER": 0.1654
+     "FG": 0.1972,
+     "PUNT": 0.4182,
+     "OTHER": 0.144
     },
     "away": {
      "TD": 0.2582,
-     "FG": 0.1697,
+     "FG": 0.1911,
      "PUNT": 0.3967,
-     "OTHER": 0.1755
+     "OTHER": 0.154
     }
    },
    "punts": {
@@ -1470,16 +1470,16 @@
    },
    "drive": {
     "home": {
-     "TD": 0.2507,
-     "FG": 0.1986,
-     "PUNT": 0.3695,
-     "OTHER": 0.1812
+     "TD": 0.2509,
+     "FG": 0.2208,
+     "PUNT": 0.3699,
+     "OTHER": 0.1584
     },
     "away": {
-     "TD": 0.2312,
-     "FG": 0.2121,
-     "PUNT": 0.385,
-     "OTHER": 0.1716
+     "TD": 0.2311,
+     "FG": 0.234,
+     "PUNT": 0.3849,
+     "OTHER": 0.15
     }
    },
    "punts": {
@@ -1591,7 +1591,7 @@
    "home": "SF",
    "away": "MIA",
    "roof": "outdoors",
-   "wind_mph": 12.3,
+   "wind_mph": 14.0,
    "wind_flag": 0,
    "lines": {
     "spread_line": 13.5,
@@ -1601,16 +1601,16 @@
    },
    "drive": {
     "home": {
-     "TD": 0.2753,
-     "FG": 0.1789,
-     "PUNT": 0.4117,
-     "OTHER": 0.1341
+     "TD": 0.2754,
+     "FG": 0.1888,
+     "PUNT": 0.4118,
+     "OTHER": 0.1239
     },
     "away": {
      "TD": 0.2271,
-     "FG": 0.1552,
-     "PUNT": 0.4336,
-     "OTHER": 0.184
+     "FG": 0.1818,
+     "PUNT": 0.4337,
+     "OTHER": 0.1575
     }
    },
    "punts": {
@@ -1723,7 +1723,7 @@
    "home": "KC",
    "away": "IND",
    "roof": "outdoors",
-   "wind_mph": 7.7,
+   "wind_mph": 10.7,
    "wind_flag": 0,
    "lines": {
     "spread_line": 6.5,
@@ -1733,16 +1733,16 @@
    },
    "drive": {
     "home": {
-     "TD": 0.2585,
-     "FG": 0.1799,
+     "TD": 0.2586,
+     "FG": 0.1938,
      "PUNT": 0.399,
-     "OTHER": 0.1626
+     "OTHER": 0.1487
     },
     "away": {
-     "TD": 0.2636,
-     "FG": 0.1783,
-     "PUNT": 0.3677,
-     "OTHER": 0.1904
+     "TD": 0.2637,
+     "FG": 0.192,
+     "PUNT": 0.3678,
+     "OTHER": 0.1764
     }
    },
    "punts": {

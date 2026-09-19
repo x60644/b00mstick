@@ -33,7 +33,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2022_01_TB_DAL,2022,1,TB,DAL,2.0,Field goal,FG,0
 2022_02_ARI_LV,2022,2,ARI,LV,2.0,Punt,PUNT,0
 2022_02_ARI_LV,2022,2,LV,ARI,1.0,Touchdown,TD,1
-2022_02_ATL_LA,2022,2,ATL,LA,1.0,Missed field goal,OTHER,1
+2022_02_ATL_LA,2022,2,ATL,LA,1.0,Missed field goal,FG,1
 2022_02_ATL_LA,2022,2,LA,ATL,2.0,Touchdown,TD,0
 2022_02_CAR_NYG,2022,2,CAR,NYG,2.0,Field goal,FG,0
 2022_02_CAR_NYG,2022,2,NYG,CAR,2.0,Field goal,FG,0
@@ -72,9 +72,9 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2022_03_CIN_NYJ,2022,3,CIN,NYJ,1.0,Touchdown,TD,1
 2022_03_CIN_NYJ,2022,3,NYJ,CIN,2.0,Field goal,FG,0
 2022_03_DAL_NYG,2022,3,DAL,NYG,1.0,Punt,PUNT,1
-2022_03_DAL_NYG,2022,3,NYG,DAL,2.0,Missed field goal,OTHER,0
-2022_03_DET_MIN,2022,3,DET,MIN,1.0,Missed field goal,OTHER,1
-2022_03_DET_MIN,2022,3,MIN,DET,2.0,Missed field goal,OTHER,0
+2022_03_DAL_NYG,2022,3,NYG,DAL,2.0,Missed field goal,FG,0
+2022_03_DET_MIN,2022,3,DET,MIN,1.0,Missed field goal,FG,1
+2022_03_DET_MIN,2022,3,MIN,DET,2.0,Missed field goal,FG,0
 2022_03_GB_TB,2022,3,GB,TB,2.0,Touchdown,TD,0
 2022_03_GB_TB,2022,3,TB,GB,1.0,Field goal,FG,1
 2022_03_HOU_CHI,2022,3,CHI,HOU,1.0,Field goal,FG,1
@@ -152,7 +152,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2022_05_PHI_ARI,2022,5,ARI,PHI,1.0,Punt,PUNT,1
 2022_05_PHI_ARI,2022,5,PHI,ARI,2.0,Touchdown,TD,0
 2022_05_PIT_BUF,2022,5,BUF,PIT,1.0,Touchdown,TD,1
-2022_05_PIT_BUF,2022,5,PIT,BUF,2.0,Missed field goal,OTHER,0
+2022_05_PIT_BUF,2022,5,PIT,BUF,2.0,Missed field goal,FG,0
 2022_05_SEA_NO,2022,5,NO,SEA,1.0,Field goal,FG,1
 2022_05_SEA_NO,2022,5,SEA,NO,2.0,Touchdown,TD,0
 2022_05_SF_CAR,2022,5,CAR,SF,2.0,Punt,PUNT,0
@@ -197,7 +197,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2022_07_DET_DAL,2022,7,DET,DAL,2.0,Punt,PUNT,0
 2022_07_GB_WAS,2022,7,GB,WAS,1.0,Punt,PUNT,1
 2022_07_GB_WAS,2022,7,WAS,GB,2.0,Punt,PUNT,0
-2022_07_HOU_LV,2022,7,HOU,LV,2.0,Missed field goal,OTHER,0
+2022_07_HOU_LV,2022,7,HOU,LV,2.0,Missed field goal,FG,0
 2022_07_HOU_LV,2022,7,LV,HOU,1.0,Field goal,FG,1
 2022_07_IND_TEN,2022,7,IND,TEN,2.0,Punt,PUNT,0
 2022_07_IND_TEN,2022,7,TEN,IND,1.0,Punt,PUNT,1
@@ -224,7 +224,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2022_08_CHI_DAL,2022,8,CHI,DAL,2.0,Punt,PUNT,0
 2022_08_CHI_DAL,2022,8,DAL,CHI,1.0,Touchdown,TD,1
 2022_08_CIN_CLE,2022,8,CIN,CLE,1.0,Turnover,OTHER,1
-2022_08_CIN_CLE,2022,8,CLE,CIN,2.0,Missed field goal,OTHER,0
+2022_08_CIN_CLE,2022,8,CLE,CIN,2.0,Missed field goal,FG,0
 2022_08_DEN_JAX,2022,8,DEN,JAX,1.0,Punt,PUNT,1
 2022_08_DEN_JAX,2022,8,JAX,DEN,2.0,Punt,PUNT,0
 2022_08_GB_BUF,2022,8,BUF,GB,1.0,Punt,PUNT,1
@@ -242,7 +242,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2022_08_SF_LA,2022,8,LA,SF,1.0,Punt,PUNT,1
 2022_08_SF_LA,2022,8,SF,LA,2.0,Punt,PUNT,0
 2022_08_TEN_HOU,2022,8,HOU,TEN,2.0,Turnover,OTHER,0
-2022_08_TEN_HOU,2022,8,TEN,HOU,1.0,Missed field goal,OTHER,1
+2022_08_TEN_HOU,2022,8,TEN,HOU,1.0,Missed field goal,FG,1
 2022_08_WAS_IND,2022,8,IND,WAS,1.0,Punt,PUNT,1
 2022_08_WAS_IND,2022,8,WAS,IND,2.0,Punt,PUNT,0
 2022_09_BAL_NO,2022,9,BAL,NO,2.0,Punt,PUNT,0
@@ -278,7 +278,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2022_10_CLE_MIA,2022,10,CLE,MIA,1.0,Touchdown,TD,1
 2022_10_CLE_MIA,2022,10,MIA,CLE,2.0,Touchdown,TD,0
 2022_10_DAL_GB,2022,10,DAL,GB,1.0,Punt,PUNT,1
-2022_10_DAL_GB,2022,10,GB,DAL,2.0,Missed field goal,OTHER,0
+2022_10_DAL_GB,2022,10,GB,DAL,2.0,Missed field goal,FG,0
 2022_10_DEN_TEN,2022,10,DEN,TEN,2.0,Punt,PUNT,0
 2022_10_DEN_TEN,2022,10,TEN,DEN,1.0,Punt,PUNT,1
 2022_10_DET_CHI,2022,10,CHI,DET,1.0,Field goal,FG,1
@@ -407,14 +407,14 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2022_14_MIA_LAC,2022,14,MIA,LAC,1.0,Punt,PUNT,1
 2022_14_MIN_DET,2022,14,DET,MIN,1.0,Punt,PUNT,1
 2022_14_MIN_DET,2022,14,MIN,DET,2.0,Turnover on downs,OTHER,0
-2022_14_NE_ARI,2022,14,ARI,NE,1.0,Missed field goal,OTHER,1
+2022_14_NE_ARI,2022,14,ARI,NE,1.0,Missed field goal,FG,1
 2022_14_NE_ARI,2022,14,NE,ARI,2.0,Punt,PUNT,0
 2022_14_NYJ_BUF,2022,14,BUF,NYJ,1.0,Punt,PUNT,1
 2022_14_NYJ_BUF,2022,14,NYJ,BUF,2.0,Punt,PUNT,0
 2022_14_PHI_NYG,2022,14,NYG,PHI,1.0,Punt,PUNT,1
 2022_14_PHI_NYG,2022,14,PHI,NYG,2.0,Touchdown,TD,0
 2022_14_TB_SF,2022,14,SF,TB,1.0,Touchdown,TD,1
-2022_14_TB_SF,2022,14,TB,SF,2.0,Missed field goal,OTHER,0
+2022_14_TB_SF,2022,14,TB,SF,2.0,Missed field goal,FG,0
 2022_15_ARI_DEN,2022,15,ARI,DEN,2.0,Punt,PUNT,0
 2022_15_ARI_DEN,2022,15,DEN,ARI,1.0,Field goal,FG,1
 2022_15_ATL_NO,2022,15,ATL,NO,2.0,Punt,PUNT,0
@@ -595,7 +595,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2023_02_MIN_PHI,2023,2,PHI,MIN,1.0,Field goal,FG,1
 2023_02_NO_CAR,2023,2,CAR,NO,2.0,Field goal,FG,0
 2023_02_NO_CAR,2023,2,NO,CAR,1.0,Punt,PUNT,1
-2023_02_NYG_ARI,2023,2,ARI,NYG,1.0,Missed field goal,OTHER,1
+2023_02_NYG_ARI,2023,2,ARI,NYG,1.0,Missed field goal,FG,1
 2023_02_NYG_ARI,2023,2,NYG,ARI,2.0,Punt,PUNT,0
 2023_02_NYJ_DAL,2023,2,DAL,NYJ,1.0,Touchdown,TD,1
 2023_02_NYJ_DAL,2023,2,NYJ,DAL,2.0,Punt,PUNT,0
@@ -604,7 +604,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2023_02_SF_LA,2023,2,LA,SF,2.0,Field goal,FG,0
 2023_02_SF_LA,2023,2,SF,LA,1.0,Touchdown,TD,1
 2023_02_WAS_DEN,2023,2,DEN,WAS,2.0,Touchdown,TD,0
-2023_02_WAS_DEN,2023,2,WAS,DEN,1.0,Missed field goal,OTHER,1
+2023_02_WAS_DEN,2023,2,WAS,DEN,1.0,Missed field goal,FG,1
 2023_03_ATL_DET,2023,3,ATL,DET,1.0,Punt,PUNT,1
 2023_03_ATL_DET,2023,3,DET,ATL,2.0,Punt,PUNT,0
 2023_03_BUF_WAS,2023,3,BUF,WAS,1.0,Field goal,FG,1
@@ -618,12 +618,12 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2023_03_DEN_MIA,2023,3,DEN,MIA,2.0,Punt,PUNT,0
 2023_03_DEN_MIA,2023,3,MIA,DEN,1.0,Touchdown,TD,1
 2023_03_HOU_JAX,2023,3,HOU,JAX,1.0,Punt,PUNT,1
-2023_03_HOU_JAX,2023,3,JAX,HOU,2.0,Missed field goal,OTHER,0
+2023_03_HOU_JAX,2023,3,JAX,HOU,2.0,Missed field goal,FG,0
 2023_03_IND_BAL,2023,3,BAL,IND,2.0,Touchdown,TD,0
 2023_03_IND_BAL,2023,3,IND,BAL,1.0,Punt,PUNT,1
 2023_03_LAC_MIN,2023,3,LAC,MIN,1.0,Punt,PUNT,1
 2023_03_LAC_MIN,2023,3,MIN,LAC,2.0,Turnover,OTHER,0
-2023_03_LA_CIN,2023,3,CIN,LA,1.0,Missed field goal,OTHER,1
+2023_03_LA_CIN,2023,3,CIN,LA,1.0,Missed field goal,FG,1
 2023_03_LA_CIN,2023,3,LA,CIN,2.0,Field goal,FG,0
 2023_03_NE_NYJ,2023,3,NE,NYJ,2.0,Field goal,FG,0
 2023_03_NE_NYJ,2023,3,NYJ,NE,1.0,Punt,PUNT,1
@@ -716,7 +716,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2023_06_NE_LV,2023,6,LV,NE,1.0,Field goal,FG,1
 2023_06_NE_LV,2023,6,NE,LV,2.0,Punt,PUNT,0
 2023_06_NO_HOU,2023,6,HOU,NO,1.0,Punt,PUNT,1
-2023_06_NO_HOU,2023,6,NO,HOU,2.0,Missed field goal,OTHER,0
+2023_06_NO_HOU,2023,6,NO,HOU,2.0,Missed field goal,FG,0
 2023_06_NYG_BUF,2023,6,BUF,NYG,1.0,Punt,PUNT,1
 2023_06_NYG_BUF,2023,6,NYG,BUF,2.0,Punt,PUNT,0
 2023_06_PHI_NYJ,2023,6,NYJ,PHI,1.0,Punt,PUNT,1
@@ -740,11 +740,11 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2023_07_GB_DEN,2023,7,DEN,GB,1.0,Field goal,FG,1
 2023_07_GB_DEN,2023,7,GB,DEN,2.0,Punt,PUNT,0
 2023_07_JAX_NO,2023,7,JAX,NO,1.0,Touchdown,TD,1
-2023_07_JAX_NO,2023,7,NO,JAX,2.0,Missed field goal,OTHER,0
+2023_07_JAX_NO,2023,7,NO,JAX,2.0,Missed field goal,FG,0
 2023_07_LAC_KC,2023,7,KC,LAC,2.0,Field goal,FG,0
 2023_07_LAC_KC,2023,7,LAC,KC,1.0,Punt,PUNT,1
 2023_07_LV_CHI,2023,7,CHI,LV,1.0,Punt,PUNT,1
-2023_07_LV_CHI,2023,7,LV,CHI,2.0,Missed field goal,OTHER,0
+2023_07_LV_CHI,2023,7,LV,CHI,2.0,Missed field goal,FG,0
 2023_07_MIA_PHI,2023,7,MIA,PHI,2.0,Punt,PUNT,0
 2023_07_MIA_PHI,2023,7,PHI,MIA,1.0,Field goal,FG,1
 2023_07_PIT_LA,2023,7,LA,PIT,2.0,Punt,PUNT,0
@@ -774,7 +774,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2023_08_LV_DET,2023,8,DET,LV,1.0,Field goal,FG,1
 2023_08_LV_DET,2023,8,LV,DET,2.0,Punt,PUNT,0
 2023_08_MIN_GB,2023,8,GB,MIN,1.0,Punt,PUNT,1
-2023_08_MIN_GB,2023,8,MIN,GB,2.0,Missed field goal,OTHER,0
+2023_08_MIN_GB,2023,8,MIN,GB,2.0,Missed field goal,FG,0
 2023_08_NE_MIA,2023,8,MIA,NE,2.0,Punt,PUNT,0
 2023_08_NE_MIA,2023,8,NE,MIA,1.0,Punt,PUNT,1
 2023_08_NO_IND,2023,8,IND,NO,1.0,Punt,PUNT,1
@@ -875,7 +875,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2023_12_BUF_PHI,2023,12,PHI,BUF,2.0,Punt,PUNT,0
 2023_12_CAR_TEN,2023,12,CAR,TEN,2.0,Punt,PUNT,0
 2023_12_CAR_TEN,2023,12,TEN,CAR,1.0,Punt,PUNT,1
-2023_12_CHI_MIN,2023,12,CHI,MIN,1.0,Missed field goal,OTHER,1
+2023_12_CHI_MIN,2023,12,CHI,MIN,1.0,Missed field goal,FG,1
 2023_12_CHI_MIN,2023,12,MIN,CHI,2.0,Punt,PUNT,0
 2023_12_CLE_DEN,2023,12,CLE,DEN,1.0,Punt,PUNT,1
 2023_12_CLE_DEN,2023,12,DEN,CLE,2.0,Touchdown,TD,0
@@ -930,7 +930,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2023_14_BUF_KC,2023,14,BUF,KC,2.0,Punt,PUNT,0
 2023_14_BUF_KC,2023,14,KC,BUF,1.0,Turnover,OTHER,1
 2023_14_CAR_NO,2023,14,CAR,NO,1.0,Punt,PUNT,1
-2023_14_CAR_NO,2023,14,NO,CAR,2.0,Missed field goal,OTHER,0
+2023_14_CAR_NO,2023,14,NO,CAR,2.0,Missed field goal,FG,0
 2023_14_DEN_LAC,2023,14,DEN,LAC,2.0,Turnover,OTHER,0
 2023_14_DEN_LAC,2023,14,LAC,DEN,1.0,Punt,PUNT,1
 2023_14_DET_CHI,2023,14,CHI,DET,1.0,Touchdown,TD,1
@@ -969,7 +969,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2023_15_DEN_DET,2023,15,DET,DEN,1.0,Punt,PUNT,1
 2023_15_HOU_TEN,2023,15,HOU,TEN,1.0,Punt,PUNT,1
 2023_15_HOU_TEN,2023,15,TEN,HOU,2.0,Touchdown,TD,0
-2023_15_KC_NE,2023,15,KC,NE,2.0,Missed field goal,OTHER,0
+2023_15_KC_NE,2023,15,KC,NE,2.0,Missed field goal,FG,0
 2023_15_KC_NE,2023,15,NE,KC,1.0,Punt,PUNT,1
 2023_15_LAC_LV,2023,15,LAC,LV,1.0,Punt,PUNT,1
 2023_15_LAC_LV,2023,15,LV,LAC,2.0,Touchdown,TD,0
@@ -981,7 +981,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2023_15_NYJ_MIA,2023,15,NYJ,MIA,2.0,Turnover,OTHER,0
 2023_15_PHI_SEA,2023,15,PHI,SEA,1.0,Touchdown,TD,1
 2023_15_PHI_SEA,2023,15,SEA,PHI,2.0,Punt,PUNT,0
-2023_15_PIT_IND,2023,15,IND,PIT,2.0,Missed field goal,OTHER,0
+2023_15_PIT_IND,2023,15,IND,PIT,2.0,Missed field goal,FG,0
 2023_15_PIT_IND,2023,15,PIT,IND,1.0,Punt,PUNT,1
 2023_15_SF_ARI,2023,15,ARI,SF,1.0,Touchdown,TD,1
 2023_15_SF_ARI,2023,15,SF,ARI,2.0,Touchdown,TD,0
@@ -1023,7 +1023,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2023_16_WAS_NYJ,2023,16,WAS,NYJ,1.0,Turnover,OTHER,1
 2023_17_ARI_PHI,2023,17,ARI,PHI,2.0,Field goal,FG,0
 2023_17_ARI_PHI,2023,17,PHI,ARI,1.0,Punt,PUNT,1
-2023_17_ATL_CHI,2023,17,ATL,CHI,1.0,Missed field goal,OTHER,1
+2023_17_ATL_CHI,2023,17,ATL,CHI,1.0,Missed field goal,FG,1
 2023_17_ATL_CHI,2023,17,CHI,ATL,2.0,Touchdown,TD,0
 2023_17_CAR_JAX,2023,17,CAR,JAX,2.0,Turnover on downs,OTHER,0
 2023_17_CAR_JAX,2023,17,JAX,CAR,1.0,Field goal,FG,1
@@ -1058,7 +1058,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2023_18_BUF_MIA,2023,18,BUF,MIA,2.0,Turnover,OTHER,0
 2023_18_BUF_MIA,2023,18,MIA,BUF,1.0,Turnover,OTHER,1
 2023_18_CHI_GB,2023,18,CHI,GB,1.0,Field goal,FG,1
-2023_18_CHI_GB,2023,18,GB,CHI,2.0,Missed field goal,OTHER,0
+2023_18_CHI_GB,2023,18,GB,CHI,2.0,Missed field goal,FG,0
 2023_18_CLE_CIN,2023,18,CIN,CLE,2.0,Turnover,OTHER,0
 2023_18_CLE_CIN,2023,18,CLE,CIN,1.0,Turnover,OTHER,1
 2023_18_DAL_WAS,2023,18,DAL,WAS,2.0,Touchdown,TD,0
@@ -1153,7 +1153,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2024_03_BAL_DAL,2024,3,DAL,BAL,1.0,Punt,PUNT,1
 2024_03_CAR_LV,2024,3,CAR,LV,1.0,Touchdown,TD,1
 2024_03_CAR_LV,2024,3,LV,CAR,2.0,Punt,PUNT,0
-2024_03_CHI_IND,2024,3,CHI,IND,1.0,Missed field goal,OTHER,1
+2024_03_CHI_IND,2024,3,CHI,IND,1.0,Missed field goal,FG,1
 2024_03_CHI_IND,2024,3,IND,CHI,2.0,Punt,PUNT,0
 2024_03_DEN_TB,2024,3,DEN,TB,1.0,Touchdown,TD,1
 2024_03_DEN_TB,2024,3,TB,DEN,2.0,Punt,PUNT,0
@@ -1169,7 +1169,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2024_03_KC_ATL,2024,3,KC,ATL,2.0,Turnover,OTHER,0
 2024_03_LAC_PIT,2024,3,LAC,PIT,1.0,Punt,PUNT,1
 2024_03_LAC_PIT,2024,3,PIT,LAC,2.0,Punt,PUNT,0
-2024_03_MIA_SEA,2024,3,MIA,SEA,2.0,Missed field goal,OTHER,0
+2024_03_MIA_SEA,2024,3,MIA,SEA,2.0,Missed field goal,FG,0
 2024_03_MIA_SEA,2024,3,SEA,MIA,1.0,Field goal,FG,1
 2024_03_NE_NYJ,2024,3,NE,NYJ,2.0,Punt,PUNT,0
 2024_03_NE_NYJ,2024,3,NYJ,NE,1.0,Punt,PUNT,1
@@ -1197,7 +1197,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2024_04_KC_LAC,2024,4,LAC,KC,2.0,Touchdown,TD,0
 2024_04_LA_CHI,2024,4,CHI,LA,1.0,Punt,PUNT,1
 2024_04_LA_CHI,2024,4,LA,CHI,2.0,Field goal,FG,0
-2024_04_MIN_GB,2024,4,GB,MIN,2.0,Missed field goal,OTHER,0
+2024_04_MIN_GB,2024,4,GB,MIN,2.0,Missed field goal,FG,0
 2024_04_MIN_GB,2024,4,MIN,GB,1.0,Touchdown,TD,1
 2024_04_NE_SF,2024,4,NE,SF,1.0,Punt,PUNT,1
 2024_04_NE_SF,2024,4,SF,NE,2.0,Field goal,FG,0
@@ -1353,7 +1353,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2024_09_LV_CIN,2024,9,LV,CIN,1.0,Touchdown,TD,1
 2024_09_MIA_BUF,2024,9,BUF,MIA,1.0,Punt,PUNT,1
 2024_09_MIA_BUF,2024,9,MIA,BUF,2.0,Punt,PUNT,0
-2024_09_NE_TEN,2024,9,NE,TEN,2.0,Missed field goal,OTHER,0
+2024_09_NE_TEN,2024,9,NE,TEN,2.0,Missed field goal,FG,0
 2024_09_NE_TEN,2024,9,TEN,NE,1.0,Touchdown,TD,1
 2024_09_NO_CAR,2024,9,CAR,NO,2.0,Punt,PUNT,0
 2024_09_NO_CAR,2024,9,NO,CAR,1.0,Field goal,FG,1
@@ -1415,13 +1415,13 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2024_11_MIN_TEN,2024,11,TEN,MIN,1.0,Punt,PUNT,1
 2024_11_SEA_SF,2024,11,SEA,SF,2.0,Field goal,FG,0
 2024_11_SEA_SF,2024,11,SF,SEA,1.0,Punt,PUNT,1
-2024_11_WAS_PHI,2024,11,PHI,WAS,1.0,Missed field goal,OTHER,1
+2024_11_WAS_PHI,2024,11,PHI,WAS,1.0,Missed field goal,FG,1
 2024_11_WAS_PHI,2024,11,WAS,PHI,2.0,Punt,PUNT,0
 2024_12_ARI_SEA,2024,12,ARI,SEA,1.0,Punt,PUNT,1
 2024_12_ARI_SEA,2024,12,SEA,ARI,2.0,Punt,PUNT,0
 2024_12_BAL_LAC,2024,12,BAL,LAC,2.0,Punt,PUNT,0
 2024_12_BAL_LAC,2024,12,LAC,BAL,1.0,Touchdown,TD,1
-2024_12_DAL_WAS,2024,12,DAL,WAS,1.0,Missed field goal,OTHER,1
+2024_12_DAL_WAS,2024,12,DAL,WAS,1.0,Missed field goal,FG,1
 2024_12_DAL_WAS,2024,12,WAS,DAL,2.0,Field goal,FG,0
 2024_12_DEN_LV,2024,12,DEN,LV,2.0,Punt,PUNT,0
 2024_12_DEN_LV,2024,12,LV,DEN,1.0,Punt,PUNT,1
@@ -1436,7 +1436,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2024_12_PHI_LA,2024,12,LA,PHI,1.0,Turnover,OTHER,1
 2024_12_PHI_LA,2024,12,PHI,LA,2.0,Field goal,FG,0
 2024_12_PIT_CLE,2024,12,CLE,PIT,2.0,Punt,PUNT,0
-2024_12_PIT_CLE,2024,12,PIT,CLE,1.0,Missed field goal,OTHER,1
+2024_12_PIT_CLE,2024,12,PIT,CLE,1.0,Missed field goal,FG,1
 2024_12_SF_GB,2024,12,GB,SF,1.0,Touchdown,TD,1
 2024_12_SF_GB,2024,12,SF,GB,2.0,Punt,PUNT,0
 2024_12_TB_NYG,2024,12,NYG,TB,2.0,Punt,PUNT,0
@@ -1447,13 +1447,13 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2024_13_ARI_MIN,2024,13,MIN,ARI,2.0,Field goal,FG,0
 2024_13_CHI_DET,2024,13,CHI,DET,2.0,Punt,PUNT,0
 2024_13_CHI_DET,2024,13,DET,CHI,1.0,Field goal,FG,1
-2024_13_CLE_DEN,2024,13,CLE,DEN,2.0,Missed field goal,OTHER,0
+2024_13_CLE_DEN,2024,13,CLE,DEN,2.0,Missed field goal,FG,0
 2024_13_CLE_DEN,2024,13,DEN,CLE,1.0,Punt,PUNT,1
 2024_13_HOU_JAX,2024,13,HOU,JAX,2.0,Punt,PUNT,0
 2024_13_HOU_JAX,2024,13,JAX,HOU,1.0,Punt,PUNT,1
 2024_13_IND_NE,2024,13,IND,NE,2.0,Touchdown,TD,0
 2024_13_IND_NE,2024,13,NE,IND,1.0,Field goal,FG,1
-2024_13_LAC_ATL,2024,13,ATL,LAC,1.0,Missed field goal,OTHER,1
+2024_13_LAC_ATL,2024,13,ATL,LAC,1.0,Missed field goal,FG,1
 2024_13_LAC_ATL,2024,13,LAC,ATL,2.0,Turnover,OTHER,0
 2024_13_LA_NO,2024,13,LA,NO,2.0,Punt,PUNT,0
 2024_13_LA_NO,2024,13,NO,LA,1.0,Field goal,FG,1
@@ -1524,7 +1524,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2024_15_MIA_HOU,2024,15,HOU,MIA,2.0,Field goal,FG,0
 2024_15_MIA_HOU,2024,15,MIA,HOU,1.0,Punt,PUNT,1
 2024_15_NE_ARI,2024,15,ARI,NE,2.0,Field goal,FG,0
-2024_15_NE_ARI,2024,15,NE,ARI,1.0,Missed field goal,OTHER,1
+2024_15_NE_ARI,2024,15,NE,ARI,1.0,Missed field goal,FG,1
 2024_15_NYJ_JAX,2024,15,JAX,NYJ,1.0,Touchdown,TD,1
 2024_15_NYJ_JAX,2024,15,NYJ,JAX,2.0,Touchdown,TD,0
 2024_15_PIT_PHI,2024,15,PHI,PIT,2.0,Field goal,FG,0
@@ -1553,7 +1553,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2024_16_NE_BUF,2024,16,NE,BUF,1.0,Touchdown,TD,1
 2024_16_NO_GB,2024,16,GB,NO,1.0,Touchdown,TD,1
 2024_16_NO_GB,2024,16,NO,GB,2.0,Punt,PUNT,0
-2024_16_NYG_ATL,2024,16,ATL,NYG,1.0,Missed field goal,OTHER,1
+2024_16_NYG_ATL,2024,16,ATL,NYG,1.0,Missed field goal,FG,1
 2024_16_NYG_ATL,2024,16,NYG,ATL,2.0,Punt,PUNT,0
 2024_16_PHI_WAS,2024,16,PHI,WAS,2.0,Touchdown,TD,0
 2024_16_PHI_WAS,2024,16,WAS,PHI,1.0,Turnover on downs,OTHER,1
@@ -1687,15 +1687,15 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2025_02_PHI_KC,2025,2,PHI,KC,1.0,Punt,PUNT,1
 2025_02_SEA_PIT,2025,2,PIT,SEA,2.0,Field goal,FG,0
 2025_02_SEA_PIT,2025,2,SEA,PIT,1.0,Touchdown,TD,1
-2025_02_SF_NO,2025,2,NO,SF,1.0,Missed field goal,OTHER,1
+2025_02_SF_NO,2025,2,NO,SF,1.0,Missed field goal,FG,1
 2025_02_SF_NO,2025,2,SF,NO,2.0,Punt,PUNT,0
 2025_02_TB_HOU,2025,2,HOU,TB,1.0,Touchdown,TD,1
 2025_02_TB_HOU,2025,2,TB,HOU,2.0,Touchdown,TD,0
 2025_02_WAS_GB,2025,2,GB,WAS,1.0,Turnover on downs,OTHER,1
 2025_02_WAS_GB,2025,2,WAS,GB,2.0,Punt,PUNT,0
-2025_03_ARI_SF,2025,3,ARI,SF,1.0,Missed field goal,OTHER,1
+2025_03_ARI_SF,2025,3,ARI,SF,1.0,Missed field goal,FG,1
 2025_03_ARI_SF,2025,3,SF,ARI,2.0,Punt,PUNT,0
-2025_03_ATL_CAR,2025,3,ATL,CAR,1.0,Missed field goal,OTHER,1
+2025_03_ATL_CAR,2025,3,ATL,CAR,1.0,Missed field goal,FG,1
 2025_03_ATL_CAR,2025,3,CAR,ATL,2.0,Touchdown,TD,0
 2025_03_CIN_MIN,2025,3,CIN,MIN,2.0,Punt,PUNT,0
 2025_03_CIN_MIN,2025,3,MIN,CIN,1.0,Touchdown,TD,1
@@ -1754,7 +1754,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2025_04_SEA_ARI,2025,4,ARI,SEA,1.0,Punt,PUNT,1
 2025_04_SEA_ARI,2025,4,SEA,ARI,2.0,Turnover on downs,OTHER,0
 2025_04_TEN_HOU,2025,4,HOU,TEN,2.0,Field goal,FG,0
-2025_04_TEN_HOU,2025,4,TEN,HOU,1.0,Missed field goal,OTHER,1
+2025_04_TEN_HOU,2025,4,TEN,HOU,1.0,Missed field goal,FG,1
 2025_04_WAS_ATL,2025,4,ATL,WAS,1.0,Field goal,FG,1
 2025_04_WAS_ATL,2025,4,WAS,ATL,2.0,Punt,PUNT,0
 2025_05_DAL_NYJ,2025,5,DAL,NYJ,2.0,Field goal,FG,0
@@ -1779,7 +1779,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2025_05_NYG_NO,2025,5,NYG,NO,2.0,Touchdown,TD,0
 2025_05_SF_LA,2025,5,LA,SF,2.0,Punt,PUNT,0
 2025_05_SF_LA,2025,5,SF,LA,1.0,Touchdown,TD,1
-2025_05_TB_SEA,2025,5,SEA,TB,2.0,Missed field goal,OTHER,0
+2025_05_TB_SEA,2025,5,SEA,TB,2.0,Missed field goal,FG,0
 2025_05_TB_SEA,2025,5,TB,SEA,1.0,Field goal,FG,1
 2025_05_TEN_ARI,2025,5,ARI,TEN,1.0,Touchdown,TD,1
 2025_05_TEN_ARI,2025,5,TEN,ARI,2.0,Field goal,FG,0
@@ -1804,7 +1804,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2025_06_LAC_MIA,2025,6,LAC,MIA,2.0,Field goal,FG,0
 2025_06_LAC_MIA,2025,6,MIA,LAC,1.0,Turnover,OTHER,1
 2025_06_LA_BAL,2025,6,BAL,LA,1.0,Field goal,FG,1
-2025_06_LA_BAL,2025,6,LA,BAL,2.0,Missed field goal,OTHER,0
+2025_06_LA_BAL,2025,6,LA,BAL,2.0,Missed field goal,FG,0
 2025_06_NE_NO,2025,6,NE,NO,2.0,Touchdown,TD,0
 2025_06_NE_NO,2025,6,NO,NE,1.0,Field goal,FG,1
 2025_06_PHI_NYG,2025,6,NYG,PHI,2.0,Touchdown,TD,0
@@ -1881,8 +1881,8 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2025_09_CAR_GB,2025,9,GB,CAR,2.0,Turnover,OTHER,0
 2025_09_CHI_CIN,2025,9,CHI,CIN,2.0,Touchdown,TD,0
 2025_09_CHI_CIN,2025,9,CIN,CHI,1.0,Touchdown,TD,1
-2025_09_DEN_HOU,2025,9,DEN,HOU,2.0,Missed field goal,OTHER,0
-2025_09_DEN_HOU,2025,9,HOU,DEN,1.0,Missed field goal,OTHER,1
+2025_09_DEN_HOU,2025,9,DEN,HOU,2.0,Missed field goal,FG,0
+2025_09_DEN_HOU,2025,9,HOU,DEN,1.0,Missed field goal,FG,1
 2025_09_IND_PIT,2025,9,IND,PIT,2.0,Touchdown,TD,0
 2025_09_IND_PIT,2025,9,PIT,IND,1.0,Punt,PUNT,1
 2025_09_JAX_LV,2025,9,JAX,LV,1.0,Punt,PUNT,1
@@ -2057,7 +2057,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2025_15_CAR_NO,2025,15,NO,CAR,1.0,Punt,PUNT,1
 2025_15_CLE_CHI,2025,15,CHI,CLE,1.0,Punt,PUNT,1
 2025_15_CLE_CHI,2025,15,CLE,CHI,2.0,Punt,PUNT,0
-2025_15_DET_LA,2025,15,DET,LA,1.0,Missed field goal,OTHER,1
+2025_15_DET_LA,2025,15,DET,LA,1.0,Missed field goal,FG,1
 2025_15_DET_LA,2025,15,LA,DET,2.0,Turnover,OTHER,0
 2025_15_GB_DEN,2025,15,DEN,GB,1.0,Turnover,OTHER,1
 2025_15_GB_DEN,2025,15,GB,DEN,2.0,Field goal,FG,0
@@ -2075,7 +2075,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2025_15_NYJ_JAX,2025,15,NYJ,JAX,2.0,Turnover on downs,OTHER,0
 2025_15_TEN_SF,2025,15,SF,TEN,2.0,Touchdown,TD,0
 2025_15_TEN_SF,2025,15,TEN,SF,1.0,Punt,PUNT,1
-2025_15_WAS_NYG,2025,15,NYG,WAS,2.0,Missed field goal,OTHER,0
+2025_15_WAS_NYG,2025,15,NYG,WAS,2.0,Missed field goal,FG,0
 2025_15_WAS_NYG,2025,15,WAS,NYG,1.0,Field goal,FG,1
 2025_16_ATL_ARI,2025,16,ARI,ATL,1.0,Field goal,FG,1
 2025_16_ATL_ARI,2025,16,ATL,ARI,2.0,Turnover,OTHER,0
@@ -2172,7 +2172,7 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2025_18_TEN_JAX,2025,18,JAX,TEN,1.0,Punt,PUNT,1
 2025_18_TEN_JAX,2025,18,TEN,JAX,2.0,Touchdown,TD,0
 2025_18_WAS_PHI,2025,18,PHI,WAS,1.0,Punt,PUNT,1
-2025_18_WAS_PHI,2025,18,WAS,PHI,2.0,Missed field goal,OTHER,0
+2025_18_WAS_PHI,2025,18,WAS,PHI,2.0,Missed field goal,FG,0
 2026_01_ARI_LAC,2026,1,ARI,LAC,1.0,Touchdown,TD,1
 2026_01_ARI_LAC,2026,1,LAC,ARI,2.0,Touchdown,TD,0
 2026_01_ATL_PIT,2026,1,ATL,PIT,2.0,Punt,PUNT,0

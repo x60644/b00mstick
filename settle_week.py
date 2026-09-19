@@ -67,6 +67,7 @@ def load_actuals(season, week=None):
     kk = p0.extract_kicker_points(reg)
     return {
         "drive": {(r.game_id, r.posteam): r.outcome for r in fd.itertuples()},
+        "drive_raw": {(r.game_id, r.posteam): r.raw_result for r in fd.itertuples()},
         "game_punts": {r.game_id: int(r.game_total_punts) for r in pt.itertuples()},
         "kicker": {(r.game_id, r.kicker_player_name): int(r.points) for r in kk.itertuples()},
     }
@@ -154,6 +155,14 @@ def synthetic_test():
         {"game_id": gid_k, "market": "KICKS", "selection": f"{name_k} pts over",
          "line": pts_k - 0.5, "expect": "WIN"},
     ]
+    # DK bucket remap: a MISSED first-drive FG must grade as an FG (attempt) win
+    missed = [k for k, raw in act["drive_raw"].items() if raw == "Missed field goal"]
+    if missed:
+        gid_m, team_m = missed[0]
+        fakes.append({"game_id": gid_m, "market": "DRIVE",
+                      "selection": f"{team_m} 1st drive FG", "line": None, "expect": "WIN"})
+    else:
+        print(f"  note: no missed-FG first drive in {season} wk{week}; remap fake skipped")
     ids, expects = [], {}
     for f in fakes:
         row = {k: f[k] for k in ("game_id", "market", "selection", "line")}

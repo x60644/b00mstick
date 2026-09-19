@@ -157,7 +157,7 @@ h2.px{font-size:12px;margin-bottom:10px;color:var(--gold)}
   #view-log,#view-plan{max-width:900px;margin:0 auto}
   .tbwrap{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .tbwrap .teamblock{margin-bottom:0}
-  .orow{grid-template-columns:38px 1fr 42px 64px 64px;gap:4px}
+  .orow{grid-template-columns:48px 1fr 42px 64px 64px;gap:4px}
   .mrow{grid-template-columns:1fr 64px 64px 64px 72px 56px;gap:5px}
 }
 </style>
@@ -223,6 +223,9 @@ const SUPA_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJ
 const SB_HDRS={apikey:SUPA_KEY,Authorization:"Bearer "+SUPA_KEY,"Content-Type":"application/json"};
 const TH={drive:{BET:.050,VALUE:.025},punts:{BET:.045,VALUE:.022},kicker:{BET:.045,VALUE:.022}};
 const OUTS=["TD","FG","PUNT","OTHER"];
+/* display labels matching DK's market buckets (internal keys unchanged):
+   FG = attempt (made/missed/blocked), OTHER = turnover/downs/safety */
+const OUT_LBL={TD:"TD",FG:"FG ATT",PUNT:"PUNT",OTHER:"TO/SAF"};
 let SLATE=null,BETS=[];
 const params=new URLSearchParams(location.search);
 const wk=params.get("week");   // ?week=N views an archived slate
@@ -274,7 +277,7 @@ const tlogo=(t,px=22)=>ESPN_LOGO[t]?`<img class="tlogo" width="${px}" height="${
 /* collapsible how-to strips (state persists per-tab; localStorage may be
    unavailable in private browsing — degrade to session-only) */
 const HOWTO={
-  drive:"Bars = model probability for each first-drive outcome, both teams (coin-toss blended). Enter all 4 DK odds for a team → we remove the vig and compare. Chips: BET ≥5.0 pts edge, VALUE ≥2.5, PASS otherwise. LOG BEST saves the highest-edge outcome to your bet log.",
+  drive:"Bars = model probability for each first-drive outcome, both teams (coin-toss blended). Buckets match DK: FG ATT = made or missed attempt; TO/SAF = turnover, turnover on downs, or safety. Enter all 4 DK odds for a team → we remove the vig and compare. Chips: BET ≥5.0 pts edge, VALUE ≥2.5, PASS otherwise. LOG BEST saves the highest-edge outcome to your bet log.",
   punts:"μ = model expected punts. Enter DK game total to re-price the model live (totals move punt expectations). Enter DK line + over/under odds → devigged edge chips. Whole-number lines can PUSH — push probability is priced in.",
   kicks:"TT = team total: that team's implied points from spread + game total — the model's scoring context for the kicker. Enter DK team total to shift the projection, then line + odds for edge chips. Photos = projected starting kicker; punter listed below.",
   log:"Every logged bet freezes the model and fair (devigged) probability at bet time. Before kickoff, enter DK closing odds (your side + opposite) → CLV = devigged close minus your devigged price, in probability points. Positive average CLV is the real scoreboard — it converges in ~30 bets; win-loss record takes seasons. Results auto-grade Tuesday.",
@@ -360,10 +363,10 @@ function renderDrive(){
       const t=s==="home"?g.home:g.away;
       return`<div class="teamblock"><div class="tname">${tlogo(t,18)}${t} FIRST DRIVE</div>
       ${OUTS.map(o=>`
-        <div class="orow"><span class="olab">${o}</span>
+        <div class="orow"><span class="olab">${OUT_LBL[o]}</span>
           <div class="bar"><i style="width:${(100*g.drive[s][o]).toFixed(1)}%"></i></div>
           <span class="pct">${fmtP(g.drive[s][o])}</span>
-          <input class="odds" placeholder="DK ${o}" id="d-${gi}-${s}-${o}" inputmode="numeric" onchange="calcDrive(${gi},'${s}')">
+          <input class="odds" placeholder="DK ${OUT_LBL[o]}" id="d-${gi}-${s}-${o}" inputmode="numeric" onchange="calcDrive(${gi},'${s}')">
           <div class="tier" id="dt-${gi}-${s}-${o}">—</div>
         </div>`).join("")}
       <div style="text-align:right;margin-top:4px"><button class="logb" onclick="logDrive(${gi},'${s}')">LOG BEST</button></div>

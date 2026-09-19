@@ -45,7 +45,13 @@ main{max-width:760px;margin:0 auto;padding:12px}
 .hidden{display:none!important}
 /* cards */
 .game{background:var(--card);border:2px solid var(--line);border-radius:8px;margin-bottom:14px;overflow:hidden}
-.ghead{display:flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--turf) 0%,var(--card) 100%);padding:8px 10px;border-bottom:2px solid var(--line);flex-wrap:wrap}
+.ghead{display:flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--turf) 0%,var(--card) 100%);padding:8px 10px;border-bottom:2px solid var(--line);flex-wrap:wrap;cursor:pointer}
+.gchev{color:var(--dim);font-size:11px;margin-left:4px;display:inline-block;transition:transform .15s}
+.game.clp .gbody{display:none}
+.game.clp .gchev{transform:rotate(-90deg)}
+.game.clp .ghead{border-bottom:none}
+.allctl{display:flex;justify-content:flex-end}
+.allctl button{background:none;border:2px solid var(--line);color:var(--dim);font-weight:700;letter-spacing:.5px;font-size:10px;padding:8px 10px;border-radius:3px;cursor:pointer;min-height:40px;margin-bottom:12px}
 .ghead .vs{font-size:11px}
 .ghead .kick{color:var(--dim);font-size:11px;margin-left:auto}
 .badge{font-size:9px;font-weight:700;letter-spacing:.5px;padding:2px 6px;border-radius:3px;border:1px solid}
@@ -56,6 +62,9 @@ main{max-width:760px;margin:0 auto;padding:12px}
 .badge.ovr{color:var(--gold);border-color:var(--gold)}
 /* plan tab */
 .plan-h{font-family:'Press Start 2P';font-size:10px;color:var(--gold);margin-bottom:6px}
+.ptog{display:flex;width:100%;justify-content:space-between;align-items:center;gap:8px;background:none;border:none;cursor:pointer;padding:0;min-height:40px;text-align:left}
+.plansec.clp .plan-body{display:none}
+.plansec.clp .gchev{transform:rotate(-90deg)}
 .plan-row{display:grid;grid-template-columns:22px 1fr auto;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:12px;align-items:baseline}
 .plan-row:last-child{border-bottom:none}
 .plan-glyph{font-weight:700;font-size:12px}
@@ -144,6 +153,7 @@ h2.px{font-size:12px;margin-bottom:10px;color:var(--gold)}
   #view-drive:not(.hidden),#view-punts:not(.hidden),#view-kicks:not(.hidden){display:grid}
   #view-drive .game,#view-punts .game,#view-kicks .game{margin-bottom:0}
   #view-drive>.howto,#view-punts>.howto,#view-kicks>.howto,#view-drive>.err{grid-column:1/-1}
+  #view-drive>.allctl,#view-punts>.allctl,#view-kicks>.allctl{grid-column:1/-1}
   #view-log,#view-plan{max-width:900px;margin:0 auto}
   .tbwrap{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .tbwrap .teamblock{margin-bottom:0}
@@ -309,8 +319,17 @@ function gh(g){
   else if(g.wind_flag)badges.push(`<span class="badge wind">WIND ${g.wind_mph}</span>`);
   if((g.overrides_applied||[]).length)
     badges.push(`<span class="badge ovr" title="${esc(g.overrides_applied.map(o=>o.team+": "+o.flag).join(", "))}">OVR</span>`);
-  return`<div class="ghead"><span class="px vs">${tlogo(g.away)}${g.away} @ ${tlogo(g.home)}${g.home}</span>${badges.join("")}
-    <span class="kick">${g.gameday.slice(5)} ${g.gametime}</span></div>`;
+  return`<div class="ghead" onclick="this.parentElement.classList.toggle('clp')"><span class="px vs">${tlogo(g.away)}${g.away} @ ${tlogo(g.home)}${g.home}</span>${badges.join("")}
+    <span class="kick">${g.gameday.slice(5)} ${g.gametime}<span class="gchev">&#9662;</span></span></div>`;
+}
+/* expand/collapse every matchup in a tab (cards default expanded) */
+const allCtl=tab=>`<div class="allctl"><button onclick="setAllGames('${tab}',this)">COLLAPSE ALL</button></div>`;
+function setAllGames(tab,btn){
+  const collapse=btn.dataset.mode!=="expand";   // button always does what its label says
+  [...document.getElementById("view-"+tab).querySelectorAll(".game")]
+    .forEach(c=>c.classList.toggle("clp",collapse));
+  btn.dataset.mode=collapse?"expand":"collapse";
+  btn.textContent=collapse?"EXPAND ALL":"COLLAPSE ALL";
 }
 /* ---------- coach strip ---------- */
 const initials=n=>String(n||"").split(/\s+/).map(w=>w[0]||"").join("").slice(0,2).toUpperCase();
@@ -333,7 +352,7 @@ const coachStrip=g=>`<div class="cstrip"><div>${coachSide(g.coaches,"away")}</di
 /* ---------- DRIVE ---------- */
 function renderDrive(){
   const el=document.getElementById("view-drive");
-  el.innerHTML=howTo("drive")+SLATE.games.map((g,gi)=>`
+  el.innerHTML=howTo("drive")+allCtl("drive")+SLATE.games.map((g,gi)=>`
   <div class="game">${gh(g)}<div class="gbody">
     ${coachStrip(g)}
     <div class="tbwrap">
@@ -382,7 +401,7 @@ function logDrive(gi,s){
 /* ---------- PUNTS ---------- */
 function renderPunts(){
   const el=document.getElementById("view-punts");
-  el.innerHTML=howTo("punts")+SLATE.games.map((g,gi)=>`
+  el.innerHTML=howTo("punts")+allCtl("punts")+SLATE.games.map((g,gi)=>`
   <div class="game">${gh(g)}<div class="gbody">
     <div class="small">model: ${g.away} ${g.punts.away.mean} · ${g.home} ${g.punts.home.mean} · game ${g.punts.game_mean} (sched total ${g.lines.total_line})</div>
     <div class="mrow"><span class="lab">DK game total</span>
@@ -431,7 +450,7 @@ function logPunts(gi){
 /* ---------- KICKS ---------- */
 function renderKicks(){
   const el=document.getElementById("view-kicks");
-  el.innerHTML=howTo("kicks")+SLATE.games.map((g,gi)=>{
+  el.innerHTML=howTo("kicks")+allCtl("kicks")+SLATE.games.map((g,gi)=>{
     const sides=Object.keys(g.kickers);
     if(!sides.length)return`<div class="game">${gh(g)}<div class="gbody small">kicker TBD (roster unsettled)</div></div>`;
     return`<div class="game">${gh(g)}<div class="gbody">
@@ -505,10 +524,14 @@ const RUNBOOK=[
 function renderPlan(){
   const gl=p=>`<span class="plan-glyph ${p==="done"?"done":"pend"}">${p==="done"?"&#10003;":"&#9633;"}</span>`;
   const row=e=>`<div class="plan-row">${gl(e.phase)}<span>${e.item}</span><span class="plan-date">${e.date||""}</span>${e.note?`<div class="plan-note">${e.note}</div>`:""}</div>`;
-  const sec=(title,key)=>`<div class="game"><div class="gbody"><div class="plan-h">${title}</div>${PLAN.filter(e=>e.sec===key).map(row).join("")}</div></div>`;
-  document.getElementById("view-plan").innerHTML=sec("DONE","done")+sec("IN SEASON","szn")+
-    `<div class="game"><div class="gbody"><div class="plan-h">SUNDAY RUNBOOK</div>
-     ${RUNBOOK.map(r=>`<div class="plan-row"><span class="plan-glyph pend">&#8250;</span><span>${r}</span><span></span></div>`).join("")}</div></div>`;
+  const sec=(title,key,body,clp)=>`<div class="game"><div class="gbody plansec${clp?" clp":""}" id="ps-${key}">
+    <button class="plan-h ptog" onclick="document.getElementById('ps-${key}').classList.toggle('clp')">${title}<span class="gchev">&#9662;</span></button>
+    <div class="plan-body">${body}</div></div></div>`;
+  const rows=key=>PLAN.filter(e=>e.sec===key).map(row).join("");
+  document.getElementById("view-plan").innerHTML=
+    sec("DONE","done",rows("done"),true)+          // done items collapsed by default
+    sec("IN SEASON","szn",rows("szn"),false)+
+    sec("SUNDAY RUNBOOK","run",RUNBOOK.map(r=>`<div class="plan-row"><span class="plan-glyph pend">&#8250;</span><span>${r}</span><span></span></div>`).join(""),false);
 }
 
 /* ---------- LOG / Supabase ---------- */

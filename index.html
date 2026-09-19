@@ -123,7 +123,10 @@ input:focus{outline:2px solid var(--cyan)}
 .bet .top{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12px}
 .bet .clv{margin-left:auto;font-weight:700;letter-spacing:.5px;font-size:12px}
 .clv.pos{color:var(--green)} .clv.neg{color:var(--red)}
-.bet .closerow{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:6px;margin-top:8px}
+.bet .closerow{display:grid;grid-template-columns:1fr 1fr 1fr auto auto;gap:6px;margin-top:8px;align-items:center}
+.editrow{grid-template-columns:1fr 1fr auto auto!important}
+.logb.del{border-color:var(--red);color:var(--red)}
+.edtog{border-color:var(--dim);color:var(--dim)}
 select{background:#0a1226;border:1px solid var(--line);color:var(--chalk);padding:5px;border-radius:3px;font:inherit;font-size:12px}
 /* overlay */
 #ovr{position:fixed;inset:0;background:rgba(4,6,14,.9);z-index:50;overflow:auto;padding:16px}
@@ -570,6 +573,13 @@ async function loadBets(){
         ${["PENDING","WIN","LOSS","PUSH"].map(x=>`<option ${x===b.result?"selected":""}>${x}</option>`).join("")}
       </select>
       <span class="small">wk${b.week}</span>
+      <button class="logb edtog" onclick="toggleEdit('${b.id}')">EDIT</button>
+    </div>
+    <div class="closerow editrow hidden" id="ed-${b.id}">
+      <input class="odds" id="edo-${b.id}" placeholder="your odds" value="${b.your_odds??""}">
+      <input class="num" id="edl-${b.id}" placeholder="line (blank = none)" value="${b.line??""}">
+      <button class="logb" onclick="saveEdit('${b.id}')">SAVE</button>
+      <button class="logb del" onclick="delBet('${b.id}')">DELETE</button>
     </div></div>`;
   el.innerHTML=howTo("log")+`<div class="sumbar">
       <div>BETS<b>${BETS.length}</b></div><div>RECORD<b>${wl}</b></div>
@@ -584,6 +594,21 @@ async function setClose(id,mine,opp){
   const patch={close_odds:close||null,opp_close_odds:oc||null};
   if(close&&oc){const[fc]=devig2(close,oc);patch.clv_pct=100*(fc-b.fair_prob_at_bet)}
   await fetch(`${SUPA_URL}/rest/v1/b00mstick_bets?id=eq.${id}`,{method:"PATCH",headers:SB_HDRS,body:JSON.stringify(patch)});
+  loadBets();
+}
+function toggleEdit(id){document.getElementById("ed-"+id).classList.toggle("hidden")}
+async function saveEdit(id){
+  const o=parseFloat(document.getElementById("edo-"+id).value);
+  const l=document.getElementById("edl-"+id).value.trim();
+  if(isNaN(o))return alert("Odds required (American, e.g. -110).");
+  if(l!==""&&isNaN(parseFloat(l)))return alert("Line must be a number, or blank for none.");
+  await fetch(`${SUPA_URL}/rest/v1/b00mstick_bets?id=eq.${id}`,{method:"PATCH",headers:SB_HDRS,
+    body:JSON.stringify({your_odds:o,line:l===""?null:parseFloat(l)})});
+  loadBets();
+}
+async function delBet(id){
+  if(!confirm("Delete this bet permanently? This cannot be undone."))return;
+  await fetch(`${SUPA_URL}/rest/v1/b00mstick_bets?id=eq.${id}`,{method:"DELETE",headers:SB_HDRS});
   loadBets();
 }
 async function setResult(id,val){

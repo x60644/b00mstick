@@ -9,7 +9,8 @@ The script the GitHub Actions crons run (and you can run locally today):
   3. loads 2026 rosters for each team's kicker + punter (names + headshots)
   4. fetches wind forecasts (Open-Meteo, free, no key) for outdoor stadiums
   5. builds model state as of the current week via b00mstick_model
-  6. writes output/week{W}_slate.json for the app
+  6. writes output/week{W}_slate.json (archive) + output/current_slate.json
+     (what the app boots from; ?week=N views an archived slate)
 
 Manual DK lines are entered in the app; the JSON carries schedule lines as
 pre-fill defaults plus linear sensitivities (tt_slope) so the frontend can
@@ -277,10 +278,10 @@ def main():
             return None
         return o
 
-    path = f"output/week{week}_slate.json"
-    with open(path, "w") as f:
-        json.dump(_clean(out), f, indent=1)
-    print(f"Wrote {path} ({len(games_out)} games)")
+    for path in (f"output/week{week}_slate.json", "output/current_slate.json"):
+        with open(path, "w") as f:
+            json.dump(_clean(out), f, indent=1)
+        print(f"Wrote {path} ({len(games_out)} games)")
 
 if __name__ == "__main__":
     main()

@@ -124,13 +124,6 @@ h2.px{font-size:12px;margin-bottom:10px;color:var(--gold)}
 .note{font-size:11px;color:var(--dim);margin:8px 0}
 .err{color:var(--red);font-size:12px;padding:10px;text-align:center}
 .loading{font-family:'Press Start 2P';font-size:10px;color:var(--dim);text-align:center;padding:40px 10px}
-/* preseason smoke test */
-#preban{background:repeating-linear-gradient(45deg,#3a2a00 0 14px,#221900 14px 28px);border-bottom:3px solid var(--gold);color:var(--gold);font-size:11px;padding:9px 12px;text-align:center;line-height:1.5}
-#preban b{font-family:'Press Start 2P';font-size:9px;display:block;margin-bottom:5px;letter-spacing:1px}
-.chip.pre{color:var(--gold);border-color:var(--gold);cursor:pointer}
-.presec{border:2px solid var(--gold);border-radius:8px;padding:10px;margin-bottom:12px}
-.presec .ptitle{font-family:'Press Start 2P';font-size:9px;color:var(--gold);margin-bottom:6px}
-.presec .note{margin-top:0}
 /* collapsible how-to strips */
 .howto{background:var(--card);border:2px solid var(--line);border-radius:8px;margin-bottom:12px;overflow:hidden}
 .howto>button{width:100%;background:none;border:none;color:var(--gold);font-family:'Press Start 2P';font-size:9px;text-align:left;padding:13px 12px;cursor:pointer;min-height:40px}
@@ -220,12 +213,9 @@ const SUPA_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJ
 const SB_HDRS={apikey:SUPA_KEY,Authorization:"Bearer "+SUPA_KEY,"Content-Type":"application/json"};
 const TH={drive:{BET:.050,VALUE:.025},punts:{BET:.045,VALUE:.022},kicker:{BET:.045,VALUE:.022}};
 const OUTS=["TD","FG","PUNT","OTHER"];
-let SLATE=null,BETS=[],PRESEASON=false;
+let SLATE=null,BETS=[];
 const params=new URLSearchParams(location.search);
-const wk=params.get("week")||1;
-/* preseason smoke-test window: after this instant the app NEVER loads a
-   preseason slate, even if preseason_current.json is still committed */
-const PRE_END=new Date("2026-09-01T00:00:00");
+const wk=params.get("week");   // ?week=N views an archived slate
 
 /* ---------- math ---------- */
 const a2p=o=>o>0?100/(o+100):-o/(-o+100);
@@ -251,40 +241,19 @@ const fmtP=p=>(100*p).toFixed(1)+"%";
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 /* ---------- load ---------- */
-function preWindowOpen(){return new Date()<PRE_END}
 async function fetchSlate(path){
   const r=await fetch(path);
   if(!r.ok)throw new Error("HTTP "+r.status);
   return JSON.parse((await r.text()).replace(/\bNaN\b/g,"null"));
 }
 async function loadSlate(){
-  /* Preseason auto-load: only inside the window, only if the slate itself
-     hasn't expired, and skippable with ?pre=0. Once the real season starts
-     the regular week{N}_slate.json path below is the ONLY path. */
-  if(params.get("pre")!=="0"&&preWindowOpen()){
-    try{
-      const s=await fetchSlate("output/preseason_current.json");
-      if(s.mode==="preseason"&&(!s.expires||new Date()<new Date(s.expires+"T00:00:00")))return s;
-    }catch(e){/* no preseason slate — fall through to regular */}
-  }
-  return fetchSlate(`output/week${wk}_slate.json`);
-}
-function preBanner(){
-  const d=document.createElement("div");d.id="preban";
-  d.innerHTML=`<b>&#9888; PRESEASON SMOKE TEST &#9888;</b>ESPN schedule · placeholder lines (enter real DK numbers) · model priors are regular-season, football is backup-heavy — paper bets only, tagged [PRE] and excluded from the season record. Preseason mode shuts off automatically Sep&nbsp;1.`;
-  document.getElementById("topbar").appendChild(d);   // scrolls with the fixed header
+  if(wk)return fetchSlate(`output/week${wk}_slate.json`);   // archive view
+  return fetchSlate("output/current_slate.json");           // written by every scoring run
 }
 /* fixed topbar: keep content clear of it whatever its current height */
 function fitTop(){document.body.style.paddingTop=document.getElementById("topbar").offsetHeight+"px"}
 window.addEventListener("resize",fitTop);
 window.addEventListener("load",fitTop);
-function modeChip(){
-  const chip=document.createElement("span");chip.className="chip pre";
-  if(PRESEASON){chip.textContent="→ REG WK"+wk;chip.onclick=()=>{params.set("pre","0");location.search=params}}
-  else if(preWindowOpen()){chip.textContent="→ PRESEASON";chip.onclick=()=>{params.delete("pre");location.search=params}}
-  else return;
-  document.getElementById("hbtns").prepend(chip);
-}
 /* team logos (ESPN CDN); explicit 32-team map — no blind lowercasing */
 const ESPN_LOGO={ARI:"ari",ATL:"atl",BAL:"bal",BUF:"buf",CAR:"car",CHI:"chi",
   CIN:"cin",CLE:"cle",DAL:"dal",DEN:"den",DET:"det",GB:"gb",HOU:"hou",IND:"ind",
@@ -316,16 +285,12 @@ function toggleHow(tab){
 async function boot(){
   try{
     SLATE=await loadSlate();
-    PRESEASON=SLATE.mode==="preseason";
-    document.getElementById("wkChip").textContent=PRESEASON
-      ?`PRESEASON · wk ${SLATE.week}`:`${SLATE.season} · week ${SLATE.week}`;
+    document.getElementById("wkChip").textContent=`${SLATE.season} · week ${SLATE.week}`;
     document.getElementById("genChip").textContent="scored "+SLATE.generated.slice(0,16).replace("T"," ");
-    if(PRESEASON)preBanner();
-    modeChip();
     renderDrive();renderPunts();renderKicks();
   }catch(e){
     document.getElementById("view-drive").innerHTML=
-      `<div class="err">Couldn't load output/week${wk}_slate.json — ${esc(e.message)}. Run score_week.py and commit the output folder.</div>`;
+      `<div class="err">Couldn't load ${wk?`output/week${wk}_slate.json`:"output/current_slate.json"} — ${esc(e.message)}. Run score_week.py and commit the output folder.</div>`;
   }
   fitTop();
   renderPlan();loadBets();loadOverrides();
@@ -419,7 +384,7 @@ function renderPunts(){
   const el=document.getElementById("view-punts");
   el.innerHTML=howTo("punts")+SLATE.games.map((g,gi)=>`
   <div class="game">${gh(g)}<div class="gbody">
-    <div class="small">model: ${g.away} ${g.punts.away.mean} · ${g.home} ${g.punts.home.mean} · game ${g.punts.game_mean} (${g.lines.placeholder?`<span style="color:var(--gold)">PLACEHOLDER total ${g.lines.total_line} — enter DK</span>`:`sched total ${g.lines.total_line}`})</div>
+    <div class="small">model: ${g.away} ${g.punts.away.mean} · ${g.home} ${g.punts.home.mean} · game ${g.punts.game_mean} (sched total ${g.lines.total_line})</div>
     <div class="mrow"><span class="lab">DK game total</span>
       <input class="num" id="pt-${gi}" value="${g.lines.total_line}" inputmode="decimal" onchange="calcPunts(${gi})">
       <input class="num" id="pl-${gi}" placeholder="line" value="${(Math.round(g.punts.game_mean)+0.5).toFixed(1)}" inputmode="decimal" onchange="calcPunts(${gi})">
@@ -521,14 +486,14 @@ function logKick(gi,s){
 const PLAN=[
   {sec:"done",item:"Model locked — 2025 walk-forward backtest, beat-naive gates passed",phase:"done",date:"Aug 13",note:"phase 1 first drive + punts, kicker v2; coach-tendency factors tested and rejected"},
   {sec:"done",item:"App live on Vercel — DRIVE / PUNTS / KICKS / LOG, DK entry + CLV tracking",phase:"done",date:"mid-Aug"},
-  {sec:"done",item:"Coach photo cards (32-club scrape, initials fallback)",phase:"done",date:"Aug 22"},
-  {sec:"done",item:"Preseason smoke-test mode — ESPN slate, [PRE] paper bets, Sep 1 self-destruct",phase:"done",date:"Aug 22"},
+  {sec:"done",item:"Coach photo cards + team logos + responsive desktop grid",phase:"done",date:"Aug 22–25"},
   {sec:"done",item:"Supabase overrides wired into scorer (shrink flags + NEW_KICKER)",phase:"done",date:"Aug 25",note:"OVR badge on affected games; locality verified per-team"},
-  {sec:"done",item:"Three crons live: Fri scoring · Sun 11:30 refresh · Tue settlement",phase:"done",date:"Aug 25",note:"first scheduled run Fri Aug 28 — verify it committed a fresh slate"},
-  {sec:"wk1",item:"Settlement synthetic test (2025 wk18: WIN / LOSS / PUSH)",phase:"done",date:"Aug 25",note:"passed — fakes inserted, graded correctly, deleted"},
-  {sec:"wk1",item:"Preseason cutover re-run — regenerate week 1 slate after Sep 1 guardrail closes",phase:"pending",date:"Sep 1–2"},
-  {sec:"wk1",item:"DK market verification — confirm selections/lines match posted week 1 props",phase:"pending",date:"when props post"},
-  {sec:"wk1",item:"Feature freeze",phase:"pending",date:"Sep 9"},
+  {sec:"done",item:"Three crons live: Fri scoring · Sun 11:30 refresh · Tue settlement",phase:"done",date:"Aug 25",note:"settlement synthetic test passed (WIN/LOSS/PUSH vs 2025 wk18)"},
+  {sec:"done",item:"Season cutover — week 1 scored + refreshed automatically by crons",phase:"done",date:"Sep 11–13"},
+  {sec:"done",item:"Week 1 + TNF backfilled; app now boots from current_slate.json",phase:"done",date:"Sep 18"},
+  {sec:"szn",item:"Log first real bets — DRIVE / PUNTS / KICKS vs posted DK props",phase:"pending",date:"wk 2+",note:"CLV is the scoreboard; record needs seasons"},
+  {sec:"szn",item:"First live settlement grade (needs PENDING bets to grade)",phase:"pending",date:"first Tue after bets"},
+  {sec:"szn",item:"Coach photo self-heal rerun after any coaching change",phase:"pending",date:"as needed",note:"python coach_photos.py, recommit JSON"},
 ];
 const RUNBOOK=[
   "FRI PM — verify slate auto-updated (cron committed, app shows new scored time)",
@@ -541,14 +506,13 @@ function renderPlan(){
   const gl=p=>`<span class="plan-glyph ${p==="done"?"done":"pend"}">${p==="done"?"&#10003;":"&#9633;"}</span>`;
   const row=e=>`<div class="plan-row">${gl(e.phase)}<span>${e.item}</span><span class="plan-date">${e.date||""}</span>${e.note?`<div class="plan-note">${e.note}</div>`:""}</div>`;
   const sec=(title,key)=>`<div class="game"><div class="gbody"><div class="plan-h">${title}</div>${PLAN.filter(e=>e.sec===key).map(row).join("")}</div></div>`;
-  document.getElementById("view-plan").innerHTML=sec("DONE","done")+sec("BEFORE WEEK 1","wk1")+
+  document.getElementById("view-plan").innerHTML=sec("DONE","done")+sec("IN SEASON","szn")+
     `<div class="game"><div class="gbody"><div class="plan-h">SUNDAY RUNBOOK</div>
      ${RUNBOOK.map(r=>`<div class="plan-row"><span class="plan-glyph pend">&#8250;</span><span>${r}</span><span></span></div>`).join("")}</div></div>`;
 }
 
 /* ---------- LOG / Supabase ---------- */
 async function saveBet(b){
-  if(PRESEASON)b.selection="[PRE] "+b.selection;   // smoke-test tag: keeps these out of the season record
   b.season=SLATE.season;b.week=SLATE.week;
   const r=await fetch(`${SUPA_URL}/rest/v1/b00mstick_bets`,{method:"POST",
     headers:{...SB_HDRS,Prefer:"return=representation"},body:JSON.stringify(b)});
@@ -562,12 +526,9 @@ async function loadBets(){
     if(!r.ok)throw 0;
     BETS=await r.json();
   }catch(e){el.innerHTML=`<div class="err">Bet log unavailable — run the b00mstick SQL in the skyh00k Supabase project.</div>`;return}
-  const isPre=b=>String(b.selection||"").startsWith("[PRE]")||String(b.game_id||"").startsWith("PRE");
-  const reg=BETS.filter(b=>!isPre(b)),pre=BETS.filter(isPre);
-  // season record + CLV come from REGULAR-SEASON bets only; preseason is a smoke test
-  const settled=reg.filter(b=>b.result!=="PENDING");
+  const settled=BETS.filter(b=>b.result!=="PENDING");
   const wl=`${settled.filter(b=>b.result==="WIN").length}-${settled.filter(b=>b.result==="LOSS").length}-${settled.filter(b=>b.result==="PUSH").length}`;
-  const clvs=reg.filter(b=>b.clv_pct!=null).map(b=>+b.clv_pct);
+  const clvs=BETS.filter(b=>b.clv_pct!=null).map(b=>+b.clv_pct);
   const avg=clvs.length?(clvs.reduce((a,b)=>a+b,0)/clvs.length).toFixed(2):"—";
   const betCard=b=>`
     <div class="bet"><div class="top">
@@ -582,22 +543,14 @@ async function loadBets(){
       <select onchange="setResult('${b.id}',this.value)">
         ${["PENDING","WIN","LOSS","PUSH"].map(x=>`<option ${x===b.result?"selected":""}>${x}</option>`).join("")}
       </select>
-      <span class="small">${isPre(b)?"PRE ":""}wk${b.week}</span>
+      <span class="small">wk${b.week}</span>
     </div></div>`;
-  const preSec=pre.length||PRESEASON?`
-    <div class="presec">
-      <div class="ptitle">&#9888; PRESEASON SMOKE TEST</div>
-      <div class="note">Pipeline dress rehearsal on preseason games — paper bets, manually graded, NOT counted in the season record or CLV above. Real bookkeeping starts Week 1.</div>
-      ${pre.map(betCard).join("")||'<div class="note">No preseason paper bets yet.</div>'}
-    </div>`:"";
   el.innerHTML=howTo("log")+`<div class="sumbar">
-      <div>BETS<b>${reg.length}</b></div><div>RECORD<b>${wl}</b></div>
+      <div>BETS<b>${BETS.length}</b></div><div>RECORD<b>${wl}</b></div>
       <div>AVG CLV<b class="${+avg>0?'clv pos':''}">${avg}${clvs.length?" pts":""}</b></div>
-      <div>CLV SAMPLE<b>${clvs.length}</b></div>
-      ${pre.length?`<div>PRE (excl.)<b style="color:var(--gold)">${pre.length}</b></div>`:""}</div>
-    ${preSec}
+      <div>CLV SAMPLE<b>${clvs.length}</b></div></div>
     <div class="note">Enter DK closing odds (your side + opposite side) at kickoff — CLV = devigged close minus devigged bet price, in probability points.</div>
-    ${reg.map(betCard).join("")||'<div class="note">No bets logged yet — price a market and hit LOG.</div>'}`;
+    ${BETS.map(betCard).join("")||'<div class="note">No bets logged yet — price a market and hit LOG.</div>'}`;
 }
 async function setClose(id,mine,opp){
   const b=BETS.find(x=>x.id===id);

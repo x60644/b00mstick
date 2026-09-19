@@ -16,10 +16,8 @@ Selections graded (exactly what the app writes):
   "game punts {over|under}"  + line            market PUNTS  (int lines push)
   "{K.Name} pts {over|under}" + line           market KICKS  (int lines push)
 
-Rules: [PRE]-tagged bets are never touched (preseason paper bets, and
-preseason games aren't in nflverse anyway). Unmatchable bets stay PENDING
-and are listed. If the season's pbp parquet isn't posted yet, exit
-gracefully with a note.
+Rules: unmatchable bets stay PENDING and are listed. If the season's pbp
+parquet isn't posted yet, exit gracefully with a note.
 
 Synthetic test (--test): inserts 3 fake PENDING bets against known 2025
 week 18 games — one expected WIN, one LOSS, one PUSH — runs the settler,
@@ -85,8 +83,6 @@ def grade_bet(b, act):
     """WIN/LOSS/PUSH, or None if this bet can't be matched to a result."""
     sel = str(b.get("selection") or "")
     gid = str(b.get("game_id") or "")
-    if sel.startswith("[PRE]") or gid.startswith("PRE"):
-        return "PRE"
     mkt = str(b.get("market") or "")
     if mkt == "DRIVE":
         m = DRIVE_RE.match(sel)
@@ -120,12 +116,9 @@ def settle(season, week=None):
     pending = sb("GET", url)
     print(f"{len(pending)} PENDING bets for {season}"
           f"{f' week {week}' if week else ''}")
-    graded, skipped_pre, unmatched = 0, 0, []
+    graded, unmatched = 0, []
     for b in pending:
         res = grade_bet(b, act)
-        if res == "PRE":
-            skipped_pre += 1
-            continue
         if res is None:
             unmatched.append(f"  id={b['id']} {b.get('market')} \"{b.get('selection')}\" {b.get('game_id')}")
             continue
@@ -133,7 +126,7 @@ def settle(season, week=None):
         print(f"  {res:5s}  {b.get('selection')}"
               f"{'' if b.get('line') is None else ' ' + str(b['line'])}  ({b.get('game_id')})")
         graded += 1
-    print(f"Graded {graded}; skipped {skipped_pre} [PRE]; {len(unmatched)} left PENDING")
+    print(f"Graded {graded}; {len(unmatched)} left PENDING")
     if unmatched:
         print("Unmatched (left PENDING):")
         print("\n".join(unmatched))

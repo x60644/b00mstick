@@ -569,6 +569,8 @@ async function loadBets(){
        close is all four bucket odds, devigged together (same math as bet
        time). Two-way markets (punts/kicks) keep the your-side/opp pair. */
     const isD=b.market==="DRIVE",key=isD?String(b.selection).split(" 1st drive ")[1]:null;
+    // edge at bet time (the chip's number): model minus devigged fair, in prob pts
+    const edge=b.model_prob!=null&&b.fair_prob_at_bet!=null?100*(b.model_prob-b.fair_prob_at_bet):null;
     const close=isD?`
     <div class="closerow c4">
       ${OUTS.map(o=>`<input class="odds" id="c4-${b.id}-${o}" placeholder="cl ${OUT_LBL[o]}" value="${o===key&&b.close_odds!=null?b.close_odds:""}" onchange="setClose4('${b.id}')">`).join("")}
@@ -588,7 +590,7 @@ async function loadBets(){
     <div class="bet"><div class="top">
       <b style="letter-spacing:.5px;font-size:11px">${b.market}</b>
       <span>${esc(b.selection)}${b.line!=null?" "+b.line:""}</span>
-      <span class="small">@ ${b.your_odds>0?"+":""}${b.your_odds} · ${b.tier}</span>
+      <span class="small" title="${b.model_prob!=null?`model ${(100*b.model_prob).toFixed(1)}% vs fair ${(100*b.fair_prob_at_bet).toFixed(1)}% at bet`:""}">@ ${b.your_odds>0?"+":""}${b.your_odds} · ${b.tier}${edge!=null?` ${edge>0?"+":""}${edge.toFixed(1)}`:""}</span>
       <span class="clv ${b.clv_pct>0?"pos":b.clv_pct<0?"neg":""}">${b.clv_pct!=null?(b.clv_pct>0?"+":"")+(+b.clv_pct).toFixed(2):""}</span>
     </div>${close}
     <div class="closerow editrow hidden" id="ed-${b.id}">

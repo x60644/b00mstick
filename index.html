@@ -91,6 +91,11 @@ main{max-width:760px;margin:0 auto;padding:12px}
 .bar i{position:absolute;inset:0;width:0;background:linear-gradient(90deg,var(--turf2),var(--green));border-radius:1px}
 .pct{font-size:11px;text-align:right}
 input.odds,input.num{width:100%;background:#0a1226;border:1px solid var(--line);color:var(--chalk);padding:5px 6px;border-radius:3px;font:inherit;font-size:12px}
+/* touch devices: mobile keyboards often lack a minus key — each odds field
+   gets a tap-to-flip sign button (desktop keeps plain fields) */
+.oddswrap{display:flex;align-items:stretch;min-width:0}
+.oddswrap input{flex:1;min-width:0;border-radius:0 3px 3px 0}
+.sgn{flex:0 0 22px;background:#0a1226;border:1px solid var(--line);border-right:none;color:var(--gold);font-weight:700;font-size:12px;border-radius:3px 0 0 3px;cursor:pointer;padding:0}
 input:focus{outline:2px solid var(--cyan)}
 .tier{font-weight:700;letter-spacing:.5px;font-size:11px;padding:5px 0;text-align:center;border-radius:3px;border:2px solid var(--line);color:var(--dim);cursor:pointer}
 /* game has a logged bet for this tab's market */
@@ -271,9 +276,37 @@ function normOdds(el,defNeg){
   if(raw==="")return NaN;
   let v=parseFloat(raw);
   if(isNaN(v))return NaN;
-  if(!/^[+-]/.test(raw))v=defNeg?-Math.abs(v):Math.abs(v);
+  if(!/^[+-]/.test(raw)){
+    const neg=el.dataset.sign?el.dataset.sign==="-":defNeg;   // ± button can pre-set the sign
+    v=neg?-Math.abs(v):Math.abs(v);
+  }
   el.value=(v>0?"+":"")+v;
   return v;
+}
+/* touch-only sign toggles on odds fields (mobile keyboards lack a minus key) */
+const COARSE=matchMedia("(pointer:coarse)").matches;
+function enhanceSigns(root){
+  if(!COARSE||!root)return;
+  root.querySelectorAll("input.odds").forEach(inp=>{
+    if(inp.parentElement.classList.contains("oddswrap"))return;
+    const w=document.createElement("span");w.className="oddswrap";
+    inp.parentNode.insertBefore(w,inp);
+    const b=document.createElement("button");b.type="button";b.className="sgn";
+    b.textContent="±";
+    b.onclick=e=>{e.stopPropagation();flipSign(inp,b)};
+    w.appendChild(b);w.appendChild(inp);
+  });
+}
+function flipSign(inp,b){
+  const raw=inp.value.trim();
+  if(raw!==""&&!isNaN(parseFloat(raw))){          // value present: negate it, reprice
+    const v=-parseFloat(raw);
+    inp.value=(v>0?"+":"")+v;
+    inp.dispatchEvent(new Event("change"));
+  }else{                                          // empty: prime the sign for next entry
+    inp.dataset.sign=inp.dataset.sign==="-"?"+":"-";
+    b.textContent=inp.dataset.sign;
+  }
 }
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
@@ -404,6 +437,7 @@ function renderDrive(){
       </div>`}).join("")}
     </div>
   </div></div>`).join("");
+  enhanceSigns(el);
 }
 function calcDrive(gi,s){
   const g=SLATE.games[gi];
@@ -460,6 +494,7 @@ function renderPunts(){
       <div class="tier" id="ptov-${gi}">OVER</div><div class="tier" id="ptun-${gi}">UNDER</div>
       <span></span><span></span><button class="logb" onclick="logPunts(${gi})">LOG</button></div>
   </div></div>`).join("");
+  enhanceSigns(el);
 }
 function puntsMu(gi){
   const g=SLATE.games[gi];
@@ -519,6 +554,7 @@ function renderKicks(){
           ${pn?`<div class="small">punter: ${esc(pn.name)}</div>`:""}
         </div></div>`;}).join("")}
     </div></div>`;}).join("");
+  enhanceSigns(el);
 }
 function calcKick(gi,s){
   const g=SLATE.games[gi],k=g.kickers[s];
@@ -649,6 +685,7 @@ async function loadBets(){
     <div class="note">Enter DK closing odds (your side + opposite side) at kickoff — CLV = devigged close minus devigged bet price, in probability points.</div>
     ${BETS.map(betCard).join("")||'<div class="note">No bets logged yet — price a market and hit LOG.</div>'}`;
   markLogged();
+  enhanceSigns(el);
 }
 /* green-flag every game card that already has a logged bet in that tab's market */
 function markLogged(){

@@ -92,7 +92,10 @@ main{max-width:760px;margin:0 auto;padding:12px}
 .pct{font-size:11px;text-align:right}
 input.odds,input.num{width:100%;background:#0a1226;border:1px solid var(--line);color:var(--chalk);padding:5px 6px;border-radius:3px;font:inherit;font-size:12px}
 input:focus{outline:2px solid var(--cyan)}
-.tier{font-weight:700;letter-spacing:.5px;font-size:11px;padding:5px 0;text-align:center;border-radius:3px;border:2px solid var(--line);color:var(--dim)}
+.tier{font-weight:700;letter-spacing:.5px;font-size:11px;padding:5px 0;text-align:center;border-radius:3px;border:2px solid var(--line);color:var(--dim);cursor:pointer}
+/* game has a logged bet for this tab's market */
+.game.hasbet{border-color:var(--green)}
+.game.hasbet .ghead::after{content:"✓ LOGGED";color:var(--green);font-weight:700;font-size:9px;letter-spacing:.5px;margin-left:6px}
 .tier.BET{border-color:var(--boom);color:var(--boom);animation:blink 1.1s steps(2) infinite}
 .tier.VALUE{border-color:var(--cyan);color:var(--cyan)}
 @keyframes blink{50%{opacity:.45}}
@@ -261,6 +264,17 @@ function priceDist(dist,shift,line){
   return{over,under,push};
 }
 const fmtP=p=>(100*p).toFixed(1)+"%";
+/* odds fields assume a sign per market (DRIVE + longshots, PUNTS/KICKS -
+   juice); typing an explicit + or - overrides. Field is rewritten signed. */
+function normOdds(el,defNeg){
+  const raw=String(el.value).trim();
+  if(raw==="")return NaN;
+  let v=parseFloat(raw);
+  if(isNaN(v))return NaN;
+  if(!/^[+-]/.test(raw))v=defNeg?-Math.abs(v):Math.abs(v);
+  el.value=(v>0?"+":"")+v;
+  return v;
+}
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 /* ---------- load ---------- */
@@ -294,9 +308,9 @@ const dkPath=tab=>DKPATH[tab]?`<div class="dkpath"><b>FIND IT ON DK:</b>${DKPATH
 /* collapsible how-to strips (state persists per-tab; localStorage may be
    unavailable in private browsing — degrade to session-only) */
 const HOWTO={
-  drive:"Bars = model probability for each first-drive outcome, both teams (coin-toss blended). Buckets match DK: FG ATT = made or missed attempt; TO/SAF = turnover, turnover on downs, or safety. Enter all 4 DK odds for a team → we remove the vig and compare. Chips: BET ≥5.0 pts edge, VALUE ≥2.5, PASS otherwise. LOG BEST saves the highest-edge outcome to your bet log.",
-  punts:"μ = model expected punts. Enter DK game total to re-price the model live (totals move punt expectations). Enter DK line + over/under odds → devigged edge chips. Whole-number lines can PUSH — push probability is priced in.",
-  kicks:"TT = team total: that team's implied points from spread + game total — the model's scoring context for the kicker. Enter DK team total to shift the projection, then line + odds for edge chips. Photos = projected starting kicker; punter listed below.",
+  drive:"Bars = model probability for each first-drive outcome, both teams (coin-toss blended). Buckets match DK: FG ATT = made or missed attempt; TO/SAF = turnover, turnover on downs, or safety. Enter all 4 DK odds for a team (bare numbers assume +; type - to override) → we remove the vig and compare. Chips: BET ≥5.0 pts edge, VALUE ≥2.5, PASS otherwise. Tap a chip to log THAT outcome; LOG BEST saves the highest-edge one. Green border = you already have a drive bet on that game.",
+  punts:"μ = model expected punts. Enter DK game total to re-price the model live (totals move punt expectations). Enter DK line + over/under odds (bare numbers assume −; type + to override) → devigged edge chips. Whole-number lines can PUSH — push probability is priced in. Green border = punts bet already logged on that game.",
+  kicks:"TT = team total: that team's implied points from spread + game total — the model's scoring context for the kicker. Enter DK team total to shift the projection, then line + odds for edge chips (bare odds assume −; type + to override). Photos = projected starting kicker; punter listed below. Green border = kicker bet already logged on that game.",
   log:"Every logged bet freezes the model and fair (devigged) probability at bet time. Before kickoff, enter DK closing odds → CLV = devigged close minus your devigged price, in probability points. Two-way bets (punts/kicks): your side + opposite. DRIVE bets are 4-way: enter all four bucket closes and the app devigs across the whole market automatically. Positive average CLV is the real scoreboard — it converges in ~30 bets; win-loss record takes seasons. Results auto-grade Tuesday.",
 };
 function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
@@ -342,8 +356,8 @@ function gh(g){
   return`<div class="ghead" onclick="this.parentElement.classList.toggle('clp')"><span class="px vs">${tlogo(g.away)}${g.away} @ ${tlogo(g.home)}${g.home}</span>${badges.join("")}
     <span class="kick">${g.gameday.slice(5)} ${g.gametime}<span class="gchev">&#9662;</span></span></div>`;
 }
-/* expand/collapse every matchup in a tab (cards default expanded) */
-const allCtl=tab=>`<div class="allctl"><button onclick="setAllGames('${tab}',this)">COLLAPSE ALL</button></div>`;
+/* expand/collapse every matchup in a tab (cards default collapsed) */
+const allCtl=tab=>`<div class="allctl"><button data-mode="expand" onclick="setAllGames('${tab}',this)">EXPAND ALL</button></div>`;
 function setAllGames(tab,btn){
   const collapse=btn.dataset.mode!=="expand";   // button always does what its label says
   [...document.getElementById("view-"+tab).querySelectorAll(".game")]
@@ -373,7 +387,7 @@ const coachStrip=g=>`<div class="cstrip"><div>${coachSide(g.coaches,"away")}</di
 function renderDrive(){
   const el=document.getElementById("view-drive");
   el.innerHTML=dkPath("drive")+howTo("drive")+allCtl("drive")+SLATE.games.map((g,gi)=>`
-  <div class="game">${gh(g)}<div class="gbody">
+  <div class="game clp" data-gid="${g.game_id}">${gh(g)}<div class="gbody">
     ${coachStrip(g)}
     <div class="tbwrap">
     ${["away","home"].map(s=>{
@@ -384,7 +398,7 @@ function renderDrive(){
           <div class="bar"><i style="width:${(100*g.drive[s][o]).toFixed(1)}%"></i></div>
           <span class="pct">${fmtP(g.drive[s][o])}</span>
           <input class="odds" placeholder="DK ${OUT_LBL[o]}" id="d-${gi}-${s}-${o}" inputmode="numeric" onchange="calcDrive(${gi},'${s}')">
-          <div class="tier" id="dt-${gi}-${s}-${o}">—</div>
+          <div class="tier" id="dt-${gi}-${s}-${o}" onclick="logOutcome(${gi},'${s}','${o}')" title="tap to log THIS outcome">—</div>
         </div>`).join("")}
       <div style="text-align:right;margin-top:4px"><button class="logb" onclick="logDrive(${gi},'${s}')">LOG BEST</button></div>
       </div>`}).join("")}
@@ -393,7 +407,7 @@ function renderDrive(){
 }
 function calcDrive(gi,s){
   const g=SLATE.games[gi];
-  const odds=OUTS.map(o=>parseFloat(document.getElementById(`d-${gi}-${s}-${o}`).value));
+  const odds=OUTS.map(o=>normOdds(document.getElementById(`d-${gi}-${s}-${o}`),false));
   if(odds.some(isNaN))return;
   const fair=devigN(odds);
   OUTS.forEach((o,i)=>{
@@ -417,12 +431,24 @@ function logDrive(gi,s){
     your_odds:+best.odds,model_prob:g.drive[s][best.o],fair_prob_at_bet:+best.fair,
     tier:document.getElementById(`dt-${gi}-${s}-${best.o}`).textContent.split(" ")[0]});
 }
+function logOutcome(gi,s,o){
+  /* per-outcome log: tap the tier chip to save exactly this outcome,
+     regardless of whether it is the highest edge in the block */
+  const d=document.getElementById(`dt-${gi}-${s}-${o}`);
+  if(d.dataset.edge===undefined)return alert("Enter all four DK odds first.");
+  const g=SLATE.games[gi],team=s==="home"?g.home:g.away;
+  const odds=document.getElementById(`d-${gi}-${s}-${o}`).value;
+  if(!confirm(`Log ${team} 1st drive ${OUT_LBL[o]} @ ${odds}?`))return;
+  saveBet({game_id:g.game_id,market:"DRIVE",selection:`${team} 1st drive ${o}`,line:null,
+    your_odds:+odds,model_prob:g.drive[s][o],fair_prob_at_bet:+d.dataset.fair,
+    tier:d.textContent.split(" ")[0]});
+}
 
 /* ---------- PUNTS ---------- */
 function renderPunts(){
   const el=document.getElementById("view-punts");
   el.innerHTML=dkPath("punts")+howTo("punts")+allCtl("punts")+SLATE.games.map((g,gi)=>`
-  <div class="game">${gh(g)}<div class="gbody">
+  <div class="game clp" data-gid="${g.game_id}">${gh(g)}<div class="gbody">
     <div class="small">model: ${g.away} ${g.punts.away.mean} · ${g.home} ${g.punts.home.mean} · game ${g.punts.game_mean} (sched total ${g.lines.total_line})</div>
     <div class="mrow"><span class="lab">DK game total</span>
       <input class="num" id="pt-${gi}" value="${g.lines.total_line}" inputmode="decimal" onchange="calcPunts(${gi})">
@@ -446,7 +472,7 @@ function calcPunts(gi){
   const mu=puntsMu(gi);
   const pr=priceCount(mu,line);
   document.getElementById(`pinfo-${gi}`).textContent=`μ ${mu.toFixed(2)} · P(o) ${fmtP(pr.over)}${pr.push?" · push "+fmtP(pr.push):""}`;
-  const oo=parseFloat(document.getElementById(`po-${gi}`).value),uo=parseFloat(document.getElementById(`pu-${gi}`).value);
+  const oo=normOdds(document.getElementById(`po-${gi}`),true),uo=normOdds(document.getElementById(`pu-${gi}`),true);
   if(isNaN(oo)||isNaN(uo))return;
   const[fo,fu]=devig2(oo,uo);
   const sc=1-pr.push;   // compare on action-only basis
@@ -472,8 +498,8 @@ function renderKicks(){
   const el=document.getElementById("view-kicks");
   el.innerHTML=dkPath("kicks")+howTo("kicks")+allCtl("kicks")+SLATE.games.map((g,gi)=>{
     const sides=Object.keys(g.kickers);
-    if(!sides.length)return`<div class="game">${gh(g)}<div class="gbody small">kicker TBD (roster unsettled)</div></div>`;
-    return`<div class="game">${gh(g)}<div class="gbody">
+    if(!sides.length)return`<div class="game clp" data-gid="${g.game_id}">${gh(g)}<div class="gbody small">kicker TBD (roster unsettled)</div></div>`;
+    return`<div class="game clp" data-gid="${g.game_id}">${gh(g)}<div class="gbody">
     ${sides.map(s=>{
       const k=g.kickers[s],team=s==="home"?g.home:g.away,pn=g.punters[s];
       return`<div class="mug">
@@ -501,7 +527,7 @@ function calcKick(gi,s){
   const shift=Math.round(k.tt_slope*(dktt-k.tt_base));
   const pr=priceDist(k.dist,shift,line);
   document.getElementById(`ki-${gi}-${s}`).textContent=`μ ${(k.mean+k.tt_slope*(dktt-k.tt_base)).toFixed(2)} · P(o) ${fmtP(pr.over)}`;
-  const oo=parseFloat(document.getElementById(`ko-${gi}-${s}`).value),uo=parseFloat(document.getElementById(`ku-${gi}-${s}`).value);
+  const oo=normOdds(document.getElementById(`ko-${gi}-${s}`),true),uo=normOdds(document.getElementById(`ku-${gi}-${s}`),true);
   if(isNaN(oo)||isNaN(uo))return;
   const[fo,fu]=devig2(oo,uo);const sc=1-pr.push;
   const[t1,e1]=tier(pr.over/sc,fo,"kicker"),[t2,e2]=tier(pr.under/sc,fu,"kicker");
@@ -583,6 +609,9 @@ async function loadBets(){
     const isD=b.market==="DRIVE",key=isD?String(b.selection).split(" 1st drive ")[1]:null;
     // edge at bet time (the chip's number): model minus devigged fair, in prob pts
     const edge=b.model_prob!=null&&b.fair_prob_at_bet!=null?100*(b.model_prob-b.fair_prob_at_bet):null;
+    // matchup from the game_id (2026_02_PHI_TEN -> PHI @ TEN)
+    const gp=String(b.game_id||"").split("_");
+    const mu=gp.length===4?`${tlogo(gp[2],14)}${gp[2]} @ ${tlogo(gp[3],14)}${gp[3]}`:"";
     const close=isD?`
     <div class="closerow c4">
       ${OUTS.map(o=>`<input class="odds" id="c4-${b.id}-${o}" placeholder="cl ${OUT_LBL[o]}" value="${o===key&&b.close_odds!=null?b.close_odds:""}" onchange="setClose4('${b.id}')">`).join("")}
@@ -593,14 +622,15 @@ async function loadBets(){
     </div>`
     :`
     <div class="closerow">
-      <input class="odds" placeholder="close (your side)" value="${b.close_odds??""}" onchange="setClose('${b.id}',this.value,null)">
-      <input class="odds" placeholder="close (opp side)" value="${b.opp_close_odds??""}" onchange="setClose('${b.id}',null,this.value)">
+      <input class="odds" placeholder="close (your side)" value="${b.close_odds??""}" onchange="setClose('${b.id}',this,null)">
+      <input class="odds" placeholder="close (opp side)" value="${b.opp_close_odds??""}" onchange="setClose('${b.id}',null,this)">
       ${resSel(b)}<span class="small">wk${b.week}</span>
       <button class="logb edtog" onclick="toggleEdit('${b.id}')">EDIT</button>
     </div>`;
     return`
     <div class="bet"><div class="top">
       <b style="letter-spacing:.5px;font-size:11px">${b.market}</b>
+      <span class="small">${mu}</span>
       <span>${esc(b.selection)}${b.line!=null?" "+b.line:""}</span>
       <span class="small" title="${b.model_prob!=null?`model ${(100*b.model_prob).toFixed(1)}% vs fair ${(100*b.fair_prob_at_bet).toFixed(1)}% at bet`:""}">@ ${b.your_odds>0?"+":""}${b.your_odds} · ${b.tier}${edge!=null?` ${edge>0?"+":""}${edge.toFixed(1)}`:""}</span>
       <span class="clv ${b.clv_pct>0?"pos":b.clv_pct<0?"neg":""}">${b.clv_pct!=null?(b.clv_pct>0?"+":"")+(+b.clv_pct).toFixed(2):""}</span>
@@ -618,10 +648,22 @@ async function loadBets(){
       <div>CLV SAMPLE<b>${clvs.length}</b></div></div>
     <div class="note">Enter DK closing odds (your side + opposite side) at kickoff — CLV = devigged close minus devigged bet price, in probability points.</div>
     ${BETS.map(betCard).join("")||'<div class="note">No bets logged yet — price a market and hit LOG.</div>'}`;
+  markLogged();
 }
-async function setClose(id,mine,opp){
+/* green-flag every game card that already has a logged bet in that tab's market */
+function markLogged(){
+  const mk={drive:"DRIVE",punts:"PUNTS",kicks:"KICKS"};
+  for(const[tab,m]of Object.entries(mk)){
+    const gids=new Set(BETS.filter(b=>b.market===m).map(b=>b.game_id));
+    document.querySelectorAll(`#view-${tab} .game`).forEach(c=>
+      c.classList.toggle("hasbet",gids.has(c.dataset.gid)));
+  }
+}
+async function setClose(id,mineEl,oppEl){
   const b=BETS.find(x=>x.id===id);
-  const close=mine!=null?+mine:b.close_odds, oc=opp!=null?+opp:b.opp_close_odds;
+  const mv=mineEl?normOdds(mineEl,true):NaN, ov=oppEl?normOdds(oppEl,true):NaN;
+  const close=mineEl?(isNaN(mv)?null:mv):b.close_odds;
+  const oc=oppEl?(isNaN(ov)?null:ov):b.opp_close_odds;
   const patch={close_odds:close||null,opp_close_odds:oc||null};
   if(close&&oc){const[fc]=devig2(close,oc);patch.clv_pct=100*(fc-b.fair_prob_at_bet)}
   await fetch(`${SUPA_URL}/rest/v1/b00mstick_bets?id=eq.${id}`,{method:"PATCH",headers:SB_HDRS,body:JSON.stringify(patch)});
@@ -632,7 +674,7 @@ async function setClose4(id){
      entered; once all four are in, devig the bucket and compute CLV. */
   const b=BETS.find(x=>x.id===id);
   const key=String(b.selection).split(" 1st drive ")[1];
-  const vals=OUTS.map(o=>parseFloat(document.getElementById(`c4-${id}-${o}`).value));
+  const vals=OUTS.map(o=>normOdds(document.getElementById(`c4-${id}-${o}`),false));
   const mine=vals[OUTS.indexOf(key)];
   const patch={close_odds:isNaN(mine)?null:mine};
   if(vals.every(v=>!isNaN(v)))
@@ -642,7 +684,8 @@ async function setClose4(id){
 }
 function toggleEdit(id){document.getElementById("ed-"+id).classList.toggle("hidden")}
 async function saveEdit(id){
-  const o=parseFloat(document.getElementById("edo-"+id).value);
+  const b=BETS.find(x=>x.id===id);
+  const o=normOdds(document.getElementById("edo-"+id),b.market!=="DRIVE");
   const l=document.getElementById("edl-"+id).value.trim();
   if(isNaN(o))return alert("Odds required (American, e.g. -110).");
   if(l!==""&&isNaN(parseFloat(l)))return alert("Line must be a number, or blank for none.");

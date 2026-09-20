@@ -138,6 +138,10 @@ h2.px{font-size:12px;margin-bottom:10px;color:var(--gold)}
 .note{font-size:11px;color:var(--dim);margin:8px 0}
 .err{color:var(--red);font-size:12px;padding:10px;text-align:center}
 .loading{font-family:'Press Start 2P';font-size:10px;color:var(--dim);text-align:center;padding:40px 10px}
+/* DK locator header per market tab */
+.dkpath{background:var(--card);border:2px solid var(--line);border-left:4px solid var(--boom);border-radius:8px;padding:9px 12px;margin-bottom:12px;font-size:11px;color:var(--chalk);line-height:1.6}
+.dkpath b{color:var(--boom);font-weight:700;letter-spacing:.5px;margin-right:6px}
+.dkpath .sep{color:var(--dim);margin:0 6px}
 /* collapsible how-to strips */
 .howto{background:var(--card);border:2px solid var(--line);border-radius:8px;margin-bottom:12px;overflow:hidden}
 .howto>button{width:100%;background:none;border:none;color:var(--gold);font-family:'Press Start 2P';font-size:9px;text-align:left;padding:13px 12px;cursor:pointer;min-height:40px}
@@ -158,6 +162,7 @@ h2.px{font-size:12px;margin-bottom:10px;color:var(--gold)}
   #view-drive:not(.hidden),#view-punts:not(.hidden),#view-kicks:not(.hidden){display:grid}
   #view-drive .game,#view-punts .game,#view-kicks .game{margin-bottom:0}
   #view-drive>.howto,#view-punts>.howto,#view-kicks>.howto,#view-drive>.err{grid-column:1/-1}
+  #view-drive>.dkpath,#view-punts>.dkpath,#view-kicks>.dkpath{grid-column:1/-1}
   #view-drive>.allctl,#view-punts>.allctl,#view-kicks>.allctl{grid-column:1/-1}
   #view-log,#view-plan{max-width:900px;margin:0 auto}
   .tbwrap{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -279,6 +284,13 @@ const ESPN_LOGO={ARI:"ari",ATL:"atl",BAL:"bal",BUF:"buf",CAR:"car",CHI:"chi",
   NO:"no",NYG:"nyg",NYJ:"nyj",PHI:"phi",PIT:"pit",SEA:"sea",SF:"sf",TB:"tb",
   TEN:"ten",WAS:"wsh"};
 const tlogo=(t,px=22)=>ESPN_LOGO[t]?`<img class="tlogo" width="${px}" height="${px}" src="https://a.espncdn.com/i/teamlogos/nfl/500/${ESPN_LOGO[t]}.png" alt="" aria-hidden="true" loading="lazy" onerror="this.style.display='none'">`:"";
+/* where each tab's inputs live on DraftKings */
+const DKPATH={
+  drive:"1ST DRIVE tab &rarr; 1st Drive Result",
+  punts:"GAME LINES (or POPULAR) &rarr; Game Total Line<span class='sep'>·</span>SPECIAL TEAMS &rarr; Punt Total (Total Punts)",
+  kicks:"TEAM PROPS (or POPULAR) &rarr; Team Total Points<span class='sep'>·</span>SPECIAL TEAMS &rarr; Kicking Points O/U",
+};
+const dkPath=tab=>DKPATH[tab]?`<div class="dkpath"><b>FIND IT ON DK:</b>${DKPATH[tab]}</div>`:"";
 /* collapsible how-to strips (state persists per-tab; localStorage may be
    unavailable in private browsing — degrade to session-only) */
 const HOWTO={
@@ -360,7 +372,7 @@ const coachStrip=g=>`<div class="cstrip"><div>${coachSide(g.coaches,"away")}</di
 /* ---------- DRIVE ---------- */
 function renderDrive(){
   const el=document.getElementById("view-drive");
-  el.innerHTML=howTo("drive")+allCtl("drive")+SLATE.games.map((g,gi)=>`
+  el.innerHTML=dkPath("drive")+howTo("drive")+allCtl("drive")+SLATE.games.map((g,gi)=>`
   <div class="game">${gh(g)}<div class="gbody">
     ${coachStrip(g)}
     <div class="tbwrap">
@@ -409,7 +421,7 @@ function logDrive(gi,s){
 /* ---------- PUNTS ---------- */
 function renderPunts(){
   const el=document.getElementById("view-punts");
-  el.innerHTML=howTo("punts")+allCtl("punts")+SLATE.games.map((g,gi)=>`
+  el.innerHTML=dkPath("punts")+howTo("punts")+allCtl("punts")+SLATE.games.map((g,gi)=>`
   <div class="game">${gh(g)}<div class="gbody">
     <div class="small">model: ${g.away} ${g.punts.away.mean} · ${g.home} ${g.punts.home.mean} · game ${g.punts.game_mean} (sched total ${g.lines.total_line})</div>
     <div class="mrow"><span class="lab">DK game total</span>
@@ -458,7 +470,7 @@ function logPunts(gi){
 /* ---------- KICKS ---------- */
 function renderKicks(){
   const el=document.getElementById("view-kicks");
-  el.innerHTML=howTo("kicks")+allCtl("kicks")+SLATE.games.map((g,gi)=>{
+  el.innerHTML=dkPath("kicks")+howTo("kicks")+allCtl("kicks")+SLATE.games.map((g,gi)=>{
     const sides=Object.keys(g.kickers);
     if(!sides.length)return`<div class="game">${gh(g)}<div class="gbody small">kicker TBD (roster unsettled)</div></div>`;
     return`<div class="game">${gh(g)}<div class="gbody">

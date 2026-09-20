@@ -125,6 +125,8 @@ input:focus{outline:2px solid var(--cyan)}
 .clv.pos{color:var(--green)} .clv.neg{color:var(--red)}
 .bet .closerow{display:grid;grid-template-columns:1fr 1fr 1fr auto auto;gap:6px;margin-top:8px;align-items:center}
 .editrow{grid-template-columns:1fr 1fr auto auto!important}
+.c4{grid-template-columns:repeat(4,1fr)!important}
+.cbar{grid-template-columns:1fr auto auto!important;margin-top:6px!important}
 .logb.del{border-color:var(--red);color:var(--red)}
 .edtog{border-color:var(--dim);color:var(--dim)}
 select{background:#0a1226;border:1px solid var(--line);color:var(--chalk);padding:5px;border-radius:3px;font:inherit;font-size:12px}
@@ -283,7 +285,7 @@ const HOWTO={
   drive:"Bars = model probability for each first-drive outcome, both teams (coin-toss blended). Buckets match DK: FG ATT = made or missed attempt; TO/SAF = turnover, turnover on downs, or safety. Enter all 4 DK odds for a team → we remove the vig and compare. Chips: BET ≥5.0 pts edge, VALUE ≥2.5, PASS otherwise. LOG BEST saves the highest-edge outcome to your bet log.",
   punts:"μ = model expected punts. Enter DK game total to re-price the model live (totals move punt expectations). Enter DK line + over/under odds → devigged edge chips. Whole-number lines can PUSH — push probability is priced in.",
   kicks:"TT = team total: that team's implied points from spread + game total — the model's scoring context for the kicker. Enter DK team total to shift the projection, then line + odds for edge chips. Photos = projected starting kicker; punter listed below.",
-  log:"Every logged bet freezes the model and fair (devigged) probability at bet time. Before kickoff, enter DK closing odds (your side + opposite) → CLV = devigged close minus your devigged price, in probability points. Positive average CLV is the real scoreboard — it converges in ~30 bets; win-loss record takes seasons. Results auto-grade Tuesday.",
+  log:"Every logged bet freezes the model and fair (devigged) probability at bet time. Before kickoff, enter DK closing odds → CLV = devigged close minus your devigged price, in probability points. Two-way bets (punts/kicks): your side + opposite. DRIVE bets are 4-way: enter all four bucket closes and the app devigs across the whole market automatically. Positive average CLV is the real scoreboard — it converges in ~30 bets; win-loss record takes seasons. Results auto-grade Tuesday.",
 };
 function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
 function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
@@ -559,28 +561,43 @@ async function loadBets(){
   const wl=`${settled.filter(b=>b.result==="WIN").length}-${settled.filter(b=>b.result==="LOSS").length}-${settled.filter(b=>b.result==="PUSH").length}`;
   const clvs=BETS.filter(b=>b.clv_pct!=null).map(b=>+b.clv_pct);
   const avg=clvs.length?(clvs.reduce((a,b)=>a+b,0)/clvs.length).toFixed(2):"—";
-  const betCard=b=>`
+  const resSel=b=>`<select onchange="setResult('${b.id}',this.value)">
+        ${["PENDING","WIN","LOSS","PUSH"].map(x=>`<option ${x===b.result?"selected":""}>${x}</option>`).join("")}
+      </select>`;
+  const betCard=b=>{
+    /* DRIVE is a 4-way market: there is no single opposite side, so the
+       close is all four bucket odds, devigged together (same math as bet
+       time). Two-way markets (punts/kicks) keep the your-side/opp pair. */
+    const isD=b.market==="DRIVE",key=isD?String(b.selection).split(" 1st drive ")[1]:null;
+    const close=isD?`
+    <div class="closerow c4">
+      ${OUTS.map(o=>`<input class="odds" id="c4-${b.id}-${o}" placeholder="cl ${OUT_LBL[o]}" value="${o===key&&b.close_odds!=null?b.close_odds:""}" onchange="setClose4('${b.id}')">`).join("")}
+    </div>
+    <div class="closerow cbar">
+      ${resSel(b)}<span class="small">wk${b.week}</span>
+      <button class="logb edtog" onclick="toggleEdit('${b.id}')">EDIT</button>
+    </div>`
+    :`
+    <div class="closerow">
+      <input class="odds" placeholder="close (your side)" value="${b.close_odds??""}" onchange="setClose('${b.id}',this.value,null)">
+      <input class="odds" placeholder="close (opp side)" value="${b.opp_close_odds??""}" onchange="setClose('${b.id}',null,this.value)">
+      ${resSel(b)}<span class="small">wk${b.week}</span>
+      <button class="logb edtog" onclick="toggleEdit('${b.id}')">EDIT</button>
+    </div>`;
+    return`
     <div class="bet"><div class="top">
       <b style="letter-spacing:.5px;font-size:11px">${b.market}</b>
       <span>${esc(b.selection)}${b.line!=null?" "+b.line:""}</span>
       <span class="small">@ ${b.your_odds>0?"+":""}${b.your_odds} · ${b.tier}</span>
       <span class="clv ${b.clv_pct>0?"pos":b.clv_pct<0?"neg":""}">${b.clv_pct!=null?(b.clv_pct>0?"+":"")+(+b.clv_pct).toFixed(2):""}</span>
-    </div>
-    <div class="closerow">
-      <input class="odds" placeholder="close (your side)" value="${b.close_odds??""}" onchange="setClose('${b.id}',this.value,null)">
-      <input class="odds" placeholder="close (opp side)" value="${b.opp_close_odds??""}" onchange="setClose('${b.id}',null,this.value)">
-      <select onchange="setResult('${b.id}',this.value)">
-        ${["PENDING","WIN","LOSS","PUSH"].map(x=>`<option ${x===b.result?"selected":""}>${x}</option>`).join("")}
-      </select>
-      <span class="small">wk${b.week}</span>
-      <button class="logb edtog" onclick="toggleEdit('${b.id}')">EDIT</button>
-    </div>
+    </div>${close}
     <div class="closerow editrow hidden" id="ed-${b.id}">
       <input class="odds" id="edo-${b.id}" placeholder="your odds" value="${b.your_odds??""}">
       <input class="num" id="edl-${b.id}" placeholder="line (blank = none)" value="${b.line??""}">
       <button class="logb" onclick="saveEdit('${b.id}')">SAVE</button>
       <button class="logb del" onclick="delBet('${b.id}')">DELETE</button>
     </div></div>`;
+  };
   el.innerHTML=howTo("log")+`<div class="sumbar">
       <div>BETS<b>${BETS.length}</b></div><div>RECORD<b>${wl}</b></div>
       <div>AVG CLV<b class="${+avg>0?'clv pos':''}">${avg}${clvs.length?" pts":""}</b></div>
@@ -593,6 +610,19 @@ async function setClose(id,mine,opp){
   const close=mine!=null?+mine:b.close_odds, oc=opp!=null?+opp:b.opp_close_odds;
   const patch={close_odds:close||null,opp_close_odds:oc||null};
   if(close&&oc){const[fc]=devig2(close,oc);patch.clv_pct=100*(fc-b.fair_prob_at_bet)}
+  await fetch(`${SUPA_URL}/rest/v1/b00mstick_bets?id=eq.${id}`,{method:"PATCH",headers:SB_HDRS,body:JSON.stringify(patch)});
+  loadBets();
+}
+async function setClose4(id){
+  /* 4-way close for DRIVE bets: store your side's close as soon as it's
+     entered; once all four are in, devig the bucket and compute CLV. */
+  const b=BETS.find(x=>x.id===id);
+  const key=String(b.selection).split(" 1st drive ")[1];
+  const vals=OUTS.map(o=>parseFloat(document.getElementById(`c4-${id}-${o}`).value));
+  const mine=vals[OUTS.indexOf(key)];
+  const patch={close_odds:isNaN(mine)?null:mine};
+  if(vals.every(v=>!isNaN(v)))
+    patch.clv_pct=100*(devigN(vals)[OUTS.indexOf(key)]-b.fair_prob_at_bet);
   await fetch(`${SUPA_URL}/rest/v1/b00mstick_bets?id=eq.${id}`,{method:"PATCH",headers:SB_HDRS,body:JSON.stringify(patch)});
   loadBets();
 }

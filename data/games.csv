@@ -1193,4 +1193,17 @@ game_id,season,week,game_date,home_team,away_team,home_coach,away_coach,roof,sur
 2026_07_PIT_NO,2026,7,2026-10-25,NO,PIT,Kellen Moore,Mike McCarthy,dome,,,,-3.0,43.5
 2026_07_SF_ATL,2026,7,2026-10-25,ATL,SF,Raheem Morris,Kyle Shanahan,open,,,,-2.5,49.5
 2026_07_TB_CAR,2026,7,2026-10-25,CAR,TB,Dave Canales,Todd Bowles,outdoors,,,,3.0,44.5
+2026_08_ARI_DAL,2026,8,2026-11-01,DAL,ARI,Brian Schottenheimer,Jonathan Gannon,closed,,,,7.0,54.5
+2026_08_ATL_TB,2026,8,2026-11-01,TB,ATL,Todd Bowles,Raheem Morris,outdoors,,,,2.5,42.5
+2026_08_BAL_BUF,2026,8,2026-11-01,BUF,BAL,Sean McDermott,Jesse Minter,outdoors,,,,3.0,54.5
 2026_08_CAR_GB,2026,8,2026-10-29,GB,CAR,Matt LaFleur,Dave Canales,outdoors,,,,3.5,47.5
+2026_08_CHI_SEA,2026,8,2026-11-02,SEA,CHI,Mike Macdonald,Ben Johnson,outdoors,,,,3.0,46.5
+2026_08_CLE_PIT,2026,8,2026-11-01,PIT,CLE,Mike McCarthy,Todd Monken,outdoors,,,,3.5,38.5
+2026_08_IND_JAX,2026,8,2026-11-01,JAX,IND,Liam Coen,Shane Steichen,outdoors,,,,10.0,45.5
+2026_08_KC_DEN,2026,8,2026-11-01,DEN,KC,Sean Payton,Andy Reid,outdoors,,,,1.5,41.5
+2026_08_LAC_LA,2026,8,2026-11-01,LA,LAC,Sean McVay,Jim Harbaugh,dome,,,,6.5,46.5
+2026_08_LV_NYJ,2026,8,2026-11-01,NYJ,LV,Aaron Glenn,Klint Kubliak,outdoors,,,,1.5,46.5
+2026_08_MIN_DET,2026,8,2026-11-01,DET,MIN,Dan Campbell,Kevin O'Connell,dome,,,,3.0,46.5
+2026_08_NE_MIA,2026,8,2026-11-01,MIA,NE,Jeff Hafley,Mike Vrabel,outdoors,,,,-7.0,41.5
+2026_08_PHI_WAS,2026,8,2026-11-01,WAS,PHI,Dan Quinn,Nick Sirianni,outdoors,,,,6.0,40.5
+2026_08_TEN_CIN,2026,8,2026-11-01,CIN,TEN,Zac Taylor,Robert Saleh,outdoors,,,,13.5,45.5

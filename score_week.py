@@ -232,7 +232,15 @@ def main():
             drive[side] = {k: round(v, 4) for k, v in
                            bm.predict_first_drive(state, team, opp, side == "home").items()}
             mu = bm.predict_punts(state, team, opp, total, wflag)
-            punts[side] = {"mean": round(mu, 3), "tt_slope": round(float(s_pt["coef"][2]), 4)}
+            # "why" = the prediction's components, for the app's explainer
+            # lines (exposition only — mu itself is untouched)
+            punts[side] = {"mean": round(mu, 3), "tt_slope": round(float(s_pt["coef"][2]), 4),
+                           "why": {"lg": round(float(s_pt["lg"]), 2),
+                                   "team_f": round(float(s_pt["team"].get(team, 1)), 3),
+                                   "opp_f": round(float(s_pt["opp"].get(opp, 1)), 3),
+                                   "mean_tot": round(float(s_pt["mean_tot"]), 1),
+                                   "tot_adj": round(float(s_pt["coef"][2]) * (total - float(s_pt["mean_tot"])), 2),
+                                   "wind_adj": round(float(s_pt["coef"][3]) * wflag, 2)}}
             spec = specialists.get(team, {})
             if "kicker" in spec:
                 km = bm.predict_kicker(state, team, spec["kicker"]["name"], tts[team], wflag)
@@ -240,9 +248,21 @@ def main():
                 fgp, xpp = bm.kicker_rates(state, team, spec["kicker"]["name"])
                 slope = 3 * fgp * (0.95 if wflag else 1.0) * float(kk["c1"][3]) + \
                     xpp * float(kk["c2"][2])
+                # same component math as bm.predict_kicker, exposed for the
+                # app's explainer lines (km itself is untouched)
+                fga = max(float(np.array([1, kk["t_fga"].get(team, kk["lg_fga"]),
+                                          kk["t_stall"].get(team, kk["lg_stall"]),
+                                          tts[team], wflag]) @ kk["c1"]), 0)
+                xpa = max(float(np.array([1, kk["t_xpa"].get(team, kk["lg_xpa"]),
+                                          tts[team]]) @ kk["c2"]), 0)
                 kickers[side] = {**spec["kicker"], "mean": round(km, 3),
                                  "tt_base": round(tts[team], 2), "tt_slope": round(slope, 4),
-                                 "dist": kicker_dist(state, km)}
+                                 "dist": kicker_dist(state, km),
+                                 "why": {"fga": round(fga, 2), "xpa": round(xpa, 2),
+                                         "fg_pct": round(float(fgp), 3), "xp_pct": round(float(xpp), 3),
+                                         "t_fga": round(float(kk["t_fga"].get(team, kk["lg_fga"])), 2),
+                                         "lg_fga": round(float(kk["lg_fga"]), 2),
+                                         "wind_pct": 0.95 if wflag else 1.0}}
             if "punter" in spec:
                 punters[side] = spec["punter"]
 

@@ -2415,3 +2415,5 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2026_08_PHI_WAS,2026,8,WAS,PHI,1.0,Missed field goal,FG,1
 2026_08_TEN_CIN,2026,8,CIN,TEN,2.0,Punt,PUNT,0
 2026_08_TEN_CIN,2026,8,TEN,CIN,1.0,Field goal,FG,1
+2026_09_JAX_BAL,2026,9,BAL,JAX,2.0,Field goal,FG,0
+2026_09_JAX_BAL,2026,9,JAX,BAL,1.0,Touchdown,TD,1

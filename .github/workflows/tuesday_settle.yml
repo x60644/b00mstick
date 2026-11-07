@@ -23,6 +23,8 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: python settle_week.py
+      - name: Audit archived slates vs final stats
+        run: python audit_week.py
       - name: Commit any changed files
         run: |
           git config user.name "b00mstick-cron"

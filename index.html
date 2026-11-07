@@ -153,6 +153,29 @@ h2.px{font-size:13px;letter-spacing:.5px;margin-bottom:10px;color:var(--gold)}
 .dkpath{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--boom);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:13px;color:var(--chalk);line-height:1.6}
 .dkpath b{color:var(--boom);font-weight:700;letter-spacing:1px;margin-right:6px}
 .dkpath .sep{color:var(--dim);margin:0 6px}
+/* audit tab */
+.astats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.astat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 6px;text-align:center}
+.astat .k{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim)}
+.astat .v{font-family:'Bungee',sans-serif;font-size:16px;margin-top:6px}
+.astat .v.pos{color:var(--green)} .astat .v.neg{color:#ff8a5c}
+.astat .sub{font-size:12px;color:var(--dim);margin-top:2px}
+.anote{font-size:12px;color:var(--dim);margin-bottom:12px;text-align:center}
+.amkt{font-family:'Bungee',sans-serif;font-size:10px;letter-spacing:.5px;color:var(--gold);margin:12px 0 2px}
+.amkt:first-child{margin-top:0}
+.ahead,.arow{display:grid;grid-template-columns:minmax(0,1fr) 46px 46px 46px 44px;gap:6px;align-items:center}
+.ahead{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);padding:6px 0 4px}
+.ahead span:not(:first-child),.an{text-align:right}
+.arow{padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+.arow:last-child{border-bottom:none}
+.arow>span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.an{font-family:var(--mono);font-size:12px}
+.rslt{font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 0;border-radius:4px;text-align:center}
+.rslt.hit{background:#123326;color:var(--green)}
+.rslt.miss{background:#3a1610;color:#ff8a5c}
+.rslt.tie{background:var(--card2);color:var(--dim)}
+.badge.aok{color:var(--green);border-color:#1e5c46}
+.badge.abad{color:#ff8a5c;border-color:#5c2e1e}
 /* collapsible how-to strips */
 .howto{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden}
 .howto>button{width:100%;background:none;border:none;color:var(--gold);font-family:'Bungee',sans-serif;font-size:10px;letter-spacing:.5px;text-align:left;padding:13px 14px;cursor:pointer;min-height:40px}
@@ -174,7 +197,7 @@ h2.px{font-size:13px;letter-spacing:.5px;margin-bottom:10px;color:var(--gold)}
   #view-drive>.howto,#view-punts>.howto,#view-kicks>.howto,#view-drive>.err{grid-column:1/-1}
   #view-drive>.dkpath,#view-punts>.dkpath,#view-kicks>.dkpath{grid-column:1/-1}
   #view-drive>.allctl,#view-punts>.allctl,#view-kicks>.allctl{grid-column:1/-1}
-  #view-log,#view-plan{max-width:900px;margin:0 auto}
+  #view-log,#view-plan,#view-audit{max-width:900px;margin:0 auto}
   .tbwrap{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .tbwrap .teamblock{margin-bottom:0}
   .orow{grid-template-columns:38px minmax(20px,1fr) 36px 52px 56px;gap:4px}
@@ -204,9 +227,12 @@ h2.px{font-size:13px;letter-spacing:.5px;margin-bottom:10px;color:var(--gold)}
 </div>
 
 <main>
-  <div id="view-drive"></div>
-  <div id="view-punts" class="hidden"></div>
+  <!-- DRIVE market hidden for now (model only coin-flips naive in-season);
+       code + data intact, ?tab=drive still works -->
+  <div id="view-drive" class="hidden"></div>
+  <div id="view-punts"></div>
   <div id="view-kicks" class="hidden"></div>
+  <div id="view-audit" class="hidden"></div>
   <div id="view-log" class="hidden"></div>
   <div id="view-plan" class="hidden"></div>
 </main>
@@ -230,9 +256,10 @@ h2.px{font-size:13px;letter-spacing:.5px;margin-bottom:10px;color:var(--gold)}
 </div>
 
 <nav>
-  <button id="tab-drive" class="on" onclick="show('drive')">DRIVE</button>
-  <button id="tab-punts" onclick="show('punts')">PUNTS</button>
+  <button id="tab-drive" style="display:none" onclick="show('drive')">DRIVE</button>
+  <button id="tab-punts" class="on" onclick="show('punts')">PUNTS</button>
   <button id="tab-kicks" onclick="show('kicks')">KICKS</button>
+  <button id="tab-audit" onclick="show('audit')">AUDIT</button>
   <button id="tab-log" onclick="show('log')">LOG</button>
   <button id="tab-plan" onclick="show('plan')">PLAN</button>
 </nav>
@@ -346,6 +373,7 @@ const HOWTO={
   drive:"Bars = model probability for each first-drive outcome, both teams (coin-toss blended). Buckets match DK: FG ATT = made or missed attempt; TO/SAF = turnover, turnover on downs, or safety. Enter all 4 DK odds for a team (bare numbers assume +; type - to override) → we remove the vig and compare. Chips: BET ≥5.0 pts edge, VALUE ≥2.5, PASS otherwise. Tap a chip to log THAT outcome; LOG BEST saves the highest-edge one. Green border = you already have a drive bet on that game.",
   punts:"μ = model expected punts. Enter DK game total to re-price the model live (totals move punt expectations). Enter DK line + over/under odds (bare numbers assume −; type + to override) → devigged edge chips. Whole-number lines can PUSH — push probability is priced in. Green border = punts bet already logged on that game.",
   kicks:"TT = team total: that team's implied points from spread + game total — the model's scoring context for the kicker. Enter DK team total to shift the projection, then line + odds for edge chips (bare odds assume −; type + to override). Photos = projected starting kicker; punter listed below. Green border = kicker bet already logged on that game.",
+  audit:"Every archived weekly slate is graded against final stats — every game, bet or no bet. MODEL = the number the app showed before kickoff; ACTUAL = what happened; NAIVE = the league trailing average, the no-model baseline. HIT means the model landed closer to the actual than naive did. MAE = mean absolute error (average miss, in punts or kicker points). The model earns its keep by beating naive consistently, not by nailing single games — judge nothing on a few weeks. DNP = projected kicker had no recorded attempts (swap/injury); shown but excluded from stats. Updates every Tuesday after settlement.",
   log:"Every logged bet freezes the model and fair (devigged) probability at bet time. Before kickoff, enter DK closing odds → CLV = devigged close minus your devigged price, in probability points. Two-way bets (punts/kicks): your side + opposite. DRIVE bets are 4-way: enter all four bucket closes and the app devigs across the whole market automatically. Positive average CLV is the real scoreboard — it converges in ~30 bets; win-loss record takes seasons. Results auto-grade Tuesday.",
 };
 function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
@@ -372,12 +400,12 @@ async function boot(){
       `<div class="err">Couldn't load ${wk?`output/week${wk}_slate.json`:"output/current_slate.json"} — ${esc(e.message)}. Run score_week.py and commit the output folder.</div>`;
   }
   fitTop();
-  renderPlan();loadBets();loadOverrides();
-  const t=params.get("tab");   // deep-link: ?tab=plan etc.
-  if(["drive","punts","kicks","log","plan"].includes(t))show(t);
+  renderPlan();renderAudit();loadBets();loadOverrides();
+  const t=params.get("tab");   // deep-link: ?tab=plan etc. (?tab=drive = hidden market)
+  if(["drive","punts","kicks","audit","log","plan"].includes(t))show(t);
 }
 function show(t){
-  for(const v of["drive","punts","kicks","log","plan"]){
+  for(const v of["drive","punts","kicks","audit","log","plan"]){
     document.getElementById("view-"+v).classList.toggle("hidden",v!==t);
     document.getElementById("tab-"+v).classList.toggle("on",v===t);
   }
@@ -585,6 +613,60 @@ function logKick(gi,s){
     model_prob:pick.p,fair_prob_at_bet:pick.f,tier:pick.t});
 }
 
+/* ---------- AUDIT ----------
+   Model vs reality for every archived slate (output/audit.json, written by
+   audit_week.py in the Tuesday cron). HIT = model closer to the actual than
+   the naive league-average baseline. */
+async function renderAudit(){
+  const el=document.getElementById("view-audit");
+  let A=null;
+  try{const r=await fetch("output/audit.json");if(r.ok)A=await r.json()}catch(e){}
+  if(!A||!(A.weeks||[]).length){
+    el.innerHTML=howTo("audit")+'<div class="note">No audit yet — audit_week.py runs in the Tuesday cron once a week has final stats.</div>';
+    return;
+  }
+  const wks=[...A.weeks].sort((a,b)=>b.week-a.week);
+  const fmt1=v=>v==null?"—":String(Math.round(v*10)/10);
+  const closer=r=>r.actual==null?null
+    :Math.abs(r.model-r.actual)<Math.abs(r.naive-r.actual)?1
+    :Math.abs(r.model-r.actual)>Math.abs(r.naive-r.actual)?0:.5;
+  const badge=r=>{const c=closer(r);
+    return c==null?'<span class="rslt tie">DNP</span>'
+      :c===1?'<span class="rslt hit">HIT</span>'
+      :c===0?'<span class="rslt miss">MISS</span>':'<span class="rslt tie">TIE</span>'};
+  const agg=m=>{const rows=wks.flatMap(w=>w[m].rows).filter(r=>r.actual!=null);
+    const s=k=>rows.reduce((t,r)=>t+Math.abs(r[k]-r.actual),0)/rows.length;
+    const beat=wks.filter(w=>w[m].model_mae!=null&&w[m].model_mae<w[m].naive_mae).length;
+    return{n:rows.length,model:s("model"),naive:s("naive"),beat}};
+  const P=agg("punts"),K=agg("kicks");
+  const tile=(k,o)=>`<div class="astat"><div class="k">${k}</div>
+    <div class="v ${o.model<o.naive?"pos":"neg"}">${o.model.toFixed(2)}</div>
+    <div class="sub">naive ${o.naive.toFixed(2)} · beat ${o.beat}/${wks.length} wks</div></div>`;
+  const an=v=>`<span class="an">${fmt1(v)}</span>`;
+  const sect=(title,rows)=>rows?`<div class="amkt">${title}</div>
+    <div class="ahead"><span></span><span>MODEL</span><span>ACTUAL</span><span>NAIVE</span><span></span></div>${rows}`:"";
+  const wkCard=(w,i)=>{
+    const prow=w.punts.rows.map(r=>`<div class="arow"><span>${esc(r.game)}</span>${an(r.model)}${an(r.actual)}${an(r.naive)}${badge(r)}</div>`).join("");
+    const krow=w.kicks.rows.map(r=>`<div class="arow"><span>${esc(r.kicker)} · ${esc(r.team)}</span>${an(r.model)}${an(r.actual)}${an(r.naive)}${badge(r)}</div>`).join("");
+    const mb=(lbl,o)=>o.model_mae==null?"":`<span class="badge ${o.model_mae<o.naive_mae?"aok":"abad"}">${lbl} ${o.model_mae.toFixed(2)} / ${o.naive_mae.toFixed(2)}</span>`;
+    return`<div class="game${i?" clp":""}">
+    <div class="ghead" onclick="this.parentElement.classList.toggle('clp')">
+      <span class="px vs">WEEK ${w.week}</span>${mb("PUNTS",w.punts)}${mb("KICKS",w.kicks)}
+      <span class="kick"><span class="gchev">&#9662;</span></span></div>
+    <div class="gbody">
+      ${sect("GAME PUNTS",prow)}
+      ${sect("KICKER POINTS",krow)}
+    </div></div>`};
+  el.innerHTML=howTo("audit")+`
+    <div class="astats">
+      <div class="astat"><div class="k">WEEKS</div><div class="v">${wks.length}</div><div class="sub">graded vs final stats</div></div>
+      ${tile("PUNTS MAE",P)}${tile("KICKS MAE",K)}
+    </div>
+    <div class="anote">HIT = model closer to the actual than the league-average baseline · ${P.n+K.n} graded rows · week badges = model MAE / naive MAE</div>
+    ${wks.map(wkCard).join("")}
+    <div class="note" style="text-align:center">audited ${esc((A.generated||"").slice(0,10))} · every slate graded, bet or no bet</div>`;
+}
+
 /* ---------- PLAN ---------- */
 const PLAN=[
   {sec:"done",item:"Model locked — 2025 walk-forward backtest, beat-naive gates passed",phase:"done",date:"Aug 13",note:"phase 1 first drive + punts, kicker v2; coach-tendency factors tested and rejected"},
@@ -597,9 +679,12 @@ const PLAN=[
   {sec:"done",item:"Betting UX: chip logging, 4-way DRIVE closes, sign defaults, logged-game highlights, DK locators",phase:"done",date:"Sep 19–20"},
   {sec:"done",item:"First bets logged (wk 2: 8 across all three markets) + first live settlement graded",phase:"done",date:"Sep 20–22",note:"went 2-6 — noise at this sample size; CLV is the metric that matters"},
   {sec:"done",item:"Mid-season refresh — data complete through wk 8, week 9 slate scored",phase:"done",date:"Nov 5"},
+  {sec:"done",item:"Modern UI — Tecmo skin retired for the m00nshot/skyh00k design system",phase:"done",date:"Nov 6"},
+  {sec:"done",item:"AUDIT tab live — every archived slate graded vs final stats (model vs naive), Tuesday cron",phase:"done",date:"Nov 6",note:"wks 1-8 backfilled: punts beat naive 6/8 wks, kicks 3/8, drive ~coin flip"},
+  {sec:"done",item:"DRIVE tab hidden — focus on punts + kicks for now",phase:"done",date:"Nov 6",note:"code + data intact; ?tab=drive still works; audit keeps scoring it weekly"},
   {sec:"szn",item:"Resume bet logging — the log has been quiet since week 2",phase:"pending",date:"wk 9+"},
   {sec:"szn",item:"Enter closing odds at ~12:45 Sun — zero CLV samples so far",phase:"pending",date:"every week",note:"CLV needs ~30 closed bets to mean anything; the record alone never will"},
-  {sec:"szn",item:"Model audit tab — weekly model-vs-naive scoring from archived slates",phase:"pending",date:"proposed",note:"audit_week.py in Tue cron + AUDIT tab; say go to build"},
+  {sec:"szn",item:"Watch the AUDIT tab — if kicks keeps trailing naive, consider resting that market too",phase:"pending",date:"weekly"},
   {sec:"szn",item:"Coach photo self-heal rerun after any coaching change",phase:"pending",date:"as needed",note:"python coach_photos.py, recommit JSON"},
 ];
 const RUNBOOK=[

@@ -1,0 +1,2454 @@
+{
+ "season": 2026,
+ "generated": "2026-11-06T20:34:58.290356",
+ "weeks": [
+  {
+   "week": 1,
+   "punts": {
+    "rows": [
+     {
+      "game": "CHI @ CAR",
+      "model": 6.819,
+      "actual": 5,
+      "naive": 7.77
+     },
+     {
+      "game": "TB @ CIN",
+      "model": 6.362,
+      "actual": 1,
+      "naive": 7.77
+     },
+     {
+      "game": "NO @ DET",
+      "model": 6.304,
+      "actual": 12,
+      "naive": 7.77
+     },
+     {
+      "game": "BUF @ HOU",
+      "model": 7.98,
+      "actual": 6,
+      "naive": 7.77
+     },
+     {
+      "game": "BAL @ IND",
+      "model": 5.731,
+      "actual": 8,
+      "naive": 7.77
+     },
+     {
+      "game": "CLE @ JAX",
+      "model": 10.109,
+      "actual": 5,
+      "naive": 7.77
+     },
+     {
+      "game": "ATL @ PIT",
+      "model": 7.849,
+      "actual": 10,
+      "naive": 7.77
+     },
+     {
+      "game": "NYJ @ TEN",
+      "model": 9.898,
+      "actual": 10,
+      "naive": 7.77
+     },
+     {
+      "game": "ARI @ LAC",
+      "model": 6.545,
+      "actual": 6,
+      "naive": 7.77
+     },
+     {
+      "game": "MIA @ LV",
+      "model": 8.298,
+      "actual": 7,
+      "naive": 7.77
+     },
+     {
+      "game": "GB @ MIN",
+      "model": 6.582,
+      "actual": 7,
+      "naive": 7.77
+     },
+     {
+      "game": "WAS @ PHI",
+      "model": 7.04,
+      "actual": 13,
+      "naive": 7.77
+     },
+     {
+      "game": "DAL @ NYG",
+      "model": 6.365,
+      "actual": 3,
+      "naive": 7.77
+     }
+    ],
+    "model_mae": 2.775,
+    "naive_mae": 2.793
+   },
+   "kicks": {
+    "rows": [
+     {
+      "game": "CHI @ CAR",
+      "team": "CHI",
+      "kicker": "C.Santos",
+      "model": 7.984,
+      "actual": 11,
+      "naive": 7.28
+     },
+     {
+      "game": "CHI @ CAR",
+      "team": "CAR",
+      "kicker": "R.Fitzgerald",
+      "model": 6.295,
+      "actual": 7,
+      "naive": 7.28
+     },
+     {
+      "game": "TB @ CIN",
+      "team": "TB",
+      "kicker": "C.McLaughlin",
+      "model": 7.828,
+      "actual": 9,
+      "naive": 7.28
+     },
+     {
+      "game": "TB @ CIN",
+      "team": "CIN",
+      "kicker": "E.McPherson",
+      "model": 7.7,
+      "actual": 15,
+      "naive": 7.28
+     },
+     {
+      "game": "NO @ DET",
+      "team": "NO",
+      "kicker": "D.Carlson",
+      "model": 7.638,
+      "actual": 6,
+      "naive": 7.28
+     },
+     {
+      "game": "NO @ DET",
+      "team": "DET",
+      "kicker": "J.Bates",
+      "model": 8.101,
+      "actual": 7,
+      "naive": 7.28
+     },
+     {
+      "game": "BUF @ HOU",
+      "team": "BUF",
+      "kicker": "T.Bass",
+      "model": 6.396,
+      "actual": 12,
+      "naive": 7.28
+     },
+     {
+      "game": "BUF @ HOU",
+      "team": "HOU",
+      "kicker": "K.Fairbairn",
+      "model": 9.205,
+      "actual": 7,
+      "naive": 7.28
+     },
+     {
+      "game": "BAL @ IND",
+      "team": "BAL",
+      "kicker": "T.Loop",
+      "model": 8.163,
+      "actual": 11,
+      "naive": 7.28
+     },
+     {
+      "game": "BAL @ IND",
+      "team": "IND",
+      "kicker": "S.Shrader",
+      "model": 8.156,
+      "actual": 5,
+      "naive": 7.28
+     },
+     {
+      "game": "CLE @ JAX",
+      "team": "CLE",
+      "kicker": "A.Szmyt",
+      "model": 5.66,
+      "actual": 4,
+      "naive": 7.28
+     },
+     {
+      "game": "CLE @ JAX",
+      "team": "JAX",
+      "kicker": "C.Little",
+      "model": 7.82,
+      "actual": 10,
+      "naive": 7.28
+     },
+     {
+      "game": "ATL @ PIT",
+      "team": "ATL",
+      "kicker": "N.Folk",
+      "model": 7.702,
+      "actual": 7,
+      "naive": 7.28
+     },
+     {
+      "game": "ATL @ PIT",
+      "team": "PIT",
+      "kicker": "C.Boswell",
+      "model": 7.93,
+      "actual": 8,
+      "naive": 7.28
+     },
+     {
+      "game": "NYJ @ TEN",
+      "team": "NYJ",
+      "kicker": "B.Grupe",
+      "model": 6.281,
+      "actual": null,
+      "naive": 7.28
+     },
+     {
+      "game": "NYJ @ TEN",
+      "team": "TEN",
+      "kicker": "J.Slye",
+      "model": 6.402,
+      "actual": 4,
+      "naive": 7.28
+     },
+     {
+      "game": "ARI @ LAC",
+      "team": "ARI",
+      "kicker": "C.Ryland",
+      "model": 6.607,
+      "actual": 14,
+      "naive": 7.28
+     },
+     {
+      "game": "ARI @ LAC",
+      "team": "LAC",
+      "kicker": "C.Dicker",
+      "model": 9.356,
+      "actual": 2,
+      "naive": 7.28
+     },
+     {
+      "game": "MIA @ LV",
+      "team": "MIA",
+      "kicker": "R.Patterson",
+      "model": 6.858,
+      "actual": 7,
+      "naive": 7.28
+     },
+     {
+      "game": "MIA @ LV",
+      "team": "LV",
+      "kicker": "M.Gay",
+      "model": 6.825,
+      "actual": 9,
+      "naive": 7.28
+     },
+     {
+      "game": "GB @ MIN",
+      "team": "GB",
+      "kicker": "T.Smack",
+      "model": 7.488,
+      "actual": 10,
+      "naive": 7.28
+     },
+     {
+      "game": "GB @ MIN",
+      "team": "MIN",
+      "kicker": "W.Reichard",
+      "model": 8.291,
+      "actual": 7,
+      "naive": 7.28
+     },
+     {
+      "game": "WAS @ PHI",
+      "team": "WAS",
+      "kicker": "D.Stevens",
+      "model": 6.85,
+      "actual": 4,
+      "naive": 7.28
+     },
+     {
+      "game": "WAS @ PHI",
+      "team": "PHI",
+      "kicker": "J.Elliott",
+      "model": 7.087,
+      "actual": 6,
+      "naive": 7.28
+     },
+     {
+      "game": "DAL @ NYG",
+      "team": "DAL",
+      "kicker": "B.Aubrey",
+      "model": 9.226,
+      "actual": 2,
+      "naive": 7.28
+     },
+     {
+      "game": "DAL @ NYG",
+      "team": "NYG",
+      "kicker": "D.Zvada",
+      "model": 6.16,
+      "actual": 4,
+      "naive": 7.28
+     }
+    ],
+    "model_mae": 2.798,
+    "naive_mae": 2.656
+   },
+   "drive": {
+    "n": 26,
+    "model_logloss": 1.3899,
+    "naive_logloss": 1.3895
+   }
+  },
+  {
+   "week": 2,
+   "punts": {
+    "rows": [
+     {
+      "game": "CAR @ ATL",
+      "model": 7.194,
+      "actual": 7,
+      "naive": 7.76
+     },
+     {
+      "game": "NO @ BAL",
+      "model": 7.025,
+      "actual": 6,
+      "naive": 7.76
+     },
+     {
+      "game": "MIN @ CHI",
+      "model": 6.428,
+      "actual": 10,
+      "naive": 7.76
+     },
+     {
+      "game": "CIN @ HOU",
+      "model": 7.877,
+      "actual": 13,
+      "naive": 7.76
+     },
+     {
+      "game": "PIT @ NE",
+      "model": 8.445,
+      "actual": 12,
+      "naive": 7.76
+     },
+     {
+      "game": "GB @ NYJ",
+      "model": 7.473,
+      "actual": 13,
+      "naive": 7.76
+     },
+     {
+      "game": "CLE @ TB",
+      "model": 9.399,
+      "actual": 8,
+      "naive": 7.76
+     },
+     {
+      "game": "PHI @ TEN",
+      "model": 9.603,
+      "actual": 6,
+      "naive": 7.76
+     },
+     {
+      "game": "JAX @ DEN",
+      "model": 8.621,
+      "actual": 7,
+      "naive": 7.76
+     },
+     {
+      "game": "LV @ LAC",
+      "model": 8.184,
+      "actual": 11,
+      "naive": 7.76
+     },
+     {
+      "game": "SEA @ ARI",
+      "model": 7.421,
+      "actual": 9,
+      "naive": 7.76
+     },
+     {
+      "game": "WAS @ DAL",
+      "model": 5.209,
+      "actual": 2,
+      "naive": 7.76
+     },
+     {
+      "game": "MIA @ SF",
+      "model": 6.251,
+      "actual": 5,
+      "naive": 7.76
+     },
+     {
+      "game": "IND @ KC",
+      "model": 6.485,
+      "actual": 4,
+      "naive": 7.76
+     }
+    ],
+    "model_mae": 2.64,
+    "naive_mae": 2.786
+   },
+   "kicks": {
+    "rows": [
+     {
+      "game": "CAR @ ATL",
+      "team": "CAR",
+      "kicker": "R.Fitzgerald",
+      "model": 6.323,
+      "actual": 10,
+      "naive": 7.28
+     },
+     {
+      "game": "CAR @ ATL",
+      "team": "ATL",
+      "kicker": "N.Folk",
+      "model": 8.214,
+      "actual": 3,
+      "naive": 7.28
+     },
+     {
+      "game": "NO @ BAL",
+      "team": "NO",
+      "kicker": "D.Carlson",
+      "model": 7.177,
+      "actual": 10,
+      "naive": 7.28
+     },
+     {
+      "game": "NO @ BAL",
+      "team": "BAL",
+      "kicker": "T.Loop",
+      "model": 8.427,
+      "actual": 5,
+      "naive": 7.28
+     },
+     {
+      "game": "MIN @ CHI",
+      "team": "MIN",
+      "kicker": "W.Reichard",
+      "model": 7.06,
+      "actual": 9,
+      "naive": 7.28
+     },
+     {
+      "game": "MIN @ CHI",
+      "team": "CHI",
+      "kicker": "C.Santos",
+      "model": 7.293,
+      "actual": 3,
+      "naive": 7.28
+     },
+     {
+      "game": "CIN @ HOU",
+      "team": "CIN",
+      "kicker": "E.McPherson",
+      "model": 7.37,
+      "actual": 8,
+      "naive": 7.28
+     },
+     {
+      "game": "CIN @ HOU",
+      "team": "HOU",
+      "kicker": "K.Fairbairn",
+      "model": 9.402,
+      "actual": 6,
+      "naive": 7.28
+     },
+     {
+      "game": "PIT @ NE",
+      "team": "PIT",
+      "kicker": "C.Boswell",
+      "model": 7.324,
+      "actual": 3,
+      "naive": 7.28
+     },
+     {
+      "game": "PIT @ NE",
+      "team": "NE",
+      "kicker": "A.Borregales",
+      "model": 7.067,
+      "actual": 8,
+      "naive": 7.28
+     },
+     {
+      "game": "GB @ NYJ",
+      "team": "GB",
+      "kicker": "T.Smack",
+      "model": 7.884,
+      "actual": 8,
+      "naive": 7.28
+     },
+     {
+      "game": "GB @ NYJ",
+      "team": "NYJ",
+      "kicker": "J.Sanders",
+      "model": 6.952,
+      "actual": 5,
+      "naive": 7.28
+     },
+     {
+      "game": "CLE @ TB",
+      "team": "CLE",
+      "kicker": "A.Szmyt",
+      "model": 5.686,
+      "actual": 11,
+      "naive": 7.28
+     },
+     {
+      "game": "CLE @ TB",
+      "team": "TB",
+      "kicker": "C.McLaughlin",
+      "model": 8.071,
+      "actual": 13,
+      "naive": 7.28
+     },
+     {
+      "game": "PHI @ TEN",
+      "team": "PHI",
+      "kicker": "J.Elliott",
+      "model": 6.769,
+      "actual": 6,
+      "naive": 7.28
+     },
+     {
+      "game": "PHI @ TEN",
+      "team": "TEN",
+      "kicker": "J.Slye",
+      "model": 5.716,
+      "actual": 8,
+      "naive": 7.28
+     },
+     {
+      "game": "JAX @ DEN",
+      "team": "JAX",
+      "kicker": "C.Little",
+      "model": 7.488,
+      "actual": 7,
+      "naive": 7.28
+     },
+     {
+      "game": "JAX @ DEN",
+      "team": "DEN",
+      "kicker": "W.Lutz",
+      "model": 7.48,
+      "actual": 8,
+      "naive": 7.28
+     },
+     {
+      "game": "LV @ LAC",
+      "team": "LV",
+      "kicker": "M.Gay",
+      "model": 6.477,
+      "actual": 6,
+      "naive": 7.28
+     },
+     {
+      "game": "LV @ LAC",
+      "team": "LAC",
+      "kicker": "C.Dicker",
+      "model": 8.499,
+      "actual": 2,
+      "naive": 7.28
+     },
+     {
+      "game": "SEA @ ARI",
+      "team": "SEA",
+      "kicker": "J.Myers",
+      "model": 8.625,
+      "actual": 7,
+      "naive": 7.28
+     },
+     {
+      "game": "SEA @ ARI",
+      "team": "ARI",
+      "kicker": "C.Ryland",
+      "model": 7.061,
+      "actual": 1,
+      "naive": 7.28
+     },
+     {
+      "game": "WAS @ DAL",
+      "team": "WAS",
+      "kicker": "D.Stevens",
+      "model": 7.047,
+      "actual": 8,
+      "naive": 7.28
+     },
+     {
+      "game": "WAS @ DAL",
+      "team": "DAL",
+      "kicker": "B.Aubrey",
+      "model": 9.104,
+      "actual": 13,
+      "naive": 7.28
+     },
+     {
+      "game": "MIA @ SF",
+      "team": "MIA",
+      "kicker": "R.Patterson",
+      "model": 6.557,
+      "actual": 7,
+      "naive": 7.28
+     },
+     {
+      "game": "MIA @ SF",
+      "team": "SF",
+      "kicker": "E.Pineiro",
+      "model": 8.777,
+      "actual": 5,
+      "naive": 7.28
+     },
+     {
+      "game": "IND @ KC",
+      "team": "IND",
+      "kicker": "S.Shrader",
+      "model": 7.644,
+      "actual": 12,
+      "naive": 7.28
+     },
+     {
+      "game": "IND @ KC",
+      "team": "KC",
+      "kicker": "H.Butker",
+      "model": 8.115,
+      "actual": 15,
+      "naive": 7.28
+     }
+    ],
+    "model_mae": 2.929,
+    "naive_mae": 2.679
+   },
+   "drive": {
+    "n": 28,
+    "model_logloss": 1.2975,
+    "naive_logloss": 1.2821
+   }
+  },
+  {
+   "week": 3,
+   "punts": {
+    "rows": [
+     {
+      "game": "LAC @ BUF",
+      "model": 5.474,
+      "actual": 4,
+      "naive": 7.76
+     },
+     {
+      "game": "CAR @ CLE",
+      "model": 9.431,
+      "actual": 8,
+      "naive": 7.76
+     },
+     {
+      "game": "NYJ @ DET",
+      "model": 7.454,
+      "actual": 5,
+      "naive": 7.76
+     },
+     {
+      "game": "HOU @ IND",
+      "model": 8.322,
+      "actual": 6,
+      "naive": 7.76
+     },
+     {
+      "game": "NE @ JAX",
+      "model": 7.454,
+      "actual": 5,
+      "naive": 7.76
+     },
+     {
+      "game": "KC @ MIA",
+      "model": 6.771,
+      "actual": 3,
+      "naive": 7.76
+     },
+     {
+      "game": "TEN @ NYG",
+      "model": 9.472,
+      "actual": 11,
+      "naive": 7.76
+     },
+     {
+      "game": "CIN @ PIT",
+      "model": 7.947,
+      "actual": 3,
+      "naive": 7.76
+     },
+     {
+      "game": "SEA @ WAS",
+      "model": 7.803,
+      "actual": 11,
+      "naive": 7.76
+     },
+     {
+      "game": "ARI @ SF",
+      "model": 5.272,
+      "actual": 7,
+      "naive": 7.76
+     },
+     {
+      "game": "MIN @ TB",
+      "model": 7.628,
+      "actual": 17,
+      "naive": 7.76
+     },
+     {
+      "game": "BAL @ DAL",
+      "model": 4.468,
+      "actual": 5,
+      "naive": 7.76
+     },
+     {
+      "game": "LV @ NO",
+      "model": 8.294,
+      "actual": 6,
+      "naive": 7.76
+     },
+     {
+      "game": "LA @ DEN",
+      "model": 8.391,
+      "actual": 9,
+      "naive": 7.76
+     }
+    ],
+    "model_mae": 2.722,
+    "naive_mae": 3.074
+   },
+   "kicks": {
+    "rows": [
+     {
+      "game": "LAC @ BUF",
+      "team": "LAC",
+      "kicker": "C.Dicker",
+      "model": 7.014,
+      "actual": 10,
+      "naive": 7.28
+     },
+     {
+      "game": "LAC @ BUF",
+      "team": "BUF",
+      "kicker": "T.Bass",
+      "model": 6.613,
+      "actual": 6,
+      "naive": 7.28
+     },
+     {
+      "game": "CAR @ CLE",
+      "team": "CAR",
+      "kicker": "R.Fitzgerald",
+      "model": 6.35,
+      "actual": 12,
+      "naive": 7.28
+     },
+     {
+      "game": "CAR @ CLE",
+      "team": "CLE",
+      "kicker": "A.Szmyt",
+      "model": 6.309,
+      "actual": 7,
+      "naive": 7.28
+     },
+     {
+      "game": "NYJ @ DET",
+      "team": "NYJ",
+      "kicker": "J.Sanders",
+      "model": 6.914,
+      "actual": 4,
+      "naive": 7.28
+     },
+     {
+      "game": "NYJ @ DET",
+      "team": "DET",
+      "kicker": "J.Bates",
+      "model": 7.917,
+      "actual": 7,
+      "naive": 7.28
+     },
+     {
+      "game": "HOU @ IND",
+      "team": "HOU",
+      "kicker": "K.Fairbairn",
+      "model": 8.957,
+      "actual": 5,
+      "naive": 7.28
+     },
+     {
+      "game": "HOU @ IND",
+      "team": "IND",
+      "kicker": "S.Shrader",
+      "model": 7.836,
+      "actual": 13,
+      "naive": 7.28
+     },
+     {
+      "game": "NE @ JAX",
+      "team": "NE",
+      "kicker": "A.Borregales",
+      "model": 6.964,
+      "actual": 6,
+      "naive": 7.28
+     },
+     {
+      "game": "NE @ JAX",
+      "team": "JAX",
+      "kicker": "C.Little",
+      "model": 7.907,
+      "actual": 5,
+      "naive": 7.28
+     },
+     {
+      "game": "KC @ MIA",
+      "team": "KC",
+      "kicker": "H.Butker",
+      "model": 8.671,
+      "actual": 6,
+      "naive": 7.28
+     },
+     {
+      "game": "KC @ MIA",
+      "team": "MIA",
+      "kicker": "R.Patterson",
+      "model": 6.854,
+      "actual": 4,
+      "naive": 7.28
+     },
+     {
+      "game": "TEN @ NYG",
+      "team": "TEN",
+      "kicker": "J.Slye",
+      "model": 5.935,
+      "actual": 1,
+      "naive": 7.28
+     },
+     {
+      "game": "TEN @ NYG",
+      "team": "NYG",
+      "kicker": "D.Zvada",
+      "model": 5.753,
+      "actual": 12,
+      "naive": 7.28
+     },
+     {
+      "game": "CIN @ PIT",
+      "team": "CIN",
+      "kicker": "E.McPherson",
+      "model": 7.599,
+      "actual": 9,
+      "naive": 7.28
+     },
+     {
+      "game": "CIN @ PIT",
+      "team": "PIT",
+      "kicker": "C.Boswell",
+      "model": 7.273,
+      "actual": 12,
+      "naive": 7.28
+     },
+     {
+      "game": "SEA @ WAS",
+      "team": "SEA",
+      "kicker": "J.Myers",
+      "model": 8.72,
+      "actual": 7,
+      "naive": 7.28
+     },
+     {
+      "game": "SEA @ WAS",
+      "team": "WAS",
+      "kicker": "D.Stevens",
+      "model": 6.176,
+      "actual": 9,
+      "naive": 7.28
+     },
+     {
+      "game": "ARI @ SF",
+      "team": "ARI",
+      "kicker": "C.Ryland",
+      "model": 6.921,
+      "actual": 12,
+      "naive": 7.28
+     },
+     {
+      "game": "ARI @ SF",
+      "team": "SF",
+      "kicker": "E.Pineiro",
+      "model": 8.405,
+      "actual": 6,
+      "naive": 7.28
+     },
+     {
+      "game": "MIN @ TB",
+      "team": "MIN",
+      "kicker": "W.Reichard",
+      "model": 8.017,
+      "actual": 11,
+      "naive": 7.28
+     },
+     {
+      "game": "MIN @ TB",
+      "team": "TB",
+      "kicker": "C.McLaughlin",
+      "model": 7.799,
+      "actual": 10,
+      "naive": 7.28
+     },
+     {
+      "game": "BAL @ DAL",
+      "team": "BAL",
+      "kicker": "T.Loop",
+      "model": 8.416,
+      "actual": 10,
+      "naive": 7.28
+     },
+     {
+      "game": "BAL @ DAL",
+      "team": "DAL",
+      "kicker": "B.Aubrey",
+      "model": 8.938,
+      "actual": 11,
+      "naive": 7.28
+     },
+     {
+      "game": "LV @ NO",
+      "team": "LV",
+      "kicker": "M.Gay",
+      "model": 6.6,
+      "actual": 11,
+      "naive": 7.28
+     },
+     {
+      "game": "LV @ NO",
+      "team": "NO",
+      "kicker": "D.Carlson",
+      "model": 7.935,
+      "actual": 3,
+      "naive": 7.28
+     },
+     {
+      "game": "LA @ DEN",
+      "team": "LA",
+      "kicker": "H.Mevis",
+      "model": 6.982,
+      "actual": 14,
+      "naive": 7.28
+     },
+     {
+      "game": "LA @ DEN",
+      "team": "DEN",
+      "kicker": "W.Lutz",
+      "model": 7.186,
+      "actual": 2,
+      "naive": 7.28
+     }
+    ],
+    "model_mae": 3.286,
+    "naive_mae": 3.107
+   },
+   "drive": {
+    "n": 28,
+    "model_logloss": 1.1651,
+    "naive_logloss": 1.1794
+   }
+  },
+  {
+   "week": 4,
+   "punts": {
+    "rows": [
+     {
+      "game": "IND @ WAS",
+      "model": 6.156,
+      "actual": 9,
+      "naive": 7.75
+     },
+     {
+      "game": "TEN @ BAL",
+      "model": 8.125,
+      "actual": 11,
+      "naive": 7.75
+     },
+     {
+      "game": "NE @ BUF",
+      "model": 6.203,
+      "actual": 8,
+      "naive": 7.75
+     },
+     {
+      "game": "NYJ @ CHI",
+      "model": 8.272,
+      "actual": 5,
+      "naive": 7.75
+     },
+     {
+      "game": "JAX @ CIN",
+      "model": 5.87,
+      "actual": 5,
+      "naive": 7.75
+     },
+     {
+      "game": "DAL @ HOU",
+      "model": 6.619,
+      "actual": 6,
+      "naive": 7.75
+     },
+     {
+      "game": "ARI @ NYG",
+      "model": 7.095,
+      "actual": 9,
+      "naive": 7.75
+     },
+     {
+      "game": "LA @ PHI",
+      "model": 7.586,
+      "actual": 10,
+      "naive": 7.75
+     },
+     {
+      "game": "GB @ TB",
+      "model": 7.904,
+      "actual": 8,
+      "naive": 7.75
+     },
+     {
+      "game": "MIA @ MIN",
+      "model": 8.422,
+      "actual": 10,
+      "naive": 7.75
+     },
+     {
+      "game": "KC @ LV",
+      "model": 7.06,
+      "actual": 8,
+      "naive": 7.75
+     },
+     {
+      "game": "LAC @ SEA",
+      "model": 8.313,
+      "actual": 12,
+      "naive": 7.75
+     },
+     {
+      "game": "DEN @ SF",
+      "model": 7.091,
+      "actual": 9,
+      "naive": 7.75
+     },
+     {
+      "game": "DET @ CAR",
+      "model": 5.896,
+      "actual": 5,
+      "naive": 7.75
+     }
+    ],
+    "model_mae": 1.836,
+    "naive_mae": 1.893
+   },
+   "kicks": {
+    "rows": [
+     {
+      "game": "IND @ WAS",
+      "team": "IND",
+      "kicker": "S.Shrader",
+      "model": 8.792,
+      "actual": 12,
+      "naive": 7.28
+     },
+     {
+      "game": "IND @ WAS",
+      "team": "WAS",
+      "kicker": "D.Stevens",
+      "model": 6.873,
+      "actual": 7,
+      "naive": 7.28
+     },
+     {
+      "game": "TEN @ BAL",
+      "team": "TEN",
+      "kicker": "J.Slye",
+      "model": 5.509,
+      "actual": 4,
+      "naive": 7.28
+     },
+     {
+      "game": "TEN @ BAL",
+      "team": "BAL",
+      "kicker": "T.Loop",
+      "model": 8.313,
+      "actual": 6,
+      "naive": 7.28
+     },
+     {
+      "game": "NE @ BUF",
+      "team": "NE",
+      "kicker": "A.Borregales",
+      "model": 6.919,
+      "actual": 3,
+      "naive": 7.28
+     },
+     {
+      "game": "NE @ BUF",
+      "team": "BUF",
+      "kicker": "T.Bass",
+      "model": 7.132,
+      "actual": 8,
+      "naive": 7.28
+     },
+     {
+      "game": "NYJ @ CHI",
+      "team": "NYJ",
+      "kicker": "J.Sanders",
+      "model": 6.63,
+      "actual": 6,
+      "naive": 7.28
+     },
+     {
+      "game": "NYJ @ CHI",
+      "team": "CHI",
+      "kicker": "C.Santos",
+      "model": 7.594,
+      "actual": 11,
+      "naive": 7.28
+     },
+     {
+      "game": "JAX @ CIN",
+      "team": "JAX",
+      "kicker": "C.Little",
+      "model": 7.681,
+      "actual": 10,
+      "naive": 7.28
+     },
+     {
+      "game": "JAX @ CIN",
+      "team": "CIN",
+      "kicker": "E.McPherson",
+      "model": 8.103,
+      "actual": 5,
+      "naive": 7.28
+     },
+     {
+      "game": "DAL @ HOU",
+      "team": "DAL",
+      "kicker": "B.Aubrey",
+      "model": 8.783,
+      "actual": 10,
+      "naive": 7.28
+     },
+     {
+      "game": "DAL @ HOU",
+      "team": "HOU",
+      "kicker": "K.Fairbairn",
+      "model": 9.24,
+      "actual": 12,
+      "naive": 7.28
+     },
+     {
+      "game": "ARI @ NYG",
+      "team": "ARI",
+      "kicker": "C.Ryland",
+      "model": 7.492,
+      "actual": 6,
+      "naive": 7.28
+     },
+     {
+      "game": "ARI @ NYG",
+      "team": "NYG",
+      "kicker": "D.Zvada",
+      "model": 6.281,
+      "actual": 10,
+      "naive": 7.28
+     },
+     {
+      "game": "LA @ PHI",
+      "team": "LA",
+      "kicker": "H.Mevis",
+      "model": 7.409,
+      "actual": 6,
+      "naive": 7.28
+     },
+     {
+      "game": "LA @ PHI",
+      "team": "PHI",
+      "kicker": "J.Elliott",
+      "model": 6.014,
+      "actual": 8,
+      "naive": 7.28
+     },
+     {
+      "game": "GB @ TB",
+      "team": "GB",
+      "kicker": "T.Smack",
+      "model": 7.2,
+      "actual": 5,
+      "naive": 7.28
+     },
+     {
+      "game": "GB @ TB",
+      "team": "TB",
+      "kicker": "C.McLaughlin",
+      "model": 7.626,
+      "actual": 2,
+      "naive": 7.28
+     },
+     {
+      "game": "MIA @ MIN",
+      "team": "MIA",
+      "kicker": "R.Patterson",
+      "model": 6.355,
+      "actual": 4,
+      "naive": 7.28
+     },
+     {
+      "game": "MIA @ MIN",
+      "team": "MIN",
+      "kicker": "W.Reichard",
+      "model": 8.446,
+      "actual": 15,
+      "naive": 7.28
+     },
+     {
+      "game": "KC @ LV",
+      "team": "KC",
+      "kicker": "H.Butker",
+      "model": 8.356,
+      "actual": 6,
+      "naive": 7.28
+     },
+     {
+      "game": "KC @ LV",
+      "team": "LV",
+      "kicker": "M.Gay",
+      "model": 7.005,
+      "actual": 13,
+      "naive": 7.28
+     },
+     {
+      "game": "LAC @ SEA",
+      "team": "LAC",
+      "kicker": "C.Dicker",
+      "model": 7.478,
+      "actual": 11,
+      "naive": 7.28
+     },
+     {
+      "game": "LAC @ SEA",
+      "team": "SEA",
+      "kicker": "J.Myers",
+      "model": 8.63,
+      "actual": 6,
+      "naive": 7.28
+     },
+     {
+      "game": "DEN @ SF",
+      "team": "DEN",
+      "kicker": "W.Lutz",
+      "model": 7.115,
+      "actual": 6,
+      "naive": 7.28
+     },
+     {
+      "game": "DEN @ SF",
+      "team": "SF",
+      "kicker": "E.Pineiro",
+      "model": 7.992,
+      "actual": 6,
+      "naive": 7.28
+     },
+     {
+      "game": "DET @ CAR",
+      "team": "DET",
+      "kicker": "J.Bates",
+      "model": 7.753,
+      "actual": 14,
+      "naive": 7.28
+     },
+     {
+      "game": "DET @ CAR",
+      "team": "CAR",
+      "kicker": "R.Fitzgerald",
+      "model": 6.896,
+      "actual": 8,
+      "naive": 7.28
+     }
+    ],
+    "model_mae": 2.703,
+    "naive_mae": 2.806
+   },
+   "drive": {
+    "n": 28,
+    "model_logloss": 1.354,
+    "naive_logloss": 1.343
+   }
+  },
+  {
+   "week": 5,
+   "punts": {
+    "rows": [
+     {
+      "game": "PHI @ JAX",
+      "model": 7.836,
+      "actual": 11,
+      "naive": 7.76
+     },
+     {
+      "game": "CHI @ GB",
+      "model": 6.517,
+      "actual": 8,
+      "naive": 7.76
+     },
+     {
+      "game": "CIN @ MIA",
+      "model": 6.7,
+      "actual": 5,
+      "naive": 7.76
+     },
+     {
+      "game": "LV @ NE",
+      "model": 8.137,
+      "actual": 6,
+      "naive": 7.76
+     },
+     {
+      "game": "MIN @ NO",
+      "model": 8.529,
+      "actual": 7,
+      "naive": 7.76
+     },
+     {
+      "game": "CLE @ NYJ",
+      "model": 10.965,
+      "actual": 15,
+      "naive": 7.76
+     },
+     {
+      "game": "IND @ PIT",
+      "model": 7.511,
+      "actual": 4,
+      "naive": 7.76
+     },
+     {
+      "game": "HOU @ TEN",
+      "model": 10.772,
+      "actual": 6,
+      "naive": 7.76
+     },
+     {
+      "game": "NYG @ WAS",
+      "model": 7.967,
+      "actual": 8,
+      "naive": 7.76
+     },
+     {
+      "game": "DEN @ LAC",
+      "model": 9.493,
+      "actual": 10,
+      "naive": 7.76
+     },
+     {
+      "game": "DET @ ARI",
+      "model": 4.987,
+      "actual": 9,
+      "naive": 7.76
+     },
+     {
+      "game": "SF @ SEA",
+      "model": 6.69,
+      "actual": 7,
+      "naive": 7.76
+     },
+     {
+      "game": "BAL @ ATL",
+      "model": 6.847,
+      "actual": 8,
+      "naive": 7.76
+     }
+    ],
+    "model_mae": 2.181,
+    "naive_mae": 2.018
+   },
+   "kicks": {
+    "rows": [
+     {
+      "game": "PHI @ JAX",
+      "team": "PHI",
+      "kicker": "J.Elliott",
+      "model": 5.747,
+      "actual": 5,
+      "naive": 7.29
+     },
+     {
+      "game": "PHI @ JAX",
+      "team": "JAX",
+      "kicker": "C.Little",
+      "model": 7.833,
+      "actual": 7,
+      "naive": 7.29
+     },
+     {
+      "game": "CHI @ GB",
+      "team": "CHI",
+      "kicker": "C.Santos",
+      "model": 7.839,
+      "actual": 1,
+      "naive": 7.29
+     },
+     {
+      "game": "CHI @ GB",
+      "team": "GB",
+      "kicker": "T.Smack",
+      "model": 7.294,
+      "actual": 5,
+      "naive": 7.29
+     },
+     {
+      "game": "CIN @ MIA",
+      "team": "CIN",
+      "kicker": "E.McPherson",
+      "model": 7.853,
+      "actual": 7,
+      "naive": 7.29
+     },
+     {
+      "game": "CIN @ MIA",
+      "team": "MIA",
+      "kicker": "R.Patterson",
+      "model": 6.709,
+      "actual": 4,
+      "naive": 7.29
+     },
+     {
+      "game": "LV @ NE",
+      "team": "LV",
+      "kicker": "M.Gay",
+      "model": 7.259,
+      "actual": 5,
+      "naive": 7.29
+     },
+     {
+      "game": "LV @ NE",
+      "team": "NE",
+      "kicker": "A.Borregales",
+      "model": 7.095,
+      "actual": 9,
+      "naive": 7.29
+     },
+     {
+      "game": "MIN @ NO",
+      "team": "MIN",
+      "kicker": "W.Reichard",
+      "model": 8.571,
+      "actual": 11,
+      "naive": 7.29
+     },
+     {
+      "game": "MIN @ NO",
+      "team": "NO",
+      "kicker": "D.Carlson",
+      "model": 7.095,
+      "actual": 1,
+      "naive": 7.29
+     },
+     {
+      "game": "CLE @ NYJ",
+      "team": "CLE",
+      "kicker": "A.Szmyt",
+      "model": 6.296,
+      "actual": 6,
+      "naive": 7.29
+     },
+     {
+      "game": "CLE @ NYJ",
+      "team": "NYJ",
+      "kicker": "J.Sanders",
+      "model": 6.698,
+      "actual": 5,
+      "naive": 7.29
+     },
+     {
+      "game": "IND @ PIT",
+      "team": "IND",
+      "kicker": "S.Shrader",
+      "model": 8.246,
+      "actual": 16,
+      "naive": 7.29
+     },
+     {
+      "game": "IND @ PIT",
+      "team": "PIT",
+      "kicker": "C.Boswell",
+      "model": 7.68,
+      "actual": 10,
+      "naive": 7.29
+     },
+     {
+      "game": "HOU @ TEN",
+      "team": "HOU",
+      "kicker": "K.Fairbairn",
+      "model": 8.942,
+      "actual": 14,
+      "naive": 7.29
+     },
+     {
+      "game": "HOU @ TEN",
+      "team": "TEN",
+      "kicker": "J.Slye",
+      "model": 5.409,
+      "actual": 3,
+      "naive": 7.29
+     },
+     {
+      "game": "NYG @ WAS",
+      "team": "NYG",
+      "kicker": "D.Zvada",
+      "model": 6.286,
+      "actual": 9,
+      "naive": 7.29
+     },
+     {
+      "game": "NYG @ WAS",
+      "team": "WAS",
+      "kicker": "D.Stevens",
+      "model": 7.111,
+      "actual": 7,
+      "naive": 7.29
+     },
+     {
+      "game": "DEN @ LAC",
+      "team": "DEN",
+      "kicker": "W.Lutz",
+      "model": 7.175,
+      "actual": 11,
+      "naive": 7.29
+     },
+     {
+      "game": "DEN @ LAC",
+      "team": "LAC",
+      "kicker": "C.Dicker",
+      "model": 7.803,
+      "actual": 5,
+      "naive": 7.29
+     },
+     {
+      "game": "DET @ ARI",
+      "team": "DET",
+      "kicker": "J.Bates",
+      "model": 8.442,
+      "actual": 9,
+      "naive": 7.29
+     },
+     {
+      "game": "DET @ ARI",
+      "team": "ARI",
+      "kicker": "C.Ryland",
+      "model": 7.607,
+      "actual": 3,
+      "naive": 7.29
+     },
+     {
+      "game": "SF @ SEA",
+      "team": "SF",
+      "kicker": "E.Pineiro",
+      "model": 7.43,
+      "actual": 6,
+      "naive": 7.29
+     },
+     {
+      "game": "SF @ SEA",
+      "team": "SEA",
+      "kicker": "J.Myers",
+      "model": 8.461,
+      "actual": 17,
+      "naive": 7.29
+     },
+     {
+      "game": "BAL @ ATL",
+      "team": "BAL",
+      "kicker": "T.Loop",
+      "model": 7.407,
+      "actual": 10,
+      "naive": 7.29
+     },
+     {
+      "game": "BAL @ ATL",
+      "team": "ATL",
+      "kicker": "N.Folk",
+      "model": 8.283,
+      "actual": 11,
+      "naive": 7.29
+     }
+    ],
+    "model_mae": 2.938,
+    "naive_mae": 3.314
+   },
+   "drive": {
+    "n": 26,
+    "model_logloss": 1.2872,
+    "naive_logloss": 1.2889
+   }
+  },
+  {
+   "week": 6,
+   "punts": {
+    "rows": [
+     {
+      "game": "HOU @ JAX",
+      "model": 8.446,
+      "actual": 5,
+      "naive": 7.76
+     },
+     {
+      "game": "CHI @ ATL",
+      "model": 6.021,
+      "actual": 9,
+      "naive": 7.76
+     },
+     {
+      "game": "BAL @ CLE",
+      "model": 9.628,
+      "actual": 14,
+      "naive": 7.76
+     },
+     {
+      "game": "TEN @ IND",
+      "model": 7.796,
+      "actual": 5,
+      "naive": 7.76
+     },
+     {
+      "game": "NYJ @ NE",
+      "model": 8.846,
+      "actual": 4,
+      "naive": 7.76
+     },
+     {
+      "game": "NO @ NYG",
+      "model": 7.438,
+      "actual": 12,
+      "naive": 7.76
+     },
+     {
+      "game": "CAR @ PHI",
+      "model": 8.201,
+      "actual": 13,
+      "naive": 7.76
+     },
+     {
+      "game": "PIT @ TB",
+      "model": 7.747,
+      "actual": 11,
+      "naive": 7.76
+     },
+     {
+      "game": "ARI @ LA",
+      "model": 5.765,
+      "actual": 6,
+      "naive": 7.76
+     },
+     {
+      "game": "LAC @ KC",
+      "model": 7.799,
+      "actual": 7,
+      "naive": 7.76
+     },
+     {
+      "game": "BUF @ LV",
+      "model": 5.728,
+      "actual": 5,
+      "naive": 7.76
+     },
+     {
+      "game": "DAL @ GB",
+      "model": 3.866,
+      "actual": 6,
+      "naive": 7.76
+     }
+    ],
+    "model_mae": 2.912,
+    "naive_mae": 3.043
+   },
+   "kicks": {
+    "rows": [
+     {
+      "game": "HOU @ JAX",
+      "team": "HOU",
+      "kicker": "K.Fairbairn",
+      "model": 8.933,
+      "actual": 10,
+      "naive": 7.29
+     },
+     {
+      "game": "HOU @ JAX",
+      "team": "JAX",
+      "kicker": "C.Little",
+      "model": 7.57,
+      "actual": 7,
+      "naive": 7.29
+     },
+     {
+      "game": "CHI @ ATL",
+      "team": "CHI",
+      "kicker": "C.Santos",
+      "model": 7.882,
+      "actual": 7,
+      "naive": 7.29
+     },
+     {
+      "game": "CHI @ ATL",
+      "team": "ATL",
+      "kicker": "N.Folk",
+      "model": 8.637,
+      "actual": 1,
+      "naive": 7.29
+     },
+     {
+      "game": "BAL @ CLE",
+      "team": "BAL",
+      "kicker": "T.Loop",
+      "model": 7.663,
+      "actual": 4,
+      "naive": 7.29
+     },
+     {
+      "game": "BAL @ CLE",
+      "team": "CLE",
+      "kicker": "A.Szmyt",
+      "model": 6.311,
+      "actual": 7,
+      "naive": 7.29
+     },
+     {
+      "game": "TEN @ IND",
+      "team": "TEN",
+      "kicker": "J.Slye",
+      "model": 5.653,
+      "actual": 14,
+      "naive": 7.29
+     },
+     {
+      "game": "TEN @ IND",
+      "team": "IND",
+      "kicker": "S.Shrader",
+      "model": 9.331,
+      "actual": 8,
+      "naive": 7.29
+     },
+     {
+      "game": "NYJ @ NE",
+      "team": "NYJ",
+      "kicker": "J.Sanders",
+      "model": 6.307,
+      "actual": 13,
+      "naive": 7.29
+     },
+     {
+      "game": "NYJ @ NE",
+      "team": "NE",
+      "kicker": "A.Borregales",
+      "model": 7.226,
+      "actual": 8,
+      "naive": 7.29
+     },
+     {
+      "game": "NO @ NYG",
+      "team": "NO",
+      "kicker": "D.Carlson",
+      "model": 7.325,
+      "actual": 10,
+      "naive": 7.29
+     },
+     {
+      "game": "NO @ NYG",
+      "team": "NYG",
+      "kicker": "D.Zvada",
+      "model": 6.656,
+      "actual": 7,
+      "naive": 7.29
+     },
+     {
+      "game": "CAR @ PHI",
+      "team": "CAR",
+      "kicker": "R.Fitzgerald",
+      "model": 6.637,
+      "actual": 7,
+      "naive": 7.29
+     },
+     {
+      "game": "CAR @ PHI",
+      "team": "PHI",
+      "kicker": "J.Elliott",
+      "model": 5.825,
+      "actual": 2,
+      "naive": 7.29
+     },
+     {
+      "game": "PIT @ TB",
+      "team": "PIT",
+      "kicker": "C.Boswell",
+      "model": 6.748,
+      "actual": 14,
+      "naive": 7.29
+     },
+     {
+      "game": "PIT @ TB",
+      "team": "TB",
+      "kicker": "C.McLaughlin",
+      "model": 6.42,
+      "actual": 13,
+      "naive": 7.29
+     },
+     {
+      "game": "ARI @ LA",
+      "team": "ARI",
+      "kicker": "C.Ryland",
+      "model": 6.725,
+      "actual": 18,
+      "naive": 7.29
+     },
+     {
+      "game": "ARI @ LA",
+      "team": "LA",
+      "kicker": "B.Grupe",
+      "model": 8.325,
+      "actual": 3,
+      "naive": 7.29
+     },
+     {
+      "game": "LAC @ KC",
+      "team": "LAC",
+      "kicker": "C.Dicker",
+      "model": 7.35,
+      "actual": 6,
+      "naive": 7.29
+     },
+     {
+      "game": "LAC @ KC",
+      "team": "KC",
+      "kicker": "H.Butker",
+      "model": 8.059,
+      "actual": 10,
+      "naive": 7.29
+     },
+     {
+      "game": "BUF @ LV",
+      "team": "BUF",
+      "kicker": "T.Bass",
+      "model": 7.542,
+      "actual": 15,
+      "naive": 7.29
+     },
+     {
+      "game": "BUF @ LV",
+      "team": "LV",
+      "kicker": "M.Gay",
+      "model": 7.546,
+      "actual": 12,
+      "naive": 7.29
+     },
+     {
+      "game": "DAL @ GB",
+      "team": "DAL",
+      "kicker": "B.Aubrey",
+      "model": 8.234,
+      "actual": 1,
+      "naive": 7.29
+     },
+     {
+      "game": "DAL @ GB",
+      "team": "GB",
+      "kicker": "T.Smack",
+      "model": 6.84,
+      "actual": 11,
+      "naive": 7.29
+     }
+    ],
+    "model_mae": 3.995,
+    "naive_mae": 3.726
+   },
+   "drive": {
+    "n": 24,
+    "model_logloss": 1.1871,
+    "naive_logloss": 1.1712
+   }
+  },
+  {
+   "week": 7,
+   "punts": {
+    "rows": [
+     {
+      "game": "PIT @ NO",
+      "model": 8.02,
+      "actual": 4,
+      "naive": 7.76
+     },
+     {
+      "game": "SF @ ATL",
+      "model": 5.674,
+      "actual": 4,
+      "naive": 7.76
+     },
+     {
+      "game": "CIN @ BAL",
+      "model": 6.502,
+      "actual": 7,
+      "naive": 7.76
+     },
+     {
+      "game": "TB @ CAR",
+      "model": 7.554,
+      "actual": 4,
+      "naive": 7.76
+     },
+     {
+      "game": "NYG @ HOU",
+      "model": 9.011,
+      "actual": 10,
+      "naive": 7.76
+     },
+     {
+      "game": "IND @ MIN",
+      "model": 7.55,
+      "actual": 6,
+      "naive": 7.76
+     },
+     {
+      "game": "MIA @ NYJ",
+      "model": 8.518,
+      "actual": 6,
+      "naive": 7.76
+     },
+     {
+      "game": "CLE @ TEN",
+      "model": 11.737,
+      "actual": 6,
+      "naive": 7.76
+     },
+     {
+      "game": "DEN @ ARI",
+      "model": 8.638,
+      "actual": 9,
+      "naive": 7.76
+     },
+     {
+      "game": "GB @ DET",
+      "model": 5.206,
+      "actual": 4,
+      "naive": 7.76
+     },
+     {
+      "game": "LA @ LV",
+      "model": 6.803,
+      "actual": 5,
+      "naive": 7.76
+     },
+     {
+      "game": "KC @ SEA",
+      "model": 7.917,
+      "actual": 5,
+      "naive": 7.76
+     }
+    ],
+    "model_mae": 2.236,
+    "naive_mae": 2.507
+   },
+   "kicks": {
+    "rows": [
+     {
+      "game": "PIT @ NO",
+      "team": "PIT",
+      "kicker": "C.Boswell",
+      "model": 8.109,
+      "actual": 10,
+      "naive": 7.3
+     },
+     {
+      "game": "PIT @ NO",
+      "team": "NO",
+      "kicker": "D.Carlson",
+      "model": 6.992,
+      "actual": 4,
+      "naive": 7.3
+     },
+     {
+      "game": "SF @ ATL",
+      "team": "SF",
+      "kicker": "E.Pineiro",
+      "model": 7.719,
+      "actual": 2,
+      "naive": 7.3
+     },
+     {
+      "game": "SF @ ATL",
+      "team": "ATL",
+      "kicker": "N.Folk",
+      "model": 8.114,
+      "actual": 11,
+      "naive": 7.3
+     },
+     {
+      "game": "CIN @ BAL",
+      "team": "CIN",
+      "kicker": "E.McPherson",
+      "model": 7.636,
+      "actual": 5,
+      "naive": 7.3
+     },
+     {
+      "game": "CIN @ BAL",
+      "team": "BAL",
+      "kicker": "T.Loop",
+      "model": 7.615,
+      "actual": 7,
+      "naive": 7.3
+     },
+     {
+      "game": "TB @ CAR",
+      "team": "TB",
+      "kicker": "C.McLaughlin",
+      "model": 7.818,
+      "actual": 11,
+      "naive": 7.3
+     },
+     {
+      "game": "TB @ CAR",
+      "team": "CAR",
+      "kicker": "R.Fitzgerald",
+      "model": 6.881,
+      "actual": 1,
+      "naive": 7.3
+     },
+     {
+      "game": "NYG @ HOU",
+      "team": "NYG",
+      "kicker": "D.Zvada",
+      "model": 6.014,
+      "actual": 3,
+      "naive": 7.3
+     },
+     {
+      "game": "NYG @ HOU",
+      "team": "HOU",
+      "kicker": "K.Fairbairn",
+      "model": 9.621,
+      "actual": 7,
+      "naive": 7.3
+     },
+     {
+      "game": "IND @ MIN",
+      "team": "IND",
+      "kicker": "S.Shrader",
+      "model": 8.466,
+      "actual": 4,
+      "naive": 7.3
+     },
+     {
+      "game": "IND @ MIN",
+      "team": "MIN",
+      "kicker": "W.Reichard",
+      "model": 8.902,
+      "actual": 10,
+      "naive": 7.3
+     },
+     {
+      "game": "MIA @ NYJ",
+      "team": "MIA",
+      "kicker": "Z.Gonzalez",
+      "model": 6.533,
+      "actual": 4,
+      "naive": 7.3
+     },
+     {
+      "game": "MIA @ NYJ",
+      "team": "NYJ",
+      "kicker": "J.Sanders",
+      "model": 7.004,
+      "actual": 5,
+      "naive": 7.3
+     },
+     {
+      "game": "CLE @ TEN",
+      "team": "CLE",
+      "kicker": "A.Szmyt",
+      "model": 6.453,
+      "actual": 9,
+      "naive": 7.3
+     },
+     {
+      "game": "CLE @ TEN",
+      "team": "TEN",
+      "kicker": "J.Slye",
+      "model": 5.889,
+      "actual": 6,
+      "naive": 7.3
+     },
+     {
+      "game": "DEN @ ARI",
+      "team": "DEN",
+      "kicker": "W.Lutz",
+      "model": 7.374,
+      "actual": 12,
+      "naive": 7.3
+     },
+     {
+      "game": "DEN @ ARI",
+      "team": "ARI",
+      "kicker": "C.Ryland",
+      "model": 7.269,
+      "actual": 10,
+      "naive": 7.3
+     },
+     {
+      "game": "GB @ DET",
+      "team": "GB",
+      "kicker": "T.Smack",
+      "model": 7.59,
+      "actual": 5,
+      "naive": 7.3
+     },
+     {
+      "game": "GB @ DET",
+      "team": "DET",
+      "kicker": "J.Bates",
+      "model": 8.241,
+      "actual": 8,
+      "naive": 7.3
+     },
+     {
+      "game": "LA @ LV",
+      "team": "LA",
+      "kicker": "B.McManus",
+      "model": 7.223,
+      "actual": 5,
+      "naive": 7.3
+     },
+     {
+      "game": "LA @ LV",
+      "team": "LV",
+      "kicker": "M.Gay",
+      "model": 7.515,
+      "actual": 9,
+      "naive": 7.3
+     },
+     {
+      "game": "KC @ SEA",
+      "team": "KC",
+      "kicker": "H.Butker",
+      "model": 7.688,
+      "actual": 3,
+      "naive": 7.3
+     },
+     {
+      "game": "KC @ SEA",
+      "team": "SEA",
+      "kicker": "J.Myers",
+      "model": 8.591,
+      "actual": 8,
+      "naive": 7.3
+     }
+    ],
+    "model_mae": 2.64,
+    "naive_mae": 2.758
+   },
+   "drive": {
+    "n": 24,
+    "model_logloss": 1.307,
+    "naive_logloss": 1.3302
+   }
+  },
+  {
+   "week": 8,
+   "punts": {
+    "rows": [
+     {
+      "game": "BAL @ BUF",
+      "model": 5.063,
+      "actual": 7,
+      "naive": 7.74
+     },
+     {
+      "game": "TEN @ CIN",
+      "model": 7.618,
+      "actual": 5,
+      "naive": 7.74
+     },
+     {
+      "game": "ARI @ DAL",
+      "model": 4.578,
+      "actual": 8,
+      "naive": 7.74
+     },
+     {
+      "game": "MIN @ DET",
+      "model": 7.193,
+      "actual": 9,
+      "naive": 7.74
+     },
+     {
+      "game": "IND @ JAX",
+      "model": 6.229,
+      "actual": 12,
+      "naive": 7.74
+     },
+     {
+      "game": "LV @ NYJ",
+      "model": 8.166,
+      "actual": 4,
+      "naive": 7.74
+     },
+     {
+      "game": "CLE @ PIT",
+      "model": 10.454,
+      "actual": 8,
+      "naive": 7.74
+     },
+     {
+      "game": "ATL @ TB",
+      "model": 7.508,
+      "actual": 10,
+      "naive": 7.74
+     },
+     {
+      "game": "LAC @ LA",
+      "model": 7.22,
+      "actual": 9,
+      "naive": 7.74
+     },
+     {
+      "game": "KC @ DEN",
+      "model": 8.884,
+      "actual": 10,
+      "naive": 7.74
+     },
+     {
+      "game": "NE @ MIA",
+      "model": 7.522,
+      "actual": 7,
+      "naive": 7.74
+     },
+     {
+      "game": "PHI @ WAS",
+      "model": 8.329,
+      "actual": 8,
+      "naive": 7.74
+     }
+    ],
+    "model_mae": 2.368,
+    "naive_mae": 1.67
+   },
+   "kicks": {
+    "rows": [
+     {
+      "game": "BAL @ BUF",
+      "team": "BAL",
+      "kicker": "T.Loop",
+      "model": 8.025,
+      "actual": 4,
+      "naive": 7.29
+     },
+     {
+      "game": "BAL @ BUF",
+      "team": "BUF",
+      "kicker": "T.Bass",
+      "model": 7.737,
+      "actual": 12,
+      "naive": 7.29
+     },
+     {
+      "game": "TEN @ CIN",
+      "team": "TEN",
+      "kicker": "J.Slye",
+      "model": 5.693,
+      "actual": 8,
+      "naive": 7.29
+     },
+     {
+      "game": "TEN @ CIN",
+      "team": "CIN",
+      "kicker": "E.McPherson",
+      "model": 7.949,
+      "actual": 5,
+      "naive": 7.29
+     },
+     {
+      "game": "ARI @ DAL",
+      "team": "ARI",
+      "kicker": "C.Ryland",
+      "model": 7.833,
+      "actual": 9,
+      "naive": 7.29
+     },
+     {
+      "game": "ARI @ DAL",
+      "team": "DAL",
+      "kicker": "B.Aubrey",
+      "model": 9.285,
+      "actual": 12,
+      "naive": 7.29
+     },
+     {
+      "game": "MIN @ DET",
+      "team": "MIN",
+      "kicker": "W.Reichard",
+      "model": 8.746,
+      "actual": 1,
+      "naive": 7.29
+     },
+     {
+      "game": "MIN @ DET",
+      "team": "DET",
+      "kicker": "J.Bates",
+      "model": 7.754,
+      "actual": 7,
+      "naive": 7.29
+     },
+     {
+      "game": "IND @ JAX",
+      "team": "IND",
+      "kicker": "S.Shrader",
+      "model": 8.243,
+      "actual": 1,
+      "naive": 7.29
+     },
+     {
+      "game": "IND @ JAX",
+      "team": "JAX",
+      "kicker": "C.Little",
+      "model": 8.048,
+      "actual": 6,
+      "naive": 7.29
+     },
+     {
+      "game": "LV @ NYJ",
+      "team": "LV",
+      "kicker": "M.Gay",
+      "model": 7.624,
+      "actual": 8,
+      "naive": 7.29
+     },
+     {
+      "game": "LV @ NYJ",
+      "team": "NYJ",
+      "kicker": "J.Sanders",
+      "model": 7.156,
+      "actual": 15,
+      "naive": 7.29
+     },
+     {
+      "game": "CLE @ PIT",
+      "team": "CLE",
+      "kicker": "A.Szmyt",
+      "model": 6.375,
+      "actual": 6,
+      "naive": 7.29
+     },
+     {
+      "game": "CLE @ PIT",
+      "team": "PIT",
+      "kicker": "C.Boswell",
+      "model": 7.969,
+      "actual": 9,
+      "naive": 7.29
+     },
+     {
+      "game": "ATL @ TB",
+      "team": "ATL",
+      "kicker": "N.Folk",
+      "model": 7.858,
+      "actual": 0,
+      "naive": 7.29
+     },
+     {
+      "game": "ATL @ TB",
+      "team": "TB",
+      "kicker": "C.McLaughlin",
+      "model": 8.066,
+      "actual": 10,
+      "naive": 7.29
+     },
+     {
+      "game": "LAC @ LA",
+      "team": "LAC",
+      "kicker": "C.Dicker",
+      "model": 7.63,
+      "actual": 9,
+      "naive": 7.29
+     },
+     {
+      "game": "LAC @ LA",
+      "team": "LA",
+      "kicker": "B.McManus",
+      "model": 7.081,
+      "actual": 6,
+      "naive": 7.29
+     },
+     {
+      "game": "KC @ DEN",
+      "team": "KC",
+      "kicker": "H.Butker",
+      "model": 7.721,
+      "actual": 6,
+      "naive": 7.29
+     },
+     {
+      "game": "KC @ DEN",
+      "team": "DEN",
+      "kicker": "W.Lutz",
+      "model": 7.115,
+      "actual": 8,
+      "naive": 7.29
+     },
+     {
+      "game": "NE @ MIA",
+      "team": "NE",
+      "kicker": "A.Borregales",
+      "model": 7.013,
+      "actual": 6,
+      "naive": 7.29
+     },
+     {
+      "game": "NE @ MIA",
+      "team": "MIA",
+      "kicker": "Z.Gonzalez",
+      "model": 6.28,
+      "actual": 7,
+      "naive": 7.29
+     },
+     {
+      "game": "PHI @ WAS",
+      "team": "PHI",
+      "kicker": "J.Elliott",
+      "model": 5.457,
+      "actual": 4,
+      "naive": 7.29
+     },
+     {
+      "game": "PHI @ WAS",
+      "team": "WAS",
+      "kicker": "D.Stevens",
+      "model": 7.082,
+      "actual": 13,
+      "naive": 7.29
+     }
+    ],
+    "model_mae": 2.867,
+    "naive_mae": 2.857
+   },
+   "drive": {
+    "n": 24,
+    "model_logloss": 1.3642,
+    "naive_logloss": 1.3588
+   }
+  }
+ ]
+}

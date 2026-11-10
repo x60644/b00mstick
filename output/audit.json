@@ -1,6 +1,6 @@
 {
  "season": 2026,
- "generated": "2026-11-06T20:34:58.290356",
+ "generated": "2026-11-10T19:06:10.045465",
  "weeks": [
   {
    "week": 1,
@@ -2448,6 +2448,312 @@
     "n": 24,
     "model_logloss": 1.3642,
     "naive_logloss": 1.3588
+   }
+  },
+  {
+   "week": 9,
+   "punts": {
+    "rows": [
+     {
+      "game": "CIN @ ATL",
+      "model": 5.671,
+      "actual": 5,
+      "naive": 7.74
+     },
+     {
+      "game": "DEN @ CAR",
+      "model": 8.855,
+      "actual": 6,
+      "naive": 7.74
+     },
+     {
+      "game": "DAL @ IND",
+      "model": 4.717,
+      "actual": 11,
+      "naive": 7.74
+     },
+     {
+      "game": "NYJ @ KC",
+      "model": 7.284,
+      "actual": 6,
+      "naive": 7.74
+     },
+     {
+      "game": "DET @ MIA",
+      "model": 6.018,
+      "actual": 3,
+      "naive": 7.74
+     },
+     {
+      "game": "CLE @ NO",
+      "model": 9.564,
+      "actual": 9,
+      "naive": 7.74
+     },
+     {
+      "game": "NYG @ PHI",
+      "model": 9.146,
+      "actual": 14,
+      "naive": 7.74
+     },
+     {
+      "game": "LA @ WAS",
+      "model": 6.415,
+      "actual": 10,
+      "naive": 7.74
+     },
+     {
+      "game": "HOU @ LAC",
+      "model": 9.291,
+      "actual": 7,
+      "naive": 7.74
+     },
+     {
+      "game": "LV @ SF",
+      "model": 5.675,
+      "actual": 1,
+      "naive": 7.74
+     },
+     {
+      "game": "GB @ NE",
+      "model": 7.079,
+      "actual": 9,
+      "naive": 7.74
+     },
+     {
+      "game": "ARI @ SEA",
+      "model": 8.341,
+      "actual": 11,
+      "naive": 7.74
+     },
+     {
+      "game": "TB @ CHI",
+      "model": 7.067,
+      "actual": 10,
+      "naive": 7.74
+     }
+    ],
+    "model_mae": 2.892,
+    "naive_mae": 2.943
+   },
+   "kicks": {
+    "rows": [
+     {
+      "game": "CIN @ ATL",
+      "team": "CIN",
+      "kicker": "E.McPherson",
+      "model": 7.655,
+      "actual": 10,
+      "naive": 7.29
+     },
+     {
+      "game": "CIN @ ATL",
+      "team": "ATL",
+      "kicker": "N.Folk",
+      "model": 8.102,
+      "actual": 5,
+      "naive": 7.29
+     },
+     {
+      "game": "DEN @ CAR",
+      "team": "DEN",
+      "kicker": "W.Lutz",
+      "model": 7.549,
+      "actual": 8,
+      "naive": 7.29
+     },
+     {
+      "game": "DEN @ CAR",
+      "team": "CAR",
+      "kicker": "R.Fitzgerald",
+      "model": 6.382,
+      "actual": 3,
+      "naive": 7.29
+     },
+     {
+      "game": "DAL @ IND",
+      "team": "DAL",
+      "kicker": "B.Aubrey",
+      "model": 9.198,
+      "actual": 9,
+      "naive": 7.29
+     },
+     {
+      "game": "DAL @ IND",
+      "team": "IND",
+      "kicker": "S.Shrader",
+      "model": 8.553,
+      "actual": 11,
+      "naive": 7.29
+     },
+     {
+      "game": "NYJ @ KC",
+      "team": "NYJ",
+      "kicker": "J.Sanders",
+      "model": 6.97,
+      "actual": 12,
+      "naive": 7.29
+     },
+     {
+      "game": "NYJ @ KC",
+      "team": "KC",
+      "kicker": "H.Butker",
+      "model": 8.392,
+      "actual": 5,
+      "naive": 7.29
+     },
+     {
+      "game": "DET @ MIA",
+      "team": "DET",
+      "kicker": "J.Bates",
+      "model": 8.128,
+      "actual": 13,
+      "naive": 7.29
+     },
+     {
+      "game": "DET @ MIA",
+      "team": "MIA",
+      "kicker": "R.Patterson",
+      "model": 6.813,
+      "actual": null,
+      "naive": 7.29
+     },
+     {
+      "game": "CLE @ NO",
+      "team": "CLE",
+      "kicker": "A.Szmyt",
+      "model": 6.58,
+      "actual": 10,
+      "naive": 7.29
+     },
+     {
+      "game": "CLE @ NO",
+      "team": "NO",
+      "kicker": "D.Carlson",
+      "model": 7.297,
+      "actual": null,
+      "naive": 7.29
+     },
+     {
+      "game": "NYG @ PHI",
+      "team": "NYG",
+      "kicker": "D.Zvada",
+      "model": 6.251,
+      "actual": 13,
+      "naive": 7.29
+     },
+     {
+      "game": "NYG @ PHI",
+      "team": "PHI",
+      "kicker": "J.Elliott",
+      "model": 5.61,
+      "actual": 3,
+      "naive": 7.29
+     },
+     {
+      "game": "LA @ WAS",
+      "team": "LA",
+      "kicker": "B.McManus",
+      "model": 7.119,
+      "actual": 8,
+      "naive": 7.29
+     },
+     {
+      "game": "LA @ WAS",
+      "team": "WAS",
+      "kicker": "D.Stevens",
+      "model": 7.241,
+      "actual": 7,
+      "naive": 7.29
+     },
+     {
+      "game": "HOU @ LAC",
+      "team": "HOU",
+      "kicker": "K.Fairbairn",
+      "model": 9.191,
+      "actual": 14,
+      "naive": 7.29
+     },
+     {
+      "game": "HOU @ LAC",
+      "team": "LAC",
+      "kicker": "C.Dicker",
+      "model": 7.462,
+      "actual": 10,
+      "naive": 7.29
+     },
+     {
+      "game": "LV @ SF",
+      "team": "LV",
+      "kicker": "M.Gay",
+      "model": 7.485,
+      "actual": 5,
+      "naive": 7.29
+     },
+     {
+      "game": "LV @ SF",
+      "team": "SF",
+      "kicker": "E.Pineiro",
+      "model": 7.89,
+      "actual": 8,
+      "naive": 7.29
+     },
+     {
+      "game": "GB @ NE",
+      "team": "GB",
+      "kicker": "T.Smack",
+      "model": 6.608,
+      "actual": 13,
+      "naive": 7.29
+     },
+     {
+      "game": "GB @ NE",
+      "team": "NE",
+      "kicker": "A.Borregales",
+      "model": 6.919,
+      "actual": 3,
+      "naive": 7.29
+     },
+     {
+      "game": "ARI @ SEA",
+      "team": "ARI",
+      "kicker": "C.Ryland",
+      "model": 6.924,
+      "actual": 3,
+      "naive": 7.29
+     },
+     {
+      "game": "ARI @ SEA",
+      "team": "SEA",
+      "kicker": "J.Myers",
+      "model": 8.515,
+      "actual": 5,
+      "naive": 7.29
+     },
+     {
+      "game": "TB @ CHI",
+      "team": "TB",
+      "kicker": "C.McLaughlin",
+      "model": 7.961,
+      "actual": 10,
+      "naive": 7.29
+     },
+     {
+      "game": "TB @ CHI",
+      "team": "CHI",
+      "kicker": "C.Santos",
+      "model": 8.085,
+      "actual": 9,
+      "naive": 7.29
+     }
+    ],
+    "model_mae": 2.907,
+    "naive_mae": 3.136
+   },
+   "drive": {
+    "n": 26,
+    "model_logloss": 1.3511,
+    "naive_logloss": 1.3736
    }
   }
  ]

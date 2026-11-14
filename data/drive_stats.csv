@@ -2445,3 +2445,5 @@ game_id,season,week,posteam,defteam,drives,fg_range_drives,stalls,off_tds
 2026_09_NYJ_KC,2026,9,NYJ,KC,11,8,8,0
 2026_09_TB_CHI,2026,9,CHI,TB,14,9,7,2
 2026_09_TB_CHI,2026,9,TB,CHI,14,8,6,2
+2026_10_WAS_NYG,2026,10,NYG,WAS,12,9,6,3
+2026_10_WAS_NYG,2026,10,WAS,NYG,12,7,4,3

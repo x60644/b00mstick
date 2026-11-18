@@ -7,6 +7,7 @@ extracts the three market datasets:
   data/first_drives.csv   one row per team-game: first offensive drive result
   data/punts.csv          one row per team-game: punt count (+ game totals)
   data/kicker_points.csv  one row per kicker-game: FG/XP makes and points
+  data/punters.csv        one row per punter-game: who punted (display only)
   data/games.csv          one row per game: coaches, roof, surface, temp, wind
   data/oc_template.csv    blank coordinator mapping for manual fill-in
 
@@ -93,6 +94,16 @@ def extract_punts(reg, first_drives):
     team_punts["game_total_punts"] = team_punts.groupby("game_id")["punts"].transform("sum")
     return team_punts
 
+def extract_punters(reg):
+    """One row per punter-game. Display/roster use only (who is the team's
+    current punter, how long has he had the job) — the punts model stays
+    team-level and never reads this."""
+    punts = reg[(reg["punt_attempt"] == 1) & reg["punter_player_name"].notna()]
+    return (
+        punts.groupby(["game_id", "season", "week", "posteam", "punter_player_name"])
+        .size().reset_index(name="punts")
+    )
+
 def extract_drive_stats(reg):
     """Per team-game: drives, fg-range drives, stalls, offensive TDs."""
     dd = reg[reg["fixed_drive"].notna() & reg["posteam"].notna()]
@@ -167,6 +178,8 @@ def main():
 
     team_punts = extract_punts(reg, first_drives)
     team_punts.to_csv(f"{OUT}/punts.csv", index=False)
+
+    extract_punters(reg).to_csv(f"{OUT}/punters.csv", index=False)
 
     drive_stats = extract_drive_stats(reg)
     drive_stats.to_csv(f"{OUT}/drive_stats.csv", index=False)

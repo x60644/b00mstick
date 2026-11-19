@@ -534,6 +534,16 @@ function whyKick(k,team){
   const fg=3*w.fga*w.fg_pct*w.wind_pct,xp=w.xpa*w.xp_pct;
   return`<div class="whyline"><div><b>${fs2(k.mean)} pts</b> = ${fs2(fg)} from FGs (${w.fga} att &times; ${(100*w.fg_pct).toFixed(1)}% make &times; 3${w.wind_pct<1?" &times; 0.95 wind":""}) + ${fs2(xp)} from XPs (${w.xpa} att &times; ${(100*w.xp_pct).toFixed(1)}%) &middot; attempts from ${team} FG-range form (${w.t_fga}/gm vs league ${w.lg_fga}) + team total ${k.tt_base}</div></div>`;
 }
+/* NEW K / NEW P: specialist took the job mid-season (scorer sets .new and
+   .team_games; older archived slates lack them — render nothing) */
+function newSpec(p,pos){
+  return p&&p.new?` <span class="ctag" title="took over mid-season: ${p.team_games} game${p.team_games===1?"":"s"} in the job for this team">NEW ${pos} · ${p.team_games}G</span>`:"";
+}
+function puntersLine(g){
+  const ps=["away","home"].map(s=>{const p=(g.punters||{})[s];
+    return p?`${s==="home"?g.home:g.away} ${esc(p.name)}${newSpec(p,"P")}`:"";}).filter(Boolean);
+  return ps.length?`<div class="small">punters: ${ps.join(" · ")}</div>`:"";
+}
 function renderPunts(){
   const el=document.getElementById("view-punts");
   el.innerHTML=dkPath("punts")+howTo("punts")+allCtl("punts")+SLATE.games.map((g,gi)=>`
@@ -548,6 +558,7 @@ function renderPunts(){
     <div class="mrow"><span class="lab" id="pinfo-${gi}">P(over) —</span>
       <div class="tier" id="ptov-${gi}">OVER</div><div class="tier" id="ptun-${gi}">UNDER</div>
       <span></span><span></span><button class="logb" onclick="logPunts(${gi})">LOG</button></div>
+    ${puntersLine(g)}
     ${whyPunts(g)}
   </div></div>`).join("");
   enhanceSigns(el);
@@ -596,7 +607,7 @@ function renderKicks(){
       return`<div class="mug">
         <img src="${esc(k.headshot)}" alt="${esc(k.full_name)}" onerror="this.style.visibility='hidden'">
         <div class="info">
-          <div class="pname">${esc(k.name)} · ${team}</div>
+          <div class="pname">${esc(k.name)} · ${team}${newSpec(k,"K")}</div>
           <div class="proj">proj ${k.mean} pts (tt ${k.tt_base})</div>
           <div class="mrow"><span class="lab">DK tt</span>
             <input class="num" id="ktt-${gi}-${s}" value="${k.tt_base}" inputmode="decimal" onchange="calcKick(${gi},'${s}')">
@@ -607,7 +618,7 @@ function renderKicks(){
           <div class="mrow"><span class="lab" id="ki-${gi}-${s}">—</span>
             <div class="tier" id="kto-${gi}-${s}">OVER</div><div class="tier" id="ktu-${gi}-${s}">UNDER</div>
             <span></span><span></span><button class="logb" onclick="logKick(${gi},'${s}')">LOG</button></div>
-          ${pn?`<div class="small">punter: ${esc(pn.name)}</div>`:""}
+          ${pn?`<div class="small">punter: ${esc(pn.name)}${newSpec(pn,"P")}</div>`:""}
           ${whyKick(k,team)}
         </div></div>`;}).join("")}
     </div></div>`;}).join("");

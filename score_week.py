@@ -73,32 +73,92 @@ def pick_week(sched):
     upcoming = sched[pd.to_datetime(sched["gameday"]).dt.date >= date.today()]
     return int(upcoming["week"].min()) if len(upcoming) else int(sched["week"].max())
 
+NEW_SPEC_GAMES = 4          # fewer team games than this (mid-season) => NEW K / NEW P
+_SUFFIXES = {"jr", "jr.", "sr", "sr.", "ii", "iii", "iv", "v"}
+
+def short_name(full):
+    """'Tommy Doman Jr.' -> 'T.Doman' (nflverse pbp style, suffix-safe)."""
+    parts = [p for p in str(full).split() if p.lower() not in _SUFFIXES]
+    return f"{parts[0][0]}.{parts[-1]}" if len(parts) >= 2 else str(full)
+
+def _season_usage(hist, name_col):
+    """2026 rows of a per-player-game csv -> (games by (team, name),
+    {team: name who played the team's most recent game}, {team: team games})."""
+    if hist is None or not len(hist):
+        return {}, {}, {}
+    h = hist[hist["season"] == SEASON]
+    games = h.groupby(["posteam", name_col])["game_id"].nunique().to_dict()
+    team_games = h.groupby("posteam")["game_id"].nunique().to_dict()
+    last = {}
+    for team, g in h.groupby("posteam"):
+        lw = g[g["week"] == g["week"].max()]
+        # two players in the last game (in-game injury): the busier one
+        vol = "punts" if "punts" in lw.columns else "fg_att"
+        last[team] = lw.sort_values(vol, ascending=False)[name_col].iloc[0]
+    return games, last, team_games
+
+def pick_specialists(ros, kick_hist, punt_hist=None):
+    """team -> {kicker: {...}, punter: {...}} from the 2026 roster file.
+
+    The roster file keeps ONE row per player at his last-seen week, so a
+    released player lingers with a stale 'ACT' row (Carlson/NO, wk 7).
+    Only rows at the team's latest roster week count as current. Among
+    those: whoever handled the team's most recent game keeps the job;
+    otherwise active roster beats practice squad, then career attempts.
+    Each pick carries team_games (games in the job for this team this
+    season) and new (took over mid-season, < NEW_SPEC_GAMES games)."""
+    career_att = kick_hist.groupby("kicker_player_name")["fg_att"].sum().to_dict()
+    usage = {"kicker": _season_usage(kick_hist, "kicker_player_name"),
+             "punter": _season_usage(punt_hist, "punter_player_name")}
+    out = {}
+    for team, g in ros.groupby("team"):
+        if "week" in g.columns and g["week"].notna().any():
+            g = g[g["week"] == g["week"].max()]
+        entry = {}
+        for pos, key in (("K", "kicker"), ("P", "punter")):
+            games, last, team_games = usage[key]
+            cands = g[g["position"] == pos]
+            if not len(cands):
+                continue
+            status = cands["status"].astype(str).str.upper()
+            cands = cands.assign(
+                nm=cands["full_name"].map(short_name),
+                rank=np.select([status.str.startswith("ACT"), status.str.startswith("DEV")],
+                               [0, 1], default=2))
+            # RES (injured reserve) / CUT can't play; fall back to them only
+            # if nobody else is listed, so the card still shows a name
+            avail = cands[cands["rank"] < 2]
+            pool = avail if len(avail) else cands
+            pool = pool.assign(inc=(pool["nm"] != last.get(team)).astype(int),
+                               att=pool["nm"].map(lambda n: career_att.get(n, 0)))
+            row = pool.sort_values(["inc", "rank", "att"],
+                                   ascending=[True, True, False]).iloc[0]
+            n_games = int(games.get((team, row["nm"]), 0))
+            tg = int(team_games.get(team, 0))
+            entry[key] = {"name": row["nm"], "full_name": row["full_name"],
+                          "headshot": row.get("headshot_url", "") or "",
+                          "team_games": n_games,
+                          "new": bool(tg > n_games and n_games < NEW_SPEC_GAMES)}
+        out[team] = entry
+    return out
+
 def load_specialists():
-    """team -> {kicker: {...}, punter: {...}} from 2026 rosters."""
     try:
         ros = pd.read_parquet(ROSTER_URL)
     except Exception as e:
         print(f"  roster load failed ({type(e).__name__}); specialists blank")
         return {}
-    hist = pd.read_csv("data/kicker_points.csv")
-    career_att = hist.groupby("kicker_player_name")["fg_att"].sum().to_dict()
-    def short(full):   # nflverse pbp style: 'J.Tucker'
-        parts = str(full).split()
-        return f"{parts[0][0]}.{parts[-1]}" if len(parts) >= 2 else str(full)
-    out = {}
-    for team, g in ros.groupby("team"):
-        entry = {}
-        for pos, key in (("K", "kicker"), ("P", "punter")):
-            cands = g[g["position"] == pos]
-            active = cands[cands["status"].astype(str).str.upper().str.startswith("ACT")]
-            pool = active if len(active) else cands
-            if not len(pool):
-                continue
-            pool = pool.assign(att=pool["full_name"].map(lambda n: career_att.get(short(n), 0)))
-            row = pool.sort_values("att", ascending=False).iloc[0]
-            entry[key] = {"name": short(row["full_name"]), "full_name": row["full_name"],
-                          "headshot": row.get("headshot_url", "") or ""}
-        out[team] = entry
+    kick_hist = pd.read_csv("data/kicker_points.csv")
+    try:
+        punt_hist = pd.read_csv("data/punters.csv")
+    except Exception:
+        punt_hist = None   # first run before phase0 writes it: no NEW P tags
+    out = pick_specialists(ros, kick_hist, punt_hist)
+    fresh = [f"{t} {k[0].upper()} {e[k]['name']} ({e[k]['team_games']}g)"
+             for t, e in sorted(out.items()) for k in ("kicker", "punter")
+             if k in e and e[k]["new"]]
+    if fresh:
+        print(f"  new specialists: {', '.join(fresh)}")
     return out
 
 def fetch_overrides():

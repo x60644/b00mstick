@@ -2455,3 +2455,5 @@ game_id,season,week,posteam,kicker_player_name,fg_made,fg_att,xp_made,xp_att,poi
 2026_10_SF_DAL,2026,10,SF,E.Pineiro,1,1,5,5,8,28.0
 2026_10_WAS_NYG,2026,10,NYG,D.Zvada,0,1,3,3,3,
 2026_10_WAS_NYG,2026,10,WAS,D.Stevens,1,1,3,3,6,46.0
+2026_11_IND_HOU,2026,11,HOU,K.Fairbairn,1,1,3,3,6,27.0
+2026_11_IND_HOU,2026,11,IND,S.Shrader,1,3,0,0,3,34.0

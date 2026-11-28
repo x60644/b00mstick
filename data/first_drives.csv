@@ -2501,6 +2501,8 @@ game_id,season,week,posteam,defteam,fixed_drive,raw_result,outcome,received_open
 2026_11_TEN_DAL,2026,11,TEN,DAL,2.0,Field goal,FG,0
 2026_12_CHI_DET,2026,12,CHI,DET,2.0,Turnover,OTHER,0
 2026_12_CHI_DET,2026,12,DET,CHI,1.0,Field goal,FG,1
+2026_12_DEN_PIT,2026,12,DEN,PIT,2.0,Punt,PUNT,0
+2026_12_DEN_PIT,2026,12,PIT,DEN,1.0,Punt,PUNT,1
 2026_12_GB_LA,2026,12,GB,LA,1.0,Punt,PUNT,1
 2026_12_GB_LA,2026,12,LA,GB,2.0,Field goal,FG,0
 2026_12_KC_BUF,2026,12,BUF,KC,1.0,Punt,PUNT,1

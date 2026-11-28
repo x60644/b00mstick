@@ -1250,6 +1250,7 @@ game_id,season,week,game_date,home_team,away_team,home_coach,away_coach,roof,sur
 2026_11_TB_DET,2026,11,2026-11-22,DET,TB,Dan Campbell,Todd Bowles,dome,,,,3.5,48.5
 2026_11_TEN_DAL,2026,11,2026-11-22,DAL,TEN,Brian Schottenheimer,Robert Saleh,closed,,,,7.5,55.5
 2026_12_CHI_DET,2026,12,2026-11-26,DET,CHI,Dan Campbell,Ben Johnson,dome,,,,-1.5,56.5
+2026_12_DEN_PIT,2026,12,2026-11-27,PIT,DEN,Mike McCarthy,Sean Payton,outdoors,,,,-4.5,36.5
 2026_12_GB_LA,2026,12,2026-11-25,LA,GB,Sean McVay,Matt LaFleur,dome,,,,2.5,43.5
 2026_12_KC_BUF,2026,12,2026-11-26,BUF,KC,Joe Brady,Andy Reid,outdoors,,,,3.0,46.5
 2026_12_PHI_DAL,2026,12,2026-11-26,DAL,PHI,Brian Schottenheimer,Nick Sirianni,closed,,,,8.5,49.5

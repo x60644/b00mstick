@@ -1,450 +1,104 @@
 {
  "season": 2026,
- "week": 11,
- "asof_week": 12,
- "generated": "2026-11-22T21:09:17.796518",
+ "week": 12,
+ "asof_week": 13,
+ "generated": "2026-11-27T20:18:30.902087",
  "games": [
   {
-   "game_id": "2026_11_MIA_BUF",
-   "gameday": "2026-11-22",
+   "game_id": "2026_12_NO_CIN",
+   "gameday": "2026-11-29",
    "gametime": "13:00",
-   "home": "BUF",
-   "away": "MIA",
+   "home": "CIN",
+   "away": "NO",
    "roof": "outdoors",
-   "wind_mph": 12.7,
+   "wind_mph": 14.4,
    "wind_flag": 0,
    "lines": {
-    "spread_line": 16.5,
-    "total_line": 45.5,
-    "home_tt": 31.0,
-    "away_tt": 14.5
+    "spread_line": 9.5,
+    "total_line": 48.5,
+    "home_tt": 29.0,
+    "away_tt": 19.5
    },
    "drive": {
     "home": {
-     "TD": 0.2999,
-     "FG": 0.1796,
-     "PUNT": 0.3832,
-     "OTHER": 0.1372
+     "TD": 0.2811,
+     "FG": 0.1952,
+     "PUNT": 0.4293,
+     "OTHER": 0.0944
     },
     "away": {
-     "TD": 0.2597,
-     "FG": 0.172,
-     "PUNT": 0.4298,
-     "OTHER": 0.1385
+     "TD": 0.219,
+     "FG": 0.1884,
+     "PUNT": 0.4465,
+     "OTHER": 0.1461
     }
    },
    "punts": {
     "home": {
-     "mean": 2.627,
-     "tt_slope": -0.0611,
+     "mean": 3.169,
+     "tt_slope": -0.063,
      "why": {
-      "lg": 3.77,
-      "team_f": 0.826,
-      "opp_f": 0.929,
-      "mean_tot": 44.7,
-      "tot_adj": -0.05,
+      "lg": 3.75,
+      "team_f": 0.943,
+      "opp_f": 0.976,
+      "mean_tot": 44.8,
+      "tot_adj": -0.24,
       "wind_adj": -0.0
      }
     },
     "away": {
-     "mean": 3.435,
-     "tt_slope": -0.0611,
+     "mean": 3.245,
+     "tt_slope": -0.063,
      "why": {
-      "lg": 3.77,
-      "team_f": 0.944,
-      "opp_f": 0.996,
-      "mean_tot": 44.7,
-      "tot_adj": -0.05,
+      "lg": 3.75,
+      "team_f": 1.019,
+      "opp_f": 0.895,
+      "mean_tot": 44.8,
+      "tot_adj": -0.24,
       "wind_adj": -0.0
      }
     },
-    "game_mean": 6.062
+    "game_mean": 6.414
    },
    "kickers": {
     "home": {
-     "name": "T.Bass",
-     "full_name": "Tyler Bass",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/nybemwh44rplken2tdnx",
-     "team_games": 9,
+     "name": "E.McPherson",
+     "full_name": "Evan McPherson",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/t6fs7i54i4n7xjiayoz0",
+     "team_games": 10,
      "new": false,
-     "mean": 8.336,
-     "tt_base": 31.0,
-     "tt_slope": 0.112,
+     "mean": 7.932,
+     "tt_base": 29.0,
+     "tt_slope": 0.1218,
      "dist": {
-      "0": 0.0033,
-      "1": 0.0081,
-      "2": 0.026,
-      "3": 0.0443,
-      "4": 0.0618,
-      "5": 0.085,
-      "6": 0.1135,
-      "7": 0.1086,
-      "8": 0.1037,
-      "9": 0.0968,
-      "10": 0.0928,
-      "11": 0.0765,
-      "12": 0.0561,
-      "13": 0.0391,
-      "14": 0.0289,
-      "15": 0.0212,
-      "16": 0.0151,
-      "17": 0.0098,
-      "18": 0.0053,
-      "19": 0.0028,
-      "21": 0.0008,
-      "22": 0.0004
+      "0": 0.0052,
+      "1": 0.0177,
+      "2": 0.0289,
+      "3": 0.0522,
+      "4": 0.0683,
+      "5": 0.102,
+      "6": 0.1177,
+      "7": 0.1028,
+      "8": 0.1028,
+      "9": 0.096,
+      "10": 0.0835,
+      "11": 0.0731,
+      "12": 0.0406,
+      "13": 0.0382,
+      "14": 0.0261,
+      "15": 0.0177,
+      "16": 0.0124,
+      "17": 0.0088,
+      "18": 0.0028,
+      "19": 0.002,
+      "21": 0.0012
      },
      "why": {
       "fga": 1.74,
-      "xpa": 3.83,
-      "fg_pct": 0.908,
-      "xp_pct": 0.94,
-      "t_fga": 1.82,
-      "lg_fga": 2.05,
-      "wind_pct": 1.0
-     }
-    },
-    "away": {
-     "name": "D.Carlson",
-     "full_name": "Daniel Carlson",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/sg14zc3ogddzln26wchc",
-     "team_games": 0,
-     "new": true,
-     "mean": 6.013,
-     "tt_base": 14.5,
-     "tt_slope": 0.1121,
-     "dist": {
-      "0": 0.0492,
-      "1": 0.0496,
-      "2": 0.0651,
-      "3": 0.0997,
-      "4": 0.1147,
-      "5": 0.1082,
-      "6": 0.1005,
-      "7": 0.0936,
-      "8": 0.0928,
-      "9": 0.0675,
-      "10": 0.0456,
-      "11": 0.0382,
-      "12": 0.0277,
-      "13": 0.0183,
-      "14": 0.013,
-      "15": 0.009,
-      "16": 0.0037,
-      "17": 0.0024,
-      "19": 0.0008,
-      "20": 0.0004
-     },
-     "why": {
-      "fga": 2.05,
-      "xpa": 1.14,
-      "fg_pct": 0.806,
-      "xp_pct": 0.934,
-      "t_fga": 2.02,
-      "lg_fga": 2.05,
-      "wind_pct": 1.0
-     }
-    }
-   },
-   "punters": {
-    "home": {
-     "name": "T.Doman",
-     "full_name": "Tommy Doman Jr.",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/kqtedpbw8nmmvnp5vomj",
-     "team_games": 9,
-     "new": false
-    },
-    "away": {
-     "name": "B.Pinion",
-     "full_name": "Bradley Pinion",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/pjpgitum81otrufezlfm",
-     "team_games": 9,
-     "new": false
-    }
-   },
-   "overrides_applied": [],
-   "coaches": {
-    "home_hc": "Joe Brady",
-    "away_hc": "Jeff Hafley",
-    "home_pc": "Joe Brady",
-    "away_pc": "Bobby Slowik",
-    "home_new_pc": false,
-    "away_new_pc": true,
-    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/bills/am3magndb9gofrw30jfk.jpg",
-    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/dolphins/cgnnqs8d7ngwnmssmhfa.jpg",
-    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/bills/am3magndb9gofrw30jfk.jpg",
-    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/dolphins/ww5qxutszxderq24t0wo.jpg"
-   }
-  },
-  {
-   "game_id": "2026_11_BAL_CAR",
-   "gameday": "2026-11-22",
-   "gametime": "13:00",
-   "home": "CAR",
-   "away": "BAL",
-   "roof": "outdoors",
-   "wind_mph": 8.3,
-   "wind_flag": 0,
-   "lines": {
-    "spread_line": 2.5,
-    "total_line": 44.5,
-    "home_tt": 23.5,
-    "away_tt": 21.0
-   },
-   "drive": {
-    "home": {
-     "TD": 0.2634,
-     "FG": 0.1961,
-     "PUNT": 0.4115,
-     "OTHER": 0.129
-    },
-    "away": {
-     "TD": 0.2608,
-     "FG": 0.2186,
-     "PUNT": 0.397,
-     "OTHER": 0.1236
-    }
-   },
-   "punts": {
-    "home": {
-     "mean": 3.745,
-     "tt_slope": -0.0611,
-     "why": {
-      "lg": 3.77,
-      "team_f": 0.999,
-      "opp_f": 0.987,
-      "mean_tot": 44.7,
-      "tot_adj": 0.01,
-      "wind_adj": -0.0
-     }
-    },
-    "away": {
-     "mean": 3.526,
-     "tt_slope": -0.0611,
-     "why": {
-      "lg": 3.77,
-      "team_f": 0.99,
-      "opp_f": 0.94,
-      "mean_tot": 44.7,
-      "tot_adj": 0.01,
-      "wind_adj": -0.0
-     }
-    },
-    "game_mean": 7.271
-   },
-   "kickers": {
-    "home": {
-     "name": "R.Fitzgerald",
-     "full_name": "Ryan Fitzgerald",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/giy8qnq6njxzwtqvqdsm",
-     "team_games": 9,
-     "new": false,
-     "mean": 6.572,
-     "tt_base": 23.5,
-     "tt_slope": 0.1029,
-     "dist": {
-      "0": 0.033,
-      "1": 0.037,
-      "2": 0.0533,
-      "3": 0.0842,
-      "4": 0.1086,
-      "5": 0.1098,
-      "6": 0.1066,
-      "7": 0.0968,
-      "8": 0.096,
-      "9": 0.0789,
-      "10": 0.061,
-      "11": 0.0415,
-      "12": 0.0338,
-      "13": 0.0216,
-      "14": 0.0167,
-      "15": 0.0114,
-      "16": 0.0049,
-      "17": 0.0033,
-      "18": 0.0004,
-      "19": 0.0008,
-      "20": 0.0004
-     },
-     "why": {
-      "fga": 1.78,
-      "xpa": 2.34,
-      "fg_pct": 0.854,
-      "xp_pct": 0.865,
-      "t_fga": 1.84,
-      "lg_fga": 2.05,
-      "wind_pct": 1.0
-     }
-    },
-    "away": {
-     "name": "R.Patterson",
-     "full_name": "Riley Patterson",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/qso3kozia1inkthctwpc",
-     "team_games": 1,
-     "new": true,
-     "mean": 7.342,
-     "tt_base": 21.0,
-     "tt_slope": 0.1137,
-     "dist": {
-      "0": 0.0114,
-      "1": 0.026,
-      "2": 0.0439,
-      "3": 0.0622,
-      "4": 0.0838,
-      "5": 0.1139,
-      "6": 0.1086,
-      "7": 0.1033,
-      "8": 0.098,
-      "9": 0.0919,
-      "10": 0.0769,
-      "11": 0.0561,
-      "12": 0.0395,
-      "13": 0.0289,
-      "14": 0.0212,
-      "15": 0.0146,
-      "16": 0.0102,
-      "17": 0.0053,
-      "18": 0.0028,
-      "20": 0.0008,
-      "21": 0.0004
-     },
-     "why": {
-      "fga": 2.01,
-      "xpa": 2.27,
-      "fg_pct": 0.859,
-      "xp_pct": 0.95,
-      "t_fga": 2.01,
-      "lg_fga": 2.05,
-      "wind_pct": 1.0
-     }
-    }
-   },
-   "punters": {
-    "home": {
-     "name": "S.Martin",
-     "full_name": "Sam Martin",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/edhegnq9rbphynrogxzh",
-     "team_games": 9,
-     "new": false
-    },
-    "away": {
-     "name": "R.Eckley",
-     "full_name": "Ryan Eckley",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/tnfndcjg7g14q1mscr5e",
-     "team_games": 10,
-     "new": false
-    }
-   },
-   "overrides_applied": [],
-   "coaches": {
-    "home_hc": "Dave Canales",
-    "away_hc": "Jesse Minter",
-    "home_pc": "Dave Canales",
-    "away_pc": "Declan Doyle",
-    "home_new_pc": false,
-    "away_new_pc": true,
-    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/panthers/gnjgelxbhaldo4iskf45.jpg",
-    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/ravens/gw6jtyywierbagxzidnp.jpg",
-    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/panthers/gnjgelxbhaldo4iskf45.jpg",
-    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/ravens/kfl3lvkzgczyqlwohgci.jpg"
-   }
-  },
-  {
-   "game_id": "2026_11_NO_CHI",
-   "gameday": "2026-11-22",
-   "gametime": "13:00",
-   "home": "CHI",
-   "away": "NO",
-   "roof": "outdoors",
-   "wind_mph": 12.4,
-   "wind_flag": 0,
-   "lines": {
-    "spread_line": 11.5,
-    "total_line": 47.5,
-    "home_tt": 29.5,
-    "away_tt": 18.0
-   },
-   "drive": {
-    "home": {
-     "TD": 0.2639,
-     "FG": 0.1928,
-     "PUNT": 0.4082,
-     "OTHER": 0.1352
-    },
-    "away": {
-     "TD": 0.1869,
-     "FG": 0.1894,
-     "PUNT": 0.4476,
-     "OTHER": 0.1762
-    }
-   },
-   "punts": {
-    "home": {
-     "mean": 3.358,
-     "tt_slope": -0.0611,
-     "why": {
-      "lg": 3.77,
-      "team_f": 0.965,
-      "opp_f": 0.978,
-      "mean_tot": 44.7,
-      "tot_adj": -0.17,
-      "wind_adj": -0.0
-     }
-    },
-    "away": {
-     "mean": 3.7,
-     "tt_slope": -0.0611,
-     "why": {
-      "lg": 3.77,
-      "team_f": 1.022,
-      "opp_f": 0.993,
-      "mean_tot": 44.7,
-      "tot_adj": -0.17,
-      "wind_adj": -0.0
-     }
-    },
-    "game_mean": 7.058
-   },
-   "kickers": {
-    "home": {
-     "name": "C.Santos",
-     "full_name": "Cairo Santos",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/vtk4cn0bfnqv0cnh79an",
-     "team_games": 9,
-     "new": false,
-     "mean": 8.439,
-     "tt_base": 29.5,
-     "tt_slope": 0.1178,
-     "dist": {
-      "0": 0.0028,
-      "1": 0.0073,
-      "2": 0.0252,
-      "3": 0.0411,
-      "4": 0.057,
-      "5": 0.085,
-      "6": 0.1135,
-      "7": 0.1078,
-      "8": 0.1041,
-      "9": 0.0997,
-      "10": 0.0944,
-      "11": 0.0765,
-      "12": 0.059,
-      "13": 0.0395,
-      "14": 0.0301,
-      "15": 0.0203,
-      "16": 0.0163,
-      "17": 0.011,
-      "18": 0.0053,
-      "19": 0.0024,
-      "20": 0.0004,
-      "21": 0.0008,
-      "22": 0.0004
-     },
-     "why": {
-      "fga": 2.08,
-      "xpa": 3.31,
-      "fg_pct": 0.833,
-      "xp_pct": 0.98,
-      "t_fga": 2.08,
+      "xpa": 3.49,
+      "fg_pct": 0.872,
+      "xp_pct": 0.97,
+      "t_fga": 1.81,
       "lg_fga": 2.05,
       "wind_pct": 1.0
      }
@@ -453,39 +107,39 @@
      "name": "C.Smyth",
      "full_name": "Charlie Smyth",
      "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/fim3qvizom5q4y8uk6nf",
-     "team_games": 2,
+     "team_games": 3,
      "new": true,
-     "mean": 6.795,
-     "tt_base": 18.0,
-     "tt_slope": 0.1171,
+     "mean": 6.95,
+     "tt_base": 19.5,
+     "tt_slope": 0.1229,
      "dist": {
-      "0": 0.0248,
-      "1": 0.0334,
-      "2": 0.0521,
-      "3": 0.0688,
-      "4": 0.1098,
-      "5": 0.1127,
-      "6": 0.109,
-      "7": 0.0976,
-      "8": 0.0948,
-      "9": 0.0875,
-      "10": 0.0647,
-      "11": 0.0419,
-      "12": 0.0374,
-      "13": 0.0207,
-      "14": 0.0203,
-      "15": 0.011,
-      "16": 0.0077,
+      "0": 0.0225,
+      "1": 0.0285,
+      "2": 0.0518,
+      "3": 0.0683,
+      "4": 0.1008,
+      "5": 0.1157,
+      "6": 0.1064,
+      "7": 0.1016,
+      "8": 0.096,
+      "9": 0.0847,
+      "10": 0.0727,
+      "11": 0.0398,
+      "12": 0.0386,
+      "13": 0.0265,
+      "14": 0.0185,
+      "15": 0.0124,
+      "16": 0.0092,
       "17": 0.0024,
-      "18": 0.002,
+      "18": 0.0024,
       "20": 0.0012
      },
      "why": {
-      "fga": 2.13,
-      "xpa": 1.64,
-      "fg_pct": 0.812,
-      "xp_pct": 0.974,
-      "t_fga": 2.1,
+      "fga": 2.16,
+      "xpa": 1.81,
+      "fg_pct": 0.798,
+      "xp_pct": 0.975,
+      "t_fga": 2.13,
       "lg_fga": 2.05,
       "wind_pct": 1.0
      }
@@ -493,131 +147,473 @@
    },
    "punters": {
     "home": {
-     "name": "T.Taylor",
-     "full_name": "Tory Taylor",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/iyfrn9i3h42d9dukskzn",
-     "team_games": 8,
+     "name": "R.Rehkow",
+     "full_name": "Ryan Rehkow",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/c0eiplwe2c9m46zhmcq8",
+     "team_games": 10,
      "new": false
     },
     "away": {
      "name": "R.Wright",
      "full_name": "Ryan Wright",
      "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/o1ag10lrehz79uqdrmgq",
-     "team_games": 9,
+     "team_games": 10,
      "new": false
     }
    },
    "overrides_applied": [],
    "coaches": {
-    "home_hc": "Ben Johnson",
+    "home_hc": "Zac Taylor",
     "away_hc": "Kellen Moore",
-    "home_pc": "Ben Johnson",
+    "home_pc": "Zac Taylor",
     "away_pc": "Kellen Moore",
     "home_new_pc": false,
     "away_new_pc": false,
-    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/v1737572263/bears/bexkjvilhtogegqjqfjx.jpg",
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/bengals/auyolyq5eqipvfgpeq5h.jpg",
     "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/saints/ahvamdhwedu0nqkumb9h.jpg",
-    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/v1737572263/bears/bexkjvilhtogegqjqfjx.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/bengals/auyolyq5eqipvfgpeq5h.jpg",
     "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/saints/ahvamdhwedu0nqkumb9h.jpg"
    }
   },
   {
-   "game_id": "2026_11_TEN_DAL",
-   "gameday": "2026-11-22",
+   "game_id": "2026_12_BAL_HOU",
+   "gameday": "2026-11-29",
    "gametime": "13:00",
-   "home": "DAL",
-   "away": "TEN",
+   "home": "HOU",
+   "away": "BAL",
    "roof": "nan",
    "wind_mph": 0.0,
    "wind_flag": 0,
    "lines": {
-    "spread_line": 7.5,
-    "total_line": 55.5,
-    "home_tt": 31.5,
-    "away_tt": 24.0
+    "spread_line": 6.5,
+    "total_line": 47.5,
+    "home_tt": 27.0,
+    "away_tt": 20.5
    },
    "drive": {
     "home": {
-     "TD": 0.2402,
-     "FG": 0.2338,
-     "PUNT": 0.3566,
-     "OTHER": 0.1695
+     "TD": 0.2671,
+     "FG": 0.1977,
+     "PUNT": 0.3944,
+     "OTHER": 0.1408
     },
     "away": {
-     "TD": 0.2434,
-     "FG": 0.2451,
-     "PUNT": 0.3879,
-     "OTHER": 0.1235
+     "TD": 0.2495,
+     "FG": 0.2329,
+     "PUNT": 0.4103,
+     "OTHER": 0.1073
     }
    },
    "punts": {
     "home": {
-     "mean": 2.132,
-     "tt_slope": -0.0611,
+     "mean": 4.111,
+     "tt_slope": -0.063,
      "why": {
-      "lg": 3.77,
-      "team_f": 0.819,
-      "opp_f": 0.98,
-      "mean_tot": 44.7,
-      "tot_adj": -0.66,
+      "lg": 3.75,
+      "team_f": 1.109,
+      "opp_f": 0.991,
+      "mean_tot": 44.8,
+      "tot_adj": -0.17,
       "wind_adj": -0.0
      }
     },
     "away": {
-     "mean": 3.385,
-     "tt_slope": -0.0611,
+     "mean": 3.817,
+     "tt_slope": -0.063,
      "why": {
-      "lg": 3.77,
-      "team_f": 1.111,
-      "opp_f": 0.923,
-      "mean_tot": 44.7,
-      "tot_adj": -0.66,
+      "lg": 3.75,
+      "team_f": 0.988,
+      "opp_f": 1.082,
+      "mean_tot": 44.8,
+      "tot_adj": -0.17,
       "wind_adj": -0.0
      }
     },
-    "game_mean": 5.517
+    "game_mean": 7.928
    },
    "kickers": {
     "home": {
-     "name": "B.Aubrey",
-     "full_name": "Brandon Aubrey",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/bgwg06zmyohjxvzznbf6",
+     "name": "K.Fairbairn",
+     "full_name": "Ka'imi Fairbairn",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/nbrs7doetqydf2rzhjjl",
      "team_games": 10,
      "new": false,
-     "mean": 9.579,
-     "tt_base": 31.5,
-     "tt_slope": 0.1146,
+     "mean": 9.557,
+     "tt_base": 27.0,
+     "tt_slope": 0.1231,
      "dist": {
-      "1": 0.0012,
-      "2": 0.0077,
-      "3": 0.024,
-      "4": 0.037,
-      "5": 0.0525,
-      "6": 0.0834,
-      "7": 0.1103,
-      "8": 0.109,
-      "9": 0.1066,
-      "10": 0.0972,
-      "11": 0.0956,
-      "12": 0.0793,
-      "13": 0.0614,
-      "14": 0.0415,
-      "15": 0.0338,
-      "16": 0.0212,
-      "17": 0.0171,
-      "18": 0.0114,
-      "19": 0.0049,
-      "20": 0.0033,
-      "21": 0.0004,
-      "22": 0.0008,
-      "23": 0.0004
+      "1": 0.002,
+      "2": 0.0072,
+      "3": 0.0221,
+      "4": 0.0406,
+      "5": 0.0574,
+      "6": 0.0803,
+      "7": 0.1092,
+      "8": 0.1104,
+      "9": 0.1068,
+      "10": 0.1,
+      "11": 0.09,
+      "12": 0.0787,
+      "13": 0.0622,
+      "14": 0.0406,
+      "15": 0.0333,
+      "16": 0.0221,
+      "17": 0.0149,
+      "18": 0.0129,
+      "19": 0.0048,
+      "20": 0.0024,
+      "21": 0.0008,
+      "22": 0.0004,
+      "23": 0.0008
      },
      "why": {
-      "fga": 2.43,
-      "xpa": 3.61,
-      "fg_pct": 0.84,
-      "xp_pct": 0.956,
-      "t_fga": 2.35,
+      "fga": 2.48,
+      "xpa": 2.86,
+      "fg_pct": 0.908,
+      "xp_pct": 0.982,
+      "t_fga": 2.38,
+      "lg_fga": 2.05,
+      "wind_pct": 1.0
+     }
+    },
+    "away": {
+     "name": "R.Patterson",
+     "full_name": "Riley Patterson",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/qso3kozia1inkthctwpc",
+     "team_games": 2,
+     "new": true,
+     "mean": 7.22,
+     "tt_base": 20.5,
+     "tt_slope": 0.1198,
+     "dist": {
+      "0": 0.0157,
+      "1": 0.0281,
+      "2": 0.0454,
+      "3": 0.0631,
+      "4": 0.0896,
+      "5": 0.1149,
+      "6": 0.1096,
+      "7": 0.1036,
+      "8": 0.0944,
+      "9": 0.0932,
+      "10": 0.0727,
+      "11": 0.0506,
+      "12": 0.0365,
+      "13": 0.0309,
+      "14": 0.0205,
+      "15": 0.0137,
+      "16": 0.0092,
+      "17": 0.0048,
+      "18": 0.0024,
+      "20": 0.0012
+     },
+     "why": {
+      "fga": 1.97,
+      "xpa": 2.21,
+      "fg_pct": 0.862,
+      "xp_pct": 0.954,
+      "t_fga": 1.98,
+      "lg_fga": 2.05,
+      "wind_pct": 1.0
+     }
+    }
+   },
+   "punters": {
+    "home": {
+     "name": "K.Kroeger",
+     "full_name": "Kai Kroeger",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ja9ogixuptmwr0x89f0m",
+     "team_games": 10,
+     "new": false
+    },
+    "away": {
+     "name": "R.Eckley",
+     "full_name": "Ryan Eckley",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/tnfndcjg7g14q1mscr5e",
+     "team_games": 11,
+     "new": false
+    }
+   },
+   "overrides_applied": [],
+   "coaches": {
+    "home_hc": "DeMeco Ryans",
+    "away_hc": "Jesse Minter",
+    "home_pc": "Nick Caley",
+    "away_pc": "Declan Doyle",
+    "home_new_pc": false,
+    "away_new_pc": true,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_png/texans/gzddlomivbtyuftuzrdi.png",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/ravens/gw6jtyywierbagxzidnp.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_png/texans/mfe89ryblg2qawelwnfa.png",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/ravens/kfl3lvkzgczyqlwohgci.jpg"
+   }
+  },
+  {
+   "game_id": "2026_12_NYG_IND",
+   "gameday": "2026-11-29",
+   "gametime": "13:00",
+   "home": "IND",
+   "away": "NYG",
+   "roof": "nan",
+   "wind_mph": 0.0,
+   "wind_flag": 0,
+   "lines": {
+    "spread_line": -5.5,
+    "total_line": 41.5,
+    "home_tt": 18.0,
+    "away_tt": 23.5
+   },
+   "drive": {
+    "home": {
+     "TD": 0.248,
+     "FG": 0.2119,
+     "PUNT": 0.389,
+     "OTHER": 0.151
+    },
+    "away": {
+     "TD": 0.2188,
+     "FG": 0.2179,
+     "PUNT": 0.4161,
+     "OTHER": 0.1471
+    }
+   },
+   "punts": {
+    "home": {
+     "mean": 3.902,
+     "tt_slope": -0.063,
+     "why": {
+      "lg": 3.75,
+      "team_f": 0.939,
+      "opp_f": 1.072,
+      "mean_tot": 44.8,
+      "tot_adj": 0.21,
+      "wind_adj": -0.0
+     }
+    },
+    "away": {
+     "mean": 4.111,
+     "tt_slope": -0.063,
+     "why": {
+      "lg": 3.75,
+      "team_f": 1.071,
+      "opp_f": 0.942,
+      "mean_tot": 44.8,
+      "tot_adj": 0.21,
+      "wind_adj": -0.0
+     }
+    },
+    "game_mean": 8.013
+   },
+   "kickers": {
+    "home": {
+     "name": "S.Shrader",
+     "full_name": "Spencer Shrader",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/mcx5vyj1iisuezfvswmc",
+     "team_games": 11,
+     "new": false,
+     "mean": 7.718,
+     "tt_base": 18.0,
+     "tt_slope": 0.1209,
+     "dist": {
+      "0": 0.0072,
+      "1": 0.0205,
+      "2": 0.0345,
+      "3": 0.0554,
+      "4": 0.0759,
+      "5": 0.11,
+      "6": 0.1104,
+      "7": 0.106,
+      "8": 0.0988,
+      "9": 0.0928,
+      "10": 0.0843,
+      "11": 0.0631,
+      "12": 0.041,
+      "13": 0.0373,
+      "14": 0.0229,
+      "15": 0.0165,
+      "16": 0.0116,
+      "17": 0.0064,
+      "18": 0.0028,
+      "19": 0.0012,
+      "21": 0.0012
+     },
+     "why": {
+      "fga": 2.35,
+      "xpa": 1.66,
+      "fg_pct": 0.868,
+      "xp_pct": 0.963,
+      "t_fga": 2.27,
+      "lg_fga": 2.05,
+      "wind_pct": 1.0
+     }
+    },
+    "away": {
+     "name": "D.Zvada",
+     "full_name": "Dominic Zvada",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/rej45oauer8jysbtwbxm",
+     "team_games": 10,
+     "new": false,
+     "mean": 6.912,
+     "tt_base": 23.5,
+     "tt_slope": 0.1236,
+     "dist": {
+      "0": 0.0237,
+      "1": 0.0285,
+      "2": 0.053,
+      "3": 0.0691,
+      "4": 0.1032,
+      "5": 0.1165,
+      "6": 0.104,
+      "7": 0.1008,
+      "8": 0.0984,
+      "9": 0.0831,
+      "10": 0.0711,
+      "11": 0.0394,
+      "12": 0.039,
+      "13": 0.0261,
+      "14": 0.0177,
+      "15": 0.012,
+      "16": 0.0084,
+      "17": 0.0028,
+      "18": 0.002,
+      "20": 0.0012
+     },
+     "why": {
+      "fga": 2.01,
+      "xpa": 2.26,
+      "fg_pct": 0.78,
+      "xp_pct": 0.98,
+      "t_fga": 2.01,
+      "lg_fga": 2.05,
+      "wind_pct": 1.0
+     }
+    }
+   },
+   "punters": {
+    "home": {
+     "name": "R.Sanchez",
+     "full_name": "Rigoberto Sanchez",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/qqy2quqkg7j7q6ofe212",
+     "team_games": 11,
+     "new": false
+    },
+    "away": {
+     "name": "J.Stout",
+     "full_name": "Jordan Stout",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/eeftrwsh0aigc7r22goy",
+     "team_games": 10,
+     "new": false
+    }
+   },
+   "overrides_applied": [],
+   "coaches": {
+    "home_hc": "Shane Steichen",
+    "away_hc": "John Harbaugh",
+    "home_pc": "Shane Steichen",
+    "away_pc": "Matt Nagy",
+    "home_new_pc": false,
+    "away_new_pc": true,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/colts/ryl3kamnc06bddbsbk6e.jpg",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/giants/e5xqbb3eaaevzutrzyei.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/colts/ryl3kamnc06bddbsbk6e.jpg",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/giants/nmkq4gyrtd0tbkhtourt.jpg"
+   }
+  },
+  {
+   "game_id": "2026_12_TEN_JAX",
+   "gameday": "2026-11-29",
+   "gametime": "13:00",
+   "home": "JAX",
+   "away": "TEN",
+   "roof": "outdoors",
+   "wind_mph": 7.5,
+   "wind_flag": 0,
+   "lines": {
+    "spread_line": 14.0,
+    "total_line": 48.5,
+    "home_tt": 31.25,
+    "away_tt": 17.25
+   },
+   "drive": {
+    "home": {
+     "TD": 0.2591,
+     "FG": 0.1811,
+     "PUNT": 0.4268,
+     "OTHER": 0.133
+    },
+    "away": {
+     "TD": 0.1926,
+     "FG": 0.2522,
+     "PUNT": 0.4199,
+     "OTHER": 0.1353
+    }
+   },
+   "punts": {
+    "home": {
+     "mean": 3.142,
+     "tt_slope": -0.063,
+     "why": {
+      "lg": 3.75,
+      "team_f": 0.951,
+      "opp_f": 0.957,
+      "mean_tot": 44.8,
+      "tot_adj": -0.24,
+      "wind_adj": -0.0
+     }
+    },
+    "away": {
+     "mean": 3.968,
+     "tt_slope": -0.063,
+     "why": {
+      "lg": 3.75,
+      "team_f": 1.099,
+      "opp_f": 0.983,
+      "mean_tot": 44.8,
+      "tot_adj": -0.24,
+      "wind_adj": -0.0
+     }
+    },
+    "game_mean": 7.11
+   },
+   "kickers": {
+    "home": {
+     "name": "C.Little",
+     "full_name": "Cam Little",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/mc9goepr7mglrx6ek1fi",
+     "team_games": 10,
+     "new": false,
+     "mean": 9.18,
+     "tt_base": 31.25,
+     "tt_slope": 0.122,
+     "dist": {
+      "1": 0.0044,
+      "2": 0.0129,
+      "3": 0.0269,
+      "4": 0.0462,
+      "5": 0.0639,
+      "6": 0.0916,
+      "7": 0.1141,
+      "8": 0.1108,
+      "9": 0.1048,
+      "10": 0.0932,
+      "11": 0.0924,
+      "12": 0.0731,
+      "13": 0.0474,
+      "14": 0.0369,
+      "15": 0.0301,
+      "16": 0.0213,
+      "17": 0.0133,
+      "18": 0.0084,
+      "19": 0.0048,
+      "20": 0.0024,
+      "22": 0.0012
+     },
+     "why": {
+      "fga": 2.12,
+      "xpa": 3.6,
+      "fg_pct": 0.893,
+      "xp_pct": 0.972,
+      "t_fga": 2.11,
       "lg_fga": 2.05,
       "wind_pct": 1.0
      }
@@ -626,39 +622,38 @@
      "name": "J.Slye",
      "full_name": "Joey Slye",
      "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/zueytl3rpbz7yxhjpdxg",
-     "team_games": 9,
+     "team_games": 10,
      "new": false,
-     "mean": 6.806,
-     "tt_base": 24.0,
-     "tt_slope": 0.1154,
+     "mean": 6.21,
+     "tt_base": 17.25,
+     "tt_slope": 0.1213,
      "dist": {
-      "0": 0.0244,
-      "1": 0.0334,
-      "2": 0.0513,
-      "3": 0.0696,
-      "4": 0.1098,
-      "5": 0.1123,
-      "6": 0.1086,
-      "7": 0.0985,
-      "8": 0.0944,
-      "9": 0.0879,
-      "10": 0.0647,
-      "11": 0.0419,
-      "12": 0.0374,
-      "13": 0.0212,
-      "14": 0.0203,
-      "15": 0.011,
-      "16": 0.0077,
+      "0": 0.0442,
+      "1": 0.0454,
+      "2": 0.0635,
+      "3": 0.0896,
+      "4": 0.1145,
+      "5": 0.1108,
+      "6": 0.1028,
+      "7": 0.0944,
+      "8": 0.0928,
+      "9": 0.0739,
+      "10": 0.0494,
+      "11": 0.0361,
+      "12": 0.0309,
+      "13": 0.0209,
+      "14": 0.0133,
+      "15": 0.0092,
+      "16": 0.0048,
       "17": 0.0024,
-      "18": 0.002,
-      "20": 0.0012
+      "19": 0.0012
      },
      "why": {
-      "fga": 1.84,
-      "xpa": 2.21,
-      "fg_pct": 0.846,
-      "xp_pct": 0.963,
-      "t_fga": 1.89,
+      "fga": 1.91,
+      "xpa": 1.37,
+      "fg_pct": 0.854,
+      "xp_pct": 0.965,
+      "t_fga": 1.93,
       "lg_fga": 2.05,
       "wind_pct": 1.0
      }
@@ -666,9 +661,9 @@
    },
    "punters": {
     "home": {
-     "name": "B.Anger",
-     "full_name": "Bryan Anger",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/e1fozrp2fhprrkheqt0x",
+     "name": "L.Cooke",
+     "full_name": "Logan Cooke",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/qy2pmeevxy1jndpdq1ai",
      "team_games": 10,
      "new": false
     },
@@ -676,641 +671,119 @@
      "name": "T.Morstead",
      "full_name": "Thomas Morstead",
      "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/uicxa9bwvrenvcwnoklm",
-     "team_games": 2,
+     "team_games": 3,
      "new": true
     }
    },
    "overrides_applied": [],
    "coaches": {
-    "home_hc": "Brian Schottenheimer",
+    "home_hc": "Liam Coen",
     "away_hc": "Robert Saleh",
-    "home_pc": "Brian Schottenheimer",
+    "home_pc": "Liam Coen",
     "away_pc": "Brian Daboll",
     "home_new_pc": false,
     "away_new_pc": true,
-    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/cowboys/x6xkpcqontxqwt8mdyr9.jpg",
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/jaguars/flrzd3amfwdd3ga71dag.jpg",
     "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/titans/fflteh2nl88z9oocmsnj.jpg",
-    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/cowboys/x6xkpcqontxqwt8mdyr9.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/jaguars/flrzd3amfwdd3ga71dag.jpg",
     "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/titans/a9bztzhfpemeemalfxkn.jpg"
    }
   },
   {
-   "game_id": "2026_11_TB_DET",
-   "gameday": "2026-11-22",
+   "game_id": "2026_12_NYJ_MIA",
+   "gameday": "2026-11-29",
    "gametime": "13:00",
-   "home": "DET",
-   "away": "TB",
-   "roof": "dome",
-   "wind_mph": 0.0,
+   "home": "MIA",
+   "away": "NYJ",
+   "roof": "outdoors",
+   "wind_mph": 8.1,
    "wind_flag": 0,
    "lines": {
-    "spread_line": 3.5,
-    "total_line": 48.5,
-    "home_tt": 26.0,
+    "spread_line": -5.5,
+    "total_line": 39.5,
+    "home_tt": 17.0,
     "away_tt": 22.5
    },
    "drive": {
     "home": {
-     "TD": 0.2663,
-     "FG": 0.1969,
-     "PUNT": 0.4184,
-     "OTHER": 0.1184
+     "TD": 0.2548,
+     "FG": 0.1926,
+     "PUNT": 0.4168,
+     "OTHER": 0.1359
     },
     "away": {
-     "TD": 0.2684,
-     "FG": 0.2222,
-     "PUNT": 0.3974,
-     "OTHER": 0.1119
+     "TD": 0.2265,
+     "FG": 0.2356,
+     "PUNT": 0.4149,
+     "OTHER": 0.1229
     }
    },
    "punts": {
     "home": {
-     "mean": 2.977,
-     "tt_slope": -0.0611,
+     "mean": 3.902,
+     "tt_slope": -0.063,
      "why": {
-      "lg": 3.77,
-      "team_f": 0.897,
-      "opp_f": 0.985,
-      "mean_tot": 44.7,
-      "tot_adj": -0.23,
+      "lg": 3.75,
+      "team_f": 0.95,
+      "opp_f": 1.015,
+      "mean_tot": 44.8,
+      "tot_adj": 0.33,
       "wind_adj": -0.0
      }
     },
     "away": {
-     "mean": 3.809,
-     "tt_slope": -0.0611,
+     "mean": 3.957,
+     "tt_slope": -0.063,
      "why": {
-      "lg": 3.77,
-      "team_f": 1.048,
-      "opp_f": 1.003,
-      "mean_tot": 44.7,
-      "tot_adj": -0.23,
+      "lg": 3.75,
+      "team_f": 1.04,
+      "opp_f": 0.907,
+      "mean_tot": 44.8,
+      "tot_adj": 0.33,
       "wind_adj": -0.0
      }
     },
-    "game_mean": 6.786
+    "game_mean": 7.859
    },
    "kickers": {
     "home": {
-     "name": "J.Bates",
-     "full_name": "Jake Bates",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/umhfee7ax7r8gjdt8okb",
-     "team_games": 9,
-     "new": false,
-     "mean": 7.986,
-     "tt_base": 26.0,
-     "tt_slope": 0.1165,
-     "dist": {
-      "0": 0.0057,
-      "1": 0.0146,
-      "2": 0.0297,
-      "3": 0.05,
-      "4": 0.0667,
-      "5": 0.0997,
-      "6": 0.1135,
-      "7": 0.1107,
-      "8": 0.0993,
-      "9": 0.0944,
-      "10": 0.0915,
-      "11": 0.0683,
-      "12": 0.0427,
-      "13": 0.0382,
-      "14": 0.0273,
-      "15": 0.0191,
-      "16": 0.0126,
-      "17": 0.0085,
-      "18": 0.0041,
-      "19": 0.002,
-      "21": 0.0008,
-      "22": 0.0004
-     },
-     "why": {
-      "fga": 1.86,
-      "xpa": 3.24,
-      "fg_pct": 0.866,
-      "xp_pct": 0.973,
-      "t_fga": 1.9,
-      "lg_fga": 2.05,
-      "wind_pct": 1.0
-     }
-    },
-    "away": {
-     "name": "C.McLaughlin",
-     "full_name": "Chase McLaughlin",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/enkzsuyzk232mbq5oe4w",
-     "team_games": 9,
-     "new": false,
-     "mean": 8.257,
-     "tt_base": 22.5,
-     "tt_slope": 0.1165,
-     "dist": {
-      "0": 0.0041,
-      "1": 0.009,
-      "2": 0.0269,
-      "3": 0.0468,
-      "4": 0.0614,
-      "5": 0.0899,
-      "6": 0.1143,
-      "7": 0.1062,
-      "8": 0.107,
-      "9": 0.0924,
-      "10": 0.0932,
-      "11": 0.0777,
-      "12": 0.0484,
-      "13": 0.0399,
-      "14": 0.0301,
-      "15": 0.0207,
-      "16": 0.0142,
-      "17": 0.009,
-      "18": 0.0049,
-      "19": 0.0028,
-      "21": 0.0008,
-      "22": 0.0004
-     },
-     "why": {
-      "fga": 2.22,
-      "xpa": 2.26,
-      "fg_pct": 0.909,
-      "xp_pct": 0.976,
-      "t_fga": 2.17,
-      "lg_fga": 2.05,
-      "wind_pct": 1.0
-     }
-    }
-   },
-   "punters": {
-    "home": {
-     "name": "J.Fox",
-     "full_name": "Jack Fox",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/iwfepgslxhtx236z6faz",
-     "team_games": 9,
-     "new": false
-    },
-    "away": {
-     "name": "R.Dixon",
-     "full_name": "Riley Dixon",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/wcwfdojcfj0i6y1rb5jn",
-     "team_games": 8,
-     "new": false
-    }
-   },
-   "overrides_applied": [],
-   "coaches": {
-    "home_hc": "Dan Campbell",
-    "away_hc": "Todd Bowles",
-    "home_pc": "Drew Petzing",
-    "away_pc": "Zac Robinson",
-    "home_new_pc": true,
-    "away_new_pc": true,
-    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/lions/wnlvnnw7pr8bcdf8yt7f.jpg",
-    "away_hc_photo": "https://static.clubs.nfl.com/image/private/t_headshot_desktop/f_auto/buccaneers/jpogwxmoztyg1pusjnum.jpg",
-    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/lions/wgkudg3q55jwroxbagfq.jpg",
-    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/buccaneers/zutxtvcex1kejjw6uqq7.jpg"
-   }
-  },
-  {
-   "game_id": "2026_11_ARI_KC",
-   "gameday": "2026-11-22",
-   "gametime": "13:00",
-   "home": "KC",
-   "away": "ARI",
-   "roof": "outdoors",
-   "wind_mph": 15.7,
-   "wind_flag": 1,
-   "lines": {
-    "spread_line": 15.5,
-    "total_line": 40.5,
-    "home_tt": 28.0,
-    "away_tt": 12.5
-   },
-   "drive": {
-    "home": {
-     "TD": 0.2731,
-     "FG": 0.2024,
-     "PUNT": 0.3712,
-     "OTHER": 0.1534
-    },
-    "away": {
-     "TD": 0.2473,
-     "FG": 0.2087,
-     "PUNT": 0.3992,
-     "OTHER": 0.1449
-    }
-   },
-   "punts": {
-    "home": {
-     "mean": 2.862,
-     "tt_slope": -0.0611,
-     "why": {
-      "lg": 3.77,
-      "team_f": 0.944,
-      "opp_f": 0.86,
-      "mean_tot": 44.7,
-      "tot_adj": 0.26,
-      "wind_adj": -0.41
-     }
-    },
-    "away": {
-     "mean": 3.8,
-     "tt_slope": -0.0611,
-     "why": {
-      "lg": 3.77,
-      "team_f": 1.029,
-      "opp_f": 1.005,
-      "mean_tot": 44.7,
-      "tot_adj": 0.26,
-      "wind_adj": -0.41
-     }
-    },
-    "game_mean": 6.662
-   },
-   "kickers": {
-    "home": {
-     "name": "H.Butker",
-     "full_name": "Harrison Butker",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/yphf8avl8ji0ncdohabz",
-     "team_games": 9,
-     "new": false,
-     "mean": 7.251,
-     "tt_base": 28.0,
-     "tt_slope": 0.1136,
-     "dist": {
-      "0": 0.0134,
-      "1": 0.0264,
-      "2": 0.0472,
-      "3": 0.061,
-      "4": 0.0903,
-      "5": 0.1147,
-      "6": 0.1058,
-      "7": 0.1074,
-      "8": 0.0924,
-      "9": 0.0932,
-      "10": 0.0773,
-      "11": 0.048,
-      "12": 0.0403,
-      "13": 0.0297,
-      "14": 0.0207,
-      "15": 0.0142,
-      "16": 0.009,
-      "17": 0.0049,
-      "18": 0.0028,
-      "20": 0.0008,
-      "21": 0.0004
-     },
-     "why": {
-      "fga": 1.9,
-      "xpa": 3.12,
-      "fg_pct": 0.794,
-      "xp_pct": 0.942,
-      "t_fga": 2.12,
-      "lg_fga": 2.05,
-      "wind_pct": 0.95
-     }
-    },
-    "away": {
-     "name": "C.Ryland",
-     "full_name": "Chad Ryland",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/gbfzwbzdl9wj582nh5g9",
-     "team_games": 10,
-     "new": false,
-     "mean": 5.545,
-     "tt_base": 12.5,
-     "tt_slope": 0.1162,
-     "dist": {
-      "0": 0.072,
-      "1": 0.0537,
-      "2": 0.083,
-      "3": 0.1107,
-      "4": 0.1098,
-      "5": 0.1054,
-      "6": 0.0985,
-      "7": 0.0956,
-      "8": 0.0765,
-      "9": 0.0618,
-      "10": 0.0411,
-      "11": 0.0325,
-      "12": 0.022,
-      "13": 0.0163,
-      "14": 0.0114,
-      "15": 0.0049,
-      "16": 0.0033,
-      "17": 0.0004,
-      "18": 0.0008,
-      "19": 0.0004
-     },
-     "why": {
-      "fga": 1.96,
-      "xpa": 0.85,
-      "fg_pct": 0.844,
-      "xp_pct": 0.966,
-      "t_fga": 2.14,
-      "lg_fga": 2.05,
-      "wind_pct": 0.95
-     }
-    }
-   },
-   "punters": {
-    "home": {
-     "name": "M.Araiza",
-     "full_name": "Matt Araiza",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/tmtvevrgg8lziqewdhtv",
-     "team_games": 9,
-     "new": false
-    },
-    "away": {
-     "name": "B.Gillikin",
-     "full_name": "Blake Gillikin",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/pgasxtghfviimlj55tn0",
-     "team_games": 10,
-     "new": false
-    }
-   },
-   "overrides_applied": [],
-   "coaches": {
-    "home_hc": "Andy Reid",
-    "away_hc": "Mike LaFleur",
-    "home_pc": "Andy Reid",
-    "away_pc": "Mike LaFleur",
-    "home_new_pc": false,
-    "away_new_pc": true,
-    "home_hc_photo": "https://static.clubs.nfl.com/image/private/t_headshot_desktop/f_auto/v1623959459/chiefs/khzpdwroubzinsqt38fx.jpg",
-    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/cardinals/oslbhmncmtr07ff5mnwu.jpg",
-    "home_pc_photo": "https://static.clubs.nfl.com/image/private/t_headshot_desktop/f_auto/v1623959459/chiefs/khzpdwroubzinsqt38fx.jpg",
-    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/cardinals/oslbhmncmtr07ff5mnwu.jpg"
-   }
-  },
-  {
-   "game_id": "2026_11_PIT_PHI",
-   "gameday": "2026-11-22",
-   "gametime": "13:00",
-   "home": "PHI",
-   "away": "PIT",
-   "roof": "outdoors",
-   "wind_mph": 8.0,
-   "wind_flag": 0,
-   "lines": {
-    "spread_line": -3.5,
-    "total_line": 37.5,
-    "home_tt": 17.0,
-    "away_tt": 20.5
-   },
-   "drive": {
-    "home": {
-     "TD": 0.2341,
-     "FG": 0.1815,
-     "PUNT": 0.4416,
-     "OTHER": 0.1428
-    },
-    "away": {
-     "TD": 0.2177,
-     "FG": 0.2309,
-     "PUNT": 0.4301,
-     "OTHER": 0.1213
-    }
-   },
-   "punts": {
-    "home": {
-     "mean": 4.513,
-     "tt_slope": -0.0611,
-     "why": {
-      "lg": 3.77,
-      "team_f": 1.086,
-      "opp_f": 0.961,
-      "mean_tot": 44.7,
-      "tot_adj": 0.44,
-      "wind_adj": -0.0
-     }
-    },
-    "away": {
-     "mean": 4.559,
-     "tt_slope": -0.0611,
-     "why": {
-      "lg": 3.77,
-      "team_f": 1.047,
-      "opp_f": 1.025,
-      "mean_tot": 44.7,
-      "tot_adj": 0.44,
-      "wind_adj": -0.0
-     }
-    },
-    "game_mean": 9.072
-   },
-   "kickers": {
-    "home": {
-     "name": "J.Elliott",
-     "full_name": "Jake Elliott",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/gxy1mhbnz1p2nufkg8qz",
-     "team_games": 9,
-     "new": false,
-     "mean": 5.47,
+     "name": "D.Carlson",
+     "full_name": "Daniel Carlson",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/sg14zc3ogddzln26wchc",
+     "team_games": 1,
+     "new": true,
+     "mean": 6.401,
      "tt_base": 17.0,
-     "tt_slope": 0.1175,
+     "tt_slope": 0.1174,
      "dist": {
-      "0": 0.0753,
-      "1": 0.0557,
-      "2": 0.085,
-      "3": 0.1119,
-      "4": 0.109,
-      "5": 0.105,
-      "6": 0.0993,
-      "7": 0.0956,
-      "8": 0.0736,
-      "9": 0.0627,
-      "10": 0.037,
-      "11": 0.0321,
-      "12": 0.0207,
-      "13": 0.0163,
-      "14": 0.0114,
-      "15": 0.0049,
-      "16": 0.0028,
-      "17": 0.0004,
-      "18": 0.0008,
-      "19": 0.0004
+      "0": 0.0365,
+      "1": 0.0426,
+      "2": 0.061,
+      "3": 0.0839,
+      "4": 0.1124,
+      "5": 0.1092,
+      "6": 0.1032,
+      "7": 0.0988,
+      "8": 0.0928,
+      "9": 0.0751,
+      "10": 0.0586,
+      "11": 0.0394,
+      "12": 0.0297,
+      "13": 0.0213,
+      "14": 0.0149,
+      "15": 0.0116,
+      "16": 0.0048,
+      "17": 0.0024,
+      "18": 0.0004,
+      "19": 0.0008,
+      "20": 0.0004
      },
      "why": {
-      "fga": 1.57,
-      "xpa": 1.64,
-      "fg_pct": 0.819,
-      "xp_pct": 0.978,
-      "t_fga": 1.66,
-      "lg_fga": 2.05,
-      "wind_pct": 1.0
-     }
-    },
-    "away": {
-     "name": "C.Boswell",
-     "full_name": "Chris Boswell",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/rxbnhvnfjmheuryvdmuf",
-     "team_games": 9,
-     "new": false,
-     "mean": 7.789,
-     "tt_base": 20.5,
-     "tt_slope": 0.1177,
-     "dist": {
-      "0": 0.0069,
-      "1": 0.0179,
-      "2": 0.0338,
-      "3": 0.0521,
-      "4": 0.07,
-      "5": 0.109,
-      "6": 0.1123,
-      "7": 0.1103,
-      "8": 0.0972,
-      "9": 0.094,
-      "10": 0.0871,
-      "11": 0.0651,
-      "12": 0.0423,
-      "13": 0.037,
-      "14": 0.0207,
-      "15": 0.0199,
-      "16": 0.0114,
-      "17": 0.0073,
-      "18": 0.0024,
-      "19": 0.002,
-      "21": 0.0012
-     },
-     "why": {
-      "fga": 2.32,
-      "xpa": 1.97,
-      "fg_pct": 0.843,
-      "xp_pct": 0.981,
-      "t_fga": 2.25,
-      "lg_fga": 2.05,
-      "wind_pct": 1.0
-     }
-    }
-   },
-   "punters": {
-    "home": {
-     "name": "B.Mann",
-     "full_name": "Braden Mann",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/eizeojehmxkvvfahj1tk",
-     "team_games": 9,
-     "new": false
-    },
-    "away": {
-     "name": "C.Johnston",
-     "full_name": "Cameron Johnston",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ppcxjnntytozgd78mhzz",
-     "team_games": 9,
-     "new": false
-    }
-   },
-   "overrides_applied": [
-    {
-     "team": "PHI",
-     "flag": "NEW_QB"
-    }
-   ],
-   "coaches": {
-    "home_hc": "Nick Sirianni",
-    "away_hc": "Mike McCarthy",
-    "home_pc": "Sean Mannion",
-    "away_pc": "Mike McCarthy",
-    "home_new_pc": true,
-    "away_new_pc": true,
-    "home_hc_photo": "https://static.clubs.nfl.com/image/private/t_headshot_desktop/f_auto/v1613077310/eagles/bqj3sr1r5pbs3w6epgrx.jpg",
-    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/steelers/zpjgzcniseurh5r1yr7o.jpg",
-    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_png/eagles/bpixaidvibwkawmetq0m.png",
-    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/steelers/zpjgzcniseurh5r1yr7o.jpg"
-   }
-  },
-  {
-   "game_id": "2026_11_NYJ_LAC",
-   "gameday": "2026-11-22",
-   "gametime": "16:05",
-   "home": "LAC",
-   "away": "NYJ",
-   "roof": "dome",
-   "wind_mph": 0.0,
-   "wind_flag": 0,
-   "lines": {
-    "spread_line": 3.0,
-    "total_line": 43.5,
-    "home_tt": 23.25,
-    "away_tt": 20.25
-   },
-   "drive": {
-    "home": {
-     "TD": 0.2755,
-     "FG": 0.1995,
-     "PUNT": 0.3873,
-     "OTHER": 0.1377
-    },
-    "away": {
-     "TD": 0.217,
-     "FG": 0.1979,
-     "PUNT": 0.4219,
-     "OTHER": 0.1632
-    }
-   },
-   "punts": {
-    "home": {
-     "mean": 4.248,
-     "tt_slope": -0.0611,
-     "why": {
-      "lg": 3.77,
-      "team_f": 1.058,
-      "opp_f": 1.025,
-      "mean_tot": 44.7,
-      "tot_adj": 0.07,
-      "wind_adj": -0.0
-     }
-    },
-    "away": {
-     "mean": 4.302,
-     "tt_slope": -0.0611,
-     "why": {
-      "lg": 3.77,
-      "team_f": 1.064,
-      "opp_f": 1.03,
-      "mean_tot": 44.7,
-      "tot_adj": 0.07,
-      "wind_adj": -0.0
-     }
-    },
-    "game_mean": 8.55
-   },
-   "kickers": {
-    "home": {
-     "name": "C.Dicker",
-     "full_name": "Cameron Dicker",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/fvkop13kntnwv3amucpf",
-     "team_games": 9,
-     "new": false,
-     "mean": 8.333,
-     "tt_base": 23.25,
-     "tt_slope": 0.1155,
-     "dist": {
-      "0": 0.0033,
-      "1": 0.0081,
-      "2": 0.026,
-      "3": 0.0443,
-      "4": 0.0618,
-      "5": 0.0854,
-      "6": 0.1131,
-      "7": 0.1094,
-      "8": 0.1029,
-      "9": 0.0968,
-      "10": 0.094,
-      "11": 0.0753,
-      "12": 0.0561,
-      "13": 0.0391,
-      "14": 0.0289,
-      "15": 0.0212,
-      "16": 0.0151,
-      "17": 0.0098,
-      "18": 0.0053,
-      "19": 0.0028,
-      "21": 0.0008,
-      "22": 0.0004
-     },
-     "why": {
-      "fga": 2.29,
-      "xpa": 2.19,
-      "fg_pct": 0.904,
-      "xp_pct": 0.968,
-      "t_fga": 2.23,
+      "fga": 2.07,
+      "xpa": 1.42,
+      "fg_pct": 0.816,
+      "xp_pct": 0.934,
+      "t_fga": 2.05,
       "lg_fga": 2.05,
       "wind_pct": 1.0
      }
@@ -1319,41 +792,40 @@
      "name": "J.Sanders",
      "full_name": "Jason Sanders",
      "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/t8xrcrcuttghirqbc1bu",
-     "team_games": 10,
+     "team_games": 11,
      "new": false,
-     "mean": 7.562,
-     "tt_base": 20.25,
-     "tt_slope": 0.113,
+     "mean": 7.888,
+     "tt_base": 22.5,
+     "tt_slope": 0.1191,
      "dist": {
-      "0": 0.009,
-      "1": 0.024,
-      "2": 0.037,
-      "3": 0.0545,
-      "4": 0.0834,
-      "5": 0.109,
-      "6": 0.1098,
-      "7": 0.107,
-      "8": 0.0964,
-      "9": 0.0964,
-      "10": 0.0777,
-      "11": 0.061,
-      "12": 0.0419,
-      "13": 0.0334,
-      "14": 0.0216,
-      "15": 0.0167,
-      "16": 0.0114,
-      "17": 0.0049,
-      "18": 0.0033,
-      "19": 0.0004,
-      "20": 0.0008,
-      "21": 0.0004
+      "0": 0.0056,
+      "1": 0.0189,
+      "2": 0.0297,
+      "3": 0.0518,
+      "4": 0.0695,
+      "5": 0.106,
+      "6": 0.1153,
+      "7": 0.1044,
+      "8": 0.1,
+      "9": 0.098,
+      "10": 0.0823,
+      "11": 0.0707,
+      "12": 0.0394,
+      "13": 0.039,
+      "14": 0.0253,
+      "15": 0.0185,
+      "16": 0.0112,
+      "17": 0.0084,
+      "18": 0.0028,
+      "19": 0.002,
+      "21": 0.0012
      },
      "why": {
-      "fga": 2.28,
-      "xpa": 1.65,
-      "fg_pct": 0.878,
-      "xp_pct": 0.946,
-      "t_fga": 2.22,
+      "fga": 2.27,
+      "xpa": 1.99,
+      "fg_pct": 0.883,
+      "xp_pct": 0.95,
+      "t_fga": 2.21,
       "lg_fga": 2.05,
       "wind_pct": 1.0
      }
@@ -1361,11 +833,11 @@
    },
    "punters": {
     "home": {
-     "name": "J.Scott",
-     "full_name": "J.K. Scott",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/yayikawhfng99cqrosax",
-     "team_games": 9,
-     "new": false
+     "name": "J.Browning",
+     "full_name": "Jack Browning",
+     "headshot": null,
+     "team_games": 1,
+     "new": true
     },
     "away": {
      "name": "A.McNamara",
@@ -1377,155 +849,496 @@
    },
    "overrides_applied": [],
    "coaches": {
-    "home_hc": "Jim Harbaugh",
+    "home_hc": "Jeff Hafley",
     "away_hc": "Aaron Glenn",
-    "home_pc": "Mike McDaniel",
+    "home_pc": "Bobby Slowik",
     "away_pc": "Frank Reich",
     "home_new_pc": true,
     "away_new_pc": true,
-    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/chargers/mkoyd76svgrapwhpujxp.jpg",
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/dolphins/cgnnqs8d7ngwnmssmhfa.jpg",
     "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_png/jets/o9oqdjxllj9fiqdgd1sx.png",
-    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/chargers/xj1ifsjajstwchqhgcfl.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/dolphins/ww5qxutszxderq24t0wo.jpg",
     "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_png/jets/aco3lepunfgtdyv6i2ks.png"
    }
   },
   {
-   "game_id": "2026_11_LV_DEN",
-   "gameday": "2026-11-22",
-   "gametime": "16:25",
-   "home": "DEN",
-   "away": "LV",
-   "roof": "outdoors",
-   "wind_mph": 7.7,
+   "game_id": "2026_12_ATL_MIN",
+   "gameday": "2026-11-29",
+   "gametime": "13:00",
+   "home": "MIN",
+   "away": "ATL",
+   "roof": "dome",
+   "wind_mph": 0.0,
    "wind_flag": 0,
    "lines": {
-    "spread_line": 10.5,
-    "total_line": 40.5,
-    "home_tt": 25.5,
-    "away_tt": 15.0
+    "spread_line": 7.0,
+    "total_line": 41.5,
+    "home_tt": 24.25,
+    "away_tt": 17.25
    },
    "drive": {
     "home": {
-     "TD": 0.2121,
-     "FG": 0.2172,
-     "PUNT": 0.4369,
-     "OTHER": 0.1337
+     "TD": 0.2379,
+     "FG": 0.2329,
+     "PUNT": 0.3716,
+     "OTHER": 0.1576
     },
     "away": {
-     "TD": 0.2297,
-     "FG": 0.1895,
-     "PUNT": 0.4537,
-     "OTHER": 0.1272
+     "TD": 0.2234,
+     "FG": 0.1964,
+     "PUNT": 0.4336,
+     "OTHER": 0.1465
     }
    },
    "punts": {
     "home": {
-     "mean": 4.639,
-     "tt_slope": -0.0611,
+     "mean": 4.057,
+     "tt_slope": -0.063,
      "why": {
-      "lg": 3.77,
-      "team_f": 1.163,
-      "opp_f": 0.943,
-      "mean_tot": 44.7,
-      "tot_adj": 0.26,
+      "lg": 3.75,
+      "team_f": 1.025,
+      "opp_f": 0.987,
+      "mean_tot": 44.8,
+      "tot_adj": 0.21,
       "wind_adj": -0.0
      }
     },
     "away": {
-     "mean": 4.73,
-     "tt_slope": -0.0611,
+     "mean": 4.211,
+     "tt_slope": -0.063,
      "why": {
-      "lg": 3.77,
-      "team_f": 1.022,
-      "opp_f": 1.16,
-      "mean_tot": 44.7,
-      "tot_adj": 0.26,
+      "lg": 3.75,
+      "team_f": 0.984,
+      "opp_f": 1.092,
+      "mean_tot": 44.8,
+      "tot_adj": 0.21,
       "wind_adj": -0.0
      }
     },
-    "game_mean": 9.369
+    "game_mean": 8.268
    },
    "kickers": {
     "home": {
-     "name": "W.Lutz",
-     "full_name": "Wil Lutz",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/vcglg5vsgbiyggwibgy0",
-     "team_games": 9,
+     "name": "W.Reichard",
+     "full_name": "Will Reichard",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/kgctxvtvo8sn1zyh2m1c",
+     "team_games": 10,
      "new": false,
-     "mean": 7.786,
-     "tt_base": 25.5,
-     "tt_slope": 0.1183,
+     "mean": 8.698,
+     "tt_base": 24.25,
+     "tt_slope": 0.1241,
      "dist": {
-      "0": 0.0069,
-      "1": 0.0179,
-      "2": 0.0342,
-      "3": 0.0517,
-      "4": 0.07,
-      "5": 0.1103,
-      "6": 0.1115,
-      "7": 0.1103,
-      "8": 0.0968,
-      "9": 0.094,
-      "10": 0.0871,
-      "11": 0.0651,
-      "12": 0.0423,
-      "13": 0.037,
-      "14": 0.0207,
-      "15": 0.0199,
-      "16": 0.0118,
-      "17": 0.0069,
-      "18": 0.0024,
-      "19": 0.002,
+      "0": 0.0004,
+      "1": 0.0072,
+      "2": 0.0213,
+      "3": 0.0349,
+      "4": 0.0546,
+      "5": 0.0779,
+      "6": 0.1088,
+      "7": 0.11,
+      "8": 0.1064,
+      "9": 0.1,
+      "10": 0.0924,
+      "11": 0.0827,
+      "12": 0.0622,
+      "13": 0.0414,
+      "14": 0.0373,
+      "15": 0.0229,
+      "16": 0.0161,
+      "17": 0.012,
+      "18": 0.006,
+      "19": 0.0028,
+      "20": 0.0012,
+      "22": 0.0012
+     },
+     "why": {
+      "fga": 2.43,
+      "xpa": 2.38,
+      "fg_pct": 0.871,
+      "xp_pct": 0.988,
+      "t_fga": 2.34,
+      "lg_fga": 2.05,
+      "wind_pct": 1.0
+     }
+    },
+    "away": {
+     "name": "J.Moody",
+     "full_name": "Jake Moody",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/apt7uakuwoxlpsjp5lp5",
+     "team_games": 1,
+     "new": true,
+     "mean": 6.864,
+     "tt_base": 17.25,
+     "tt_slope": 0.1211,
+     "dist": {
+      "0": 0.0253,
+      "1": 0.0301,
+      "2": 0.0526,
+      "3": 0.0707,
+      "4": 0.1068,
+      "5": 0.1141,
+      "6": 0.1048,
+      "7": 0.1,
+      "8": 0.096,
+      "9": 0.0827,
+      "10": 0.0699,
+      "11": 0.0402,
+      "12": 0.039,
+      "13": 0.0241,
+      "14": 0.0181,
+      "15": 0.0112,
+      "16": 0.0088,
+      "17": 0.0028,
+      "18": 0.0016,
+      "20": 0.0012
+     },
+     "why": {
+      "fga": 2.2,
+      "xpa": 1.49,
+      "fg_pct": 0.824,
+      "xp_pct": 0.963,
+      "t_fga": 2.15,
+      "lg_fga": 2.05,
+      "wind_pct": 1.0
+     }
+    }
+   },
+   "punters": {
+    "home": {
+     "name": "B.Thorson",
+     "full_name": "Brett Thorson",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/rvlb3wcjdvjy6o5y9eji",
+     "team_games": 8,
+     "new": false
+    },
+    "away": {
+     "name": "J.Bailey",
+     "full_name": "Jake Bailey",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/a6kyra3lxgf96rrotpi3",
+     "team_games": 10,
+     "new": false
+    }
+   },
+   "overrides_applied": [],
+   "coaches": {
+    "home_hc": "Kevin O'Connell",
+    "away_hc": "Kevin Stefanski",
+    "home_pc": "Kevin O'Connell",
+    "away_pc": "Tommy Rees",
+    "home_new_pc": false,
+    "away_new_pc": true,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/private/t_headshot_desktop/f_auto/vikings/hozn31ftfmnuslvaojle.jpg",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/falcons/hive6yboznqujosi0t6a.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/private/t_headshot_desktop/f_auto/vikings/hozn31ftfmnuslvaojle.jpg",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/falcons/basdki1ygra8efjkn2dl.jpg"
+   }
+  },
+  {
+   "game_id": "2026_12_NE_LAC",
+   "gameday": "2026-11-29",
+   "gametime": "16:05",
+   "home": "LAC",
+   "away": "NE",
+   "roof": "dome",
+   "wind_mph": 0.0,
+   "wind_flag": 0,
+   "lines": {
+    "spread_line": -3.0,
+    "total_line": 34.5,
+    "home_tt": 15.75,
+    "away_tt": 18.75
+   },
+   "drive": {
+    "home": {
+     "TD": 0.2661,
+     "FG": 0.2162,
+     "PUNT": 0.3927,
+     "OTHER": 0.1251
+    },
+    "away": {
+     "TD": 0.236,
+     "FG": 0.1903,
+     "PUNT": 0.3991,
+     "OTHER": 0.1746
+    }
+   },
+   "punts": {
+    "home": {
+     "mean": 4.831,
+     "tt_slope": -0.063,
+     "why": {
+      "lg": 3.75,
+      "team_f": 1.047,
+      "opp_f": 1.049,
+      "mean_tot": 44.8,
+      "tot_adj": 0.65,
+      "wind_adj": -0.0
+     }
+    },
+    "away": {
+     "mean": 4.473,
+     "tt_slope": -0.063,
+     "why": {
+      "lg": 3.75,
+      "team_f": 1.007,
+      "opp_f": 1.006,
+      "mean_tot": 44.8,
+      "tot_adj": 0.65,
+      "wind_adj": -0.0
+     }
+    },
+    "game_mean": 9.304
+   },
+   "kickers": {
+    "home": {
+     "name": "C.Dicker",
+     "full_name": "Cameron Dicker",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/fvkop13kntnwv3amucpf",
+     "team_games": 10,
+     "new": false,
+     "mean": 7.353,
+     "tt_base": 15.75,
+     "tt_slope": 0.1216,
+     "dist": {
+      "0": 0.0116,
+      "1": 0.0261,
+      "2": 0.0446,
+      "3": 0.061,
+      "4": 0.0847,
+      "5": 0.1145,
+      "6": 0.1068,
+      "7": 0.106,
+      "8": 0.0956,
+      "9": 0.0936,
+      "10": 0.0771,
+      "11": 0.055,
+      "12": 0.0373,
+      "13": 0.0305,
+      "14": 0.0205,
+      "15": 0.0165,
+      "16": 0.01,
+      "17": 0.0044,
+      "18": 0.0028,
+      "20": 0.0008,
+      "21": 0.0004
+     },
+     "why": {
+      "fga": 2.26,
+      "xpa": 1.25,
+      "fg_pct": 0.906,
+      "xp_pct": 0.97,
+      "t_fga": 2.2,
+      "lg_fga": 2.05,
+      "wind_pct": 1.0
+     }
+    },
+    "away": {
+     "name": "A.Borregales",
+     "full_name": "Andy Borregales",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/enykic9eob4ogreebucl",
+     "team_games": 10,
+     "new": false,
+     "mean": 6.09,
+     "tt_base": 18.75,
+     "tt_slope": 0.1208,
+     "dist": {
+      "0": 0.0466,
+      "1": 0.0494,
+      "2": 0.0631,
+      "3": 0.0988,
+      "4": 0.112,
+      "5": 0.1112,
+      "6": 0.102,
+      "7": 0.0948,
+      "8": 0.0908,
+      "9": 0.0727,
+      "10": 0.0434,
+      "11": 0.0378,
+      "12": 0.0281,
+      "13": 0.0197,
+      "14": 0.0141,
+      "15": 0.0076,
+      "16": 0.0044,
+      "17": 0.0024,
+      "19": 0.0012
+     },
+     "why": {
+      "fga": 1.71,
+      "xpa": 1.91,
+      "fg_pct": 0.828,
+      "xp_pct": 0.961,
+      "t_fga": 1.78,
+      "lg_fga": 2.05,
+      "wind_pct": 1.0
+     }
+    }
+   },
+   "punters": {
+    "home": {
+     "name": "J.Scott",
+     "full_name": "J.K. Scott",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/yayikawhfng99cqrosax",
+     "team_games": 10,
+     "new": false
+    },
+    "away": {
+     "name": "M.Wishnowsky",
+     "full_name": "Mitch Wishnowsky",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/iibrd4iyybnueibqf5e3",
+     "team_games": 10,
+     "new": false
+    }
+   },
+   "overrides_applied": [],
+   "coaches": {
+    "home_hc": "Jim Harbaugh",
+    "away_hc": "Mike Vrabel",
+    "home_pc": "Mike McDaniel",
+    "away_pc": "Josh McDaniels",
+    "home_new_pc": true,
+    "away_new_pc": false,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/chargers/mkoyd76svgrapwhpujxp.jpg",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_png/patriots/vyawltlzxdygn1ubmr7c.png",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/chargers/xj1ifsjajstwchqhgcfl.jpg",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_png/patriots/bidlnwaxv8yq9fmel75c.png"
+   }
+  },
+  {
+   "game_id": "2026_12_WAS_ARI",
+   "gameday": "2026-11-29",
+   "gametime": "16:25",
+   "home": "ARI",
+   "away": "WAS",
+   "roof": "nan",
+   "wind_mph": 0.0,
+   "wind_flag": 0,
+   "lines": {
+    "spread_line": -6.5,
+    "total_line": 41.5,
+    "home_tt": 17.5,
+    "away_tt": 24.0
+   },
+   "drive": {
+    "home": {
+     "TD": 0.2499,
+     "FG": 0.2231,
+     "PUNT": 0.3955,
+     "OTHER": 0.1315
+    },
+    "away": {
+     "TD": 0.2211,
+     "FG": 0.2533,
+     "PUNT": 0.3906,
+     "OTHER": 0.135
+    }
+   },
+   "punts": {
+    "home": {
+     "mean": 4.089,
+     "tt_slope": -0.063,
+     "why": {
+      "lg": 3.75,
+      "team_f": 1.046,
+      "opp_f": 0.968,
+      "mean_tot": 44.8,
+      "tot_adj": 0.21,
+      "wind_adj": -0.0
+     }
+    },
+    "away": {
+     "mean": 3.533,
+     "tt_slope": -0.063,
+     "why": {
+      "lg": 3.75,
+      "team_f": 1.013,
+      "opp_f": 0.861,
+      "mean_tot": 44.8,
+      "tot_adj": 0.21,
+      "wind_adj": -0.0
+     }
+    },
+    "game_mean": 7.622
+   },
+   "kickers": {
+    "home": {
+     "name": "C.Ryland",
+     "full_name": "Chad Ryland",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/gbfzwbzdl9wj582nh5g9",
+     "team_games": 11,
+     "new": false,
+     "mean": 6.763,
+     "tt_base": 17.5,
+     "tt_slope": 0.1215,
+     "dist": {
+      "0": 0.0277,
+      "1": 0.0333,
+      "2": 0.0526,
+      "3": 0.0767,
+      "4": 0.1076,
+      "5": 0.1116,
+      "6": 0.1056,
+      "7": 0.1,
+      "8": 0.0924,
+      "9": 0.0867,
+      "10": 0.0639,
+      "11": 0.0398,
+      "12": 0.0373,
+      "13": 0.0241,
+      "14": 0.0169,
+      "15": 0.0116,
+      "16": 0.0068,
+      "17": 0.0024,
+      "18": 0.0016,
+      "20": 0.0012
+     },
+     "why": {
+      "fga": 2.11,
+      "xpa": 1.48,
+      "fg_pct": 0.844,
+      "xp_pct": 0.967,
+      "t_fga": 2.08,
+      "lg_fga": 2.05,
+      "wind_pct": 1.0
+     }
+    },
+    "away": {
+     "name": "D.Stevens",
+     "full_name": "Drew Stevens",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/dzlynw7seoaqck1r2il3",
+     "team_games": 10,
+     "new": false,
+     "mean": 7.871,
+     "tt_base": 24.0,
+     "tt_slope": 0.1117,
+     "dist": {
+      "0": 0.006,
+      "1": 0.0185,
+      "2": 0.0301,
+      "3": 0.0534,
+      "4": 0.0691,
+      "5": 0.1068,
+      "6": 0.1149,
+      "7": 0.1036,
+      "8": 0.1012,
+      "9": 0.0964,
+      "10": 0.0831,
+      "11": 0.0699,
+      "12": 0.0402,
+      "13": 0.0382,
+      "14": 0.0245,
+      "15": 0.0185,
+      "16": 0.0112,
+      "17": 0.0088,
+      "18": 0.0028,
+      "19": 0.0016,
       "21": 0.0012
      },
      "why": {
-      "fga": 2.02,
-      "xpa": 2.61,
-      "fg_pct": 0.86,
-      "xp_pct": 0.987,
-      "t_fga": 2.02,
-      "lg_fga": 2.05,
-      "wind_pct": 1.0
-     }
-    },
-    "away": {
-     "name": "M.Gay",
-     "full_name": "Matt Gay",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/opglxpqmhu21eydoyvg2",
-     "team_games": 10,
-     "new": false,
-     "mean": 6.607,
-     "tt_base": 15.0,
-     "tt_slope": 0.1184,
-     "dist": {
-      "0": 0.0317,
-      "1": 0.037,
-      "2": 0.0537,
-      "3": 0.0801,
-      "4": 0.1062,
-      "5": 0.1131,
-      "6": 0.1082,
-      "7": 0.0976,
-      "8": 0.0948,
-      "9": 0.0785,
-      "10": 0.0631,
-      "11": 0.0419,
-      "12": 0.0334,
-      "13": 0.0224,
-      "14": 0.0159,
-      "15": 0.0126,
-      "16": 0.0049,
-      "17": 0.0028,
-      "18": 0.0008,
-      "19": 0.0004,
-      "20": 0.0008
-     },
-     "why": {
-      "fga": 2.15,
-      "xpa": 1.15,
-      "fg_pct": 0.849,
-      "xp_pct": 0.987,
-      "t_fga": 2.1,
+      "fga": 2.19,
+      "xpa": 2.44,
+      "fg_pct": 0.869,
+      "xp_pct": 0.893,
+      "t_fga": 2.15,
       "lg_fga": 2.05,
       "wind_pct": 1.0
      }
@@ -1533,345 +1346,170 @@
    },
    "punters": {
     "home": {
-     "name": "J.Crawshaw",
-     "full_name": "Jeremy Crawshaw",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ybqasaukmya02ajzgoaz",
-     "team_games": 9,
+     "name": "B.Gillikin",
+     "full_name": "Blake Gillikin",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/pgasxtghfviimlj55tn0",
+     "team_games": 11,
      "new": false
     },
     "away": {
-     "name": "A.Cole",
-     "full_name": "AJ Cole",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/t6ah2u0wptbb8n22tehr",
+     "name": "T.Way",
+     "full_name": "Tress Way",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/u61eijcazx9o4lb0lwp3",
      "team_games": 10,
      "new": false
     }
    },
    "overrides_applied": [],
    "coaches": {
-    "home_hc": "Sean Payton",
-    "away_hc": "Klint Kubiak",
-    "home_pc": "Sean Payton",
-    "away_pc": "Klint Kubiak",
-    "home_new_pc": false,
-    "away_new_pc": true,
-    "home_hc_photo": "https://static.clubs.nfl.com/image/private/t_headshot_desktop/f_auto/broncos/b1br0juh1rp9krapsae8.jpg",
-    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/raiders/cemhaxoqp1pajpx8yjp7.jpg",
-    "home_pc_photo": "https://static.clubs.nfl.com/image/private/t_headshot_desktop/f_auto/broncos/b1br0juh1rp9krapsae8.jpg",
-    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/raiders/cemhaxoqp1pajpx8yjp7.jpg"
-   }
-  },
-  {
-   "game_id": "2026_11_JAX_NYG",
-   "gameday": "2026-11-22",
-   "gametime": "16:25",
-   "home": "NYG",
-   "away": "JAX",
-   "roof": "outdoors",
-   "wind_mph": 7.6,
-   "wind_flag": 0,
-   "lines": {
-    "spread_line": -6.0,
-    "total_line": 45.5,
-    "home_tt": 19.75,
-    "away_tt": 25.75
-   },
-   "drive": {
-    "home": {
-     "TD": 0.2248,
-     "FG": 0.1993,
-     "PUNT": 0.4352,
-     "OTHER": 0.1408
-    },
-    "away": {
-     "TD": 0.2366,
-     "FG": 0.1736,
-     "PUNT": 0.4739,
-     "OTHER": 0.1159
-    }
-   },
-   "punts": {
-    "home": {
-     "mean": 3.999,
-     "tt_slope": -0.0611,
-     "why": {
-      "lg": 3.77,
-      "team_f": 1.068,
-      "opp_f": 0.978,
-      "mean_tot": 44.7,
-      "tot_adj": -0.05,
-      "wind_adj": -0.0
-     }
-    },
-    "away": {
-     "mean": 3.746,
-     "tt_slope": -0.0611,
-     "why": {
-      "lg": 3.77,
-      "team_f": 0.952,
-      "opp_f": 1.076,
-      "mean_tot": 44.7,
-      "tot_adj": -0.05,
-      "wind_adj": -0.0
-     }
-    },
-    "game_mean": 7.745
-   },
-   "kickers": {
-    "home": {
-     "name": "D.Zvada",
-     "full_name": "Dominic Zvada",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/rej45oauer8jysbtwbxm",
-     "team_games": 9,
-     "new": false,
-     "mean": 6.271,
-     "tt_base": 19.75,
-     "tt_slope": 0.118,
-     "dist": {
-      "0": 0.0395,
-      "1": 0.0468,
-      "2": 0.061,
-      "3": 0.0903,
-      "4": 0.1127,
-      "5": 0.1082,
-      "6": 0.1058,
-      "7": 0.0911,
-      "8": 0.094,
-      "9": 0.0781,
-      "10": 0.0496,
-      "11": 0.0399,
-      "12": 0.0297,
-      "13": 0.0212,
-      "14": 0.0134,
-      "15": 0.0098,
-      "16": 0.0049,
-      "17": 0.0028,
-      "19": 0.0008,
-      "20": 0.0004
-     },
-     "why": {
-      "fga": 1.94,
-      "xpa": 1.77,
-      "fg_pct": 0.782,
-      "xp_pct": 0.979,
-      "t_fga": 1.95,
-      "lg_fga": 2.05,
-      "wind_pct": 1.0
-     }
-    },
-    "away": {
-     "name": "C.Little",
-     "full_name": "Cam Little",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/mc9goepr7mglrx6ek1fi",
-     "team_games": 9,
-     "new": false,
-     "mean": 8.307,
-     "tt_base": 25.75,
-     "tt_slope": 0.1162,
-     "dist": {
-      "0": 0.0041,
-      "1": 0.0077,
-      "2": 0.0264,
-      "3": 0.046,
-      "4": 0.0598,
-      "5": 0.0887,
-      "6": 0.1131,
-      "7": 0.1074,
-      "8": 0.1033,
-      "9": 0.0972,
-      "10": 0.0936,
-      "11": 0.0761,
-      "12": 0.0537,
-      "13": 0.0386,
-      "14": 0.0301,
-      "15": 0.0207,
-      "16": 0.0142,
-      "17": 0.0098,
-      "18": 0.0053,
-      "19": 0.0028,
-      "21": 0.0008,
-      "22": 0.0004
-     },
-     "why": {
-      "fga": 2.05,
-      "xpa": 2.94,
-      "fg_pct": 0.886,
-      "xp_pct": 0.972,
-      "t_fga": 2.05,
-      "lg_fga": 2.05,
-      "wind_pct": 1.0
-     }
-    }
-   },
-   "punters": {
-    "home": {
-     "name": "J.Stout",
-     "full_name": "Jordan Stout",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/eeftrwsh0aigc7r22goy",
-     "team_games": 9,
-     "new": false
-    },
-    "away": {
-     "name": "L.Cooke",
-     "full_name": "Logan Cooke",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/qy2pmeevxy1jndpdq1ai",
-     "team_games": 9,
-     "new": false
-    }
-   },
-   "overrides_applied": [],
-   "coaches": {
-    "home_hc": "John Harbaugh",
-    "away_hc": "Liam Coen",
-    "home_pc": "Matt Nagy",
-    "away_pc": "Liam Coen",
+    "home_hc": "Mike LaFleur",
+    "away_hc": "Dan Quinn",
+    "home_pc": "Mike LaFleur",
+    "away_pc": "David Blough",
     "home_new_pc": true,
-    "away_new_pc": false,
-    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/giants/e5xqbb3eaaevzutrzyei.jpg",
-    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/jaguars/flrzd3amfwdd3ga71dag.jpg",
-    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/giants/nmkq4gyrtd0tbkhtourt.jpg",
-    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/jaguars/flrzd3amfwdd3ga71dag.jpg"
+    "away_new_pc": true,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/cardinals/oslbhmncmtr07ff5mnwu.jpg",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/commanders/gsrnytky7zjsvlxyk5gq.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/cardinals/oslbhmncmtr07ff5mnwu.jpg",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/commanders/p7huagfywwgrwcwsyfp5.jpg"
    }
   },
   {
-   "game_id": "2026_11_MIN_SF",
-   "gameday": "2026-11-22",
-   "gametime": "20:20",
+   "game_id": "2026_12_SEA_SF",
+   "gameday": "2026-11-29",
+   "gametime": "16:25",
    "home": "SF",
-   "away": "MIN",
+   "away": "SEA",
    "roof": "outdoors",
-   "wind_mph": 4.7,
+   "wind_mph": 12.0,
    "wind_flag": 0,
    "lines": {
-    "spread_line": 3.5,
-    "total_line": 46.5,
-    "home_tt": 25.0,
-    "away_tt": 21.5
+    "spread_line": -1.5,
+    "total_line": 42.5,
+    "home_tt": 20.5,
+    "away_tt": 22.0
    },
    "drive": {
     "home": {
-     "TD": 0.2974,
-     "FG": 0.1724,
-     "PUNT": 0.409,
-     "OTHER": 0.1212
+     "TD": 0.2983,
+     "FG": 0.1747,
+     "PUNT": 0.4141,
+     "OTHER": 0.113
     },
     "away": {
-     "TD": 0.1965,
-     "FG": 0.2476,
-     "PUNT": 0.4007,
-     "OTHER": 0.1552
+     "TD": 0.1975,
+     "FG": 0.1943,
+     "PUNT": 0.4573,
+     "OTHER": 0.151
     }
    },
    "punts": {
     "home": {
-     "mean": 3.017,
-     "tt_slope": -0.0611,
+     "mean": 3.575,
+     "tt_slope": -0.063,
      "why": {
-      "lg": 3.77,
-      "team_f": 0.821,
-      "opp_f": 1.09,
-      "mean_tot": 44.7,
-      "tot_adj": -0.11,
+      "lg": 3.75,
+      "team_f": 0.83,
+      "opp_f": 1.182,
+      "mean_tot": 44.8,
+      "tot_adj": 0.14,
       "wind_adj": -0.0
      }
     },
     "away": {
-     "mean": 3.512,
-     "tt_slope": -0.0611,
+     "mean": 3.563,
+     "tt_slope": -0.063,
      "why": {
-      "lg": 3.77,
-      "team_f": 1.036,
-      "opp_f": 0.909,
-      "mean_tot": 44.7,
-      "tot_adj": -0.11,
+      "lg": 3.75,
+      "team_f": 1.001,
+      "opp_f": 0.901,
+      "mean_tot": 44.8,
+      "tot_adj": 0.14,
       "wind_adj": -0.0
      }
     },
-    "game_mean": 6.529
+    "game_mean": 7.138
    },
    "kickers": {
     "home": {
      "name": "E.Pineiro",
      "full_name": "Eddy Pineiro",
      "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/v3vtl2t4dfzkueanjfwc",
-     "team_games": 9,
+     "team_games": 10,
      "new": false,
-     "mean": 7.334,
-     "tt_base": 25.0,
-     "tt_slope": 0.1082,
+     "mean": 6.679,
+     "tt_base": 20.5,
+     "tt_slope": 0.1143,
      "dist": {
-      "0": 0.0114,
-      "1": 0.026,
-      "2": 0.0443,
-      "3": 0.0618,
-      "4": 0.085,
-      "5": 0.1135,
-      "6": 0.1086,
-      "7": 0.1037,
-      "8": 0.0968,
-      "9": 0.0932,
-      "10": 0.0761,
-      "11": 0.0561,
-      "12": 0.0391,
-      "13": 0.0289,
-      "14": 0.0212,
-      "15": 0.0151,
-      "16": 0.0098,
-      "17": 0.0053,
-      "18": 0.0028,
-      "20": 0.0008,
-      "21": 0.0004
+      "0": 0.0289,
+      "1": 0.0357,
+      "2": 0.055,
+      "3": 0.0783,
+      "4": 0.108,
+      "5": 0.1108,
+      "6": 0.1076,
+      "7": 0.0988,
+      "8": 0.0936,
+      "9": 0.0803,
+      "10": 0.0639,
+      "11": 0.0402,
+      "12": 0.0373,
+      "13": 0.0221,
+      "14": 0.0161,
+      "15": 0.0129,
+      "16": 0.0056,
+      "17": 0.0024,
+      "18": 0.0012,
+      "20": 0.0012
      },
      "why": {
-      "fga": 1.79,
-      "xpa": 2.99,
+      "fga": 1.73,
+      "xpa": 2.42,
       "fg_pct": 0.86,
-      "xp_pct": 0.907,
-      "t_fga": 1.84,
+      "xp_pct": 0.912,
+      "t_fga": 1.79,
       "lg_fga": 2.05,
       "wind_pct": 1.0
      }
     },
     "away": {
-     "name": "W.Reichard",
-     "full_name": "Will Reichard",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/kgctxvtvo8sn1zyh2m1c",
-     "team_games": 9,
+     "name": "J.Myers",
+     "full_name": "Jason Myers",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/zcd7q9loflr0t5bsvzig",
+     "team_games": 10,
      "new": false,
-     "mean": 8.485,
-     "tt_base": 21.5,
-     "tt_slope": 0.1181,
+     "mean": 7.959,
+     "tt_base": 22.0,
+     "tt_slope": 0.1201,
      "dist": {
-      "0": 0.0028,
-      "1": 0.0073,
-      "2": 0.0232,
-      "3": 0.0415,
-      "4": 0.0545,
-      "5": 0.085,
-      "6": 0.1127,
-      "7": 0.1086,
-      "8": 0.1058,
-      "9": 0.0964,
-      "10": 0.0968,
-      "11": 0.0745,
-      "12": 0.0631,
-      "13": 0.0374,
-      "14": 0.0321,
-      "15": 0.0212,
-      "16": 0.0163,
-      "17": 0.0114,
-      "18": 0.0049,
-      "19": 0.0028,
-      "20": 0.0004,
-      "21": 0.0008,
-      "22": 0.0004
+      "0": 0.0052,
+      "1": 0.0169,
+      "2": 0.0289,
+      "3": 0.0518,
+      "4": 0.0679,
+      "5": 0.1008,
+      "6": 0.1157,
+      "7": 0.1064,
+      "8": 0.1016,
+      "9": 0.0948,
+      "10": 0.0851,
+      "11": 0.0735,
+      "12": 0.0394,
+      "13": 0.039,
+      "14": 0.0269,
+      "15": 0.0185,
+      "16": 0.0124,
+      "17": 0.0088,
+      "18": 0.0028,
+      "19": 0.0024,
+      "21": 0.0012
      },
      "why": {
-      "fga": 2.41,
-      "xpa": 2.03,
-      "fg_pct": 0.896,
-      "xp_pct": 0.987,
-      "t_fga": 2.32,
+      "fga": 2.25,
+      "xpa": 2.32,
+      "fg_pct": 0.852,
+      "xp_pct": 0.956,
+      "t_fga": 2.19,
       "lg_fga": 2.05,
       "wind_pct": 1.0
      }
@@ -1882,29 +1520,199 @@
      "name": "C.Waitman",
      "full_name": "Corliss Waitman",
      "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/tob4qaxxwhpmnalutnk8",
-     "team_games": 8,
+     "team_games": 9,
      "new": false
     },
     "away": {
-     "name": "B.Thorson",
-     "full_name": "Brett Thorson",
-     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/rvlb3wcjdvjy6o5y9eji",
-     "team_games": 7,
+     "name": "M.Dickson",
+     "full_name": "Michael Dickson",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/apjm64xahlm5hjmoxul7",
+     "team_games": 10,
      "new": false
     }
    },
    "overrides_applied": [],
    "coaches": {
     "home_hc": "Kyle Shanahan",
-    "away_hc": "Kevin O'Connell",
+    "away_hc": "Mike Macdonald",
     "home_pc": "Kyle Shanahan",
-    "away_pc": "Kevin O'Connell",
+    "away_pc": "Brian Fleury",
     "home_new_pc": false,
-    "away_new_pc": false,
+    "away_new_pc": true,
     "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_png/49ers/zeksyg5a7ztaigmqtqxx.png",
-    "away_hc_photo": "https://static.clubs.nfl.com/image/private/t_headshot_desktop/f_auto/vikings/hozn31ftfmnuslvaojle.jpg",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/seahawks/c9c4uivyfdcurorpmprs.jpg",
     "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_png/49ers/zeksyg5a7ztaigmqtqxx.png",
-    "away_pc_photo": "https://static.clubs.nfl.com/image/private/t_headshot_desktop/f_auto/vikings/hozn31ftfmnuslvaojle.jpg"
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/seahawks/ai7cmquf01lmkcvxjjco.jpg"
+   }
+  },
+  {
+   "game_id": "2026_12_LV_CLE",
+   "gameday": "2026-11-29",
+   "gametime": "20:20",
+   "home": "CLE",
+   "away": "LV",
+   "roof": "outdoors",
+   "wind_mph": 13.9,
+   "wind_flag": 0,
+   "lines": {
+    "spread_line": 4.5,
+    "total_line": 39.5,
+    "home_tt": 22.0,
+    "away_tt": 17.5
+   },
+   "drive": {
+    "home": {
+     "TD": 0.22,
+     "FG": 0.154,
+     "PUNT": 0.4871,
+     "OTHER": 0.1389
+    },
+    "away": {
+     "TD": 0.2768,
+     "FG": 0.1867,
+     "PUNT": 0.4185,
+     "OTHER": 0.118
+    }
+   },
+   "punts": {
+    "home": {
+     "mean": 5.126,
+     "tt_slope": -0.063,
+     "why": {
+      "lg": 3.75,
+      "team_f": 1.243,
+      "opp_f": 0.955,
+      "mean_tot": 44.8,
+      "tot_adj": 0.33,
+      "wind_adj": -0.0
+     }
+    },
+    "away": {
+     "mean": 5.026,
+     "tt_slope": -0.063,
+     "why": {
+      "lg": 3.75,
+      "team_f": 1.04,
+      "opp_f": 1.204,
+      "mean_tot": 44.8,
+      "tot_adj": 0.33,
+      "wind_adj": -0.0
+     }
+    },
+    "game_mean": 10.152
+   },
+   "kickers": {
+    "home": {
+     "name": "A.Szmyt",
+     "full_name": "Andre Szmyt",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/tkah6glpysuyq2a54gts",
+     "team_games": 10,
+     "new": false,
+     "mean": 7.108,
+     "tt_base": 22.0,
+     "tt_slope": 0.1193,
+     "dist": {
+      "0": 0.0177,
+      "1": 0.0289,
+      "2": 0.0486,
+      "3": 0.0631,
+      "4": 0.0956,
+      "5": 0.1133,
+      "6": 0.1129,
+      "7": 0.102,
+      "8": 0.094,
+      "9": 0.0908,
+      "10": 0.0735,
+      "11": 0.0442,
+      "12": 0.0361,
+      "13": 0.0293,
+      "14": 0.0205,
+      "15": 0.0141,
+      "16": 0.0076,
+      "17": 0.0044,
+      "18": 0.0024,
+      "20": 0.0012
+     },
+     "why": {
+      "fga": 2.01,
+      "xpa": 1.96,
+      "fg_pct": 0.871,
+      "xp_pct": 0.951,
+      "t_fga": 2.01,
+      "lg_fga": 2.05,
+      "wind_pct": 1.0
+     }
+    },
+    "away": {
+     "name": "M.Gay",
+     "full_name": "Matt Gay",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/opglxpqmhu21eydoyvg2",
+     "team_games": 11,
+     "new": false,
+     "mean": 6.824,
+     "tt_base": 17.5,
+     "tt_slope": 0.1242,
+     "dist": {
+      "0": 0.0257,
+      "1": 0.0313,
+      "2": 0.0534,
+      "3": 0.0739,
+      "4": 0.1064,
+      "5": 0.1133,
+      "6": 0.1032,
+      "7": 0.1028,
+      "8": 0.0944,
+      "9": 0.0851,
+      "10": 0.0643,
+      "11": 0.0426,
+      "12": 0.0378,
+      "13": 0.0229,
+      "14": 0.0189,
+      "15": 0.0104,
+      "16": 0.008,
+      "17": 0.0028,
+      "18": 0.0016,
+      "20": 0.0012
+     },
+     "why": {
+      "fga": 2.09,
+      "xpa": 1.49,
+      "fg_pct": 0.852,
+      "xp_pct": 0.988,
+      "t_fga": 2.07,
+      "lg_fga": 2.05,
+      "wind_pct": 1.0
+     }
+    }
+   },
+   "punters": {
+    "home": {
+     "name": "C.Bojorquez",
+     "full_name": "Corey Bojorquez",
+     "headshot": "https://static.www.nfl.com/image/private/f_auto,q_auto/league/eiuli9dmspe6d4cwwa00",
+     "team_games": 10,
+     "new": false
+    },
+    "away": {
+     "name": "A.Cole",
+     "full_name": "AJ Cole",
+     "headshot": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/t6ah2u0wptbb8n22tehr",
+     "team_games": 11,
+     "new": false
+    }
+   },
+   "overrides_applied": [],
+   "coaches": {
+    "home_hc": "Todd Monken",
+    "away_hc": "Klint Kubiak",
+    "home_pc": "Todd Monken",
+    "away_pc": "Klint Kubiak",
+    "home_new_pc": true,
+    "away_new_pc": true,
+    "home_hc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/browns/dapfplbazypojjh9s9qc.jpg",
+    "away_hc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/raiders/cemhaxoqp1pajpx8yjp7.jpg",
+    "home_pc_photo": "https://static.clubs.nfl.com/image/upload/t_person_squared_mobile/f_auto/browns/dapfplbazypojjh9s9qc.jpg",
+    "away_pc_photo": "https://static.clubs.nfl.com/image/upload/t_headshot_desktop/f_auto/raiders/cemhaxoqp1pajpx8yjp7.jpg"
    }
   }
  ]
